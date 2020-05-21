@@ -41,7 +41,6 @@ private:
 	float mTicksPerMs;
 
 	INT64 mStartTime;
-	//float m_frameTime;
 
 	/**
 	 * Timer copy constructor
