@@ -27,7 +27,7 @@ public:
 
 
 	/**
-	 *  @return {std::ostream&} a reference to the ostream where the logger sends the messages that are given to him
+	 * @return {std::ostream&} a reference to the ostream where the logger sends the messages that are given to him
 	 */
 	virtual std::ostream& getStream();
 

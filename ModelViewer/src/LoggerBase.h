@@ -141,6 +141,7 @@ private:
 	 * is private because we do not allow copies of a Singleton
 	 */
 	LoggerBase& operator=(const LoggerBase&); // Intentionally undefined
+
 }; // class LoggerBase
 
 

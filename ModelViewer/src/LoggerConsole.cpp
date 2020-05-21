@@ -25,26 +25,26 @@ enum ConsoleTextColor {
 
 void setSeverityColor(SeverityLevel pSeverityLevel)
 {
-	switch (pSeverityLevel) {
-
-	case SeverityDebug:
-		std::cout << "\033[" << ConsoleTextColor::lightBlue << "m";
-		break;
-	case SeverityInfo:
-		std::cout << "\033[" << ConsoleTextColor::lightGreen << "m";
-		break;
-	case SeverityWarning:
-		std::cout << "\033[" << ConsoleTextColor::yellow << "m";
-		break;
-	case SeverityError:
-		std::cout << "\033[" << ConsoleTextColor::lightRed << "m";
-		break;
-	case SeverityFatal:
-		std::cout << "\033[" << ConsoleTextColor::lightRed << "m";
-		break;
-	default:
-	case SeverityNoLog:
-		break;
+	switch (pSeverityLevel) 
+	{
+		case SeverityDebug:
+			std::cout << "\033[" << ConsoleTextColor::lightBlue << "m";
+			break;
+		case SeverityInfo:
+			std::cout << "\033[" << ConsoleTextColor::lightGreen << "m";
+			break;
+		case SeverityWarning:
+			std::cout << "\033[" << ConsoleTextColor::yellow << "m";
+			break;
+		case SeverityError:
+			std::cout << "\033[" << ConsoleTextColor::lightRed << "m";
+			break;
+		case SeverityFatal:
+			std::cout << "\033[" << ConsoleTextColor::lightRed << "m";
+			break;
+		default:
+		case SeverityNoLog:
+			break;
 	}
 }
 

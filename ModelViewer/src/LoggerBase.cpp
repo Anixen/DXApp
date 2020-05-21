@@ -3,6 +3,7 @@
 #include <time.h>
 #include <sstream>
 
+
 LoggerBase* LoggerBase::gInstance = NULL;
 
 // TODO : Implement onnullstream
@@ -11,7 +12,6 @@ LoggerBase* LoggerBase::gInstance = NULL;
 LoggerBase::LoggerBase(bool pMakeDefault, SeverityLevel pLogLevel) :
 	mActive(false)
 {
-
 	if (pMakeDefault) {
 		gInstance = this;
 	}
