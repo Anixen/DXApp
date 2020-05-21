@@ -22,7 +22,7 @@ int main()
 
 	// We should have a little bit (< 1 ms) more than the sleep duration
 	float elaspedTime = timer.getElapsedTime();
-	LogMessage(SeverityDebug, "elapsedTime : " + std::to_string(elaspedTime))
+	GetLogStream(SeverityDebug) << "elapsedTime : " << std::to_string(elaspedTime) << std::endl;
 }
 
 
