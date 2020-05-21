@@ -83,7 +83,7 @@ void LoggerBase::writeTag(std::ostream &pOstream, SeverityLevel pSeverityLevel, 
 		if (err)
 		{
 			// Do not use LogMessage() here
-			// to avoid a potential recursive scenario if _localtime64_s() doesnt work 
+			// to avoid a potential recursive scenario if _localtime64_s() doesnt work
 			throw new std::exception("Invalid argument to _localtime64_s");
 		}
 	}
