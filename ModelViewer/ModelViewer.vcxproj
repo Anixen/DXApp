@@ -153,11 +153,13 @@
   <ItemGroup>
     <ClInclude Include="src\LoggerBase.h" />
     <ClInclude Include="src\LoggerConsole.h" />
+    <ClInclude Include="src\Timer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\LoggerBase.cpp" />
     <ClCompile Include="src\LoggerConsole.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Timer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

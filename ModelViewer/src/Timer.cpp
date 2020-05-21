@@ -1,0 +1,45 @@
+#include "Timer.h"
+#include "LoggerBase.h"
+
+Timer::Timer()
+{
+}
+
+Timer::~Timer()
+{
+}
+
+void Timer::init()
+{
+	// Check to see if this system supports high performance timers.
+	QueryPerformanceFrequency((LARGE_INTEGER*)& mFrequency);
+	if (mFrequency == 0)
+	{
+		LogMessage(SeverityFatal, "This system doesn t support high performance timers");
+		throw new std::exception("This system doesn t support high performance timers");
+	}
+
+	// Find out how many times the frequency counter ticks every millisecond.
+	mTicksPerMs = (float) (mFrequency / 1000);
+
+	QueryPerformanceCounter((LARGE_INTEGER*)& mStartTime);
+}
+
+void Timer::reset()
+{
+	QueryPerformanceCounter((LARGE_INTEGER*)& mStartTime);
+}
+
+float Timer::getElapsedTime() const
+{
+	INT64 currentTime;
+	QueryPerformanceCounter((LARGE_INTEGER*)& currentTime);
+
+	float timeDifference = (float)(currentTime - mStartTime);
+	LogMessage(SeverityDebug, "Timer::getElapsedTime() : timeDifference = " + std::to_string(timeDifference));
+
+	float elapsedTime = timeDifference / mTicksPerMs;
+	LogMessage(SeverityDebug, "Timer::getElapsedTime() : elapsedTime = " + std::to_string(elapsedTime));
+
+	return elapsedTime;
+}
