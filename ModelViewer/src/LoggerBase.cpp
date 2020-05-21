@@ -35,6 +35,7 @@ LoggerBase* LoggerBase::getLogger()
 	// If there is no logger instantiated, instantiate one at the last moment
 	if (NULL == gInstance) {
 		LogMessage(SeverityFatal, "LoggerBase::getLogger() : No logger has been instantiated")
+		throw new std::exception("No logger has been instantiated");
 	}
 
 	return gInstance;
