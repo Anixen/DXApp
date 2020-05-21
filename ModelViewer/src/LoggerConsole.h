@@ -11,7 +11,6 @@
 class LoggerConsole : public LoggerBase {
 
 public:
-
 	/**
 	 * LoggerConsole constructor
 	 *
