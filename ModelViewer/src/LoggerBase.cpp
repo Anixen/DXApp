@@ -34,7 +34,7 @@ LoggerBase* LoggerBase::getLogger()
 {
 	// If there is no logger instantiated, instantiate one at the last moment
 	if (NULL == gInstance) {
-		LogMessage(SeverityFatal, "ILogger::getArguments() : no logger has been instantiated")
+		LogMessage(SeverityFatal, "LoggerBase::getLogger() : No logger has been instantiated")
 	}
 
 	return gInstance;
@@ -81,7 +81,9 @@ void LoggerBase::writeTag(std::ostream &pOstream, SeverityLevel pSeverityLevel, 
 		errno_t err = _localtime64_s(&localTime, &now);
 		if (err)
 		{
-			throw new std::exception("Invalid argument to _localtime64_s.");;
+			// Do not use LogMessage() here
+			// to avoid a potential recursive scenario if _localtime64_s() doesnt work 
+			throw new std::exception("Invalid argument to _localtime64_s");
 		}
 	}
 
