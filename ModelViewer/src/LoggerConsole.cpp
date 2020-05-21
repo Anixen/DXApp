@@ -57,12 +57,12 @@ void resetSeverityColor()
 LoggerConsole::LoggerConsole(bool pMakeDefault, SeverityLevel pLogLevel) :
 	LoggerBase(pMakeDefault, pLogLevel)
 {
-	logMessage("ConsoleLogger::ctor()", SeverityInfo, "ConsoleLogger.cpp", __LINE__);
+	LogMessage(SeverityInfo, "ConsoleLogger::ctor()")
 }
 
 LoggerConsole::~LoggerConsole()
 {
-	logMessage("ConsoleLogger::dtor()", SeverityInfo, "ConsoleLogger.cpp", __LINE__);
+	LogMessage(SeverityInfo, "ConsoleLogger::dtor()")
 	resetSeverityColor();
 }
 

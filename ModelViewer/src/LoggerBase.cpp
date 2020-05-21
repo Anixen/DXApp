@@ -34,8 +34,7 @@ LoggerBase* LoggerBase::getLogger()
 {
 	// If there is no logger instantiated, instantiate one at the last moment
 	if (NULL == gInstance) {
-		LoggerBase::getLogger()->getStream(SeverityFatal, "ILogger.cpp", __LINE__)
-			<< "ILogger::getArguments() : no logger has been instantiated" << std::endl;
+		LogMessage(SeverityFatal, "ILogger::getArguments() : no logger has been instantiated")
 	}
 
 	return gInstance;
