@@ -147,4 +147,4 @@ private:
 
 #include <filesystem>
 
-#define LogMessage(msg, level) LoggerBase::getLogger()->logMessage(msg, level, std::filesystem::path(__FILE__).filename().string(), __LINE__);
+#define LogMessage(level, msg) LoggerBase::getLogger()->logMessage(msg, level, std::filesystem::path(__FILE__).filename().string(), __LINE__);

@@ -16,12 +16,12 @@ int main()
 
 	LoggerConsole logger(true, SeverityDebug);
 
-	LogMessage("Test Debug", SeverityDebug);
+	LogMessage(SeverityDebug,	"Test Debug");
 	//logger.setLogLevel(SeverityWarning);
-	LogMessage("Test Info", SeverityInfo);
-	LogMessage("Test Warning", SeverityWarning);
-	LogMessage("Test Error", SeverityError);
-	LogMessage("Test Fatal", SeverityFatal);
+	LogMessage(SeverityInfo,	"Test Info");
+	LogMessage(SeverityWarning, "Test Warning");
+	LogMessage(SeverityError,	"Test Error");
+	LogMessage(SeverityFatal,	"Test Fatal");
 
 	return 0;
 }
