@@ -4,11 +4,10 @@
 #include "AppBase.h"
 
 
-AppStateBase::AppStateBase(AppBase* pApp, std::string pID) :
+AppStateBase::AppStateBase(AppBase* pApp) :
 	mApp(pApp),
 	mInitialized(false),
 	mCleanup(false),
-	mID(pID),
 	mElapsedTime(0),
 	mTotalPausedTime(0),
 	mElapsedClock(),
@@ -24,15 +23,10 @@ AppStateBase::~AppStateBase()
 		<< "AppStateBase::dtor()" << std::endl;
 }
 
-std::string AppStateBase::getID() const
-{
-	return mID;
-}
-
 void AppStateBase::init()
 {
 	GetLogStream(SeverityInfo)
-		<< "AppStateBase::init() [\"" << mID << "\"]" << std::endl;
+		<< "AppStateBase::init()" << std::endl;
 
 	if (mCleanup) {
 		handleCleanup();
@@ -55,7 +49,7 @@ void AppStateBase::init()
 void AppStateBase::deinit()
 {
 	GetLogStream(SeverityInfo)
-		<< "AppStateBase::deinit() [" << mID << "]" << std::endl;
+		<< "AppStateBase::deinit()" << std::endl;
 
 	if (mInitialized) {
 
@@ -79,7 +73,7 @@ bool AppStateBase::isInitialized() const
 void AppStateBase::pause()
 {
 	GetLogStream(SeverityInfo)
-		<< "AppStateBase::pause() [" << mID << "]" << std::endl;
+		<< "AppStateBase::pause()" << std::endl;
 
 	if (!mPaused) {
 
@@ -91,7 +85,7 @@ void AppStateBase::pause()
 void AppStateBase::resume()
 {
 	GetLogStream(SeverityInfo)
-		<< "AppStateBase::resume() [" << mID << "]" << std::endl;
+		<< "AppStateBase::resume()" << std::endl;
 
 	if (mPaused) {
 
@@ -108,7 +102,7 @@ bool AppStateBase::isPaused() const
 void AppStateBase::cleanup()
 {
 	GetLogStream(SeverityInfo)
-		<< "AppStateBase::cleanup() [" << mID << "]" << std::endl;
+		<< "AppStateBase::cleanup()" << std::endl;
 
 	if (mCleanup) {
 

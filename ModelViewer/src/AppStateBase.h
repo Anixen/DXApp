@@ -27,11 +27,6 @@ public:
 
 
 	/**
-	 * @return {std:string} the ID of the state
-	 */
-	virtual std::string getID() const = 0;
-
-	/**
 	 * Initializes the state and make it do some clean-up if needed
 	 */
 	virtual void init();
@@ -101,10 +96,9 @@ protected:
 	 * AppStateBase constructor
 	 * Is protected because we only allow derived classes to instantiate this interface
 	 *
-	 * @param {std::string} pId The ID for the state (used by the state manager)
 	 * @param {AppBase*} pApp The address of the app to which pertains this state
 	 */
-	AppStateBase(AppBase* pApp, std::string pID = "");
+	AppStateBase(AppBase* pApp);
 
 	// Address of the app to which pertains this state
 	AppBase* mApp;
@@ -119,8 +113,6 @@ private:
 	bool mInitialized;
 	bool mPaused;
 	bool mCleanup;
-
-	const std::string mID;
 
 	float mElapsedTime;
 	float mTotalPausedTime;
