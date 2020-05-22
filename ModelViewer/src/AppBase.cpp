@@ -227,7 +227,7 @@ void AppBase::loop()
 	}
 }
 
-void AppBase::processInput()
+AppStateBase* AppBase::processInput()
 {
 	/*
 	GetLogStream(SeverityDebug)
@@ -235,6 +235,8 @@ void AppBase::processInput()
 	//*/
 
 	// TODO ? Will probably need code to poll events here
+
+	return nullptr;
 }
 
 void AppBase::cleanup()
