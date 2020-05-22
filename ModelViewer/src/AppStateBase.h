@@ -66,13 +66,15 @@ public:
 
 	/**
 	 *
+	 * @return {AppStateBase*} A pointer to a new app state, or nullptr if no change required
 	 */
-	virtual void updateFixed() = 0;
+	virtual AppStateBase* updateFixed() = 0;
 
 	/**
 	 *
+	 * @return {AppStateBase*} A pointer to a new app state, or nullptr if no change required
 	 */
-	virtual void updateVariable(float elapsedTime) = 0;
+	virtual AppStateBase* updateVariable(float elapsedTime) = 0;
 
 	/**
 	 *

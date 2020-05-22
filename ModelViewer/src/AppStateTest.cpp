@@ -30,20 +30,24 @@ void AppStateTest::reinit()
 		<< "AppStateTest::reinit()" << std::endl;
 }
 
-void AppStateTest::updateFixed()
+AppStateBase* AppStateTest::updateFixed()
 {
 	/*
 	GetLogStream(SeverityInfo)
 		<< "AppStateTest::updateFixed()" << std::endl;
 	//*/
+
+	return nullptr;
 }
 
-void AppStateTest::updateVariable(float elapsedTime)
+AppStateBase* AppStateTest::updateVariable(float elapsedTime)
 {
 	/*
 	GetLogStream(SeverityInfo)
 		<< "AppStateTest::updateVariable(" << elapsedTime << ")" << std::endl;
 	//*/
+
+	return nullptr;
 }
 
 void AppStateTest::draw()
