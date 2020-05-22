@@ -179,6 +179,7 @@ void AppBase::loop()
 		{
 			mCurrentState->updateFixed();
 			updates++;
+			lag -= mUpdateInterval;
 
 			/*
 			GetLogStream(SeverityInfo)
@@ -186,7 +187,6 @@ void AppBase::loop()
 				<< ", mUpdateInterval = " << mUpdateInterval << std::endl;
 			//*/
 
-			lag -= mUpdateInterval;
 		}
 
 		mCurrentState->updateVariable(elapsedUpdate);
