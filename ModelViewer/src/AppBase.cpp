@@ -172,9 +172,9 @@ void AppBase::loop()
 
 		float elapsedUpdate = updateTimer.getElapsedTime();
 		updateTimer.reset();
-		/*
+		//*
 		GetLogStream(SeverityInfo)
-			<< "AppBase::loop() : elapsedUpdate =" << elapsedUpdate << std::endl;
+			<< "AppBase::loop() : elapsedUpdate = " << elapsedUpdate << std::endl;
 		//*/
 
 		lag += elapsedUpdate;
@@ -199,9 +199,9 @@ void AppBase::loop()
 
 		float elapsedFrame = frameTimer.getElapsedTime();
 		frameTimer.reset();
-		/*
+		//*
 		GetLogStream(SeverityInfo)
-			<< "AppBase::loop() : elapsedFrame =" << aFrameClock.restart().asMilliseconds() << std::endl;
+			<< "AppBase::loop() : elapsedFrame = " << elapsedFrame << std::endl;
 		//*/
 		
 		mCurrentState->draw();
