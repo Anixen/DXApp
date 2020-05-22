@@ -3,7 +3,7 @@
  * An application is responsible for running the main loop, and holding a variety of managers.
  *
  * AppBase implements the Singleton pattern.
- * AppBase makes use of the state pattern through StateManager.
+ * AppBase makes use of the state pattern with AppStateBase.
  *
  * @author Olivier Falconnet
  */
@@ -12,7 +12,6 @@
 
 #include <string>
 #include <filesystem>
-//#include "StateManager.hpp"
 #include "AppStateBase.h"
 
 // Forward declarations
@@ -122,6 +121,8 @@ protected:
 	 */
 	virtual void handleCleanUp() = 0;
 
+	AppStateBase* mCurrentState;
+
 private:
 
 	static AppBase* gInstance;
@@ -129,8 +130,6 @@ private:
 	std::string mName;
 	std::filesystem::path mPath;
 
-	//StateManager mStateManager;
-	AppStateBase* mCurrentState;
 	bool mRunning;
 
 	float mUpdateRate;

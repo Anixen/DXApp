@@ -5,7 +5,6 @@
 AppBase* AppBase::gInstance = NULL;
 
 AppBase::AppBase() :
-	//mStateManager(this),
 	mRunning(false),
 	mUpdateRate(50),
 	mMaxUpdates(5),
