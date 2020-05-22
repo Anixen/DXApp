@@ -6,14 +6,13 @@ AppBase* AppBase::gInstance = NULL;
 
 AppBase::AppBase() :
 	mRunning(false),
-	mUpdateRate(50),
-	mMaxUpdates(5),
+	mMaxUpdates(200),
+	mUpdateInterval(5),
 	mExitCode(0)
 {
 	LogMessage(SeverityInfo, "AppBase::ctor()")
 
 	gInstance = this;
-	mUpdateInterval = (1000.0 / mUpdateRate);
 }
 
 AppBase::~AppBase()
@@ -103,18 +102,14 @@ bool AppBase::isRunning()
 	return mRunning;
 }
 
-float AppBase::getUpdateRate()
+float AppBase::getUpdateInterval()
 {
-	return mUpdateRate;
+	return mUpdateInterval;
 }
 
-void AppBase::setUpdateRate(float pUpdateRate)
+void AppBase::setUpdateInterval(float pUpdateInterval)
 {
-	GetLogStream(SeverityInfo) 
-		<< "IApp::setUpdateRate(" << pUpdateRate << ")" << std::endl;
-
-	mUpdateRate = pUpdateRate;
-	mUpdateInterval = (1000.0 / mUpdateRate);
+	mUpdateInterval = pUpdateInterval;
 }
 
 void AppBase::setMaxUpdates(unsigned int pMaxUpdates)
@@ -188,7 +183,7 @@ void AppBase::loop()
 			/*
 			GetLogStream(SeverityInfo)
 				<< "AppBase::loop() : lag = " << lag << ", updates = " << updates
-				<< ", mUpdateRate = " << mUpdateRate << ", mUpdateInterval = " << mUpdateInterval << std::endl;
+				<< ", mUpdateInterval = " << mUpdateInterval << std::endl;
 			//*/
 
 			lag -= mUpdateInterval;

@@ -65,16 +65,16 @@ public:
 	bool isRunning();
 
 	/**
-	 * @return {float} the update rate in Hz of the application
+	 * @return {float} the update interval in ms of the application
 	 */
-	float getUpdateRate();
+	float getUpdateInterval();
 
 	/**
-	 * Sets the update rate in Hz for the application
+	 * Sets the update interval of the application
 	 *
-	 * @param {float} pUpdateRate The new update rate in Hz for the application
+	 * @param {float} pUpdateRate The new update interval in ms for the application
 	 */
-	void setUpdateRate(float pUpdateRate);
+	void setUpdateInterval(float pUpdateInterval);
 
 	/**
 	 * Sets the maximum consecutive updates for the application
@@ -132,7 +132,6 @@ private:
 
 	bool mRunning;
 
-	float mUpdateRate;
 	float mUpdateInterval;
 	unsigned int mMaxUpdates;
 
