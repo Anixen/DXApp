@@ -171,7 +171,7 @@ void AppBase::loop()
 	updateTimer.reset();
 	frameTimer.reset();
 
-	float lag = 0.f;
+	float updateLag = 0.f;
 	AppStateBase* nextState = nullptr;
 	// Loop while the application is running
 	//while(isRunning() && !mStateManager.isEmpty()) {
@@ -190,17 +190,17 @@ void AppBase::loop()
 			<< "AppBase::loop() : elapsedUpdate = " << elapsedUpdate << std::endl;
 		//*/
 
-		lag += elapsedUpdate;
+		updateLag += elapsedUpdate;
 
 		unsigned int updates = 0;
-		while (lag >= mUpdateInterval && updates < mMaxUpdates)
+		while (updateLag >= mUpdateInterval && updates < mMaxUpdates)
 		{
 			nextState = mCurrentState->updateFixed();
 			if (nullptr != nextState) {
 				setCurrentState(nextState);
 			}
 			updates++;
-			lag -= mUpdateInterval;
+			updateLag -= mUpdateInterval;
 
 			/*
 			GetLogStream(SeverityInfo)
