@@ -153,6 +153,8 @@
   <ItemGroup>
     <ClInclude Include="src\AppBase.h" />
     <ClInclude Include="src\AppStateBase.h" />
+    <ClInclude Include="src\AppStateTest.h" />
+    <ClInclude Include="src\AppTest.h" />
     <ClInclude Include="src\LoggerBase.h" />
     <ClInclude Include="src\LoggerConsole.h" />
     <ClInclude Include="src\Timer.h" />
@@ -160,6 +162,8 @@
   <ItemGroup>
     <ClCompile Include="src\AppBase.cpp" />
     <ClCompile Include="src\AppStateBase.cpp" />
+    <ClCompile Include="src\AppStateTest.cpp" />
+    <ClCompile Include="src\AppTest.cpp" />
     <ClCompile Include="src\LoggerBase.cpp" />
     <ClCompile Include="src\LoggerConsole.cpp" />
     <ClCompile Include="src\main.cpp" />
