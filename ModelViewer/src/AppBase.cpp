@@ -172,13 +172,16 @@ void AppBase::loop()
 	frameTimer.reset();
 
 	float lag = 0.f;
+	AppStateBase* nextState = nullptr;
 	// Loop while the application is running
 	//while(isRunning() && !mStateManager.isEmpty()) {
 	while (isRunning())
 	{
 		// Event loop
-		processInput();
-
+		nextState = processInput();
+		if (nullptr != nextState) {
+			setCurrentState(nextState);
+		}
 
 		float elapsedUpdate = updateTimer.getElapsedTime();
 		updateTimer.reset();
@@ -192,7 +195,10 @@ void AppBase::loop()
 		unsigned int updates = 0;
 		while (lag >= mUpdateInterval && updates < mMaxUpdates)
 		{
-			mCurrentState->updateFixed();
+			nextState = mCurrentState->updateFixed();
+			if (nullptr != nextState) {
+				setCurrentState(nextState);
+			}
 			updates++;
 			lag -= mUpdateInterval;
 
@@ -204,7 +210,10 @@ void AppBase::loop()
 
 		}
 
-		mCurrentState->updateVariable(elapsedUpdate);
+		nextState = mCurrentState->updateVariable(elapsedUpdate);
+		if (nullptr != nextState) {
+			setCurrentState(nextState);
+		}
 
 
 		float elapsedFrame = frameTimer.getElapsedTime();
