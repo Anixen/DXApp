@@ -104,6 +104,13 @@ protected:
 	virtual void init() = 0;
 
 	/**
+	 * Sets the current app state
+	 *
+	 * @param {AppStateBase} pState The new state for the application
+	 */
+	void setCurrentState(AppStateBase* pState);
+
+	/**
 	 * Contains the logic for the main loop of the application,
 	 * which involves updating its components,
 	 * handling input from the user, and giving him output (display)
@@ -121,8 +128,6 @@ protected:
 	 */
 	virtual void handleCleanUp() = 0;
 
-	AppStateBase* mCurrentState;
-
 private:
 
 	static AppBase* gInstance;
@@ -131,6 +136,7 @@ private:
 	std::filesystem::path mPath;
 
 	bool mRunning;
+	AppStateBase* mCurrentState;
 
 	float mUpdateInterval;
 	unsigned int mMaxUpdates;

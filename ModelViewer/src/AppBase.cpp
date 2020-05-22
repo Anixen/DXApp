@@ -132,6 +132,21 @@ void AppBase::quit(int pExitCode)
 	mExitCode = pExitCode;
 }
 
+void AppBase::setCurrentState(AppStateBase* pState)
+{
+	GetLogStream(SeverityInfo)
+		<< "StateManager::setActiveState()" << std::endl;
+
+	if (nullptr != mCurrentState) {
+		mCurrentState->deinit();
+		delete mCurrentState;
+		mCurrentState = nullptr;
+	}
+
+	mCurrentState = pState;
+	mCurrentState->init();
+}
+
 void AppBase::loop()
 {
 	GetLogStream(SeverityInfo)

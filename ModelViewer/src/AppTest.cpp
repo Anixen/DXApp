@@ -21,7 +21,7 @@ void AppTest::init()
 	GetLogStream(SeverityInfo)
 		<< "AppTest::init()" << std::endl;
 
-	mCurrentState = new AppStateTest(this);
+	setCurrentState(new AppStateTest(this));
 }
 
 void AppTest::handleCleanUp()
