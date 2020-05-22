@@ -36,10 +36,10 @@ float Timer::getElapsedTime() const
 	QueryPerformanceCounter((LARGE_INTEGER*)& currentTime);
 
 	float timeDifference = (float)(currentTime - mStartTime);
-	LogMessage(SeverityDebug, "Timer::getElapsedTime() : timeDifference = " + std::to_string(timeDifference));
+	//LogMessage(SeverityDebug, "Timer::getElapsedTime() : timeDifference = " + std::to_string(timeDifference));
 
 	float elapsedTime = timeDifference / mTicksPerMs;
-	LogMessage(SeverityDebug, "Timer::getElapsedTime() : elapsedTime = " + std::to_string(elapsedTime));
+	//LogMessage(SeverityDebug, "Timer::getElapsedTime() : elapsedTime = " + std::to_string(elapsedTime));
 
 	return elapsedTime;
 }
