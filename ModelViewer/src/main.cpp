@@ -9,8 +9,24 @@
 
 #include "Timer.h"
 #include "LoggerConsole.h"
+#include "AppTest.h"
 
 //int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR pScmdline, int iCmdshow)
+int main(int argc, char** argv) {
+
+	LoggerConsole logger(true, SeverityDebug);
+
+	AppBase* app = new AppTest();
+
+	app->processArguments(argc, argv);
+	int exitCode = app->run();
+
+	delete app;
+
+	return exitCode;
+}
+
+/*
 int main()
 {
 	LoggerConsole logger(true, SeverityDebug);
@@ -24,6 +40,7 @@ int main()
 	float elaspedTime = timer.getElapsedTime();
 	GetLogStream(SeverityDebug) << "elapsedTime : " << std::to_string(elaspedTime) << std::endl;
 }
+//*/
 
 
 /*
