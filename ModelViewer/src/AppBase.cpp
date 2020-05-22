@@ -155,6 +155,9 @@ void AppBase::loop()
 	Timer updateTimer;
 	Timer frameTimer;
 
+	updateTimer.init();
+	frameTimer.init();
+
 	updateTimer.reset();
 	frameTimer.reset();
 
