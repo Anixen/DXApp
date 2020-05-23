@@ -14,10 +14,10 @@ public:
 	/**
 	 * LoggerConsole constructor
 	 *
-	 * @param {bool} pMakeDefault True if the new logger must become the default logger, false if not
-	 * @param {SeverityLevel} pLogLevel The log level for the logger
+	 * @param {bool} p_makeDefault True if the new logger must become the default logger, false if not
+	 * @param {SeverityLevel} p_logLevel The log level for the logger
 	 */
-	LoggerConsole(bool pMakeDefault, SeverityLevel pLogLevel = SeverityInfo);
+	LoggerConsole(bool p_makeDefault, SeverityLevel p_logLevel = SeverityInfo);
 
 	/**
 	 * LoggerConsole deconstructor
@@ -36,28 +36,28 @@ public:
 	 * @return {std::ostream&} a reference to the ostream where the logger sends the messages that are given to him
 	 */
 	virtual std::ostream& getStream(
-		SeverityLevel pSeverityLevel,
-		std::string pSourceFile, int pSourceLine);
+		SeverityLevel p_severityLevel,
+		std::string p_sourceFile, int p_sourceLine);
 
 
 	/**
 	 * Logs the provided message
 	 *
-	 * @param {std::string} pMessage The message to log
+	 * @param {std::string} p_message The message to log
 	 */
-	virtual void logMessage(const std::string &pMessage);
+	virtual void logMessage(const std::string &p_message);
 
 	/**
 	 * Logs the provided message with a timestamp and File:Line tag in front
 	 *
-	 * @param {std::string} pMessage The message to log
-	 * @param {SeverityLevel} pSeverityLevel The severity level for the message to log
-	 * @param {std::string} pSourceFile The source file where the logger has been called from
-	 * @param {int} pSourceLine The line number where the logger has been called from
+	 * @param {std::string} p_message The message to log
+	 * @param {SeverityLevel} p_severityLevel The severity level for the message to log
+	 * @param {std::string} p_sourceFile The source file where the logger has been called from
+	 * @param {int} p_sourceLine The line number where the logger has been called from
 	 */
 	virtual void logMessage(
-		const std::string &pMessage, SeverityLevel pSeverityLevel,
-		std::string pSourceFile, int pSourceLine);
+		const std::string &p_message, SeverityLevel p_severityLevel,
+		std::string p_sourceFile, int p_sourceLine);
 
 protected:
 

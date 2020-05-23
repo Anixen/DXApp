@@ -2,65 +2,65 @@
 #include "LoggerBase.h"
 
 
-AppBase* AppBase::gInstance = NULL;
+AppBase* AppBase::g_instance = NULL;
 
 AppBase::AppBase() :
-	mRunning(false),
-	mMaxUpdates(200),
-	mUpdateInterval(5),
-	mExitCode(0)
+	m_running(false),
+	m_maxUpdates(200),
+	m_updateInterval(5),
+	m_exitCode(0)
 {
 	LogMessage(SeverityInfo, "AppBase::ctor()")
 
-	gInstance = this;
+	g_instance = this;
 }
 
 AppBase::~AppBase()
 {
 	LogMessage(SeverityInfo, "AppBase::dtor()")
 
-	mRunning = false;
+	m_running = false;
 
-	if (this == gInstance) {
-		gInstance = NULL;
+	if (this == g_instance) {
+		g_instance = NULL;
 	}
 }
 
 
 AppBase* AppBase::getApp()
 {
-	return gInstance;
+	return g_instance;
 }
 
 std::string AppBase::getName()
 {
-	return mName;
+	return m_name;
 }
 
 std::filesystem::path AppBase::getPath()
 {
-	return mPath;
+	return m_path;
 }
 
-void AppBase::processArguments(int pArgc, char **pArgv)
+void AppBase::processArguments(int p_argc, char **p_argv)
 {
-	mPath = std::filesystem::path{ pArgv[0] };
-	mName = mPath.stem().string();
+	m_path = std::filesystem::path{ p_argv[0] };
+	m_name = m_path.stem().string();
 
 	GetLogStream(SeverityInfo)
-		<< "AppBase::processArguments(" << pArgv[0] << ")"
-		<< ", mPath = " << mPath << ", mName = " << mName << std::endl;
+		<< "AppBase::processArguments(" << p_argv[0] << ")"
+		<< ", mPath = " << m_path << ", mName = " << m_name << std::endl;
 
-	if (pArgc == 1) {
+	if (p_argc == 1) {
 		GetLogStream(SeverityInfo)
-			<< "AppBase::processArguments(" << pArgv[0] << ") command line : (none)" << std::endl;
+			<< "AppBase::processArguments(" << p_argv[0] << ") command line : (none)" << std::endl;
 	}
 	else {
 		GetLogStream(SeverityInfo)
-			<< "AppBase::processArguments(" << pArgv[0] << ") command line :" << std::endl;
-		for (int i = 0; i < pArgc; ++i) {
+			<< "AppBase::processArguments(" << p_argv[0] << ") command line :" << std::endl;
+		for (int i = 0; i < p_argc; ++i) {
 			GetLogStream(SeverityInfo)
-				<< "Argument " << i << " = " << pArgv[i] << std::endl;
+				<< "Argument " << i << " = " << p_argv[i] << std::endl;
 		}
 	}
 }
@@ -69,7 +69,7 @@ int AppBase::run()
 {
 	GetLogStream(SeverityInfo) << "AppBase::run()" << std::endl;
 
-	mRunning = true;
+	m_running = true;
 
 	// TODO ? Will probably need code to initialize things here
 
@@ -83,68 +83,68 @@ int AppBase::run()
 	// Clean up the app
 	cleanup();
 
-	mRunning = false;
+	m_running = false;
 
-	if (mExitCode < 0) {
+	if (m_exitCode < 0) {
 		GetLogStream(SeverityError)
-			<< "AppBase::run() : exitCode = " << mExitCode << std::endl;
+			<< "AppBase::run() : exitCode = " << m_exitCode << std::endl;
 	}
 	else {
 		GetLogStream(SeverityInfo)
-			<< "AppBase::run() : exitCode = " << mExitCode << std::endl;
+			<< "AppBase::run() : exitCode = " << m_exitCode << std::endl;
 	}
 
-	return mExitCode;
+	return m_exitCode;
 }
 
 bool AppBase::isRunning()
 {
-	return mRunning;
+	return m_running;
 }
 
 float AppBase::getUpdateInterval()
 {
-	return mUpdateInterval;
+	return m_updateInterval;
 }
 
-void AppBase::setUpdateInterval(float pUpdateInterval)
+void AppBase::setUpdateInterval(float p_updateInterval)
 {
-	mUpdateInterval = pUpdateInterval;
+	m_updateInterval = p_updateInterval;
 }
 
-void AppBase::setMaxUpdates(unsigned int pMaxUpdates)
+void AppBase::setMaxUpdates(unsigned int p_maxUpdates)
 {
 	GetLogStream(SeverityInfo)
-		<< "IApp::setMaxUpdates(" << pMaxUpdates << ")" << std::endl;
+		<< "IApp::setMaxUpdates(" << p_maxUpdates << ")" << std::endl;
 
-	if (1 <= pMaxUpdates && pMaxUpdates <= 200)
+	if (1 <= p_maxUpdates && p_maxUpdates <= 200)
 	{
-		mMaxUpdates = pMaxUpdates;
+		m_maxUpdates = p_maxUpdates;
 	}
 }
 
-void AppBase::quit(int pExitCode)
+void AppBase::quit(int p_exitCode)
 {
 	GetLogStream(SeverityInfo)
-		<< "IApp::quit(" << pExitCode << ")" << std::endl;
+		<< "IApp::quit(" << p_exitCode << ")" << std::endl;
 
-	PostQuitMessage(pExitCode);
-	mExitCode = pExitCode;
+	PostQuitMessage(p_exitCode);
+	m_exitCode = p_exitCode;
 }
 
-void AppBase::setCurrentState(AppStateBase* pState)
+void AppBase::setCurrentState(AppStateBase* p_state)
 {
 	GetLogStream(SeverityInfo)
 		<< "StateManager::setCurrentState()" << std::endl;
 
-	if (nullptr != mCurrentState) {
-		mCurrentState->deinit();
-		delete mCurrentState;
-		mCurrentState = nullptr;
+	if (nullptr != m_currentState) {
+		m_currentState->deinit();
+		delete m_currentState;
+		m_currentState = nullptr;
 	}
 
-	mCurrentState = pState;
-	mCurrentState->init();
+	m_currentState = p_state;
+	m_currentState->init();
 }
 
 void AppBase::loop()
@@ -153,7 +153,7 @@ void AppBase::loop()
 		<< "AppBase::loop()" << std::endl;
 
 	// Make sure we have a current state
-	if (mCurrentState == nullptr)
+	if (m_currentState == nullptr)
 	{
 		GetLogStream(SeverityFatal)
 			<< "AppBase::loop() : The application doesnt have a current state" << std::endl;
@@ -201,24 +201,24 @@ void AppBase::loop()
 			updateLag += elapsedUpdate;
 
 			unsigned int updates = 0;
-			while (updateLag >= mUpdateInterval && updates < mMaxUpdates)
+			while (updateLag >= m_updateInterval && updates < m_maxUpdates)
 			{
-				nextState = mCurrentState->updateFixed();
+				nextState = m_currentState->updateFixed();
 				if (nullptr != nextState) {
 					setCurrentState(nextState);
 				}
 				updates++;
-				updateLag -= mUpdateInterval;
+				updateLag -= m_updateInterval;
 
 				/*
 				GetLogStream(SeverityInfo)
 					<< "AppBase::loop() : lag = " << lag << ", updates = " << updates
-					<< ", mUpdateInterval = " << mUpdateInterval << std::endl;
+					<< ", m_updateInterval = " << m_updateInterval << std::endl;
 				//*/
 
 			}
 
-			nextState = mCurrentState->updateVariable(elapsedUpdate);
+			nextState = m_currentState->updateVariable(elapsedUpdate);
 			if (nullptr != nextState) {
 				setCurrentState(nextState);
 			}
@@ -231,7 +231,7 @@ void AppBase::loop()
 				<< "AppBase::loop() : elapsedFrame = " << elapsedFrame << std::endl;
 			//*/
 
-			mCurrentState->draw();
+			m_currentState->draw();
 		}
 	}
 

@@ -4,8 +4,8 @@
 #include "AppBase.h"
 
 
-AppStateTest::AppStateTest(AppBase *pApp) :
-	AppStateBase(pApp)
+AppStateTest::AppStateTest(AppBase *p_app) :
+	AppStateBase(p_app)
 {
 	GetLogStream(SeverityInfo)
 		<< "AppStateTest::ctor()" << std::endl;
@@ -40,7 +40,7 @@ AppStateBase* AppStateTest::updateFixed()
 	return nullptr;
 }
 
-AppStateBase* AppStateTest::updateVariable(float elapsedTime)
+AppStateBase* AppStateTest::updateVariable(float p_elapsedTime)
 {
 	/*
 	GetLogStream(SeverityInfo)

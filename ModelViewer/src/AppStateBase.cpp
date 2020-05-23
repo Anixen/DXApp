@@ -4,14 +4,14 @@
 #include "AppBase.h"
 
 
-AppStateBase::AppStateBase(AppBase* pApp) :
-	mApp(pApp),
-	mInitialized(false),
-	mCleanup(false),
-	mElapsedTime(0),
-	mTotalPausedTime(0),
-	mElapsedClock(),
-	mPausedClock()
+AppStateBase::AppStateBase(AppBase* p_app) :
+	m_app(p_app),
+	m_initialized(false),
+	m_cleanup(false),
+	m_elapsedTime(0),
+	m_totalPausedTime(0),
+	m_elapsedClock(),
+	m_pausedClock()
 {
 	GetLogStream(SeverityInfo)
 		<< "AppStateBase::ctor()" << std::endl;
@@ -28,21 +28,21 @@ void AppStateBase::init()
 	GetLogStream(SeverityInfo)
 		<< "AppStateBase::init()" << std::endl;
 
-	if (mCleanup) {
+	if (m_cleanup) {
 		handleCleanup();
 	}
 	//*/
 
-	if (!mInitialized) {
+	if (!m_initialized) {
 
-		mPaused = false;
-		mElapsedTime = 0;
-		mTotalPausedTime = 0;
+		m_paused = false;
+		m_elapsedTime = 0;
+		m_totalPausedTime = 0;
 
-		mElapsedClock.reset();
-		mPausedClock.reset();
+		m_elapsedClock.reset();
+		m_pausedClock.reset();
 
-		mInitialized = true;
+		m_initialized = true;
 	}
 }
 
@@ -51,23 +51,23 @@ void AppStateBase::deinit()
 	GetLogStream(SeverityInfo)
 		<< "AppStateBase::deinit()" << std::endl;
 
-	if (mInitialized) {
+	if (m_initialized) {
 
-		mCleanup = true;
+		m_cleanup = true;
 
-		mElapsedTime += mElapsedClock.getElapsedTime();
+		m_elapsedTime += m_elapsedClock.getElapsedTime();
 
-		if (mPaused) {
-			mTotalPausedTime += mPausedClock.getElapsedTime();
+		if (m_paused) {
+			m_totalPausedTime += m_pausedClock.getElapsedTime();
 		}
 
-		mInitialized = false;
+		m_initialized = false;
 	}
 }
 
 bool AppStateBase::isInitialized() const
 {
-	return mInitialized;
+	return m_initialized;
 }
 
 void AppStateBase::pause()
@@ -75,10 +75,10 @@ void AppStateBase::pause()
 	GetLogStream(SeverityInfo)
 		<< "AppStateBase::pause()" << std::endl;
 
-	if (!mPaused) {
+	if (!m_paused) {
 
-		mPausedClock.reset();
-		mPaused = true;
+		m_pausedClock.reset();
+		m_paused = true;
 	}
 }
 
@@ -87,16 +87,16 @@ void AppStateBase::resume()
 	GetLogStream(SeverityInfo)
 		<< "AppStateBase::resume()" << std::endl;
 
-	if (mPaused) {
+	if (m_paused) {
 
-		mTotalPausedTime += mPausedClock.getElapsedTime();
-		mPaused = false;
+		m_totalPausedTime += m_pausedClock.getElapsedTime();
+		m_paused = false;
 	}
 }
 
 bool AppStateBase::isPaused() const
 {
-	return mPaused;
+	return m_paused;
 }
 
 void AppStateBase::cleanup()
@@ -104,14 +104,14 @@ void AppStateBase::cleanup()
 	GetLogStream(SeverityInfo)
 		<< "AppStateBase::cleanup()" << std::endl;
 
-	if (mCleanup) {
+	if (m_cleanup) {
 
 		handleCleanup();
-		mCleanup = false;
+		m_cleanup = false;
 	}
 }
 
 float AppStateBase::getElapsedTime() const
 {
-	return (mInitialized) ? mElapsedClock.getElapsedTime() : mElapsedTime;
+	return (m_initialized) ? m_elapsedClock.getElapsedTime() : m_elapsedTime;
 }

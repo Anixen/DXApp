@@ -4,20 +4,20 @@
 #include <sstream>
 
 
-LoggerBase* LoggerBase::gInstance = NULL;
+LoggerBase* LoggerBase::g_instance = NULL;
 
 // TODO : Implement onnullstream
 //ILogger::_nullStream;
 
-LoggerBase::LoggerBase(bool pMakeDefault, SeverityLevel pLogLevel) :
-	mActive(false)
+LoggerBase::LoggerBase(bool p_makeDefault, SeverityLevel p_logLevel) :
+	m_active(false)
 {
-	if (pMakeDefault) {
-		gInstance = this;
+	if (p_makeDefault) {
+		g_instance = this;
 	}
 
 	setActive(true);
-	setLogLevel(pLogLevel);
+	setLogLevel(p_logLevel);
 }
 
 LoggerBase::~LoggerBase()
@@ -25,51 +25,51 @@ LoggerBase::~LoggerBase()
 	setLogLevel(SeverityNoLog);
 	setActive(false);
 
-	if (this == gInstance) {
-		gInstance = NULL;
+	if (this == g_instance) {
+		g_instance = NULL;
 	}
 }
 
 LoggerBase* LoggerBase::getLogger()
 {
 	// If there is no logger instantiated, instantiate one at the last moment
-	if (NULL == gInstance) {
+	if (NULL == g_instance) {
 		LogMessage(SeverityFatal, "LoggerBase::getLogger() : No logger has been instantiated")
 		throw new std::exception("No logger has been instantiated");
 	}
 
-	return gInstance;
+	return g_instance;
 }
 
 bool LoggerBase::isActive()
 {
-	return mActive;
+	return m_active;
 }
 
-void LoggerBase::setActive(bool pActive)
+void LoggerBase::setActive(bool p_active)
 {
-	mActive = pActive;
+	m_active = p_active;
 }
 
 SeverityLevel LoggerBase::getLogLevel()
 {
-	return mLogLevel;
+	return m_logLevel;
 }
 
-void LoggerBase::setLogLevel(SeverityLevel pLogLevel)
+void LoggerBase::setLogLevel(SeverityLevel p_logLevel)
 {
-	mLogLevel = pLogLevel;
+	m_logLevel = p_logLevel;
 }
 
 
-bool LoggerBase::shouldLog(SeverityLevel pSeverityLevel) 
+bool LoggerBase::shouldLog(SeverityLevel p_severityLevel) 
 {
-	return pSeverityLevel != SeverityNoLog
-		&& pSeverityLevel >= mLogLevel;
+	return p_severityLevel != SeverityNoLog
+		&& p_severityLevel >= m_logLevel;
 }
 
-void LoggerBase::writeTag(std::ostream &pOstream, SeverityLevel pSeverityLevel, std::string pSourceFile,
-	int pSourceLine)
+void LoggerBase::writeTag(std::ostream &p_ostream, SeverityLevel p_severityLevel, std::string p_sourceFile,
+	int p_sourceLine)
 {
 	// Get local time
 	std::tm localTime;
@@ -119,7 +119,7 @@ void LoggerBase::writeTag(std::ostream &pOstream, SeverityLevel pSeverityLevel, 
 	// Cast the log level as a single character
 	char severityLevel;
 	{
-		switch (pSeverityLevel)
+		switch (p_severityLevel)
 		{
 		case SeverityDebug:
 			severityLevel = 'D';
@@ -144,8 +144,8 @@ void LoggerBase::writeTag(std::ostream &pOstream, SeverityLevel pSeverityLevel, 
 	}
 	
 	// Construct the File:Line tag
-	tag << pSourceFile << ":" << pSourceLine;
+	tag << p_sourceFile << ":" << p_sourceLine;
 
 	// Output the timestamp and File:Line tag into the ostream
-	pOstream << timestamp.str() << " " << severityLevel << " " << tag.str() << " ";
+	p_ostream << timestamp.str() << " " << severityLevel << " " << tag.str() << " ";
 }

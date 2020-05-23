@@ -46,9 +46,9 @@ public:
 	/**
 	 * Sets if the logger is active or not
 	 *
-	 * @param {bool} pActive Set to true to activate the logger, false to deactivate
+	 * @param {bool} p_active Set to true to activate the logger, false to deactivate
 	 */
-	void setActive(bool pActive);
+	void setActive(bool p_active);
 
 	/**
 	 * @return {SeverityLevel} The log level set for the logger
@@ -59,9 +59,9 @@ public:
 	 * Sets the log level for the logger
 	 * The log level allows to filter messages, and only log those above a given severity threshold
 	 *  
-	 * @param {SeverityLevel} pLogLevel The log level for the logger
+	 * @param {SeverityLevel} p_logLevel The log level for the logger
 	 */
-	void setLogLevel(SeverityLevel pLogLevel);
+	void setLogLevel(SeverityLevel p_logLevel);
 
 	/**
 	 * @return {std::ostream&} A reference to the ostream where the logger sends the messages that are given to him
@@ -71,64 +71,64 @@ public:
 	/**
 	 * Returns a reference to the stream and inserts a timestamp and File:Line tag inside
 	 *
-	 * @param {SeverityLevel} pSeverityLevel The severity level for the message to log
-	 * @param {std::string} pSourceFile The source file where the logger has been called from
-	 * @param {int} pSourceLine The line number where the logger has been called from
+	 * @param {SeverityLevel} p_severityLevel The severity level for the message to log
+	 * @param {std::string} p_sourceFile The source file where the logger has been called from
+	 * @param {int} p_sourceLine The line number where the logger has been called from
 	 * 
 	 * @return {std::ostream&} A reference to the ostream where the logger sends the messages that are given to him
 	 */
-	virtual std::ostream& getStream(SeverityLevel pSeverityLevel,
-		std::string pSourceFile, int pSourceLine) = 0;
+	virtual std::ostream& getStream(SeverityLevel p_severityLevel,
+		std::string p_sourceFile, int p_sourceLine) = 0;
 
 
 	/**
 	 * Logs the provided message
 	 *
-	 * @param {std::string} pMessage The message to log
+	 * @param {std::string} p_message The message to log
 	 */
-	virtual void logMessage(const std::string &pMessage) = 0;
+	virtual void logMessage(const std::string &p_message) = 0;
 
 	/**
 	 * Logs the provided message with a timestamp and File:Line tag in front
 	 *
-	 * @param {std::string} pMessage The message to log
-	 * @param {SeverityLevel} pSeverityLevel The severity level for the message to log
-	 * @param {std::string} pSourceFile The source file where the logger has been called from
-	 * @param {int} pSourceLine The line number where the logger has been called from
+	 * @param {std::string} p_message The message to log
+	 * @param {SeverityLevel} p_severityLevel The severity level for the message to log
+	 * @param {std::string} p_sourceFile The source file where the logger has been called from
+	 * @param {int} p_sourceLine The line number where the logger has been called from
 	 */
-	virtual void logMessage(const std::string &pMessage, SeverityLevel pSeverityLevel,
-		std::string pSourceFile, int pSourceLine) = 0;
+	virtual void logMessage(const std::string &p_message, SeverityLevel p_severityLevel,
+		std::string p_sourceFile, int p_sourceLine) = 0;
 
 protected:
 	/**
 	 * LoggerBase constructor
 	 * Is protected because we only allow derived classes to instantiate this interface
 	 *
-	 * @param {bool} pMakeDefault true if the new logger must become the default logger, false if not
-	 * @param {SeverityLevel} pLogLevel The log level for the logger
+	 * @param {bool} p_makeDefault true if the new logger must become the default logger, false if not
+	 * @param {SeverityLevel} p_logLevel The log level for the logger
 	 */
-	LoggerBase(bool pMakeDefault, SeverityLevel pLogLevel = SeverityInfo);
+	LoggerBase(bool p_makeDefault, SeverityLevel p_logLevel = SeverityInfo);
 
 	/**
-	 * @returns {bool} true if pSeverityLevel is above or equal to the log level for the logger, false if not
+	 * @returns {bool} true if p_severityLevel is above or equal to the log level for the logger, false if not
 	 */
-	bool shouldLog(SeverityLevel pSeverityLevel);
+	bool shouldLog(SeverityLevel p_severityLevel);
 
 	/**
 	 * Write a timestamp and File:Line tag to the provided ostream
-	 * @param {std::ostream} pOstream The ostream where to write the prefix tag
-	 * @param {SeverityLevel} pSeverityLevel The severity level for the message to log
-	 * @param {std::string} pSourceFile The source file where the logger has been called from
-	 * @param {int} pSourceLine The line number where the logger has been called from
+	 * @param {std::ostream} p_ostream The ostream where to write the prefix tag
+	 * @param {SeverityLevel} p_severityLevel The severity level for the message to log
+	 * @param {std::string} p_sourceFile The source file where the logger has been called from
+	 * @param {int} p_sourceLine The line number where the logger has been called from
 	 */
-	void writeTag(std::ostream &pOstream, SeverityLevel pSeverityLevel,
-		std::string pSourceFile, int pSourceLine);
+	void writeTag(std::ostream &p_ostream, SeverityLevel p_severityLevel,
+		std::string p_sourceFile, int p_sourceLine);
 
 private:
-	static LoggerBase* gInstance;
+	static LoggerBase* g_instance;
 
-	bool mActive;
-	SeverityLevel mLogLevel;
+	bool m_active;
+	SeverityLevel m_logLevel;
 
 	/**
 	 * LoggerBase copy constructor

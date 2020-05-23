@@ -8,6 +8,7 @@
 
 #include <windows.h>
 
+
 class Timer {
 
 public:
@@ -37,10 +38,10 @@ public:
 	float getElapsedTime() const;
 
 private:
-	INT64 mFrequency;
-	float mTicksPerMs;
+	INT64 m_frequency;
+	float m_ticksPerMs;
 
-	INT64 mStartTime;
+	INT64 m_startTime;
 
 	/**
 	 * Timer copy constructor

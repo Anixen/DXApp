@@ -44,10 +44,10 @@ public:
 	/**
 	 * handles command line arguments
 	 *
-	 * @param {int} pArgc The number of arguments
-	 * @param {char**} pArgv The actual arguments
+	 * @param {int} p_argc The number of arguments
+	 * @param {char**} p_argv The actual arguments
 	 */
-	virtual void processArguments(int pArgc, char** pArgv);
+	virtual void processArguments(int p_argc, char** p_argv);
 
 
 	/**
@@ -72,22 +72,22 @@ public:
 	/**
 	 * Sets the update interval of the application
 	 *
-	 * @param {float} pUpdateRate The new update interval in ms for the application
+	 * @param {float} p_updateInterval The new update interval in ms for the application
 	 */
-	void setUpdateInterval(float pUpdateInterval);
+	void setUpdateInterval(float p_updateInterval);
 
 	/**
 	 * Sets the maximum consecutive updates for the application
 	 *
-	 * @param {float} pMaxUpdates The new maximum number of consecutive updates in Hz for the application
+	 * @param {float} p_maxUpdates The new maximum number of consecutive updates in Hz for the application
 	 */
-	void setMaxUpdates(unsigned int pMaxUpdates);
+	void setMaxUpdates(unsigned int p_maxUpdates);
 
 
 	/**
 	 *
 	 */
-	void quit(int pExitCode);
+	void quit(int p_exitCode);
 
 protected:
 
@@ -106,9 +106,9 @@ protected:
 	/**
 	 * Sets the current app state
 	 *
-	 * @param {AppStateBase} pState The new state for the application
+	 * @param {AppStateBase} p_state The new state for the application
 	 */
-	void setCurrentState(AppStateBase* pState);
+	void setCurrentState(AppStateBase* p_state);
 
 	/**
 	 * Contains the logic for the main loop of the application,
@@ -132,18 +132,18 @@ protected:
 
 private:
 
-	static AppBase* gInstance;
+	static AppBase* g_instance;
 
-	std::string mName;
-	std::filesystem::path mPath;
+	std::string m_name;
+	std::filesystem::path m_path;
 
-	bool mRunning;
-	AppStateBase* mCurrentState;
+	bool m_running;
+	AppStateBase* m_currentState;
 
-	float mUpdateInterval;
-	unsigned int mMaxUpdates;
+	float m_updateInterval;
+	unsigned int m_maxUpdates;
 
-	int mExitCode;
+	int m_exitCode;
 
 	/**
 	 *

@@ -71,10 +71,11 @@ public:
 	virtual AppStateBase* updateFixed() = 0;
 
 	/**
+	 * @param {float} p_elapsedTime The duration in ms since last update
 	 *
 	 * @return {AppStateBase*} A pointer to a new app state, or nullptr if no change required
 	 */
-	virtual AppStateBase* updateVariable(float elapsedTime) = 0;
+	virtual AppStateBase* updateVariable(float p_elapsedTime) = 0;
 
 	/**
 	 *
@@ -98,12 +99,12 @@ protected:
 	 * AppStateBase constructor
 	 * Is protected because we only allow derived classes to instantiate this interface
 	 *
-	 * @param {AppBase*} pApp The address of the app to which pertains this state
+	 * @param {AppBase*} p_app The address of the app to which pertains this state
 	 */
-	AppStateBase(AppBase* pApp);
+	AppStateBase(AppBase* p_app);
 
 	// Address of the app to which pertains this state
-	AppBase* mApp;
+	AppBase* m_app;
 
 	/**
 	 *
@@ -112,15 +113,15 @@ protected:
 
 private:
 
-	bool mInitialized;
-	bool mPaused;
-	bool mCleanup;
+	bool m_initialized;
+	bool m_paused;
+	bool m_cleanup;
 
-	float mElapsedTime;
-	float mTotalPausedTime;
+	float m_elapsedTime;
+	float m_totalPausedTime;
 
-	Timer mElapsedClock;
-	Timer mPausedClock;
+	Timer m_elapsedClock;
+	Timer m_pausedClock;
 
 	/**
 	 * AppStateBase assignment operator

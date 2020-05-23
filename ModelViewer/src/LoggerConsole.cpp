@@ -23,9 +23,9 @@ enum ConsoleTextColor {
 	white
 };
 
-void setSeverityColor(SeverityLevel pSeverityLevel)
+void setSeverityColor(SeverityLevel p_severityLevel)
 {
-	switch (pSeverityLevel) 
+	switch (p_severityLevel) 
 	{
 		case SeverityDebug:
 			std::cout << "\033[" << ConsoleTextColor::lightBlue << "m";
@@ -54,8 +54,8 @@ void resetSeverityColor()
 }
 
 
-LoggerConsole::LoggerConsole(bool pMakeDefault, SeverityLevel pLogLevel) :
-	LoggerBase(pMakeDefault, pLogLevel)
+LoggerConsole::LoggerConsole(bool p_makeDefault, SeverityLevel p_logLevel) :
+	LoggerBase(p_makeDefault, p_logLevel)
 {
 	LogMessage(SeverityInfo, "ConsoleLogger::ctor()")
 }
@@ -72,32 +72,32 @@ std::ostream &LoggerConsole::getStream()
 	return std::cout;
 }
 
-std::ostream &LoggerConsole::getStream(SeverityLevel pSeverityLevel, std::string pSourceFile, int pSourceLine)
+std::ostream &LoggerConsole::getStream(SeverityLevel p_severityLevel, std::string p_sourceFile, int p_sourceLine)
 {
-	setSeverityColor(pSeverityLevel);
-	writeTag(std::cout, pSeverityLevel, pSourceFile, pSourceLine);
+	setSeverityColor(p_severityLevel);
+	writeTag(std::cout, p_severityLevel, p_sourceFile, p_sourceLine);
 	resetSeverityColor();
 
 	return std::cout;
 }
 
-void LoggerConsole::logMessage(const std::string &pMessage)
+void LoggerConsole::logMessage(const std::string &p_message)
 {
 	if (isActive()) 
 	{
-		std::cout << pMessage << std::endl;
+		std::cout << p_message << std::endl;
 	}
 }
 
-void LoggerConsole::logMessage(const std::string &pMessage, SeverityLevel pSeverityLevel, std::string pSourceFile,
-	int pSourceLine)
+void LoggerConsole::logMessage(const std::string &p_message, SeverityLevel p_severityLevel, std::string p_sourceFile,
+	int p_sourceLine)
 {
-	if (isActive() && shouldLog(pSeverityLevel)) 
+	if (isActive() && shouldLog(p_severityLevel)) 
 	{
-		setSeverityColor(pSeverityLevel);
-		writeTag(std::cout, pSeverityLevel, pSourceFile, pSourceLine);
+		setSeverityColor(p_severityLevel);
+		writeTag(std::cout, p_severityLevel, p_sourceFile, p_sourceLine);
 		resetSeverityColor();
 
-		std::cout << pMessage << std::endl;
+		std::cout << p_message << std::endl;
 	}
 }
