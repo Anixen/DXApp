@@ -32,9 +32,9 @@ public:
 	static AppBase* getApp();
 
 	/**
-	 * @return {LPCWSTR} the name of the application
+	 * @return {std::string} the name of the application
 	 */
-	LPCWSTR getName();
+	std::string getName();
 
 	/**
 	 * @return {std::string} the name of the application
@@ -134,7 +134,7 @@ private:
 
 	static AppBase* g_instance;
 
-	LPCWSTR m_name;
+	std::string m_name;
 	std::filesystem::path m_path;
 
 	bool m_running;
