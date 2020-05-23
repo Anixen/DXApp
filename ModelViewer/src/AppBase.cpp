@@ -32,7 +32,7 @@ AppBase* AppBase::getApp()
 	return g_instance;
 }
 
-std::string AppBase::getName()
+LPCWSTR AppBase::getName()
 {
 	return m_name;
 }
