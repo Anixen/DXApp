@@ -3,6 +3,7 @@
 
 
 AppBase* AppBase::g_instance = NULL;
+const LPCWSTR AppBase::g_windowClassName = L"AppBaseWindowClass";
 
 AppBase::AppBase() :
 	m_running(false),
@@ -75,6 +76,7 @@ int AppBase::run()
 
 	// Do registrations here for the managers and helper classes
 	// Do initializations here for the managers ans helper classes
+	initWindows();
 	init();
 
 	// Start the main loop
@@ -82,6 +84,7 @@ int AppBase::run()
 
 	// Clean up the app
 	cleanup();
+	shutdownWindows();
 
 	m_running = false;
 
@@ -130,6 +133,152 @@ void AppBase::quit(int p_exitCode)
 
 	PostQuitMessage(p_exitCode);
 	m_exitCode = p_exitCode;
+}
+
+std::wstring s2ws(const std::string& s)
+{
+	int len;
+	int slength = (int)s.length() + 1;
+	len = MultiByteToWideChar(CP_ACP, 0, s.c_str(), slength, 0, 0);
+	wchar_t* buf = new wchar_t[len];
+	MultiByteToWideChar(CP_ACP, 0, s.c_str(), slength, buf, len);
+	std::wstring r(buf);
+	delete[] buf;
+	return r;
+}
+
+LRESULT CALLBACK WndProc(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lparam)
+{
+	switch (umessage)
+	{
+		// Check if the window is being destroyed.
+		case WM_DESTROY:
+		{
+			PostQuitMessage(0);
+			return 0;
+		}
+
+		// Check if the window is being closed.
+		case WM_CLOSE:
+		{
+			PostQuitMessage(0);
+			return 0;
+		}
+
+		// All other messages pass to the message handler in the system class.
+		default:
+		{
+			return AppBase::getApp()->MessageHandler(hwnd, umessage, wparam, lparam);
+		}
+	}
+}
+
+LRESULT CALLBACK AppBase::MessageHandler(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lparam)
+{
+	switch (umessage)
+	{
+		// Any other messages send to the default message handler as our application won't make use of them.
+		default:
+		{
+			return DefWindowProc(hwnd, umessage, wparam, lparam);
+		}
+	}
+}
+
+void AppBase::initWindows()
+{
+	// TODO : move this to earlier position in run() or better processArguments()
+	// Get the instance of this application.
+	m_hinstance = GetModuleHandle(NULL);
+
+	// Setup the windows class with default settings.
+	WNDCLASSEX wc;
+	wc.cbSize = sizeof(WNDCLASSEX);
+	wc.style = CS_HREDRAW | CS_VREDRAW | CS_OWNDC;
+	wc.lpfnWndProc = WndProc;
+	wc.cbClsExtra = 0;
+	wc.cbWndExtra = 0;
+	wc.hInstance = m_hinstance;
+	wc.hIcon = LoadIcon(NULL, IDI_WINLOGO);
+	wc.hIconSm = wc.hIcon;
+	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
+	wc.hbrBackground = (HBRUSH) GetStockObject(BLACK_BRUSH);
+	wc.lpszMenuName = nullptr;
+	wc.lpszClassName = g_windowClassName;
+
+	// Register the window class.
+	RegisterClassEx(&wc);
+
+	// Determine the resolution of the clients desktop screen.
+	m_windowWidth = GetSystemMetrics(SM_CXSCREEN);
+	m_windowHeight = GetSystemMetrics(SM_CYSCREEN);
+
+	// Setup the screen settings depending on whether it is running in full screen or in windowed mode.
+	int posX, posY;
+	if (m_fullScreen)
+	{
+		DEVMODE dmScreenSettings;
+		// If full screen set the screen to maximum size of the users desktop and 32bit.
+		memset(&dmScreenSettings, 0, sizeof(dmScreenSettings));
+		dmScreenSettings.dmSize = sizeof(dmScreenSettings);
+		dmScreenSettings.dmPelsWidth = (unsigned long) m_windowWidth;
+		dmScreenSettings.dmPelsHeight = (unsigned long) m_windowHeight;
+		dmScreenSettings.dmBitsPerPel = 32;
+		dmScreenSettings.dmFields = DM_BITSPERPEL | DM_PELSWIDTH | DM_PELSHEIGHT;
+
+		// Change the display settings to full screen.
+		ChangeDisplaySettings(&dmScreenSettings, CDS_FULLSCREEN);
+
+		// Set the position of the window to the top left corner.
+		posX = posY = 0;
+	}
+	else
+	{
+		// If windowed then set it to 800x600 resolution.
+		m_windowWidth = 800;
+		m_windowHeight = 600;
+
+		// Place the window in the middle of the screen.
+		posX = (GetSystemMetrics(SM_CXSCREEN) - m_windowWidth) / 2;
+		posY = (GetSystemMetrics(SM_CYSCREEN) - m_windowHeight) / 2;
+	}
+
+	// Create the window with the screen settings and get the handle to it.
+	m_hwnd = CreateWindowEx(WS_EX_APPWINDOW, wc.lpszClassName, s2ws(m_name).c_str(),
+		WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_POPUP,
+		posX, posY, m_windowWidth, m_windowHeight, NULL, NULL, m_hinstance, NULL);
+
+	// Bring the window up on the screen and set it as main focus.
+	ShowWindow(m_hwnd, SW_SHOW);
+	SetForegroundWindow(m_hwnd);
+	SetFocus(m_hwnd);
+
+	// Hide the mouse cursor.
+	ShowCursor(false);
+
+	return;
+}
+
+void AppBase::shutdownWindows()
+{
+	// Show the mouse cursor.
+	ShowCursor(true);
+
+	// Fix the display settings if leaving full screen mode.
+	if (m_fullScreen)
+	{
+		ChangeDisplaySettings(NULL, 0);
+	}
+
+	// Remove the window.
+	DestroyWindow(m_hwnd);
+	m_hwnd = NULL;
+
+	// Remove the application instance.
+	UnregisterClass(g_windowClassName, m_hinstance);
+	m_hinstance = NULL;
+
+	return;
 }
 
 void AppBase::setCurrentState(AppStateBase* p_state)

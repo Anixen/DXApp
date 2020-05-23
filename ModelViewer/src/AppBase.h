@@ -19,6 +19,8 @@ class AppStateBase;
 
 class AppBase {
 
+	friend LRESULT CALLBACK WndProc(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lparam);
+
 public:
 	/**
 	 * AppBase deconstructor
@@ -98,6 +100,21 @@ protected:
 	AppBase();
 
 	/**
+	 *
+	 */
+	virtual LRESULT CALLBACK MessageHandler(HWND hwnd, UINT umsg, WPARAM wparam, LPARAM lparam);
+
+	/**
+	 * Initializes the application window
+	 */
+	void initWindows();
+
+	/**
+	 * Closes the application window
+	 */
+	void shutdownWindows();
+
+	/**
 	 * Initializes the application components
 	 * is called before the main loop
 	 */
@@ -136,6 +153,13 @@ private:
 
 	std::string m_name;
 	std::filesystem::path m_path;
+
+	HINSTANCE m_hinstance;
+
+	HWND m_hwnd;
+	int m_windowWidth, m_windowHeight;
+	static const LPCWSTR g_windowClassName;
+	bool m_fullScreen;
 
 	bool m_running;
 	AppStateBase* m_currentState;
