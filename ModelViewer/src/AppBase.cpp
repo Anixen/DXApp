@@ -132,7 +132,6 @@ void AppBase::quit(int p_exitCode)
 		<< "IApp::quit(" << p_exitCode << ")" << std::endl;
 
 	PostQuitMessage(p_exitCode);
-	m_exitCode = p_exitCode;
 }
 
 std::wstring s2ws(const std::string& s)
@@ -384,6 +383,7 @@ void AppBase::loop()
 		}
 	}
 
+	m_exitCode = (int)msg.wParam;
 }
 
 AppStateBase* AppBase::processInput()
