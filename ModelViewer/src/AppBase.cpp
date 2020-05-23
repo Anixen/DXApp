@@ -128,7 +128,7 @@ void AppBase::quit(int pExitCode)
 	GetLogStream(SeverityInfo)
 		<< "IApp::quit(" << pExitCode << ")" << std::endl;
 
-	mRunning = false;
+	PostQuitMessage(pExitCode);
 	mExitCode = pExitCode;
 }
 
@@ -173,67 +173,68 @@ void AppBase::loop()
 
 	float updateLag = 0.f;
 	AppStateBase* nextState = nullptr;
-	// Loop while the application is running
-	//while(isRunning() && !mStateManager.isEmpty()) {
-	while (isRunning())
+
+	// Main message loop
+	MSG msg = {};
+	while (WM_QUIT != msg.message)
 	{
-		// Event loop
-		nextState = processInput();
-		if (nullptr != nextState) {
-			setCurrentState(nextState);
-		}
-
-		float elapsedUpdate = updateTimer.getElapsedTime();
-		updateTimer.reset();
-		//*
-		GetLogStream(SeverityInfo)
-			<< "AppBase::loop() : elapsedUpdate = " << elapsedUpdate << std::endl;
-		//*/
-
-		updateLag += elapsedUpdate;
-
-		unsigned int updates = 0;
-		while (updateLag >= mUpdateInterval && updates < mMaxUpdates)
+		if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
 		{
-			nextState = mCurrentState->updateFixed();
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+		}
+		else
+		{
+			// Event loop
+			nextState = processInput();
 			if (nullptr != nextState) {
 				setCurrentState(nextState);
 			}
-			updates++;
-			updateLag -= mUpdateInterval;
 
-			/*
+			float elapsedUpdate = updateTimer.getElapsedTime();
+			updateTimer.reset();
+			//*
 			GetLogStream(SeverityInfo)
-				<< "AppBase::loop() : lag = " << lag << ", updates = " << updates
-				<< ", mUpdateInterval = " << mUpdateInterval << std::endl;
+				<< "AppBase::loop() : elapsedUpdate = " << elapsedUpdate << std::endl;
 			//*/
 
+			updateLag += elapsedUpdate;
+
+			unsigned int updates = 0;
+			while (updateLag >= mUpdateInterval && updates < mMaxUpdates)
+			{
+				nextState = mCurrentState->updateFixed();
+				if (nullptr != nextState) {
+					setCurrentState(nextState);
+				}
+				updates++;
+				updateLag -= mUpdateInterval;
+
+				/*
+				GetLogStream(SeverityInfo)
+					<< "AppBase::loop() : lag = " << lag << ", updates = " << updates
+					<< ", mUpdateInterval = " << mUpdateInterval << std::endl;
+				//*/
+
+			}
+
+			nextState = mCurrentState->updateVariable(elapsedUpdate);
+			if (nullptr != nextState) {
+				setCurrentState(nextState);
+			}
+
+
+			float elapsedFrame = frameTimer.getElapsedTime();
+			frameTimer.reset();
+			//*
+			GetLogStream(SeverityInfo)
+				<< "AppBase::loop() : elapsedFrame = " << elapsedFrame << std::endl;
+			//*/
+
+			mCurrentState->draw();
 		}
-
-		nextState = mCurrentState->updateVariable(elapsedUpdate);
-		if (nullptr != nextState) {
-			setCurrentState(nextState);
-		}
-
-
-		float elapsedFrame = frameTimer.getElapsedTime();
-		frameTimer.reset();
-		//*
-		GetLogStream(SeverityInfo)
-			<< "AppBase::loop() : elapsedFrame = " << elapsedFrame << std::endl;
-		//*/
-		
-		mCurrentState->draw();
-
-		/*
-		if (WindowManager::isInitialized()) {
-			WindowManager::swapBuffers();
-		}
-
-		if (WindowManager::shouldClose())
-			quit();
-		//*/
 	}
+
 }
 
 AppStateBase* AppBase::processInput()
