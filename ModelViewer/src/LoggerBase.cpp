@@ -4,10 +4,8 @@
 #include <sstream>
 
 
+onullstream LoggerBase::g_nullStream;
 LoggerBase* LoggerBase::g_instance = NULL;
-
-// TODO : Implement onnullstream
-//ILogger::_nullStream;
 
 LoggerBase::LoggerBase(bool p_makeDefault, SeverityLevel p_logLevel) :
 	m_active(false)
