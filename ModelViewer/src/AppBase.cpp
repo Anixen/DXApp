@@ -380,7 +380,7 @@ void AppBase::tick()
 		{
 			float elapsedUpdate = updateTimer.getElapsedTime();
 			updateTimer.reset();
-			//*
+			/*
 			GetLogStream(SeverityInfo)
 				<< "AppBase::tick() : elapsedUpdate = " << elapsedUpdate << std::endl;
 			//*/
@@ -413,7 +413,7 @@ void AppBase::tick()
 
 			float elapsedFrame = frameTimer.getElapsedTime();
 			frameTimer.reset();
-			//*
+			/*
 			GetLogStream(SeverityInfo)
 				<< "AppBase::tick() : elapsedFrame = " << elapsedFrame << std::endl;
 			//*/
