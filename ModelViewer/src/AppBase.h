@@ -145,7 +145,7 @@ private:
 	std::string m_name;
 	std::filesystem::path m_path;
 
-	HINSTANCE m_hinstance;
+	HINSTANCE m_hInstance;
 
 	HWND m_hwnd;
 	int m_windowWidth, m_windowHeight;

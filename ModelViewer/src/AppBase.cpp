@@ -48,11 +48,11 @@ void AppBase::processArguments(int p_argc, char **p_argv)
 	m_name = m_path.stem().string();
 
 	// Get the instance of this application.
-	m_hinstance = GetModuleHandle(NULL);
+	m_hInstance = GetModuleHandle(NULL);
 
 	GetLogStream(SeverityInfo)
 		<< "AppBase::processArguments(" << p_argv[0] << ")"
-		<< ", mPath = " << m_path << ", mName = " << m_name  << ", m_hInstance = " << m_hinstance << std::endl;
+		<< ", mPath = " << m_path << ", mName = " << m_name  << ", m_hInstance = " << m_hInstance << std::endl;
 
 	if (p_argc == 1) {
 		GetLogStream(SeverityInfo)
@@ -71,7 +71,7 @@ void AppBase::processArguments(int p_argc, char **p_argv)
 void AppBase::processArguments(HINSTANCE p_hInstance, HINSTANCE p_hPrevInstance, PWSTR p_pCmdline, int p_iCmdshow)
 {
 	// Get the instance of this application.
-	m_hinstance = p_hInstance;
+	m_hInstance = p_hInstance;
 
 	TCHAR exepath[MAX_PATH];
 	GetModuleFileNameW(0, exepath, MAX_PATH);
@@ -241,7 +241,7 @@ void AppBase::initWindows()
 	wc.lpfnWndProc = WndProc;
 	wc.cbClsExtra = 0;
 	wc.cbWndExtra = 0;
-	wc.hInstance = m_hinstance;
+	wc.hInstance = m_hInstance;
 	wc.hIcon = LoadIcon(NULL, IDI_WINLOGO);
 	wc.hIconSm = wc.hIcon;
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
@@ -289,7 +289,7 @@ void AppBase::initWindows()
 	// Create the window with the screen settings and get the handle to it.
 	m_hwnd = CreateWindowEx(WS_EX_APPWINDOW, wc.lpszClassName, s2ws(m_name).c_str(),
 		WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_POPUP,
-		posX, posY, m_windowWidth, m_windowHeight, NULL, NULL, m_hinstance, NULL);
+		posX, posY, m_windowWidth, m_windowHeight, NULL, NULL, m_hInstance, NULL);
 
 	// Bring the window up on the screen and set it as main focus.
 	ShowWindow(m_hwnd, SW_SHOW);
@@ -318,8 +318,8 @@ void AppBase::shutdownWindows()
 	m_hwnd = NULL;
 
 	// Remove the application instance.
-	UnregisterClass(g_windowClassName, m_hinstance);
-	m_hinstance = NULL;
+	UnregisterClass(g_windowClassName, m_hInstance);
+	m_hInstance = NULL;
 
 	return;
 }
