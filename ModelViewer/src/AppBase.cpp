@@ -70,13 +70,13 @@ void AppBase::processArguments(int p_argc, char **p_argv)
 
 void AppBase::processArguments(HINSTANCE p_hInstance, HINSTANCE p_hPrevInstance, PWSTR p_pCmdline, int p_iCmdshow)
 {
-	// Get the instance of this application.
-	m_hInstance = p_hInstance;
-
 	TCHAR exepath[MAX_PATH];
 	GetModuleFileNameW(0, exepath, MAX_PATH);
 	m_path = std::filesystem::path{ exepath };
 	m_name = m_path.stem().string();
+
+	// Get the instance of this application.
+	m_hInstance = p_hInstance;
 
 	GetLogStream(SeverityInfo)
 		<< "AppBase::processArguments()"
