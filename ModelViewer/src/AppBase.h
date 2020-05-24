@@ -51,6 +51,16 @@ public:
 	 */
 	virtual void processArguments(int p_argc, char** p_argv);
 
+	/**
+	 * handles Win32 arguments
+	 *
+	 * @param {HINSTANCE}	p_hInstance		A value used by the system to identify the exececutable instance
+	 * @param {HINSTANCE}	p_hPrevInstance	Has no meaning in Win32, should always be 0
+	 * @param {PWSTR}		p_pCmdline		The command line as a unicode string
+	 * @param {int}			p_iCmdshow		A flag to indicate if the application window should be minimized, maximized or shown normally
+	 */
+	virtual void processArguments(HINSTANCE p_hInstance, HINSTANCE p_hPrevInstance, PWSTR p_pCmdline, int p_iCmdshow);
+
 
 	/**
 	 * Initializes and starts the application main loop,
