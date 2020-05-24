@@ -1,7 +1,6 @@
 #include "AppBase.h"
 #include "LoggerBase.h"
 
-
 AppBase* AppBase::g_instance = NULL;
 const LPCWSTR AppBase::g_windowClassName = L"AppBaseWindowClass";
 
@@ -48,9 +47,12 @@ void AppBase::processArguments(int p_argc, char **p_argv)
 	m_path = std::filesystem::path{ p_argv[0] };
 	m_name = m_path.stem().string();
 
+	// Get the instance of this application.
+	m_hinstance = GetModuleHandle(NULL);
+
 	GetLogStream(SeverityInfo)
 		<< "AppBase::processArguments(" << p_argv[0] << ")"
-		<< ", mPath = " << m_path << ", mName = " << m_name << std::endl;
+		<< ", mPath = " << m_path << ", mName = " << m_name  << ", m_hInstance = " << m_hinstance << std::endl;
 
 	if (p_argc == 1) {
 		GetLogStream(SeverityInfo)
@@ -64,6 +66,21 @@ void AppBase::processArguments(int p_argc, char **p_argv)
 				<< "Argument " << i << " = " << p_argv[i] << std::endl;
 		}
 	}
+}
+
+void AppBase::processArguments(HINSTANCE p_hInstance, HINSTANCE p_hPrevInstance, PWSTR p_pCmdline, int p_iCmdshow)
+{
+	// Get the instance of this application.
+	m_hinstance = p_hInstance;
+
+	TCHAR exepath[MAX_PATH];
+	GetModuleFileNameW(0, exepath, MAX_PATH);
+	m_path = std::filesystem::path{ exepath };
+	m_name = m_path.stem().string();
+
+	GetLogStream(SeverityInfo)
+		<< "AppBase::processArguments()"
+		<< ", mPath = " << m_path << ", mName = " << m_name << std::endl;
 }
 
 int AppBase::run()
@@ -217,10 +234,6 @@ LRESULT CALLBACK AppBase::handleMessage(HWND hwnd, UINT umessage, WPARAM wparam,
 
 void AppBase::initWindows()
 {
-	// TODO : move this to earlier position in run() or better processArguments()
-	// Get the instance of this application.
-	m_hinstance = GetModuleHandle(NULL);
-
 	// Setup the windows class with default settings.
 	WNDCLASSEX wc;
 	wc.cbSize = sizeof(WNDCLASSEX);
