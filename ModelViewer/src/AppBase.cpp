@@ -333,12 +333,6 @@ void AppBase::loop()
 		}
 		else
 		{
-			// Event loop
-			nextState = processInput();
-			if (nullptr != nextState) {
-				setCurrentState(nextState);
-			}
-
 			float elapsedUpdate = updateTimer.getElapsedTime();
 			updateTimer.reset();
 			//*
@@ -384,18 +378,6 @@ void AppBase::loop()
 	}
 
 	m_exitCode = (int)msg.wParam;
-}
-
-AppStateBase* AppBase::processInput()
-{
-	/*
-	GetLogStream(SeverityDebug)
-		<< "IApp::processInput()" << std::endl;
-	//*/
-
-	// TODO ? Will probably need code to poll events here
-
-	return nullptr;
 }
 
 void AppBase::cleanup()

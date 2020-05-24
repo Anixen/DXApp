@@ -135,13 +135,6 @@ protected:
 	virtual void loop();
 
 	/**
-	 * Handles input from the user
-	 *
-	 * @return {AppStateBase*} A pointer to a new app state, or nullptr if no change required
-	 */
-	virtual AppStateBase* processInput();
-
-	/**
 	 * Performs some custom clean before exiting the application
 	 * is called before the main loop
 	 */
