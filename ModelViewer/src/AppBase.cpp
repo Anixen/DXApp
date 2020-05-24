@@ -159,7 +159,7 @@ void AppBase::setMaxUpdates(unsigned int p_maxUpdates)
 void AppBase::quit(int p_exitCode)
 {
 	GetLogStream(SeverityInfo)
-		<< "IApp::quit(" << p_exitCode << ")" << std::endl;
+		<< "AppBase::quit(" << p_exitCode << ")" << std::endl;
 
 	PostQuitMessage(p_exitCode);
 }
