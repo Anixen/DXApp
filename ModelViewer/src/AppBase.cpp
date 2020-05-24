@@ -235,23 +235,25 @@ LRESULT CALLBACK AppBase::handleMessage(HWND hwnd, UINT umessage, WPARAM wparam,
 
 void AppBase::initWindows()
 {
-	// Setup the windows class with default settings.
-	WNDCLASSEX wc;
-	wc.cbSize = sizeof(WNDCLASSEX);
-	wc.style = CS_HREDRAW | CS_VREDRAW | CS_OWNDC;
-	wc.lpfnWndProc = WndProc;
-	wc.cbClsExtra = 0;
-	wc.cbWndExtra = 0;
-	wc.hInstance = m_hInstance;
-	wc.hIcon = LoadIcon(NULL, IDI_WINLOGO);
-	wc.hIconSm = wc.hIcon;
-	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wc.hbrBackground = (HBRUSH) GetStockObject(BLACK_BRUSH);
-	wc.lpszMenuName = nullptr;
-	wc.lpszClassName = g_windowClassName;
+	// Setup the windows class with default settings
+	WNDCLASSEXW wcex;
+	wcex.cbSize = sizeof(WNDCLASSEXW);
+	wcex.style = CS_HREDRAW | CS_VREDRAW;
+	wcex.lpfnWndProc = WndProc;
+	wcex.cbClsExtra = 0;
+	wcex.cbWndExtra = 0;
+	wcex.hInstance = m_hInstance;
+	wcex.hIcon = LoadIconW(m_hInstance, L"IDI_ICON");
+	wcex.hIconSm = wcex.hIcon;
+	wcex.hCursor = LoadCursorW(nullptr, IDC_ARROW);
+	//wcex.hbrBackground = (HBRUSH) (COLOR_WINDOW + 1);
+	wcex.hbrBackground = (HBRUSH) GetStockObject(BLACK_BRUSH);
+	wcex.lpszMenuName = nullptr;
+	wcex.lpszClassName = g_windowClassName;
 
-	// Register the window class.
-	RegisterClassEx(&wc);
+	// Register the window class
+	if (!RegisterClassExW(&wcex))
+		throw new std::exception("Failed to register the window class.");
 
 	// Determine the resolution of the clients desktop screen.
 	m_windowWidth = GetSystemMetrics(SM_CXSCREEN);
@@ -287,10 +289,14 @@ void AppBase::initWindows()
 		posY = (GetSystemMetrics(SM_CYSCREEN) - m_windowHeight) / 2;
 	}
 
+
 	// Create the window with the screen settings and get the handle to it.
-	m_hwnd = CreateWindowEx(WS_EX_APPWINDOW, wc.lpszClassName, s2ws(m_name).c_str(),
-		WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_POPUP,
-		posX, posY, m_windowWidth, m_windowHeight, NULL, NULL, m_hInstance, NULL);
+	m_hwnd = CreateWindowExW(0, wcex.lpszClassName, s2ws(m_name).c_str(),
+		//WS_OVERLAPPEDWINDOW,
+		WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_POPUP | WS_SYSMENU | WS_CAPTION | WS_MINIMIZEBOX,
+		//CW_USEDEFAULT, CW_USEDEFAULT,
+		posX, posY,
+		m_windowWidth, m_windowHeight, nullptr, nullptr, m_hInstance, nullptr);
 
 	// Bring the window up on the screen and set it as main focus.
 	ShowWindow(m_hwnd, SW_SHOW);
