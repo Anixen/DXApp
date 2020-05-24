@@ -329,13 +329,13 @@ void AppBase::setCurrentState(AppStateBase* p_state)
 void AppBase::tick()
 {
 	GetLogStream(SeverityInfo)
-		<< "AppBase::loop()" << std::endl;
+		<< "AppBase::tick()" << std::endl;
 
 	// Make sure we have a current state
 	if (m_currentState == nullptr)
 	{
 		GetLogStream(SeverityFatal)
-			<< "AppBase::loop() : The application doesnt have a current state" << std::endl;
+			<< "AppBase::tick() : The application doesnt have a current state" << std::endl;
 		throw new std::exception("The application doesnt have a current state");
 	}
 	//*/
@@ -368,7 +368,7 @@ void AppBase::tick()
 			updateTimer.reset();
 			//*
 			GetLogStream(SeverityInfo)
-				<< "AppBase::loop() : elapsedUpdate = " << elapsedUpdate << std::endl;
+				<< "AppBase::tick() : elapsedUpdate = " << elapsedUpdate << std::endl;
 			//*/
 
 			updateLag += elapsedUpdate;
@@ -385,7 +385,7 @@ void AppBase::tick()
 
 				/*
 				GetLogStream(SeverityInfo)
-					<< "AppBase::loop() : lag = " << lag << ", updates = " << updates
+					<< "AppBase::tick() : lag = " << lag << ", updates = " << updates
 					<< ", m_updateInterval = " << m_updateInterval << std::endl;
 				//*/
 
@@ -401,7 +401,7 @@ void AppBase::tick()
 			frameTimer.reset();
 			//*
 			GetLogStream(SeverityInfo)
-				<< "AppBase::loop() : elapsedFrame = " << elapsedFrame << std::endl;
+				<< "AppBase::tick() : elapsedFrame = " << elapsedFrame << std::endl;
 			//*/
 
 			m_currentState->draw();
@@ -413,7 +413,7 @@ void AppBase::tick()
 
 void AppBase::cleanup()
 {
-	GetLogStream(SeverityInfo) << "IApp::cleanup()" << std::endl;
+	GetLogStream(SeverityInfo) << "AppBase::cleanup()" << std::endl;
 
 	handleCleanUp();
 
