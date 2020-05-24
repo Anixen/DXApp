@@ -342,87 +342,54 @@ void AppBase::setCurrentState(AppStateBase* p_state)
 
 void AppBase::tick()
 {
+	/*
 	GetLogStream(SeverityInfo)
 		<< "AppBase::tick()" << std::endl;
-
-	// Make sure we have a current state
-	if (m_currentState == nullptr)
-	{
-		GetLogStream(SeverityFatal)
-			<< "AppBase::tick() : The application doesnt have a current state" << std::endl;
-		throw new std::exception("The application doesnt have a current state");
-	}
 	//*/
 
-	// Clocks to keep track of the time elapsed since last update and last frame
-	Timer updateTimer;
-	Timer frameTimer;
-
-	updateTimer.init();
-	frameTimer.init();
-
-	updateTimer.reset();
-	frameTimer.reset();
-
-	float updateLag = 0.f;
 	AppStateBase* nextState = nullptr;
 
-	// Main message loop
-	MSG msg = {};
-	while (WM_QUIT != msg.message)
+	float elapsedUpdate = m_updateTimer.getElapsedTime();
+	m_updateTimer.reset();
+	/*
+	GetLogStream(SeverityInfo)
+		<< "AppBase::tick() : elapsedUpdate = " << elapsedUpdate << std::endl;
+	//*/
+
+	m_updateLag += elapsedUpdate;
+
+	unsigned int updates = 0;
+	while (m_updateLag >= m_updateInterval && updates < m_maxUpdates)
 	{
-		if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
-		{
-			TranslateMessage(&msg);
-			DispatchMessage(&msg);
+		nextState = m_currentState->updateFixed();
+		if (nullptr != nextState) {
+			setCurrentState(nextState);
 		}
-		else
-		{
-			float elapsedUpdate = updateTimer.getElapsedTime();
-			updateTimer.reset();
-			/*
-			GetLogStream(SeverityInfo)
-				<< "AppBase::tick() : elapsedUpdate = " << elapsedUpdate << std::endl;
-			//*/
+		updates++;
+		m_updateLag -= m_updateInterval;
 
-			updateLag += elapsedUpdate;
+		/*
+		GetLogStream(SeverityInfo)
+			<< "AppBase::tick() : lag = " << lag << ", updates = " << updates
+			<< ", m_updateInterval = " << m_updateInterval << std::endl;
+		//*/
 
-			unsigned int updates = 0;
-			while (updateLag >= m_updateInterval && updates < m_maxUpdates)
-			{
-				nextState = m_currentState->updateFixed();
-				if (nullptr != nextState) {
-					setCurrentState(nextState);
-				}
-				updates++;
-				updateLag -= m_updateInterval;
-
-				/*
-				GetLogStream(SeverityInfo)
-					<< "AppBase::tick() : lag = " << lag << ", updates = " << updates
-					<< ", m_updateInterval = " << m_updateInterval << std::endl;
-				//*/
-
-			}
-
-			nextState = m_currentState->updateVariable(elapsedUpdate);
-			if (nullptr != nextState) {
-				setCurrentState(nextState);
-			}
-
-
-			float elapsedFrame = frameTimer.getElapsedTime();
-			frameTimer.reset();
-			/*
-			GetLogStream(SeverityInfo)
-				<< "AppBase::tick() : elapsedFrame = " << elapsedFrame << std::endl;
-			//*/
-
-			m_currentState->draw();
-		}
 	}
 
-	m_exitCode = (int)msg.wParam;
+	nextState = m_currentState->updateVariable(elapsedUpdate);
+	if (nullptr != nextState) {
+		setCurrentState(nextState);
+	}
+
+
+	float elapsedFrame = m_frameTimer.getElapsedTime();
+	m_frameTimer.reset();
+	/*
+	GetLogStream(SeverityInfo)
+		<< "AppBase::tick() : elapsedFrame = " << elapsedFrame << std::endl;
+	//*/
+
+	m_currentState->draw();
 }
 
 void AppBase::cleanup()
