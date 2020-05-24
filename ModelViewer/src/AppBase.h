@@ -100,9 +100,9 @@ protected:
 	AppBase();
 
 	/**
-	 *
+	 * Handles windows messages
 	 */
-	virtual LRESULT CALLBACK MessageHandler(HWND hwnd, UINT umsg, WPARAM wparam, LPARAM lparam);
+	virtual LRESULT CALLBACK handleMessage(HWND hwnd, UINT umsg, WPARAM wparam, LPARAM lparam);
 
 	/**
 	 * Initializes the application window
