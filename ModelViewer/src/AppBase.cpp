@@ -131,7 +131,7 @@ int AppBase::run()
 	m_exitCode = (int)msg.wParam;
 
 	// Clean up the app
-	cleanup();
+	shutdown();
 	shutdownWindows();
 
 	m_running = false;
@@ -392,9 +392,9 @@ void AppBase::tick()
 	m_currentState->draw();
 }
 
-void AppBase::cleanup()
+void AppBase::shutdown()
 {
-	GetLogStream(SeverityInfo) << "AppBase::cleanup()" << std::endl;
+	GetLogStream(SeverityInfo) << "AppBase::shutdown()" << std::endl;
 
 	handleCleanUp();
 

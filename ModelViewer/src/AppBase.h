@@ -66,7 +66,7 @@ public:
 	 * Initializes and starts the application main loop,
 	 * it will also handle cleaning up once the main loop has ended
 	 *
-	 * This functions relies on the loop, init and cleanup methods,
+	 * This functions relies on the loop, init and shutdown methods,
 	 * which are defined by derived classes
 	 */
 	int run();
@@ -177,7 +177,7 @@ private:
 	/**
 	 *
 	 */
-	void cleanup();
+	void shutdown();
 
 	/**
 	 * AppBase assignment operator
