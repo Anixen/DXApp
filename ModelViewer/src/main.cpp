@@ -4,6 +4,7 @@
  * @author Olivier Falconnet
  */
 
+#define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <iostream>
 
@@ -11,13 +12,14 @@
 #include "LoggerConsole.h"
 #include "AppTest.h"
 
-//int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR pScmdline, int iCmdshow)
-int main(int argc, char** argv) {
-
+//int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine, int nCmdShow)
+int main(int argc, char** argv)
+{
 	LoggerConsole logger(true, SeverityDebug);
 
 	AppBase* app = new AppTest();
 
+	//app->processArguments(hInstance, hPrevInstance, pCmdLine, nCmdShow);
 	app->processArguments(argc, argv);
 	int exitCode = app->run();
 
