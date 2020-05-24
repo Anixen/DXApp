@@ -79,8 +79,38 @@ int AppBase::run()
 	initWindows();
 	init();
 
-	// Start the main loop
-	loop();
+	m_updateTimer.init();
+	m_frameTimer.init();
+
+	// Make sure we have a current state
+	if (m_currentState == nullptr)
+	{
+		GetLogStream(SeverityFatal)
+			<< "AppBase::run() : The application doesnt have a current state" << std::endl;
+		throw new std::exception("The application doesnt have a current state");
+	}
+
+	m_updateTimer.reset();
+	m_frameTimer.reset();
+
+	float updateLag = 0.f;
+
+	// Main message loop
+	MSG msg = {};
+	while (WM_QUIT != msg.message)
+	{
+		if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
+		{
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+		}
+		else
+		{
+			tick();
+		}
+	}
+
+	m_exitCode = (int)msg.wParam;
 
 	// Clean up the app
 	cleanup();
@@ -295,7 +325,7 @@ void AppBase::setCurrentState(AppStateBase* p_state)
 	m_currentState->init();
 }
 
-void AppBase::loop()
+void AppBase::tick()
 {
 	GetLogStream(SeverityInfo)
 		<< "AppBase::loop()" << std::endl;

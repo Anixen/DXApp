@@ -128,15 +128,13 @@ protected:
 	void setCurrentState(AppStateBase* p_state);
 
 	/**
-	 * Contains the logic for the main loop of the application,
-	 * which involves updating its components,
-	 * handling input from the user, and giving him output (display)
+	 * Advances the application one tick forward,
+	 * which involves updating its components, and rendering a frame
 	 */
-	virtual void loop();
+	virtual void tick();
 
 	/**
 	 * Performs some custom clean before exiting the application
-	 * is called before the main loop
 	 */
 	virtual void handleCleanUp() = 0;
 
@@ -159,6 +157,10 @@ private:
 
 	float m_updateInterval;
 	unsigned int m_maxUpdates;
+
+	Timer m_updateTimer;
+	Timer m_frameTimer;
+	float m_updateLag;
 
 	int m_exitCode;
 
