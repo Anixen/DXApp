@@ -51,16 +51,16 @@ void AppBase::processArguments(int p_argc, char **p_argv)
 	m_hInstance = GetModuleHandle(NULL);
 
 	GetLogStream(SeverityInfo)
-		<< "AppBase::processArguments(" << p_argv[0] << ")"
-		<< ", mPath = " << m_path << ", mName = " << m_name  << ", m_hInstance = " << m_hInstance << std::endl;
+		<< "AppBase::processArguments() m_name = " << m_name  << ", m_hInstance = " << m_hInstance << std::endl
+		<< "m_path = " << m_path << std::endl;
 
 	if (p_argc == 1) {
 		GetLogStream(SeverityInfo)
-			<< "AppBase::processArguments(" << p_argv[0] << ") command line : (none)" << std::endl;
+			<< "AppBase::processArguments() command line : (none)" << std::endl;
 	}
 	else {
 		GetLogStream(SeverityInfo)
-			<< "AppBase::processArguments(" << p_argv[0] << ") command line :" << std::endl;
+			<< "AppBase::processArguments() command line :" << std::endl;
 		for (int i = 0; i < p_argc; ++i) {
 			GetLogStream(SeverityInfo)
 				<< "Argument " << i << " = " << p_argv[i] << std::endl;
@@ -80,7 +80,8 @@ void AppBase::processArguments(HINSTANCE p_hInstance, HINSTANCE p_hPrevInstance,
 
 	GetLogStream(SeverityInfo)
 		<< "AppBase::processArguments()"
-		<< ", mPath = " << m_path << ", mName = " << m_name << std::endl;
+		<< "m_name = " << m_name << ", m_hInstance = " << m_hInstance << std::endl
+		<< ", m_path = " << m_path << std::endl;
 }
 
 int AppBase::run()
