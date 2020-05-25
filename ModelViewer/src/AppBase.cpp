@@ -13,6 +13,8 @@ AppBase::AppBase() :
 	LogMessage(SeverityInfo, "AppBase::ctor()")
 
 	g_instance = this;
+
+	getDefaultWindowSize(m_windowWidth, m_windowHeight);
 }
 
 AppBase::~AppBase()
@@ -40,6 +42,12 @@ std::string AppBase::getName()
 std::filesystem::path AppBase::getPath()
 {
 	return m_path;
+}
+
+void AppBase::getDefaultWindowSize(int& width, int& height) const
+{
+	width  = 800;
+	height = 600;
 }
 
 void AppBase::processArguments(int p_argc, char **p_argv)
@@ -255,14 +263,14 @@ void AppBase::initWindows()
 	if (!RegisterClassExW(&wcex))
 		throw new std::exception("Failed to register the window class.");
 
-	// Determine the resolution of the clients desktop screen.
-	m_windowWidth = GetSystemMetrics(SM_CXSCREEN);
-	m_windowHeight = GetSystemMetrics(SM_CYSCREEN);
-
 	// Setup the screen settings depending on whether it is running in full screen or in windowed mode.
 	int posX, posY;
 	if (m_fullScreen)
 	{
+		// Determine the resolution of the clients desktop screen.
+		m_windowWidth = GetSystemMetrics(SM_CXSCREEN);
+		m_windowHeight = GetSystemMetrics(SM_CYSCREEN);
+
 		DEVMODE dmScreenSettings;
 		// If full screen set the screen to maximum size of the users desktop and 32bit.
 		memset(&dmScreenSettings, 0, sizeof(dmScreenSettings));
@@ -280,10 +288,6 @@ void AppBase::initWindows()
 	}
 	else
 	{
-		// If windowed then set it to 800x600 resolution.
-		m_windowWidth = 800;
-		m_windowHeight = 600;
-
 		// Place the window in the middle of the screen.
 		posX = (GetSystemMetrics(SM_CXSCREEN) - m_windowWidth) / 2;
 		posY = (GetSystemMetrics(SM_CYSCREEN) - m_windowHeight) / 2;

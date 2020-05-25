@@ -44,6 +44,11 @@ public:
 	std::filesystem::path getPath();
 
 	/**
+	 *
+	 */
+	virtual void getDefaultWindowSize(int& width, int& height) const;
+
+	/**
 	 * handles command line arguments
 	 *
 	 * @param {int} p_argc The number of arguments
