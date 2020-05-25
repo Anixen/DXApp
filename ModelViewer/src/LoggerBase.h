@@ -178,4 +178,4 @@ private:
 #define GetLogStream(level)	LoggerBase::getLogger()->getStream(level, std::filesystem::path(__FILE__).filename().string(), __LINE__)
 
 //#define LogMessage(level, msg)
-//#define GetLogStream(level)	LoggerBase::g_nullStream
+//#define GetLogStream(level) LoggerBase::g_nullStream
