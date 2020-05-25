@@ -412,3 +412,13 @@ void AppBase::shutdown()
 
 	// Do de-initializations here for the managers ans helper classes
 }
+
+void AppBase::onWindowSizeChanged()
+{
+	/*
+	if (!m_deviceResources->WindowSizeChanged(width, height))
+		return;
+
+	CreateWindowSizeDependentResources();
+	//*/
+}

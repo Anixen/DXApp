@@ -153,6 +153,11 @@ protected:
 	 */
 	virtual void handleCleanUp() = 0;
 
+	/**
+	 *
+	 */
+	virtual void onWindowSizeChanged();
+
 private:
 
 	static AppBase* g_instance;
