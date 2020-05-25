@@ -8,8 +8,7 @@
 
 #include <string>
 #include <ostream>
-#include <fstream>
-
+//#include <boost/iostreams/stream.hpp>
 
 template <class cT, class traits = std::char_traits<cT> >
 class basic_nullbuf : public std::basic_streambuf<cT, traits> {
@@ -53,6 +52,7 @@ class LoggerBase {
 
 public:
 	static onullstream g_nullStream;
+	//static boost::iostreams::stream< boost::iostreams::null_sink > g_nullStream;
 
 	/**
 	 * LoggerBase deconstructor
