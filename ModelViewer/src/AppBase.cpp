@@ -13,8 +13,6 @@ AppBase::AppBase() :
 	LogMessage(SeverityInfo, "AppBase::ctor()")
 
 	g_instance = this;
-
-	getDefaultWindowSize(m_windowWidth, m_windowHeight);
 }
 
 AppBase::~AppBase()
@@ -264,34 +262,11 @@ void AppBase::initWindows()
 		throw new std::exception("Failed to register the window class.");
 
 	// Setup the screen settings depending on whether it is running in full screen or in windowed mode.
-	int posX, posY;
-	if (m_fullScreen)
-	{
-		// Determine the resolution of the clients desktop screen.
-		m_windowWidth = GetSystemMetrics(SM_CXSCREEN);
-		m_windowHeight = GetSystemMetrics(SM_CYSCREEN);
 
-		DEVMODE dmScreenSettings;
-		// If full screen set the screen to maximum size of the users desktop and 32bit.
-		memset(&dmScreenSettings, 0, sizeof(dmScreenSettings));
-		dmScreenSettings.dmSize = sizeof(dmScreenSettings);
-		dmScreenSettings.dmPelsWidth = (unsigned long) m_windowWidth;
-		dmScreenSettings.dmPelsHeight = (unsigned long) m_windowHeight;
-		dmScreenSettings.dmBitsPerPel = 32;
-		dmScreenSettings.dmFields = DM_BITSPERPEL | DM_PELSWIDTH | DM_PELSHEIGHT;
-
-		// Change the display settings to full screen.
-		ChangeDisplaySettings(&dmScreenSettings, CDS_FULLSCREEN);
-
-		// Set the position of the window to the top left corner.
-		posX = posY = 0;
-	}
-	else
-	{
-		// Place the window in the middle of the screen.
-		posX = (GetSystemMetrics(SM_CXSCREEN) - m_windowWidth) / 2;
-		posY = (GetSystemMetrics(SM_CYSCREEN) - m_windowHeight) / 2;
-	}
+	// Place the window in the middle of the screen.
+	getDefaultWindowSize(m_windowWidth, m_windowHeight);
+	m_windowPosX = (GetSystemMetrics(SM_CXSCREEN) - m_windowWidth) / 2;
+	m_windowPosY = (GetSystemMetrics(SM_CYSCREEN) - m_windowHeight) / 2;
 
 
 	// Create the window with the screen settings and get the handle to it.
@@ -299,7 +274,7 @@ void AppBase::initWindows()
 		//WS_OVERLAPPEDWINDOW,
 		WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_POPUP | WS_SYSMENU | WS_CAPTION | WS_MINIMIZEBOX,
 		//CW_USEDEFAULT, CW_USEDEFAULT,
-		posX, posY,
+		m_windowPosX, m_windowPosY,
 		m_windowWidth, m_windowHeight, nullptr, nullptr, m_hInstance, nullptr);
 
 	// Bring the window up on the screen and set it as main focus.
@@ -318,11 +293,13 @@ void AppBase::shutdownWindows()
 	// Show the mouse cursor.
 	ShowCursor(true);
 
+	//*
 	// Fix the display settings if leaving full screen mode.
-	if (m_fullScreen)
+	if (m_fullscreen)
 	{
 		ChangeDisplaySettings(NULL, 0);
 	}
+	//*/
 
 	// Remove the window.
 	DestroyWindow(m_hwnd);

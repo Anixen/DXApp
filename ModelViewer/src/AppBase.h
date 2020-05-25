@@ -169,8 +169,9 @@ private:
 
 	HWND m_hwnd;
 	int m_windowWidth, m_windowHeight;
+	int m_windowPosX, m_windowPosY;
 	static const LPCWSTR g_windowClassName;
-	bool m_fullScreen;
+	bool m_fullscreen = false;
 
 	bool m_running;
 	AppStateBase* m_currentState;
