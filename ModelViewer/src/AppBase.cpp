@@ -218,6 +218,21 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lparam)
 			return 0;
 		}
 
+		case WM_GETMINMAXINFO:
+		{
+			auto info = reinterpret_cast<MINMAXINFO*>(lparam);
+			info->ptMinTrackSize.x = 320;
+			info->ptMinTrackSize.y = 200;
+		}
+		break;
+
+		case WM_MENUCHAR:
+		{
+			// A menu is active and the user presses a key that does not correspond
+			// to any mnemonic or accelerator key. Ignore so we don't produce an error beep.
+			return MAKELRESULT(0, MNC_CLOSE);
+		}
+
 		// All other messages pass to the message handler in the system class.
 		default:
 		{
