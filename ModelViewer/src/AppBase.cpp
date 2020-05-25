@@ -231,6 +231,24 @@ LRESULT CALLBACK AppBase::handleMessage(HWND hwnd, UINT umessage, WPARAM wparam,
 	switch (umessage)
 	{
 
+	case WM_ENTERSIZEMOVE:
+		m_sizemove = true;
+		break;
+
+	case WM_EXITSIZEMOVE:
+		m_sizemove = false;
+
+		RECT rc;
+		GetWindowRect(m_hwnd, &rc);
+
+		m_windowPosX = rc.left;
+		m_windowPosY = rc.top;
+		m_windowWidth  = rc.right - rc.left;
+		m_windowHeight = rc.bottom - rc.top;
+		onWindowSizeChanged();
+
+		break;
+
 	case WM_SYSKEYDOWN:
 		if (wparam == VK_RETURN && (lparam & 0x60000000) == 0x20000000)
 		{
