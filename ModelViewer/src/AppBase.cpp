@@ -230,6 +230,37 @@ LRESULT CALLBACK AppBase::handleMessage(HWND hwnd, UINT umessage, WPARAM wparam,
 {
 	switch (umessage)
 	{
+
+	case WM_SYSKEYDOWN:
+		if (wparam == VK_RETURN && (lparam & 0x60000000) == 0x20000000)
+		{
+			// Implements the classic ALT+ENTER fullscreen toggle
+			if (m_fullscreen)
+			{
+				SetWindowLongPtr(m_hwnd, GWL_STYLE, WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_POPUP | WS_SYSMENU | WS_CAPTION | WS_MINIMIZEBOX);
+				SetWindowLongPtr(m_hwnd, GWL_EXSTYLE, 0);
+
+				ShowWindow(m_hwnd, SW_SHOWNORMAL);
+
+				SetWindowPos(m_hwnd, HWND_TOP, m_windowPosX, m_windowPosY, m_windowWidth, m_windowHeight, 
+					SWP_NOZORDER | SWP_FRAMECHANGED);
+			}
+			else
+			{
+				SetWindowLongPtr(m_hwnd, GWL_STYLE, 0);
+				SetWindowLongPtr(m_hwnd, GWL_EXSTYLE, WS_EX_TOPMOST);
+
+				SetWindowPos(m_hwnd, HWND_TOP, 0, 0, 0, 0,
+					SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED);
+
+				ShowWindow(m_hwnd, SW_SHOWMAXIMIZED);
+			}
+
+			m_fullscreen = !m_fullscreen;
+		}
+		//Keyboard::ProcessMessage(umessage, wparam, lparam);
+		break;
+
 		// Any other messages send to the default message handler as our application won't make use of them.
 		default:
 		{
