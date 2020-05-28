@@ -381,7 +381,6 @@ LRESULT CALLBACK AppBase::handleMessage(HWND hwnd, UINT umessage, WPARAM wparam,
 
 			m_fullscreen = !m_fullscreen;
 		}
-		//Keyboard::ProcessMessage(umessage, wparam, lparam);
 		break;
 
 		// Any other messages send to the default message handler as our application won't make use of them.
