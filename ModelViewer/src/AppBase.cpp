@@ -240,6 +240,20 @@ LRESULT CALLBACK AppBase::handleMessage(HWND hwnd, UINT umessage, WPARAM wparam,
 	switch (umessage)
 	{
 
+	case WM_ACTIVATEAPP:
+		//Keyboard::ProcessMessage(umessage, wparam, lparam);
+		//Mouse::ProcessMessage(umessage, wparam, lparam);
+
+		if (wparam)
+		{
+			onActivated();
+		}
+		else
+		{
+			onDeactivated();
+		}
+		break;
+
 	case WM_POWERBROADCAST:
 		switch (wparam)
 		{
@@ -492,6 +506,16 @@ void AppBase::shutdown()
 	// TODO ? Will probably need code to shutdown things here
 
 	// Do de-initializations here for the managers ans helper classes
+}
+
+void AppBase::onActivated()
+{
+	GetLogStream(SeverityDebug) << "AppBase::onActivated()" << std::endl;
+}
+
+void AppBase::onDeactivated()
+{
+	GetLogStream(SeverityDebug) << "AppBase::onDeactivated()" << std::endl;
 }
 
 void AppBase::onSuspending()

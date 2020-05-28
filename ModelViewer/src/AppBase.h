@@ -153,6 +153,17 @@ protected:
 	 */
 	virtual void handleCleanUp() = 0;
 
+
+	/**
+	 *
+	 */
+	virtual void onActivated();
+
+	/**
+	 *
+	 */
+	virtual void onDeactivated();
+
 	/**
 	 *
 	 */
