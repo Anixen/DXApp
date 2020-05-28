@@ -193,6 +193,8 @@ private:
 	int m_windowPosX, m_windowPosY;
 	static const LPCWSTR g_windowClassName;
 	bool m_sizemove = false;
+	bool m_suspended = false;
+	bool m_minimized = false;
 	bool m_fullscreen = false;
 
 	bool m_running;
