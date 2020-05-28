@@ -237,8 +237,22 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lparam)
 
 LRESULT CALLBACK AppBase::handleMessage(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lparam)
 {
+	PAINTSTRUCT ps;
+	HDC hdc;
+
 	switch (umessage)
 	{
+	case WM_PAINT:
+		if (m_sizemove)
+		{
+			tick();
+		}
+		else
+		{
+			hdc = BeginPaint(hwnd, &ps);
+			EndPaint(hwnd, &ps);
+		}
+		break;
 
 	case WM_ACTIVATEAPP:
 		//Keyboard::ProcessMessage(umessage, wparam, lparam);
