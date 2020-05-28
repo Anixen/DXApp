@@ -206,39 +206,33 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lparam)
 	{
 		// Check if the window is being destroyed.
 		case WM_DESTROY:
-		{
 			PostQuitMessage(0);
-			return 0;
-		}
+			break;
 
 		// Check if the window is being closed.
 		case WM_CLOSE:
-		{
 			PostQuitMessage(0);
-			return 0;
-		}
+			break;
 
 		case WM_GETMINMAXINFO:
-		{
-			auto info = reinterpret_cast<MINMAXINFO*>(lparam);
-			info->ptMinTrackSize.x = 320;
-			info->ptMinTrackSize.y = 200;
-		}
-		break;
+			{
+				auto info = reinterpret_cast<MINMAXINFO*>(lparam);
+				info->ptMinTrackSize.x = 320;
+				info->ptMinTrackSize.y = 200;
+			}
+			break;
 
 		case WM_MENUCHAR:
-		{
 			// A menu is active and the user presses a key that does not correspond
 			// to any mnemonic or accelerator key. Ignore so we don't produce an error beep.
 			return MAKELRESULT(0, MNC_CLOSE);
-		}
 
-		// All other messages pass to the message handler in the system class.
 		default:
-		{
-			return AppBase::getApp()->handleMessage(hwnd, umessage, wparam, lparam);
-		}
+			break;
 	}
+
+	// All other messages pass to the message handler in the system class.
+	return AppBase::getApp()->handleMessage(hwnd, umessage, wparam, lparam);
 }
 
 LRESULT CALLBACK AppBase::handleMessage(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lparam)
