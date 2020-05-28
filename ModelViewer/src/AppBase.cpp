@@ -385,11 +385,12 @@ LRESULT CALLBACK AppBase::handleMessage(HWND hwnd, UINT umessage, WPARAM wparam,
 
 		// Any other messages send to the default message handler as our application won't make use of them.
 		default:
-		{
 			// TODO ? send message to current application state
-			return DefWindowProc(hwnd, umessage, wparam, lparam);
-		}
+			// return DefWindowProc(hwnd, umessage, wparam, lparam); // move into app state message handler
+			break;
 	}
+
+	return DefWindowProc(hwnd, umessage, wparam, lparam);
 }
 
 void AppBase::initWindows()
