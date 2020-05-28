@@ -240,6 +240,26 @@ LRESULT CALLBACK AppBase::handleMessage(HWND hwnd, UINT umessage, WPARAM wparam,
 	switch (umessage)
 	{
 
+	case WM_POWERBROADCAST:
+		switch (wparam)
+		{
+		case PBT_APMQUERYSUSPEND:
+			if (!m_suspended)
+				onSuspending();
+			m_suspended = true;
+			return TRUE;
+
+		case PBT_APMRESUMESUSPEND:
+			if (!m_minimized)
+			{
+				if (m_suspended)
+					onResuming();
+				m_suspended = false;
+			}
+			return TRUE;
+		}
+		break;
+
 	case WM_SIZE:
 		if (wparam == SIZE_MINIMIZED)
 		{
