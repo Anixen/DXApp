@@ -240,6 +240,32 @@ LRESULT CALLBACK AppBase::handleMessage(HWND hwnd, UINT umessage, WPARAM wparam,
 	switch (umessage)
 	{
 
+	case WM_SIZE:
+		if (wparam == SIZE_MINIMIZED)
+		{
+			if (!m_minimized)
+			{
+				m_minimized = true;
+				if (!m_suspended)
+					onSuspending();
+				m_suspended = true;
+			}
+		}
+		else if (m_minimized)
+		{
+			m_minimized = false;
+			if (m_suspended)
+				onResuming();
+			m_suspended = false;
+		}
+		else if (!m_sizemove)
+		{
+			m_windowWidth = LOWORD(lparam);
+			m_windowHeight = HIWORD(lparam);
+			onWindowSizeChanged();
+		}
+		break;
+
 	case WM_ENTERSIZEMOVE:
 		m_sizemove = true;
 		break;
@@ -446,6 +472,22 @@ void AppBase::shutdown()
 	// TODO ? Will probably need code to shutdown things here
 
 	// Do de-initializations here for the managers ans helper classes
+}
+
+void AppBase::onSuspending()
+{
+	GetLogStream(SeverityDebug) << "AppBase::onSuspending()" << std::endl;
+}
+
+void AppBase::onResuming()
+{
+	GetLogStream(SeverityDebug) << "AppBase::onResuming()" << std::endl;
+	// TODO
+	//m_timer.ResetElapsedTime();
+
+	m_updateTimer.reset();
+	m_frameTimer.reset();
+	m_updateLag = 0.f;
 }
 
 void AppBase::onWindowSizeChanged()

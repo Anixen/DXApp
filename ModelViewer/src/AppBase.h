@@ -156,6 +156,16 @@ protected:
 	/**
 	 *
 	 */
+	virtual void onSuspending();
+
+	/**
+	 *
+	 */
+	virtual void onResuming();
+
+	/**
+	 *
+	 */
 	virtual void onWindowSizeChanged();
 
 private:
