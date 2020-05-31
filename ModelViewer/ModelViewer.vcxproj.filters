@@ -36,6 +36,9 @@
     <ClInclude Include="src\AppTest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\onullstream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\LoggerBase.cpp">

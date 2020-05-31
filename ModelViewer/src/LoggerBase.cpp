@@ -4,7 +4,7 @@
 #include <sstream>
 
 
-onullstream LoggerBase::g_nullStream;
+std::onullstream LoggerBase::g_nullStream;
 //boost::iostreams::stream< boost::iostreams::null_sink > LoggerBase::g_nullStream( ( boost::iostreams::null_sink() ) );
 LoggerBase* LoggerBase::g_instance = NULL;
 
