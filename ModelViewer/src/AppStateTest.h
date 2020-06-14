@@ -1,8 +1,13 @@
 /**
- * @file Test implementation for an application state.
+ * Test implementation for an application state.
  * An application state is responsible for holding relevant information, and providing methods needed for the main loop.
  *
+ * @class AppStateTest
+ *
+ *
+ * @file src/AppStateTest.h
  * @author Olivier Falconnet
+ * @date 20200522 - File creation
  */
 
 #pragma once

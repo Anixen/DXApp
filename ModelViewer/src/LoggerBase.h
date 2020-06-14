@@ -1,7 +1,12 @@
 /**
- * @file Base class for the logging system
+ * Base class for the logging system
  *
+ * @class LoggerBase
+ *
+ *
+ * @file src/LoggerBase.h
  * @author Olivier Falconnet
+ * @date 20200521 - File creation
  */
 
 #pragma once

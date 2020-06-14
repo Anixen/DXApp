@@ -1,7 +1,12 @@
 /**
- * @file High precision timer.
+ * High precision timer.
  *
+ * @class Timer
+ *
+ *
+ * @file src/Timer.h
  * @author Olivier Falconnet
+ * @date 20200521 - File creation
  */
 
 #pragma once

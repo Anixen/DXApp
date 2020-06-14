@@ -1,10 +1,13 @@
 /**
- * @file Provides the interface for an application state.
+ * Provides the interface for an application state.
  * An application state is responsible for holding relevant information, and providing methods needed for the main loop.
  *
+ * @class AppStateBase
  * AppStateBase is an implementation of the state pattern (Finished State Machine).
  *
+ * @file src/AppStateBase.h
  * @author Olivier Falconnet
+ * @date 20200522 - File creation
  */
 
 #pragma once

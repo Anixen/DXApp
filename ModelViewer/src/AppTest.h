@@ -1,8 +1,13 @@
 /**
- * @file Testing implementation application class.
+ * Testing implementation application class.
  * An application is responsible for running the main loop, and holding a variety of managers.
  *
+ * @class AppTest
+ *
+ *
+ * @file src/AppTest.h
  * @author Olivier Falconnet
+ * @date 20200522 - File creation
  */
 
 #pragma once

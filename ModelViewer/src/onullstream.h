@@ -4,7 +4,7 @@
  * The class is added to the std namespace for compatibility reasons.
  * This class is used by the LoggerBase class.
  *
- * @file include/GQE/Core/loggers/onullstream
+ * @file src/onullstream.h
  * @author Ryan Lindeman
  * @date 20110524 - Initial Release
  * @date 20120829 - Fix obscure gcc compiler bug when calling basic_ios::init

@@ -1,11 +1,15 @@
 /**
- * @file Provides the interface for an application class.
+ * Provides the interface for an application class.
  * An application is responsible for running the main loop, and holding a variety of managers.
  *
+ * @class AppBase
  * AppBase implements the Singleton pattern.
  * AppBase makes use of the state pattern with AppStateBase.
  *
+ * @file src/AppBase.h
  * @author Olivier Falconnet
+ * @date 20200522 - File creation
+ * @date 20200529 - Handled Window messages
  */
 
 #pragma once

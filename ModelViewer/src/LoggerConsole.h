@@ -1,7 +1,12 @@
 /**
- * @file Console implementation for the logging system
+ * Console implementation for the logging system
  *
+ * @class LoggerConsole
+ *
+ *
+ * @file src/LoggerConsole.h
  * @author Olivier Falconnet
+ * @date 20200521 - File creation
  */
 
 #pragma once
