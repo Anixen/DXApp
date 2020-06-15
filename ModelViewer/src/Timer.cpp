@@ -15,7 +15,7 @@ void Timer::init()
 	QueryPerformanceFrequency((LARGE_INTEGER*)& m_frequency);
 	if (m_frequency == 0)
 	{
-		LogMessage(SeverityFatal, "This system doesn t support high performance timers");
+		LogMessage(SeverityFatal, "Timer::init() : This system doesn t support high performance timers");
 		throw new std::exception("This system doesn t support high performance timers");
 	}
 
