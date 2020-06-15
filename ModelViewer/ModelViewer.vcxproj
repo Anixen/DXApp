@@ -158,6 +158,7 @@
     <ClInclude Include="src\LoggerBase.h" />
     <ClInclude Include="src\LoggerConsole.h" />
     <ClInclude Include="src\onullstream.h" />
+    <ClInclude Include="src\StepTimer.h" />
     <ClInclude Include="src\Timer.h" />
   </ItemGroup>
   <ItemGroup>

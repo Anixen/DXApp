@@ -39,6 +39,9 @@
     <ClInclude Include="src\onullstream.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\StepTimer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\LoggerBase.cpp">
