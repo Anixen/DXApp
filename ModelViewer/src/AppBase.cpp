@@ -6,8 +6,7 @@ const LPCWSTR AppBase::g_windowClassName = L"AppBaseWindowClass";
 
 AppBase::AppBase() :
 	m_running(false),
-	m_maxUpdates(200),
-	m_updateInterval(5),
+	m_updateInterval(5 * (StepTimer::TicksPerSecond / 1000)),
 	m_exitCode(0)
 {
 	LogMessage(SeverityInfo, "AppBase::ctor()")
@@ -103,9 +102,6 @@ int AppBase::run()
 	initWindows();
 	init();
 
-	m_updateTimer.init();
-	m_frameTimer.init();
-
 	// Make sure we have a current state
 	if (m_currentState == nullptr)
 	{
@@ -114,8 +110,9 @@ int AppBase::run()
 		throw new std::exception("The application doesnt have a current state");
 	}
 
-	m_updateTimer.reset();
-	m_frameTimer.reset();
+	m_stepTimer.SetFixedTimeStep(true);
+	m_stepTimer.SetTargetElapsedTicks(m_updateInterval);
+	m_stepTimer.ResetElapsedTime();
 
 	float updateLag = 0.f;
 
@@ -167,17 +164,6 @@ float AppBase::getUpdateInterval()
 void AppBase::setUpdateInterval(float p_updateInterval)
 {
 	m_updateInterval = p_updateInterval;
-}
-
-void AppBase::setMaxUpdates(unsigned int p_maxUpdates)
-{
-	GetLogStream(SeverityInfo)
-		<< "IApp::setMaxUpdates(" << p_maxUpdates << ")" << std::endl;
-
-	if (1 <= p_maxUpdates && p_maxUpdates <= 200)
-	{
-		m_maxUpdates = p_maxUpdates;
-	}
 }
 
 void AppBase::quit(int p_exitCode)
@@ -488,47 +474,21 @@ void AppBase::tick()
 		<< "AppBase::tick()" << std::endl;
 	//*/
 
-	AppStateBase* nextState = nullptr;
 
-	float elapsedUpdate = m_updateTimer.getElapsedTime();
-	m_updateTimer.reset();
-	/*
-	GetLogStream(SeverityInfo)
-		<< "AppBase::tick() : elapsedUpdate = " << elapsedUpdate << std::endl;
-	//*/
-
-	m_updateLag += elapsedUpdate;
-
-	unsigned int updates = 0;
-	while (m_updateLag >= m_updateInterval && updates < m_maxUpdates)
+	m_stepTimer.Tick([&]()
 	{
-		nextState = m_currentState->updateFixed();
+		double elapsedSeconds = m_stepTimer.GetElapsedSeconds();
+		AppStateBase* nextState = m_currentState->update(elapsedSeconds);
 		if (nullptr != nextState) {
 			setCurrentState(nextState);
 		}
-		updates++;
-		m_updateLag -= m_updateInterval;
 
 		/*
 		GetLogStream(SeverityInfo)
-			<< "AppBase::tick() : lag = " << lag << ", updates = " << updates
+			<< "AppBase::tick() : elapsedSeconds = " << elapsedSeconds
 			<< ", m_updateInterval = " << m_updateInterval << std::endl;
 		//*/
-
-	}
-
-	nextState = m_currentState->updateVariable(elapsedUpdate);
-	if (nullptr != nextState) {
-		setCurrentState(nextState);
-	}
-
-
-	float elapsedFrame = m_frameTimer.getElapsedTime();
-	m_frameTimer.reset();
-	/*
-	GetLogStream(SeverityInfo)
-		<< "AppBase::tick() : elapsedFrame = " << elapsedFrame << std::endl;
-	//*/
+	});
 
 	m_currentState->draw();
 }
@@ -562,12 +522,7 @@ void AppBase::onSuspending()
 void AppBase::onResuming()
 {
 	GetLogStream(SeverityDebug) << "AppBase::onResuming()" << std::endl;
-	// TODO
-	//m_timer.ResetElapsedTime();
-
-	m_updateTimer.reset();
-	m_frameTimer.reset();
-	m_updateLag = 0.f;
+	m_stepTimer.ResetElapsedTime();
 }
 
 void AppBase::onWindowSizeChanged()

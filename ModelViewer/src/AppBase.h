@@ -17,6 +17,7 @@
 #include <string>
 #include <filesystem>
 #include "AppStateBase.h"
+#include "StepTimer.h"
 
 // Forward declarations
 class AppStateBase;
@@ -96,13 +97,6 @@ public:
 	 * @param {float} p_updateInterval The new update interval in ms for the application
 	 */
 	void setUpdateInterval(float p_updateInterval);
-
-	/**
-	 * Sets the maximum consecutive updates for the application
-	 *
-	 * @param {float} p_maxUpdates The new maximum number of consecutive updates in Hz for the application
-	 */
-	void setMaxUpdates(unsigned int p_maxUpdates);
 
 
 	/**
@@ -204,12 +198,8 @@ private:
 	bool m_running;
 	AppStateBase* m_currentState;
 
-	float m_updateInterval;
-	unsigned int m_maxUpdates;
-
-	Timer m_updateTimer;
-	Timer m_frameTimer;
-	float m_updateLag;
+	StepTimer m_stepTimer;
+	uint64_t m_updateInterval;
 
 	int m_exitCode;
 

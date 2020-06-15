@@ -39,17 +39,11 @@ public:
 	virtual void reinit();
 
 	/**
+	 * @param {double} p_elapsedSeconds The duration in seconds since last update
 	 *
 	 * @return {AppStateBase*} A pointer to a new app state, or nullptr if no change required
 	 */
-	virtual AppStateBase* updateFixed();
-
-	/**
-	 * @param {float} p_elapsedTime The duration in ms since last update
-	 *
-	 * @return {AppStateBase*} A pointer to a new app state, or nullptr if no change required
-	 */
-	virtual AppStateBase* updateVariable(float p_elapsedTime);
+	virtual AppStateBase* update(double p_elapsedSeconds);
 
 	/**
 	 *

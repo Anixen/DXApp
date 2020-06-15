@@ -68,17 +68,11 @@ public:
 	bool isPaused() const;
 
 	/**
+	 * @param {double} p_elapsedTime The duration in seconds since last update
 	 *
 	 * @return {AppStateBase*} A pointer to a new app state, or nullptr if no change required
 	 */
-	virtual AppStateBase* updateFixed() = 0;
-
-	/**
-	 * @param {float} p_elapsedTime The duration in ms since last update
-	 *
-	 * @return {AppStateBase*} A pointer to a new app state, or nullptr if no change required
-	 */
-	virtual AppStateBase* updateVariable(float p_elapsedTime) = 0;
+	virtual AppStateBase* update(double p_elapsedSeconds) = 0;
 
 	/**
 	 *
