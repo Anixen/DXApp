@@ -14,11 +14,7 @@ namespace nxn {
 AppState::AppState(App* p_app) :
 	m_app(p_app),
 	m_initialized(false),
-	m_cleanup(false),
-	m_elapsedTime(0),
-	m_totalPausedTime(0),
-	m_elapsedClock(),
-	m_pausedClock()
+	m_cleanup(false)
 {
 	GetLogStream(SeverityInfo)
 		<< "AppStateBase::ctor()" << std::endl;
@@ -49,12 +45,6 @@ void AppState::init()
 	if (!m_initialized) {
 
 		m_paused = false;
-		m_elapsedTime = 0;
-		m_totalPausedTime = 0;
-
-		m_elapsedClock.reset();
-		m_pausedClock.reset();
-
 		m_initialized = true;
 	}
 }
@@ -72,13 +62,6 @@ void AppState::deinit()
 	if (m_initialized) {
 
 		m_cleanup = true;
-
-		m_elapsedTime += m_elapsedClock.getElapsedTime();
-
-		if (m_paused) {
-			m_totalPausedTime += m_pausedClock.getElapsedTime();
-		}
-
 		m_initialized = false;
 	}
 }
@@ -92,7 +75,6 @@ void AppState::pause()
 
 	if (!m_paused) {
 
-		m_pausedClock.reset();
 		m_paused = true;
 	}
 }
@@ -106,7 +88,6 @@ void AppState::resume()
 
 	if (m_paused) {
 
-		m_totalPausedTime += m_pausedClock.getElapsedTime();
 		m_paused = false;
 	}
 }
@@ -123,13 +104,6 @@ void AppState::cleanup()
 		handleCleanup();
 		m_cleanup = false;
 	}
-}
-
-//-----------------------------------------------------------------------------
-
-float AppState::getElapsedTime() const
-{
-	return (m_initialized) ? m_elapsedClock.getElapsedTime() : m_elapsedTime;
 }
 
 } // namespace nxn

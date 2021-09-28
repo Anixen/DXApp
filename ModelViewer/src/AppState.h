@@ -49,8 +49,6 @@ public:
 	virtual                 void        draw            () = 0;
 	                        void        cleanup         ();
 
-	                        float       getElapsedTime  () const;
-
 protected:
 	                                    AppState        (App* p_app);
 
@@ -65,12 +63,6 @@ private:
 	                        bool        m_initialized;
 	                        bool        m_paused;
 	                        bool        m_cleanup;
-
-	                        float       m_elapsedTime;
-	                        float       m_totalPausedTime;
-
-	                        Timer       m_elapsedClock;
-	                        Timer       m_pausedClock;
 
 }; // class AppState
 
