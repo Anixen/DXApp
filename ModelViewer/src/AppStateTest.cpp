@@ -45,11 +45,13 @@ void AppStateTest::reinit()
 
 //-----------------------------------------------------------------------------
 
-AppState* AppStateTest::update(double p_elapsedSeconds)
+AppState* AppStateTest::update(StepTimer const& timer)
 {
-	/*
+    double elapsedSeconds = timer.GetElapsedSeconds();
+
+    /*
 	GetLogStream(SeverityInfo)
-		<< "AppStateTest::update(" << p_elapsedSeconds << ")" << std::endl;
+		<< "AppStateTest::update(" << elapsedSeconds << ")" << std::endl;
 	//*/
 
 	return nullptr;

@@ -15,6 +15,7 @@
 
 #include <string>
 #include "Timer.h"
+#include "StepTimer.h"
 #include "App.h"
 
 
@@ -39,11 +40,11 @@ public:
 	        inline  const   bool        isPaused        () const    { return m_paused; }
 
 	/**
-	 * @param {double}  p_elapsedTime   The duration in seconds since last update
+     * @param {StepTimer const&}   p_timer  The StepTimer that keeping track elapsed duration since last update
 	 *
 	 * @return {AppState*} A pointer to a new app state, or nullptr if no change required
 	 */
-	virtual                 AppState*   update          (double p_elapsedSeconds) = 0;
+	virtual                 AppState*   update          (StepTimer const& timer) = 0;
 
 	virtual                 void        draw            () = 0;
 	                        void        cleanup         ();

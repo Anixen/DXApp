@@ -500,11 +500,9 @@ void App::tick()
 		<< "App::tick()" << std::endl;
 	//*/
 
-
 	m_stepTimer.Tick([&]()
 	{
-		double elapsedSeconds = m_stepTimer.GetElapsedSeconds();
-		AppState* nextState = m_currentState->update(elapsedSeconds);
+		AppState* nextState = m_currentState->update(m_stepTimer);
 		if (nullptr != nextState) {
 			setCurrentState(nextState);
 		}

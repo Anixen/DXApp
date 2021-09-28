@@ -29,11 +29,11 @@ public:
 	virtual void        reinit          ();  // Called to reset the state. Re-Initializes a state without reallocating everything inside.
 
     /**
-     * @param {double}  p_elapsedTime   The duration in seconds since last update
+     * @param {StepTimer const&}   p_timer  The StepTimer that keeping track elapsed duration since last update
      *
      * @return {AppState*} A pointer to a new app state, or nullptr if no change required
      */
-	virtual AppState*   update          (double p_elapsedSeconds);
+	virtual AppState*   update          (StepTimer const& timer);
 
 	virtual void        draw            ();
 	virtual void        handleCleanup   ();
