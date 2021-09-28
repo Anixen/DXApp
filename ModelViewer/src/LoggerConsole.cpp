@@ -3,6 +3,9 @@
 #include <iostream>
 
 
+namespace nxn {
+
+
 enum ConsoleTextColor {
 	Default = 39,
 	black = 30,
@@ -139,3 +142,5 @@ void LoggerConsole::logMessage( const std::string &p_message,
 		std::cout << p_message << std::endl;
 	}
 }
+
+} // namespace nxn

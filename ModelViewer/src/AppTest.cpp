@@ -4,6 +4,9 @@
 #include "LoggerBase.h"
 
 
+namespace nxn {
+
+
 //-----------------------------------------------------------------------------
 
 AppTest::AppTest()
@@ -37,3 +40,5 @@ void AppTest::handleCleanUp()
 	GetLogStream(SeverityInfo)
 		<< "TestApp::cleanup()" << std::endl;
 }
+
+} // namespace nxn

@@ -17,6 +17,9 @@
 //#include <boost/iostreams/stream.hpp>
 
 
+namespace nxn {
+
+
 enum SeverityLevel
 {
 	// Logger severity levels range from 0 to 4
@@ -88,11 +91,13 @@ private:
 
 }; // class LoggerBase
 
+} // namespace nxn
+
 
 #include <filesystem>
 
-#define LogMessage(level, msg)      LoggerBase::getLogger()->logMessage (msg,   level, std::filesystem::path(__FILE__).filename().string(), __LINE__);
-#define GetLogStream(level)	        LoggerBase::getLogger()->getStream  (       level, std::filesystem::path(__FILE__).filename().string(), __LINE__)
+#define LogMessage(level, msg)      nxn::LoggerBase::getLogger()->logMessage    (msg,   level, std::filesystem::path(__FILE__).filename().string(), __LINE__);
+#define GetLogStream(level)	        nxn::LoggerBase::getLogger()->getStream     (       level, std::filesystem::path(__FILE__).filename().string(), __LINE__)
 
 //#define LogMessage(level, msg)
-//#define GetLogStream(level)       LoggerBase::g_nullStream
+//#define GetLogStream(level)       nxn::LoggerBase::g_nullStream

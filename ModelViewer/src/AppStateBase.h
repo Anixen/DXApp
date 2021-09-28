@@ -18,6 +18,9 @@
 #include "AppBase.h"
 
 
+namespace nxn {
+
+
 // Forward declarations
 class AppBase;
 
@@ -70,3 +73,5 @@ private:
 	                        Timer           m_pausedClock;
 
 }; // class AppStateBase
+
+} // namespace nxn

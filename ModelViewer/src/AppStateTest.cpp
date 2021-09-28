@@ -4,6 +4,9 @@
 #include "AppBase.h"
 
 
+namespace nxn {
+
+
 //-----------------------------------------------------------------------------
 /**
  * @param {AppBase*}    p_app  The address of the app to which belongs this state
@@ -66,3 +69,5 @@ void AppStateTest::handleCleanup()
 	GetLogStream(SeverityInfo)
 		<< "AppStateTest::handleCleanup()" << std::endl;
 }
+
+} // namespace nxn

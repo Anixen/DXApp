@@ -15,6 +15,9 @@
 #include "LoggerBase.h"
 
 
+namespace nxn {
+
+
 class LoggerConsole : public LoggerBase {
 
 public:
@@ -35,3 +38,6 @@ private:
 	                        LoggerConsole&  operator=       (const LoggerConsole&); // Intentionally undefined. Is private because we do not allow copying items of this class.
 
 }; // class LoggerConsole
+
+} // namespace nxn
+

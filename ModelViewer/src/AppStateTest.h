@@ -16,6 +16,9 @@
 #include "AppStateBase.h"
 
 
+namespace nxn {
+
+
 class AppStateTest : public AppStateBase {
 
 public:
@@ -36,3 +39,5 @@ public:
 	virtual void            handleCleanup   ();
 
 }; // class AppStateTest
+
+} // namespace nxn

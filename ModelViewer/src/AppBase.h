@@ -21,6 +21,9 @@
 #include "StepTimer.h"
 
 
+namespace nxn {
+
+
 // Forward declarations
 class AppStateBase;
 
@@ -101,3 +104,5 @@ private:
 	                        int                     m_exitCode;
 
 }; // class AppBase
+
+} // namespace nxn

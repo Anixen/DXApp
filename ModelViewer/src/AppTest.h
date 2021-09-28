@@ -16,6 +16,9 @@
 #include "AppBase.h"
 
 
+namespace nxn {
+
+
 class AppTest : public AppBase {
 
 public:
@@ -27,3 +30,5 @@ protected:
 	virtual void    handleCleanUp   (); // Performs custom steps (e.g. freeing memory) after exiting the main loop
 
 }; // class AppTest
+
+} // namespace nxn

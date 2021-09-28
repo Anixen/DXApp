@@ -4,6 +4,9 @@
 #include <sstream>
 
 
+namespace nxn {
+
+
 std::onullstream LoggerBase::g_nullStream;
 //boost::iostreams::stream< boost::iostreams::null_sink > LoggerBase::g_nullStream( ( boost::iostreams::null_sink() ) );
 LoggerBase* LoggerBase::g_defaultInstance = NULL;
@@ -139,3 +142,5 @@ void LoggerBase::writeTag(  std::ostream &p_ostream,
 	// Output the timestamp and File:Line tag into the ostream
 	p_ostream << timestamp.str() << " " << severityLevel << " " << tag.str() << " ";
 }
+
+} // namespace nxn

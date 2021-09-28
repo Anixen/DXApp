@@ -13,6 +13,8 @@
 #include "AppTest.h"
 
 
+using namespace nxn;
+
 //int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine, int nCmdShow)
 int main(int argc, char** argv)
 {

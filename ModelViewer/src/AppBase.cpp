@@ -2,6 +2,9 @@
 #include "LoggerBase.h"
 
 
+namespace nxn {
+
+
 AppBase* AppBase::g_instance = NULL;
 const LPCWSTR AppBase::g_windowClassName = L"AppBaseWindowClass";
 
@@ -571,3 +574,5 @@ void AppBase::onWindowSizeChanged()
 	CreateWindowSizeDependentResources();
 	//*/
 }
+
+} // namespace nxn

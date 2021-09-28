@@ -15,6 +15,9 @@
 #include <windows.h>
 
 
+namespace nxn {
+
+
 class Timer {
 
 public:
@@ -36,3 +39,5 @@ private:
 	INT64   m_startTime;
 
 }; // class Timer
+
+} // namespace nxn

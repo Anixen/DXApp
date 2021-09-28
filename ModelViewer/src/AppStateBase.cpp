@@ -4,6 +4,9 @@
 #include "AppBase.h"
 
 
+namespace nxn {
+
+
 //-----------------------------------------------------------------------------
 /**
  * @param {AppBase*}    p_app  The address of the app to which belongs this state
@@ -128,3 +131,5 @@ float AppStateBase::getElapsedTime() const
 {
 	return (m_initialized) ? m_elapsedClock.getElapsedTime() : m_elapsedTime;
 }
+
+} // namespace nxn

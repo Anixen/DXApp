@@ -37,13 +37,13 @@ public:
 	{
 		if (!QueryPerformanceFrequency(&m_qpcFrequency))
 		{
-			LogMessage(SeverityFatal, "StepTimer::ctor() : QueryPerformanceFrequency");
+			LogMessage(nxn::SeverityFatal, "StepTimer::ctor() : QueryPerformanceFrequency");
 			throw std::exception("QueryPerformanceFrequency");
 		}
 
 		if (!QueryPerformanceCounter(&m_qpcLastTime))
 		{
-			LogMessage(SeverityFatal, "StepTimer::ctor() : QueryPerformanceCounter");
+			LogMessage(nxn::SeverityFatal, "StepTimer::ctor() : QueryPerformanceCounter");
 			throw std::exception("QueryPerformanceCounter");
 		}
 
@@ -86,7 +86,7 @@ public:
 	{
 		if (!QueryPerformanceCounter(&m_qpcLastTime))
 		{
-			LogMessage(SeverityFatal, "StepTimer::ResetElapsedTime() : QueryPerformanceCounter");
+			LogMessage(nxn::SeverityFatal, "StepTimer::ResetElapsedTime() : QueryPerformanceCounter");
 			throw std::exception("QueryPerformanceCounter");
 		}
 
@@ -105,7 +105,7 @@ public:
 
 		if (!QueryPerformanceCounter(&currentTime))
 		{
-			LogMessage(SeverityFatal, "StepTimer::Tick() : QueryPerformanceCounter");
+			LogMessage(nxn::SeverityFatal, "StepTimer::Tick() : QueryPerformanceCounter");
 			throw std::exception("QueryPerformanceCounter");
 		}
 

@@ -2,6 +2,9 @@
 #include "LoggerBase.h"
 
 
+namespace nxn {
+
+
 //-----------------------------------------------------------------------------
 
 Timer::Timer()
@@ -56,3 +59,5 @@ float Timer::getElapsedTime() const
 
 	return elapsedTime;
 }
+
+} // namespace nxn
