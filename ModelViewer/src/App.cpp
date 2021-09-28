@@ -10,10 +10,7 @@ const LPCWSTR App::g_windowClassName = L"AppBaseWindowClass";
 
 //-----------------------------------------------------------------------------
 
-App::App() :
-	m_running(false),
-	m_updateInterval(5 * (StepTimer::TicksPerSecond / 1000)),
-	m_exitCode(0)
+App::App()
 {
 	LogMessage(SeverityInfo, "AppBase::ctor()")
 

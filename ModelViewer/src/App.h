@@ -95,13 +95,13 @@ private:
 	                        bool                    m_minimized     = false;
 	                        bool                    m_fullscreen    = false;
 
-	                        bool                    m_running;
-	                        AppState*               m_currentState;
+	                        bool                    m_running           = false;
+	                        AppState*               m_currentState      = NULL;
 
 	                        StepTimer               m_stepTimer;
-	                        uint64_t                m_updateInterval;
+	                        float                   m_updateInterval    = 0.005f;
 
-	                        int                     m_exitCode;
+	                        int                     m_exitCode          = 0;
 
 }; // class App
 
