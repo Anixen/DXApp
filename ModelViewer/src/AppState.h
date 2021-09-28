@@ -27,50 +27,49 @@ class App;
 class AppState {
 
 public:
-	                                        ~AppState();
+	                                    ~AppState();
 
+	virtual                 void        init            ();
+	virtual                 void        reinit          () = 0; // Called to reset the state. Re-Initializes a state without reallocating everything inside.
+	                        void        deinit          ();
+	        inline  const   bool        isInitialized   () const    { return m_initialized; }
 
-	virtual                 void            init            ();
-	virtual                 void            reinit          () = 0; // Called to reset the state. Re-Initializes a state without reallocating everything inside.
-	                        void            deinit          ();
-	        inline  const   bool            isInitialized   () const    { return m_initialized; }
-
-	                        void            pause           ();
-	                        void            resume          ();
-	        inline  const   bool            isPaused        () const    { return m_paused; }
+	                        void        pause           ();
+	                        void        resume          ();
+	        inline  const   bool        isPaused        () const    { return m_paused; }
 
 	/**
 	 * @param {double}  p_elapsedTime   The duration in seconds since last update
 	 *
 	 * @return {AppState*} A pointer to a new app state, or nullptr if no change required
 	 */
-	virtual                 AppState*       update          (double p_elapsedSeconds) = 0;
+	virtual                 AppState*   update          (double p_elapsedSeconds) = 0;
 
-	virtual                 void            draw            () = 0;
-	                        void            cleanup         ();
+	virtual                 void        draw            () = 0;
+	                        void        cleanup         ();
 
-	                        float           getElapsedTime  () const;
+	                        float       getElapsedTime  () const;
 
 protected:
-	                                        AppState        (App* p_app);
+	                                    AppState        (App* p_app);
 
-    virtual                 void            handleCleanup   () = 0;
+    virtual                 void        handleCleanup   () = 0;
 	
-	                        App*            m_app;  // Pointer to the app the state belongs to
+	                        App*        m_app;  // Pointer to the app the state belongs to
 
 private:
-                                            AppState        (const AppState&);  // Intentionally undefined. Is private because we do not allow copies of a Singleton.
-                            AppState&       operator=       (const AppState&);  // Intentionally undefined. Is private because we do not allow copies of a Singleton.
+                                        AppState        (const AppState&);  // Intentionally undefined. Is private because we do not allow copies of a Singleton.
+                            AppState&   operator=       (const AppState&);  // Intentionally undefined. Is private because we do not allow copies of a Singleton.
 
-	                        bool            m_initialized;
-	                        bool            m_paused;
-	                        bool            m_cleanup;
+	                        bool        m_initialized;
+	                        bool        m_paused;
+	                        bool        m_cleanup;
 
-	                        float           m_elapsedTime;
-	                        float           m_totalPausedTime;
+	                        float       m_elapsedTime;
+	                        float       m_totalPausedTime;
 
-	                        Timer           m_elapsedClock;
-	                        Timer           m_pausedClock;
+	                        Timer       m_elapsedClock;
+	                        Timer       m_pausedClock;
 
 }; // class AppState
 
