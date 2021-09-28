@@ -35,6 +35,14 @@ App::~App()
 
 //-----------------------------------------------------------------------------
 
+void App::setUpdateInterval(float p_updateInterval)
+{
+    m_updateInterval = p_updateInterval;
+    m_stepTimer.SetTargetElapsedTicks((uint64_t)(m_updateInterval * StepTimer::TicksPerSecond));
+}
+
+//-----------------------------------------------------------------------------
+
 void App::getDefaultWindowSize(int& width, int& height) const
 {
 	width  = 800;

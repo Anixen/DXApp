@@ -40,7 +40,7 @@ public:
 
 			inline	const	bool					isRunning           () const                    { return m_running; }
 			inline	const	float					getUpdateInterval   () const                    { return m_updateInterval; }
-			inline			void					setUpdateInterval   (float p_updateInterval)    { m_updateInterval = p_updateInterval; }
+			                void					setUpdateInterval   (float p_updateInterval);
 
 	virtual                 void					getDefaultWindowSize(int& width, int& height) const;
 
