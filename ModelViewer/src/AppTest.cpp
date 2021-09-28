@@ -1,7 +1,7 @@
 #include "AppTest.h"
 #include "AppStateTest.h"
 
-#include "LoggerBase.h"
+#include "Logger.h"
 
 
 namespace nxn {

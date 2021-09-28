@@ -1,7 +1,7 @@
-#include "AppStateBase.h"
+#include "AppState.h"
 
-#include "LoggerBase.h"
-#include "AppBase.h"
+#include "Logger.h"
+#include "App.h"
 
 
 namespace nxn {
@@ -9,9 +9,9 @@ namespace nxn {
 
 //-----------------------------------------------------------------------------
 /**
- * @param {AppBase*}    p_app  The address of the app to which belongs this state
+ * @param {App*}    p_app  The address of the app to which belongs this state
  */
-AppStateBase::AppStateBase(AppBase* p_app) :
+AppState::AppState(App* p_app) :
 	m_app(p_app),
 	m_initialized(false),
 	m_cleanup(false),
@@ -26,7 +26,7 @@ AppStateBase::AppStateBase(AppBase* p_app) :
 
 //-----------------------------------------------------------------------------
 
-AppStateBase::~AppStateBase()
+AppState::~AppState()
 {
 	GetLogStream(SeverityInfo)
 		<< "AppStateBase::dtor()" << std::endl;
@@ -36,7 +36,7 @@ AppStateBase::~AppStateBase()
 /**
  * Initializes the state and make it do some clean-up if needed
  */
-void AppStateBase::init()
+void AppState::init()
 {
 	GetLogStream(SeverityInfo)
 		<< "AppStateBase::init()" << std::endl;
@@ -64,7 +64,7 @@ void AppStateBase::init()
  * Un-Initializes a state and marks it for clean-up
  * This function should be called whenever a state becomes inactive.
  */
-void AppStateBase::deinit()
+void AppState::deinit()
 {
 	GetLogStream(SeverityInfo)
 		<< "AppStateBase::deinit()" << std::endl;
@@ -85,7 +85,7 @@ void AppStateBase::deinit()
 
 //-----------------------------------------------------------------------------
 
-void AppStateBase::pause()
+void AppState::pause()
 {
 	GetLogStream(SeverityInfo)
 		<< "AppStateBase::pause()" << std::endl;
@@ -99,7 +99,7 @@ void AppStateBase::pause()
 
 //-----------------------------------------------------------------------------
 
-void AppStateBase::resume()
+void AppState::resume()
 {
 	GetLogStream(SeverityInfo)
 		<< "AppStateBase::resume()" << std::endl;
@@ -113,7 +113,7 @@ void AppStateBase::resume()
 
 //-----------------------------------------------------------------------------
 
-void AppStateBase::cleanup()
+void AppState::cleanup()
 {
 	GetLogStream(SeverityInfo)
 		<< "AppStateBase::cleanup()" << std::endl;
@@ -127,7 +127,7 @@ void AppStateBase::cleanup()
 
 //-----------------------------------------------------------------------------
 
-float AppStateBase::getElapsedTime() const
+float AppState::getElapsedTime() const
 {
 	return (m_initialized) ? m_elapsedClock.getElapsedTime() : m_elapsedTime;
 }

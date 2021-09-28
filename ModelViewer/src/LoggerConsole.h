@@ -12,13 +12,13 @@
 
 #pragma once
 
-#include "LoggerBase.h"
+#include "Logger.h"
 
 
 namespace nxn {
 
 
-class LoggerConsole : public LoggerBase {
+class LoggerConsole : public Logger {
 
 public:
 	                                        LoggerConsole   (bool p_makeDefault, SeverityLevel p_logLevel = SeverityInfo);

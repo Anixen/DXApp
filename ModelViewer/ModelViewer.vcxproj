@@ -151,22 +151,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\AppBase.h" />
-    <ClInclude Include="src\AppStateBase.h" />
+    <ClInclude Include="src\App.h" />
+    <ClInclude Include="src\AppState.h" />
     <ClInclude Include="src\AppStateTest.h" />
     <ClInclude Include="src\AppTest.h" />
-    <ClInclude Include="src\LoggerBase.h" />
+    <ClInclude Include="src\Logger.h" />
     <ClInclude Include="src\LoggerConsole.h" />
     <ClInclude Include="src\onullstream.h" />
     <ClInclude Include="src\StepTimer.h" />
     <ClInclude Include="src\Timer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\AppBase.cpp" />
-    <ClCompile Include="src\AppStateBase.cpp" />
+    <ClCompile Include="src\App.cpp" />
+    <ClCompile Include="src\AppState.cpp" />
     <ClCompile Include="src\AppStateTest.cpp" />
     <ClCompile Include="src\AppTest.cpp" />
-    <ClCompile Include="src\LoggerBase.cpp" />
+    <ClCompile Include="src\Logger.cpp" />
     <ClCompile Include="src\LoggerConsole.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Timer.cpp" />

@@ -66,7 +66,7 @@ void resetSeverityColor()
  * @param {SeverityLevel} p_logLevel The log level for the logger
  */
 LoggerConsole::LoggerConsole(bool p_makeDefault, SeverityLevel p_logLevel) :
-	LoggerBase(p_makeDefault, p_logLevel)
+	Logger(p_makeDefault, p_logLevel)
 {
 	LogMessage(SeverityInfo, "ConsoleLogger::ctor()")
 }

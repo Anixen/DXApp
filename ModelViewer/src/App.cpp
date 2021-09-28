@@ -1,16 +1,16 @@
-#include "AppBase.h"
-#include "LoggerBase.h"
+#include "App.h"
+#include "Logger.h"
 
 
 namespace nxn {
 
 
-AppBase* AppBase::g_instance = NULL;
-const LPCWSTR AppBase::g_windowClassName = L"AppBaseWindowClass";
+App* App::g_instance = NULL;
+const LPCWSTR App::g_windowClassName = L"AppBaseWindowClass";
 
 //-----------------------------------------------------------------------------
 
-AppBase::AppBase() :
+App::App() :
 	m_running(false),
 	m_updateInterval(5 * (StepTimer::TicksPerSecond / 1000)),
 	m_exitCode(0)
@@ -22,7 +22,7 @@ AppBase::AppBase() :
 
 //-----------------------------------------------------------------------------
 
-AppBase::~AppBase()
+App::~App()
 {
 	LogMessage(SeverityInfo, "AppBase::dtor()")
 
@@ -35,7 +35,7 @@ AppBase::~AppBase()
 
 //-----------------------------------------------------------------------------
 
-void AppBase::getDefaultWindowSize(int& width, int& height) const
+void App::getDefaultWindowSize(int& width, int& height) const
 {
 	width  = 800;
 	height = 600;
@@ -48,7 +48,7 @@ void AppBase::getDefaultWindowSize(int& width, int& height) const
  * @param {int}			p_argc	The number of arguments
  * @param {char**}		p_argv	The actual arguments
  */
-void AppBase::processArguments(int p_argc, char **p_argv)
+void App::processArguments(int p_argc, char **p_argv)
 {
 	m_path = std::filesystem::path{ p_argv[0] };
 	m_name = m_path.stem().string();
@@ -83,7 +83,7 @@ void AppBase::processArguments(int p_argc, char **p_argv)
  * @param {PWSTR}		p_pCmdline		The command line as a unicode string
  * @param {int}			p_iCmdshow		A flag to indicate if the application window should be minimized, maximized or shown normally
  */
-void AppBase::processArguments(HINSTANCE p_hInstance, HINSTANCE p_hPrevInstance, PWSTR p_pCmdline, int p_iCmdshow)
+void App::processArguments(HINSTANCE p_hInstance, HINSTANCE p_hPrevInstance, PWSTR p_pCmdline, int p_iCmdshow)
 {
 	TCHAR exepath[MAX_PATH];
 	GetModuleFileNameW(0, exepath, MAX_PATH);
@@ -107,7 +107,7 @@ void AppBase::processArguments(HINSTANCE p_hInstance, HINSTANCE p_hPrevInstance,
  * This functions relies on the loop, init and shutdown methods,
  * which are defined by derived classes
  */
-int AppBase::run()
+int App::run()
 {
 	GetLogStream(SeverityInfo) << "AppBase::run()" << std::endl;
 
@@ -173,7 +173,7 @@ int AppBase::run()
 /**
  *
  */
-void AppBase::quit(int p_exitCode)
+void App::quit(int p_exitCode)
 {
 	GetLogStream(SeverityInfo)
 		<< "AppBase::quit(" << p_exitCode << ")" << std::endl;
@@ -237,12 +237,12 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lparam)
 	}
 
 	// All other messages pass to the message handler in the system class.
-	return AppBase::getApp()->handleMessage(hwnd, umessage, wparam, lparam);
+	return App::getApp()->handleMessage(hwnd, umessage, wparam, lparam);
 }
 
 //-----------------------------------------------------------------------------
 
-LRESULT CALLBACK AppBase::handleMessage(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lparam)
+LRESULT CALLBACK App::handleMessage(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lparam)
 {
 	PAINTSTRUCT ps;
 	HDC hdc;
@@ -392,7 +392,7 @@ std::wstring s2ws(const std::string& s)
     return r;
 }
 
-void AppBase::initWindows()
+void App::initWindows()
 {
 	// Setup the windows class with default settings
 	WNDCLASSEXW wcex;
@@ -443,7 +443,7 @@ void AppBase::initWindows()
 
 //-----------------------------------------------------------------------------
 
-void AppBase::shutdownWindows()
+void App::shutdownWindows()
 {
 	// Show the mouse cursor.
 	ShowCursor(true);
@@ -471,9 +471,9 @@ void AppBase::shutdownWindows()
 /**
  * Sets the current app state
  *
- * @param {AppStateBase} p_state The new state for the application
+ * @param {AppState} p_state The new state for the application
  */
-void AppBase::setCurrentState(AppStateBase* p_state)
+void App::setCurrentState(AppState* p_state)
 {
 	GetLogStream(SeverityInfo)
 		<< "StateManager::setCurrentState()" << std::endl;
@@ -493,25 +493,25 @@ void AppBase::setCurrentState(AppStateBase* p_state)
  * Advances the application one tick forward,
  * which involves updating its components, and rendering a frame
  */
-void AppBase::tick()
+void App::tick()
 {
 	/*
 	GetLogStream(SeverityInfo)
-		<< "AppBase::tick()" << std::endl;
+		<< "App::tick()" << std::endl;
 	//*/
 
 
 	m_stepTimer.Tick([&]()
 	{
 		double elapsedSeconds = m_stepTimer.GetElapsedSeconds();
-		AppStateBase* nextState = m_currentState->update(elapsedSeconds);
+		AppState* nextState = m_currentState->update(elapsedSeconds);
 		if (nullptr != nextState) {
 			setCurrentState(nextState);
 		}
 
 		/*
 		GetLogStream(SeverityInfo)
-			<< "AppBase::tick() : elapsedSeconds = " << elapsedSeconds
+			<< "App::tick() : elapsedSeconds = " << elapsedSeconds
 			<< ", m_updateInterval = " << m_updateInterval << std::endl;
 		//*/
 	});
@@ -523,7 +523,7 @@ void AppBase::tick()
 /**
  *
  */
-void AppBase::shutdown()
+void App::shutdown()
 {
 	GetLogStream(SeverityInfo) << "AppBase::shutdown()" << std::endl;
 
@@ -536,28 +536,28 @@ void AppBase::shutdown()
 
 //-----------------------------------------------------------------------------
 
-void AppBase::onActivated()
+void App::onActivated()
 {
 	GetLogStream(SeverityDebug) << "AppBase::onActivated()" << std::endl;
 }
 
 //-----------------------------------------------------------------------------
 
-void AppBase::onDeactivated()
+void App::onDeactivated()
 {
 	GetLogStream(SeverityDebug) << "AppBase::onDeactivated()" << std::endl;
 }
 
 //-----------------------------------------------------------------------------
 
-void AppBase::onSuspending()
+void App::onSuspending()
 {
 	GetLogStream(SeverityDebug) << "AppBase::onSuspending()" << std::endl;
 }
 
 //-----------------------------------------------------------------------------
 
-void AppBase::onResuming()
+void App::onResuming()
 {
 	GetLogStream(SeverityDebug) << "AppBase::onResuming()" << std::endl;
 	m_stepTimer.ResetElapsedTime();
@@ -565,7 +565,7 @@ void AppBase::onResuming()
 
 //-----------------------------------------------------------------------------
 
-void AppBase::onWindowSizeChanged()
+void App::onWindowSizeChanged()
 {
 	/*
 	if (!m_deviceResources->WindowSizeChanged(width, height))

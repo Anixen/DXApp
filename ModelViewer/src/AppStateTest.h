@@ -13,30 +13,30 @@
 
 #pragma once
 
-#include "AppStateBase.h"
+#include "AppState.h"
 
 
 namespace nxn {
 
 
-class AppStateTest : public AppStateBase {
+class AppStateTest : public AppState {
 
 public:
-	                        AppStateTest    (AppBase* p_app);
-	                        ~AppStateTest   ();
+	                    AppStateTest    (App* p_app);
+	                    ~AppStateTest   ();
 
-	virtual void            init            ();
-	virtual void            reinit          ();  // Called to reset the state. Re-Initializes a state without reallocating everything inside.
+	virtual void        init            ();
+	virtual void        reinit          ();  // Called to reset the state. Re-Initializes a state without reallocating everything inside.
 
     /**
      * @param {double}  p_elapsedTime   The duration in seconds since last update
      *
-     * @return {AppStateBase*} A pointer to a new app state, or nullptr if no change required
+     * @return {AppState*} A pointer to a new app state, or nullptr if no change required
      */
-	virtual AppStateBase*   update          (double p_elapsedSeconds);
+	virtual AppState*   update          (double p_elapsedSeconds);
 
-	virtual void            draw            ();
-	virtual void            handleCleanup   ();
+	virtual void        draw            ();
+	virtual void        handleCleanup   ();
 
 }; // class AppStateTest
 

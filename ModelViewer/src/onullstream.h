@@ -2,7 +2,7 @@
  * Provides the basic_nullbuf and basic_onullstream needed
  * to create an ostream that will output to nothing.
  * The class is added to the std namespace for compatibility reasons.
- * This class is used by the LoggerBase class.
+ * This class is used by the Logger class.
  *
  * @file src/onullstream.h
  * @author Ryan Lindeman

@@ -1,7 +1,7 @@
 #include "AppStateTest.h"
 
-#include "LoggerBase.h"
-#include "AppBase.h"
+#include "Logger.h"
+#include "App.h"
 
 
 namespace nxn {
@@ -9,10 +9,10 @@ namespace nxn {
 
 //-----------------------------------------------------------------------------
 /**
- * @param {AppBase*}    p_app  The address of the app to which belongs this state
+ * @param {App*}    p_app  The address of the app to which belongs this state
  */
-AppStateTest::AppStateTest(AppBase *p_app) :
-	AppStateBase(p_app)
+AppStateTest::AppStateTest(App *p_app) :
+	AppState(p_app)
 {
 	GetLogStream(SeverityInfo)
 		<< "AppStateTest::ctor()" << std::endl;
@@ -32,7 +32,7 @@ void AppStateTest::init() {
 	GetLogStream(SeverityInfo)
 		<< "AppStateTest::init()" << std::endl;
 
-	AppStateBase::init();
+	AppState::init();
 }
 
 //-----------------------------------------------------------------------------
@@ -45,7 +45,7 @@ void AppStateTest::reinit()
 
 //-----------------------------------------------------------------------------
 
-AppStateBase* AppStateTest::update(double p_elapsedSeconds)
+AppState* AppStateTest::update(double p_elapsedSeconds)
 {
 	/*
 	GetLogStream(SeverityInfo)

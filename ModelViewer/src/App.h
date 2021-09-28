@@ -2,11 +2,11 @@
  * Provides the interface for an application class.
  * An application is responsible for running the main loop, and holding a variety of managers.
  *
- * @class AppBase
- * AppBase implements the Singleton pattern.
- * AppBase makes use of the state pattern with AppStateBase.
+ * @class App
+ * App implements the Singleton pattern.
+ * App makes use of the state pattern with AppState.
  *
- * @file src/AppBase.h
+ * @file src/App.h
  * @author Olivier Falconnet
  * @date 20200522 - File creation
  * @date 20200529 - Handled Window messages
@@ -17,7 +17,7 @@
 
 #include <string>
 #include <filesystem>
-#include "AppStateBase.h"
+#include "AppState.h"
 #include "StepTimer.h"
 
 
@@ -25,16 +25,16 @@ namespace nxn {
 
 
 // Forward declarations
-class AppStateBase;
+class AppState;
 
-class AppBase {
+class App {
 
 	friend LRESULT CALLBACK WndProc(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lparam);
 
 public:
-	virtual											~AppBase            ();
+	virtual											~App                ();
 
-	static	inline		    AppBase*				getApp				()			                { return g_instance; }
+	static	inline		    App*				    getApp				()			                { return g_instance; }
 			inline	const	std::string				getName				() const	                { return m_name; }
 			inline	const	std::filesystem::path	getPath				() const	                { return m_path; }
 
@@ -51,7 +51,7 @@ public:
 							void					quit				(int p_exitCode);
 
 protected:
-	                                                AppBase             (); // Ctor is protected because we only allow derived classes to instantiate this interface
+	                                                App                 (); // Ctor is protected because we only allow derived classes to instantiate this interface
 
 
 	virtual                 LRESULT CALLBACK        handleMessage       (HWND hwnd, UINT umsg, WPARAM wparam, LPARAM lparam);
@@ -60,7 +60,7 @@ protected:
 	                        void                    initWindows         ();
 	                        void                    shutdownWindows     ();
 
-	                        void                    setCurrentState     (AppStateBase* p_state);
+	                        void                    setCurrentState     (AppState* p_state);
 	virtual                 void                    tick                ();
     virtual                 void                    init                () = 0; // Performs custom steps (e.g. allocating memory) before entering the main loop
 	virtual                 void                    handleCleanUp       () = 0; // Performs custom steps (e.g. freeing memory) after exiting the main loop
@@ -73,12 +73,12 @@ protected:
 	virtual                 void                    onWindowSizeChanged ();
 
 private:
-                                                    AppBase             (const AppBase&);   // Intentionally undefined. Is private because we do not allow copies of a Singleton.
-                            AppBase&                operator=           (const AppBase&);   // Intentionally undefined. Is private because we do not allow copies of a Singleton.
+                                                    App                 (const App&);   // Intentionally undefined. Is private because we do not allow copies of a Singleton.
+                            App&                    operator=           (const App&);   // Intentionally undefined. Is private because we do not allow copies of a Singleton.
 
                             void                    shutdown();
                             
-	static                  AppBase*                g_instance;
+	static                  App*                    g_instance;
 
 	                        std::string             m_name;
 	                        std::filesystem::path   m_path;
@@ -96,13 +96,13 @@ private:
 	                        bool                    m_fullscreen    = false;
 
 	                        bool                    m_running;
-	                        AppStateBase*           m_currentState;
+	                        AppState*               m_currentState;
 
 	                        StepTimer               m_stepTimer;
 	                        uint64_t                m_updateInterval;
 
 	                        int                     m_exitCode;
 
-}; // class AppBase
+}; // class App
 
 } // namespace nxn

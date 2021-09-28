@@ -13,13 +13,13 @@
 
 #pragma once
 
-#include "AppBase.h"
+#include "App.h"
 
 
 namespace nxn {
 
 
-class AppTest : public AppBase {
+class AppTest : public App {
 
 public:
 	                AppTest         ();

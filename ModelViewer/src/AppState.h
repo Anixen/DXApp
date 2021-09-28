@@ -2,10 +2,10 @@
  * Provides the interface for an application state.
  * An application state is responsible for holding relevant information, and providing methods needed for the main loop.
  *
- * @class AppStateBase
- * AppStateBase is an implementation of the state pattern (Finished State Machine).
+ * @class AppState
+ * AppState is an implementation of the state pattern (Finished State Machine).
  *
- * @file src/AppStateBase.h
+ * @file src/AppState.h
  * @author Olivier Falconnet
  * @date 20200522 - File creation
  * @date 20210927 - Updated coding style
@@ -15,19 +15,19 @@
 
 #include <string>
 #include "Timer.h"
-#include "AppBase.h"
+#include "App.h"
 
 
 namespace nxn {
 
 
 // Forward declarations
-class AppBase;
+class App;
 
-class AppStateBase {
+class AppState {
 
 public:
-	                                        ~AppStateBase();
+	                                        ~AppState();
 
 
 	virtual                 void            init            ();
@@ -42,9 +42,9 @@ public:
 	/**
 	 * @param {double}  p_elapsedTime   The duration in seconds since last update
 	 *
-	 * @return {AppStateBase*} A pointer to a new app state, or nullptr if no change required
+	 * @return {AppState*} A pointer to a new app state, or nullptr if no change required
 	 */
-	virtual                 AppStateBase*   update          (double p_elapsedSeconds) = 0;
+	virtual                 AppState*       update          (double p_elapsedSeconds) = 0;
 
 	virtual                 void            draw            () = 0;
 	                        void            cleanup         ();
@@ -52,15 +52,15 @@ public:
 	                        float           getElapsedTime  () const;
 
 protected:
-	                                        AppStateBase    (AppBase* p_app);
+	                                        AppState        (App* p_app);
 
     virtual                 void            handleCleanup   () = 0;
 	
-	                        AppBase*        m_app;  // Pointer to the app the state belongs to
+	                        App*            m_app;  // Pointer to the app the state belongs to
 
 private:
-                                            AppStateBase    (const AppStateBase&);  // Intentionally undefined. Is private because we do not allow copies of a Singleton.
-                            AppStateBase&   operator=       (const AppStateBase&);  // Intentionally undefined. Is private because we do not allow copies of a Singleton.
+                                            AppState        (const AppState&);  // Intentionally undefined. Is private because we do not allow copies of a Singleton.
+                            AppState&       operator=       (const AppState&);  // Intentionally undefined. Is private because we do not allow copies of a Singleton.
 
 	                        bool            m_initialized;
 	                        bool            m_paused;
@@ -72,6 +72,6 @@ private:
 	                        Timer           m_elapsedClock;
 	                        Timer           m_pausedClock;
 
-}; // class AppStateBase
+}; // class AppState
 
 } // namespace nxn

@@ -1,5 +1,5 @@
 #include "Timer.h"
-#include "LoggerBase.h"
+#include "Logger.h"
 
 
 namespace nxn {

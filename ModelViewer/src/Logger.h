@@ -1,10 +1,10 @@
 /**
  * Base class for the logging system
  *
- * @class LoggerBase
+ * @class Logger
  *
  *
- * @file src/LoggerBase.h
+ * @file src/Logger.h
  * @author Olivier Falconnet
  * @date 20200521 - File creation
  * @date 20210927 - Updated coding style
@@ -32,12 +32,12 @@ enum SeverityLevel
 };
 
 
-class LoggerBase {
+class Logger {
 
 public:
-	                                            ~LoggerBase();
+	                                            ~Logger();
 
-	static          const   LoggerBase*         getLogger   ();
+	static          const   Logger*             getLogger   ();
 	        inline  const   bool                isActive    () const                    { return m_active; }
             inline          void                setActive   (bool p_active)             { m_active = p_active; }
 
@@ -74,7 +74,7 @@ public:
     //static                boost::iostreams::stream< boost::iostreams::null_sink > g_nullStream;
 
 protected:
-	                                            LoggerBase  (   bool p_makeDefault, SeverityLevel p_logLevel = SeverityInfo);  // Ctor is protected because we only allow derived classes to instantiate this interface
+	                                            Logger  (   bool p_makeDefault, SeverityLevel p_logLevel = SeverityInfo);  // Ctor is protected because we only allow derived classes to instantiate this interface
 
 	        inline  const   bool                shouldLog   (   SeverityLevel p_severityLevel) const    { return p_severityLevel != SeverityNoLog && p_severityLevel >= m_logLevel; }
 	static                  void                writeTag    (   std::ostream &p_ostream, 
@@ -82,22 +82,22 @@ protected:
 		                                                        std::string p_sourceFile, int p_sourceLine);
 
 private:
-                                                LoggerBase  (const LoggerBase&);    // Intentionally undefined. Is private because we do not allow copies of a Singleton.
-                            LoggerBase&         operator=   (const LoggerBase&);    // Intentionally undefined. Is private because we do not allow copies of a Singleton.
+                                                Logger  (const Logger&);    // Intentionally undefined. Is private because we do not allow copies of a Singleton.
+                            Logger&             operator=   (const Logger&);    // Intentionally undefined. Is private because we do not allow copies of a Singleton.
 
-	static                  LoggerBase*         g_defaultInstance;  // A pointer to the default logger. This is not a singleton pointer.
+	static                  Logger*             g_defaultInstance;  // A pointer to the default logger. This is not a singleton pointer.
 	                        bool                m_active;
 	                        SeverityLevel       m_logLevel;         // The log level allows to filter messages, and only log those above the given severity threshold
 
-}; // class LoggerBase
+}; // class Logger
 
 } // namespace nxn
 
 
 #include <filesystem>
 
-#define LogMessage(level, msg)      nxn::LoggerBase::getLogger()->logMessage    (msg,   level, std::filesystem::path(__FILE__).filename().string(), __LINE__);
-#define GetLogStream(level)	        nxn::LoggerBase::getLogger()->getStream     (       level, std::filesystem::path(__FILE__).filename().string(), __LINE__)
+#define LogMessage(level, msg)      nxn::Logger::getLogger()->logMessage    (msg,   level, std::filesystem::path(__FILE__).filename().string(), __LINE__);
+#define GetLogStream(level)	        nxn::Logger::getLogger()->getStream     (       level, std::filesystem::path(__FILE__).filename().string(), __LINE__)
 
 //#define LogMessage(level, msg)
-//#define GetLogStream(level)       nxn::LoggerBase::g_nullStream
+//#define GetLogStream(level)       nxn::Logger::g_nullStream

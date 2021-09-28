@@ -1,4 +1,4 @@
-#include "LoggerBase.h"
+#include "Logger.h"
 
 #include <time.h>
 #include <sstream>
@@ -7,16 +7,16 @@
 namespace nxn {
 
 
-std::onullstream LoggerBase::g_nullStream;
-//boost::iostreams::stream< boost::iostreams::null_sink > LoggerBase::g_nullStream( ( boost::iostreams::null_sink() ) );
-LoggerBase* LoggerBase::g_defaultInstance = NULL;
+std::onullstream Logger::g_nullStream;
+//boost::iostreams::stream< boost::iostreams::null_sink > Logger::g_nullStream( ( boost::iostreams::null_sink() ) );
+Logger* Logger::g_defaultInstance = NULL;
 
 //-----------------------------------------------------------------------------
 /**
   * @param {bool}           p_makeDefault   true if the new logger must become the default logger, false if not
   * @param {SeverityLevel}  p_logLevel      The log level for the logger
   */
-LoggerBase::LoggerBase(bool p_makeDefault, SeverityLevel p_logLevel) :
+Logger::Logger(bool p_makeDefault, SeverityLevel p_logLevel) :
 	m_active(false)
 {
 	if (p_makeDefault) {
@@ -29,7 +29,7 @@ LoggerBase::LoggerBase(bool p_makeDefault, SeverityLevel p_logLevel) :
 
 //-----------------------------------------------------------------------------
 
-LoggerBase::~LoggerBase()
+Logger::~Logger()
 {
 	setLogLevel(SeverityNoLog);
 	setActive(false);
@@ -41,7 +41,7 @@ LoggerBase::~LoggerBase()
 
 //-----------------------------------------------------------------------------
 
-const LoggerBase* LoggerBase::getLogger()
+const Logger* Logger::getLogger()
 {
 	// If there is no logger instantiated, instantiate one at the last moment
 	if (NULL == g_defaultInstance) {
@@ -60,7 +60,7 @@ const LoggerBase* LoggerBase::getLogger()
  * @param {std::string} p_sourceFile The source file where the logger has been called from
  * @param {int} p_sourceLine The line number where the logger has been called from
  */
-void LoggerBase::writeTag(  std::ostream &p_ostream, 
+void Logger::writeTag(  std::ostream &p_ostream, 
                             SeverityLevel p_severityLevel, 
                             std::string p_sourceFile, int p_sourceLine)
 {

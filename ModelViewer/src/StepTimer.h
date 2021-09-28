@@ -19,7 +19,7 @@
 #include <exception>
 
 #include <windows.h>
-#include "LoggerBase.h"
+#include "Logger.h"
 
 class StepTimer
 {
