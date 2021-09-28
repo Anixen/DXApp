@@ -424,7 +424,7 @@ void App::initWindows()
 
 	// Place the window in the middle of the screen.
 	getDefaultWindowSize(m_windowWidth, m_windowHeight);
-	m_windowPosX = (GetSystemMetrics(SM_CXSCREEN) - m_windowWidth) / 2;
+	m_windowPosX = (GetSystemMetrics(SM_CXSCREEN) - m_windowWidth)  / 2;
 	m_windowPosY = (GetSystemMetrics(SM_CYSCREEN) - m_windowHeight) / 2;
 
 
