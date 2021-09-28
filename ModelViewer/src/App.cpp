@@ -15,6 +15,9 @@ App::App()
 	LogMessage(SeverityInfo, "AppBase::ctor()")
 
 	g_instance = this;
+
+    m_stepTimer.SetFixedTimeStep(true);
+    m_stepTimer.SetTargetElapsedTicks((uint64_t)(m_updateInterval * StepTimer::TicksPerSecond));
 }
 
 //-----------------------------------------------------------------------------
@@ -125,8 +128,6 @@ int App::run()
 		throw new std::exception("The application doesnt have a current state");
 	}
 
-	m_stepTimer.SetFixedTimeStep(true);
-	m_stepTimer.SetTargetElapsedTicks(m_updateInterval);
 	m_stepTimer.ResetElapsedTime();
 
 	float updateLag = 0.f;
