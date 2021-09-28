@@ -1,13 +1,20 @@
 #include "Timer.h"
 #include "LoggerBase.h"
 
+
+//-----------------------------------------------------------------------------
+
 Timer::Timer()
 {
 }
 
+//-----------------------------------------------------------------------------
+
 Timer::~Timer()
 {
 }
+
+//-----------------------------------------------------------------------------
 
 void Timer::init()
 {
@@ -25,11 +32,17 @@ void Timer::init()
 	QueryPerformanceCounter((LARGE_INTEGER*)& m_startTime);
 }
 
+//-----------------------------------------------------------------------------
+
 void Timer::reset()
 {
 	QueryPerformanceCounter((LARGE_INTEGER*)& m_startTime);
 }
 
+//-----------------------------------------------------------------------------
+/**
+ * @returns {float} The duration in milliseconds since the timer has been initialized/reset
+ */
 float Timer::getElapsedTime() const
 {
 	INT64 currentTime;

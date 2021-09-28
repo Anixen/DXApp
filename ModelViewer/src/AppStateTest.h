@@ -8,52 +8,31 @@
  * @file src/AppStateTest.h
  * @author Olivier Falconnet
  * @date 20200522 - File creation
+ * @date 20210927 - Updated coding style
  */
 
 #pragma once
 
 #include "AppStateBase.h"
 
+
 class AppStateTest : public AppStateBase {
 
 public:
-	/**
-	 * TestState constructor
-	 */
-	AppStateTest(AppBase* p_app);
+	                        AppStateTest    (AppBase* p_app);
+	                        ~AppStateTest   ();
 
-	/**
-	 *
-	 */
-	~AppStateTest();
+	virtual void            init            ();
+	virtual void            reinit          ();  // Called to reset the state. Re-Initializes a state without reallocating everything inside.
 
-	/**
-	 * Initializes the state and make it do some clean-up if needed
-	 */
-	virtual void init();
+    /**
+     * @param {double}  p_elapsedTime   The duration in seconds since last update
+     *
+     * @return {AppStateBase*} A pointer to a new app state, or nullptr if no change required
+     */
+	virtual AppStateBase*   update          (double p_elapsedSeconds);
 
-	/**
-	 * Re-Initializes a state without reallocating everything inside.
-	 * This function should be called whenever a state is reset.
-	 */
-	virtual void reinit();
+	virtual void            draw            ();
+	virtual void            handleCleanup   ();
 
-	/**
-	 * @param {double} p_elapsedSeconds The duration in seconds since last update
-	 *
-	 * @return {AppStateBase*} A pointer to a new app state, or nullptr if no change required
-	 */
-	virtual AppStateBase* update(double p_elapsedSeconds);
-
-	/**
-	 *
-	 */
-	virtual void draw();
-
-	/**
-	 *
-	 */
-	virtual void handleCleanup();
-
-private:
-};
+}; // class AppStateTest

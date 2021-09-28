@@ -1,8 +1,11 @@
 #include "AppBase.h"
 #include "LoggerBase.h"
 
+
 AppBase* AppBase::g_instance = NULL;
 const LPCWSTR AppBase::g_windowClassName = L"AppBaseWindowClass";
+
+//-----------------------------------------------------------------------------
 
 AppBase::AppBase() :
 	m_running(false),
@@ -13,6 +16,8 @@ AppBase::AppBase() :
 
 	g_instance = this;
 }
+
+//-----------------------------------------------------------------------------
 
 AppBase::~AppBase()
 {
@@ -25,21 +30,7 @@ AppBase::~AppBase()
 	}
 }
 
-
-AppBase* AppBase::getApp()
-{
-	return g_instance;
-}
-
-std::string AppBase::getName()
-{
-	return m_name;
-}
-
-std::filesystem::path AppBase::getPath()
-{
-	return m_path;
-}
+//-----------------------------------------------------------------------------
 
 void AppBase::getDefaultWindowSize(int& width, int& height) const
 {
@@ -47,6 +38,13 @@ void AppBase::getDefaultWindowSize(int& width, int& height) const
 	height = 600;
 }
 
+//-----------------------------------------------------------------------------
+/**
+ * handles command line arguments
+ *
+ * @param {int}			p_argc	The number of arguments
+ * @param {char**}		p_argv	The actual arguments
+ */
 void AppBase::processArguments(int p_argc, char **p_argv)
 {
 	m_path = std::filesystem::path{ p_argv[0] };
@@ -73,6 +71,15 @@ void AppBase::processArguments(int p_argc, char **p_argv)
 	}
 }
 
+//-----------------------------------------------------------------------------
+/**
+ * handles Win32 arguments
+ *
+ * @param {HINSTANCE}	p_hInstance		A value used by the system to identify the exececutable instance
+ * @param {HINSTANCE}	p_hPrevInstance	Has no meaning in Win32, should always be 0
+ * @param {PWSTR}		p_pCmdline		The command line as a unicode string
+ * @param {int}			p_iCmdshow		A flag to indicate if the application window should be minimized, maximized or shown normally
+ */
 void AppBase::processArguments(HINSTANCE p_hInstance, HINSTANCE p_hPrevInstance, PWSTR p_pCmdline, int p_iCmdshow)
 {
 	TCHAR exepath[MAX_PATH];
@@ -89,6 +96,14 @@ void AppBase::processArguments(HINSTANCE p_hInstance, HINSTANCE p_hPrevInstance,
 		<< ", m_path = " << m_path << std::endl;
 }
 
+//-----------------------------------------------------------------------------
+/**
+ * Initializes and starts the application main loop,
+ * it will also handle cleaning up once the main loop has ended
+ *
+ * This functions relies on the loop, init and shutdown methods,
+ * which are defined by derived classes
+ */
 int AppBase::run()
 {
 	GetLogStream(SeverityInfo) << "AppBase::run()" << std::endl;
@@ -151,21 +166,10 @@ int AppBase::run()
 	return m_exitCode;
 }
 
-bool AppBase::isRunning()
-{
-	return m_running;
-}
-
-float AppBase::getUpdateInterval()
-{
-	return m_updateInterval;
-}
-
-void AppBase::setUpdateInterval(float p_updateInterval)
-{
-	m_updateInterval = p_updateInterval;
-}
-
+//-----------------------------------------------------------------------------
+/**
+ *
+ */
 void AppBase::quit(int p_exitCode)
 {
 	GetLogStream(SeverityInfo)
@@ -174,17 +178,7 @@ void AppBase::quit(int p_exitCode)
 	PostQuitMessage(p_exitCode);
 }
 
-std::wstring s2ws(const std::string& s)
-{
-	int len;
-	int slength = (int)s.length() + 1;
-	len = MultiByteToWideChar(CP_ACP, 0, s.c_str(), slength, 0, 0);
-	wchar_t* buf = new wchar_t[len];
-	MultiByteToWideChar(CP_ACP, 0, s.c_str(), slength, buf, len);
-	std::wstring r(buf);
-	delete[] buf;
-	return r;
-}
+//-----------------------------------------------------------------------------
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lparam)
 {
@@ -242,6 +236,8 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lparam)
 	// All other messages pass to the message handler in the system class.
 	return AppBase::getApp()->handleMessage(hwnd, umessage, wparam, lparam);
 }
+
+//-----------------------------------------------------------------------------
 
 LRESULT CALLBACK AppBase::handleMessage(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lparam)
 {
@@ -379,6 +375,20 @@ LRESULT CALLBACK AppBase::handleMessage(HWND hwnd, UINT umessage, WPARAM wparam,
 	return DefWindowProc(hwnd, umessage, wparam, lparam);
 }
 
+//-----------------------------------------------------------------------------
+
+std::wstring s2ws(const std::string& s)
+{
+    int len;
+    int slength = (int)s.length() + 1;
+    len = MultiByteToWideChar(CP_ACP, 0, s.c_str(), slength, 0, 0);
+    wchar_t* buf = new wchar_t[len];
+    MultiByteToWideChar(CP_ACP, 0, s.c_str(), slength, buf, len);
+    std::wstring r(buf);
+    delete[] buf;
+    return r;
+}
+
 void AppBase::initWindows()
 {
 	// Setup the windows class with default settings
@@ -428,6 +438,8 @@ void AppBase::initWindows()
 	return;
 }
 
+//-----------------------------------------------------------------------------
+
 void AppBase::shutdownWindows()
 {
 	// Show the mouse cursor.
@@ -452,6 +464,12 @@ void AppBase::shutdownWindows()
 	return;
 }
 
+//-----------------------------------------------------------------------------
+/**
+ * Sets the current app state
+ *
+ * @param {AppStateBase} p_state The new state for the application
+ */
 void AppBase::setCurrentState(AppStateBase* p_state)
 {
 	GetLogStream(SeverityInfo)
@@ -467,6 +485,11 @@ void AppBase::setCurrentState(AppStateBase* p_state)
 	m_currentState->init();
 }
 
+//-----------------------------------------------------------------------------
+/**
+ * Advances the application one tick forward,
+ * which involves updating its components, and rendering a frame
+ */
 void AppBase::tick()
 {
 	/*
@@ -493,6 +516,10 @@ void AppBase::tick()
 	m_currentState->draw();
 }
 
+//-----------------------------------------------------------------------------
+/**
+ *
+ */
 void AppBase::shutdown()
 {
 	GetLogStream(SeverityInfo) << "AppBase::shutdown()" << std::endl;
@@ -504,26 +531,36 @@ void AppBase::shutdown()
 	// Do de-initializations here for the managers ans helper classes
 }
 
+//-----------------------------------------------------------------------------
+
 void AppBase::onActivated()
 {
 	GetLogStream(SeverityDebug) << "AppBase::onActivated()" << std::endl;
 }
+
+//-----------------------------------------------------------------------------
 
 void AppBase::onDeactivated()
 {
 	GetLogStream(SeverityDebug) << "AppBase::onDeactivated()" << std::endl;
 }
 
+//-----------------------------------------------------------------------------
+
 void AppBase::onSuspending()
 {
 	GetLogStream(SeverityDebug) << "AppBase::onSuspending()" << std::endl;
 }
+
+//-----------------------------------------------------------------------------
 
 void AppBase::onResuming()
 {
 	GetLogStream(SeverityDebug) << "AppBase::onResuming()" << std::endl;
 	m_stepTimer.ResetElapsedTime();
 }
+
+//-----------------------------------------------------------------------------
 
 void AppBase::onWindowSizeChanged()
 {

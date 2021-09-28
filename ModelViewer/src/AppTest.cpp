@@ -4,17 +4,23 @@
 #include "LoggerBase.h"
 
 
+//-----------------------------------------------------------------------------
+
 AppTest::AppTest()
 {
 	GetLogStream(SeverityInfo)
 		<< "AppTest::ctor()" << std::endl;
 }
 
+//-----------------------------------------------------------------------------
+
 AppTest::~AppTest()
 {
 	GetLogStream(SeverityInfo)
 		<< "AppTest::dtor()" << std::endl;
 }
+
+//-----------------------------------------------------------------------------
 
 void AppTest::init()
 {
@@ -23,6 +29,8 @@ void AppTest::init()
 
 	setCurrentState(new AppStateTest(this));
 }
+
+//-----------------------------------------------------------------------------
 
 void AppTest::handleCleanUp()
 {

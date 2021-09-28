@@ -12,6 +12,7 @@
 #include "LoggerConsole.h"
 #include "AppTest.h"
 
+
 //int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine, int nCmdShow)
 int main(int argc, char** argv)
 {

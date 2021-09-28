@@ -7,6 +7,7 @@
  * @file src/Timer.h
  * @author Olivier Falconnet
  * @date 20200521 - File creation
+ * @date 20210927 - Updated coding style
  */
 
 #pragma once
@@ -17,47 +18,21 @@
 class Timer {
 
 public:
-	/**
-	 * Timer constructor
-	 */
-	Timer();
+	        Timer           ();
+	        ~Timer          ();
 
-	/**
-	 * Timer de-constructor
-	 */
-	~Timer();
+	void    init            ();
+	void    reset           ();
 
-	/**
-	 * Initialize the timer
-	 */
-	void init();
-
-	/**
-	 * Resets the timer
-	 */
-	void reset();
-
-	/**
-	 * @returns {float} The duration in milliseconds since the timer has been initialized/reset
-	 */
-	float getElapsedTime() const;
+	float   getElapsedTime  () const;
 
 private:
-	INT64 m_frequency;
-	float m_ticksPerMs;
+            Timer           (const Timer&); // Intentionally undefined. Is private because we do not allow copying items of this class.
+    Timer&  operator=       (const Timer&); // Intentionally undefined. Is private because we do not allow copying items of this class.
 
-	INT64 m_startTime;
+	INT64   m_frequency;
+	float   m_ticksPerMs;
 
-	/**
-	 * Timer copy constructor
-	 * is private because we do not allow copying items of this class
-	 */
-	Timer(const Timer&);  // Intentionally undefined
-
-	/**
-	 * Timer assignment operator
-	 * is private because we do not allow copying items of this class
-	 */
-	Timer& operator=(const Timer&); // Intentionally undefined
+	INT64   m_startTime;
 
 }; // class Timer

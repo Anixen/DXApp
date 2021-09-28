@@ -8,6 +8,7 @@
  * @file src/AppStateBase.h
  * @author Olivier Falconnet
  * @date 20200522 - File creation
+ * @date 20210927 - Updated coding style
  */
 
 #pragma once
@@ -16,120 +17,56 @@
 #include "Timer.h"
 #include "AppBase.h"
 
+
 // Forward declarations
 class AppBase;
 
 class AppStateBase {
 
 public:
+	                                        ~AppStateBase();
+
+
+	virtual                 void            init            ();
+	virtual                 void            reinit          () = 0; // Called to reset the state. Re-Initializes a state without reallocating everything inside.
+	                        void            deinit          ();
+	        inline  const   bool            isInitialized   () const    { return m_initialized; }
+
+	                        void            pause           ();
+	                        void            resume          ();
+	        inline  const   bool            isPaused        () const    { return m_paused; }
 
 	/**
-	 * AppStateBase de-constructor
-	 */
-	~AppStateBase();
-
-
-	/**
-	 * Initializes the state and make it do some clean-up if needed
-	 */
-	virtual void init();
-
-	/**
-	 * Re-Initializes a state without reallocating everything inside.
-	 * This function should be called whenever a state is reset.
-	 */
-	virtual void reinit() = 0;
-
-	/**
-	 * Un-Initializes a state and marks it for clean-up
-	 * This function should be called whenever a state becomes inactive.
-	 */
-	void deinit();
-
-	/**
-	 *
-	 */
-	bool isInitialized() const;
-
-
-	/**
-	 *
-	 */
-	void pause();
-
-	/**
-	 *
-	 */
-	void resume();
-
-	/**
-	 *
-	 */
-	bool isPaused() const;
-
-	/**
-	 * @param {double} p_elapsedTime The duration in seconds since last update
+	 * @param {double}  p_elapsedTime   The duration in seconds since last update
 	 *
 	 * @return {AppStateBase*} A pointer to a new app state, or nullptr if no change required
 	 */
-	virtual AppStateBase* update(double p_elapsedSeconds) = 0;
+	virtual                 AppStateBase*   update          (double p_elapsedSeconds) = 0;
 
-	/**
-	 *
-	 */
-	virtual void draw() = 0;
+	virtual                 void            draw            () = 0;
+	                        void            cleanup         ();
 
-
-	/**
-	 *
-	 */
-	void cleanup();
-
-	/**
-	 *
-	 */
-	float getElapsedTime() const;
-
+	                        float           getElapsedTime  () const;
 
 protected:
-	/**
-	 * AppStateBase constructor
-	 * Is protected because we only allow derived classes to instantiate this interface
-	 *
-	 * @param {AppBase*} p_app The address of the app to which pertains this state
-	 */
-	AppStateBase(AppBase* p_app);
+	                                        AppStateBase    (AppBase* p_app);
 
-	// Address of the app to which pertains this state
-	AppBase* m_app;
-
-	/**
-	 *
-	 */
-	virtual void handleCleanup() = 0;
+    virtual                 void            handleCleanup   () = 0;
+	
+	                        AppBase*        m_app;  // Pointer to the app the state belongs to
 
 private:
+                                            AppStateBase    (const AppStateBase&);  // Intentionally undefined. Is private because we do not allow copies of a Singleton.
+                            AppStateBase&   operator=       (const AppStateBase&);  // Intentionally undefined. Is private because we do not allow copies of a Singleton.
 
-	bool m_initialized;
-	bool m_paused;
-	bool m_cleanup;
+	                        bool            m_initialized;
+	                        bool            m_paused;
+	                        bool            m_cleanup;
 
-	float m_elapsedTime;
-	float m_totalPausedTime;
+	                        float           m_elapsedTime;
+	                        float           m_totalPausedTime;
 
-	Timer m_elapsedClock;
-	Timer m_pausedClock;
-
-	/**
-	 * AppStateBase assignment operator
-	 * is private because we do not allow copying items of this class
-	 */
-	AppStateBase(const AppStateBase&);               // Intentionally undefined
-
-	/**
-	 * AppStateBase assignment operator
-	 * is private because we do not allow copying items of this class
-	 */
-	AppStateBase& operator=(const AppStateBase&);    // Intentionally undefined
+	                        Timer           m_elapsedClock;
+	                        Timer           m_pausedClock;
 
 }; // class AppStateBase

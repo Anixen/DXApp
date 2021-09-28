@@ -8,6 +8,7 @@
  * @file src/AppTest.h
  * @author Olivier Falconnet
  * @date 20200522 - File creation
+ * @date 20210927 - Updated coding style
  */
 
 #pragma once
@@ -18,31 +19,11 @@
 class AppTest : public AppBase {
 
 public:
-
-	/**
-	 * TestApp constructor
-	 */
-	AppTest();
-
-	/**
-	 * TestApp de-constructor
-	 */
-	~AppTest();
+	                AppTest         ();
+	                ~AppTest        ();
 
 protected:
+	virtual void    init            (); // Performs custom steps (e.g. allocating memory) before entering the main loop
+	virtual void    handleCleanUp   (); // Performs custom steps (e.g. freeing memory) after exiting the main loop
 
-	/**
-	 * initializes the application components such as the WindowManager or the StateManager
-	 * is called before the main loop
-	 */
-	virtual void init();
-
-	/**
-	 * performs some custom clean before exiting the application
-	 * is called before the main loop
-	 */
-	virtual void handleCleanUp();
-
-private:
-
-};
+}; // class AppTest

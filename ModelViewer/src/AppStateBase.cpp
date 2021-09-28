@@ -4,6 +4,10 @@
 #include "AppBase.h"
 
 
+//-----------------------------------------------------------------------------
+/**
+ * @param {AppBase*}    p_app  The address of the app to which belongs this state
+ */
 AppStateBase::AppStateBase(AppBase* p_app) :
 	m_app(p_app),
 	m_initialized(false),
@@ -17,12 +21,18 @@ AppStateBase::AppStateBase(AppBase* p_app) :
 		<< "AppStateBase::ctor()" << std::endl;
 }
 
+//-----------------------------------------------------------------------------
+
 AppStateBase::~AppStateBase()
 {
 	GetLogStream(SeverityInfo)
 		<< "AppStateBase::dtor()" << std::endl;
 }
 
+//-----------------------------------------------------------------------------
+/**
+ * Initializes the state and make it do some clean-up if needed
+ */
 void AppStateBase::init()
 {
 	GetLogStream(SeverityInfo)
@@ -46,6 +56,11 @@ void AppStateBase::init()
 	}
 }
 
+//-----------------------------------------------------------------------------
+/**
+ * Un-Initializes a state and marks it for clean-up
+ * This function should be called whenever a state becomes inactive.
+ */
 void AppStateBase::deinit()
 {
 	GetLogStream(SeverityInfo)
@@ -65,10 +80,7 @@ void AppStateBase::deinit()
 	}
 }
 
-bool AppStateBase::isInitialized() const
-{
-	return m_initialized;
-}
+//-----------------------------------------------------------------------------
 
 void AppStateBase::pause()
 {
@@ -82,6 +94,8 @@ void AppStateBase::pause()
 	}
 }
 
+//-----------------------------------------------------------------------------
+
 void AppStateBase::resume()
 {
 	GetLogStream(SeverityInfo)
@@ -94,10 +108,7 @@ void AppStateBase::resume()
 	}
 }
 
-bool AppStateBase::isPaused() const
-{
-	return m_paused;
-}
+//-----------------------------------------------------------------------------
 
 void AppStateBase::cleanup()
 {
@@ -110,6 +121,8 @@ void AppStateBase::cleanup()
 		m_cleanup = false;
 	}
 }
+
+//-----------------------------------------------------------------------------
 
 float AppStateBase::getElapsedTime() const
 {

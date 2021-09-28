@@ -7,6 +7,7 @@
  * @file src/LoggerBase.h
  * @author Olivier Falconnet
  * @date 20200521 - File creation
+ * @date 20210927 - Updated coding style
  */
 
 #pragma once
@@ -14,6 +15,7 @@
 #include <string>
 #include "onullstream.h"
 //#include <boost/iostreams/stream.hpp>
+
 
 enum SeverityLevel
 {
@@ -30,131 +32,67 @@ enum SeverityLevel
 class LoggerBase {
 
 public:
-	static std::onullstream g_nullStream;
-	//static boost::iostreams::stream< boost::iostreams::null_sink > g_nullStream;
+	                                            ~LoggerBase();
 
-	/**
-	 * LoggerBase deconstructor
-	 */
-	~LoggerBase();
+	static          const   LoggerBase*         getLogger   ();
+	        inline  const   bool                isActive    () const                    { return m_active; }
+            inline          void                setActive   (bool p_active)             { m_active = p_active; }
 
-
-	/**
-	 * @return {ILogger*} A pointer to the most recently instantiated logger
-	 */
-	static LoggerBase* getLogger();
-
-	/**
-	 * @return {bool} true if the logger is active, false if not
-	 */
-	bool isActive();
-
-	/**
-	 * Sets if the logger is active or not
-	 *
-	 * @param {bool} p_active Set to true to activate the logger, false to deactivate
-	 */
-	void setActive(bool p_active);
-
-	/**
-	 * @return {SeverityLevel} The log level set for the logger
-	 */
-	SeverityLevel getLogLevel();
-
-	/**
-	 * Sets the log level for the logger
-	 * The log level allows to filter messages, and only log those above a given severity threshold
-	 *  
-	 * @param {SeverityLevel} p_logLevel The log level for the logger
-	 */
-	void setLogLevel(SeverityLevel p_logLevel);
-
-	/**
-	 * @return {std::ostream&} A reference to the ostream where the logger sends the messages that are given to him
-	 */
-	virtual std::ostream& getStream() = 0;
-
-	/**
-	 * Returns a reference to the stream and inserts a timestamp and File:Line tag inside
-	 *
-	 * @param {SeverityLevel} p_severityLevel The severity level for the message to log
-	 * @param {std::string} p_sourceFile The source file where the logger has been called from
-	 * @param {int} p_sourceLine The line number where the logger has been called from
-	 * 
-	 * @return {std::ostream&} A reference to the ostream where the logger sends the messages that are given to him
-	 */
-	virtual std::ostream& getStream(SeverityLevel p_severityLevel,
-		std::string p_sourceFile, int p_sourceLine) = 0;
-
-
-	/**
-	 * Logs the provided message
-	 *
-	 * @param {std::string} p_message The message to log
-	 */
-	virtual void logMessage(const std::string &p_message) = 0;
+	        inline  const   SeverityLevel       getLogLevel () const                    { return m_logLevel; }
+            inline          void                setLogLevel (SeverityLevel p_logLevel)  { m_logLevel = p_logLevel; }
 
 	/**
 	 * Logs the provided message with a timestamp and File:Line tag in front
 	 *
-	 * @param {std::string} p_message The message to log
-	 * @param {SeverityLevel} p_severityLevel The severity level for the message to log
-	 * @param {std::string} p_sourceFile The source file where the logger has been called from
-	 * @param {int} p_sourceLine The line number where the logger has been called from
+	 * @param {std::string}     p_message       The message to log
+	 * @param {SeverityLevel}   p_severityLevel The severity level for the message to log
+	 * @param {std::string}     p_sourceFile    The source file where the logger has been called from
+	 * @param {int}             p_sourceLine    The line number where the logger has been called from
 	 */
-	virtual void logMessage(const std::string &p_message, SeverityLevel p_severityLevel,
-		std::string p_sourceFile, int p_sourceLine) = 0;
+    virtual                 void                logMessage  (   const std::string &p_message)               const = 0;
+	virtual                 void                logMessage  (   const std::string &p_message,
+                                                                SeverityLevel p_severityLevel,
+		                                                        std::string p_sourceFile, int p_sourceLine) const = 0;
+
+    /**
+     * Returns a reference to the stream and inserts a timestamp and File:Line tag inside
+     *
+     * @param {SeverityLevel}   p_severityLevel The severity level for the message to log
+     * @param {std::string}     p_sourceFile    The source file where the logger has been called from
+     * @param {int}             p_sourceLine    The line number where the logger has been called from
+     *
+     * @return {std::ostream&} A reference to the ostream where the logger sends the messages that are given to him
+     */
+    virtual                 std::ostream&       getStream   ()                                              const = 0;
+    virtual                 std::ostream&       getStream   (   SeverityLevel p_severityLevel,
+                                                                std::string p_sourceFile, int p_sourceLine) const = 0;
+
+    static                  std::onullstream    g_nullStream;
+    //static                boost::iostreams::stream< boost::iostreams::null_sink > g_nullStream;
 
 protected:
-	/**
-	 * LoggerBase constructor
-	 * Is protected because we only allow derived classes to instantiate this interface
-	 *
-	 * @param {bool} p_makeDefault true if the new logger must become the default logger, false if not
-	 * @param {SeverityLevel} p_logLevel The log level for the logger
-	 */
-	LoggerBase(bool p_makeDefault, SeverityLevel p_logLevel = SeverityInfo);
+	                                            LoggerBase  (   bool p_makeDefault, SeverityLevel p_logLevel = SeverityInfo);  // Ctor is protected because we only allow derived classes to instantiate this interface
 
-	/**
-	 * @returns {bool} true if p_severityLevel is above or equal to the log level for the logger, false if not
-	 */
-	bool shouldLog(SeverityLevel p_severityLevel);
-
-	/**
-	 * Write a timestamp and File:Line tag to the provided ostream
-	 * @param {std::ostream} p_ostream The ostream where to write the prefix tag
-	 * @param {SeverityLevel} p_severityLevel The severity level for the message to log
-	 * @param {std::string} p_sourceFile The source file where the logger has been called from
-	 * @param {int} p_sourceLine The line number where the logger has been called from
-	 */
-	void writeTag(std::ostream &p_ostream, SeverityLevel p_severityLevel,
-		std::string p_sourceFile, int p_sourceLine);
+	        inline  const   bool                shouldLog   (   SeverityLevel p_severityLevel) const    { return p_severityLevel != SeverityNoLog && p_severityLevel >= m_logLevel; }
+	static                  void                writeTag    (   std::ostream &p_ostream, 
+                                                                SeverityLevel p_severityLevel,
+		                                                        std::string p_sourceFile, int p_sourceLine);
 
 private:
-	static LoggerBase* g_instance;
+                                                LoggerBase  (const LoggerBase&);    // Intentionally undefined. Is private because we do not allow copies of a Singleton.
+                            LoggerBase&         operator=   (const LoggerBase&);    // Intentionally undefined. Is private because we do not allow copies of a Singleton.
 
-	bool m_active;
-	SeverityLevel m_logLevel;
-
-	/**
-	 * LoggerBase copy constructor
-	 * is private because we do not allow copies of a Singleton
-	 */
-	LoggerBase(const LoggerBase&);  // Intentionally undefined
-
-	/**
-	 * LoggerBase assignment operator
-	 * is private because we do not allow copies of a Singleton
-	 */
-	LoggerBase& operator=(const LoggerBase&); // Intentionally undefined
+	static                  LoggerBase*         g_defaultInstance;  // A pointer to the default logger. This is not a singleton pointer.
+	                        bool                m_active;
+	                        SeverityLevel       m_logLevel;         // The log level allows to filter messages, and only log those above the given severity threshold
 
 }; // class LoggerBase
 
 
 #include <filesystem>
 
-#define LogMessage(level, msg) LoggerBase::getLogger()->logMessage(msg, level, std::filesystem::path(__FILE__).filename().string(), __LINE__);
-#define GetLogStream(level)	LoggerBase::getLogger()->getStream(level, std::filesystem::path(__FILE__).filename().string(), __LINE__)
+#define LogMessage      (level, msg)    LoggerBase::getLogger()->logMessage (msg,   level, std::filesystem::path(__FILE__).filename().string(), __LINE__);
+#define GetLogStream    (level)	        LoggerBase::getLogger()->getStream  (       level, std::filesystem::path(__FILE__).filename().string(), __LINE__)
 
-//#define LogMessage(level, msg)
-//#define GetLogStream(level) LoggerBase::g_nullStream
+//#define LogMessage    (level, msg)
+//#define GetLogStream  (level)         LoggerBase::g_nullStream
