@@ -6,7 +6,7 @@
  *
  * @file src/StepTimer.h
  * @author Chuck Walbourn
- * @date 2070809 - Initial Release
+ * @date 20170809 - Initial Release
  * 
  * @date 20200615 - Included to ModelViewer project, updated file description 
  * @date 20200615 - Added log messages
