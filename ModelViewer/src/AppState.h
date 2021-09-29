@@ -27,7 +27,7 @@ class App;
 class AppState {
 
 public:
-	                                    ~AppState();
+	                                    ~AppState       ();
 
 	virtual                 void        init            ();
 	virtual                 void        reinit          () = 0; // Called to reset the state. Re-Initializes a state without reallocating everything inside.
