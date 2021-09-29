@@ -61,8 +61,9 @@ AppState* AppStateTest::update(DX::StepTimer const& p_timer)
 
 //-----------------------------------------------------------------------------
 
-void AppStateTest::draw(DX::StepTimer const& p_timer, DX::DeviceResources* p_deviceResources)
+void AppStateTest::draw(DX::DeviceResources* p_deviceResources)
 {
+    (void)p_deviceResources;
 	Sleep(15);
 }
 
@@ -70,7 +71,7 @@ void AppStateTest::draw(DX::StepTimer const& p_timer, DX::DeviceResources* p_dev
 
 void AppStateTest::clear(DX::DeviceResources * p_deviceResources)
 {
-
+    (void)p_deviceResources;
 }
 
 //-----------------------------------------------------------------------------

@@ -528,7 +528,12 @@ void App::tick()
 		//*/
 	});
 
-	m_currentState->draw(m_stepTimer, m_deviceResources.get());
+    // Don't try to render anything before the first Update.
+    if (m_stepTimer.GetFrameCount() == 0)
+    {
+        return;
+    }
+	m_currentState->draw(m_deviceResources.get());
 }
 
 //-----------------------------------------------------------------------------
