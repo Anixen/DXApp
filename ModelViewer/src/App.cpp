@@ -95,6 +95,10 @@ void App::processArguments(int p_argc, char **p_argv)
  */
 void App::processArguments(HINSTANCE p_hInstance, HINSTANCE p_hPrevInstance, PWSTR p_pCmdline, int p_iCmdshow)
 {
+    (void)p_hPrevInstance;
+    (void)p_pCmdline;
+    (void)p_iCmdshow;
+
 	TCHAR exepath[MAX_PATH];
 	GetModuleFileNameW(0, exepath, MAX_PATH);
 	m_path = std::filesystem::path{ exepath };
@@ -139,8 +143,6 @@ int App::run()
 	}
 
 	m_stepTimer.ResetElapsedTime();
-
-	float updateLag = 0.f;
 
 	// Main message loop
 	MSG msg = {};

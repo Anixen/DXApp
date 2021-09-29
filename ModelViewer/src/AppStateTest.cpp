@@ -49,6 +49,7 @@ void AppStateTest::reinit()
 AppState* AppStateTest::update(DX::StepTimer const& timer)
 {
     double elapsedSeconds = timer.GetElapsedSeconds();
+    (void)elapsedSeconds;
 
     /*
 	GetLogStream(SeverityInfo)
