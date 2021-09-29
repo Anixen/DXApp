@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "AppStateTest.h"
 
 #include "Logger.h"

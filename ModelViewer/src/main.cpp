@@ -4,9 +4,9 @@
  * @author Olivier Falconnet
  */
 
-#define WIN32_LEAN_AND_MEAN
-#include <windows.h>
-#include <iostream>
+//#include <iostream>
+
+#include "pch.h"
 
 #include "Timer.h"
 #include "LoggerConsole.h"

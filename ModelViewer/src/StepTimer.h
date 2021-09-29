@@ -18,7 +18,6 @@
 #include <cstdint>
 #include <exception>
 
-#include <windows.h>
 #include "Logger.h"
 
 namespace DX

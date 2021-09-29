@@ -1,4 +1,6 @@
+#include "pch.h"
 #include "Timer.h"
+
 #include "Logger.h"
 
 

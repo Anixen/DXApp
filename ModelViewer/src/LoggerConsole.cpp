@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "LoggerConsole.h"
 
 #include <iostream>

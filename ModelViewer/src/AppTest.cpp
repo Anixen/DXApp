@@ -1,6 +1,7 @@
+#include "pch.h"
 #include "AppTest.h"
-#include "AppStateTest.h"
 
+#include "AppStateTest.h"
 #include "Logger.h"
 
 

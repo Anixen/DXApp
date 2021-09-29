@@ -1,4 +1,6 @@
+#include "pch.h"
 #include "App.h"
+
 #include "Logger.h"
 
 
@@ -411,8 +413,8 @@ void App::initWindows()
 	wcex.hIcon = LoadIconW(m_hInstance, L"IDI_ICON");
 	wcex.hIconSm = wcex.hIcon;
 	wcex.hCursor = LoadCursorW(nullptr, IDC_ARROW);
-	//wcex.hbrBackground = (HBRUSH) (COLOR_WINDOW + 1);
-	wcex.hbrBackground = (HBRUSH) GetStockObject(BLACK_BRUSH);
+	wcex.hbrBackground = (HBRUSH) (COLOR_WINDOW + 1);
+	//wcex.hbrBackground = (HBRUSH) GetStockObject(BLACK_BRUSH);
 	wcex.lpszMenuName = nullptr;
 	wcex.lpszClassName = g_windowClassName;
 
@@ -442,7 +444,7 @@ void App::initWindows()
 	SetFocus(m_hwnd);
 
 	// Hide the mouse cursor.
-	ShowCursor(false);
+	//ShowCursor(false);
 
 	return;
 }
@@ -454,7 +456,7 @@ void App::shutdownWindows()
 	// Show the mouse cursor.
 	ShowCursor(true);
 
-	//*
+	/*
 	// Fix the display settings if leaving full screen mode.
 	if (m_fullscreen)
 	{
