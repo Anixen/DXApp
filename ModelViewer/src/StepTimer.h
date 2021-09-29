@@ -2,7 +2,6 @@
  * A simple timer that provides elapsed time information.
  *
  * @class StepTimer
- * The StepTimer is a helper class for animation an simulation timing.
  *
  * @file src/StepTimer.h
  * @author Chuck Walbourn
@@ -22,6 +21,7 @@
 
 namespace DX
 {
+    // Helper class for animation and simulation timing.
     class StepTimer
     {
     public:
@@ -220,7 +220,7 @@ namespace DX
 /*
  * The MIT License(MIT)
  *
- * Copyright(c) 2017 - 2020 Microsoft Corp
+ * Copyright(c) 2017 - 2021 Microsoft Corp
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this
  * software and associated documentation files(the "Software"), to deal in the Software

@@ -4,7 +4,7 @@
  * Advanced Technology Group (ATG)
  * Copyright (C) Microsoft Corporation. All rights reserved.
  *
- * @file src/pch.h
+ * @file src/pch.cpp
  */
 
 #include "pch.h"
