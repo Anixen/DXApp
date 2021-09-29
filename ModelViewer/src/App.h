@@ -27,7 +27,7 @@ namespace nxn {
 // Forward declarations
 class AppState;
 
-class App {
+class App : public DX::IDeviceNotify {
 
 	friend LRESULT CALLBACK WndProc(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lparam);
 

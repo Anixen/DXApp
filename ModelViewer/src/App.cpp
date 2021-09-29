@@ -18,6 +18,10 @@ App::App()
 
 	g_instance = this;
 
+    // Use gamma-correct rendering.
+    m_deviceResources = std::make_unique<DX::DeviceResources>(DXGI_FORMAT_B8G8R8A8_UNORM_SRGB);
+    m_deviceResources->RegisterDeviceNotify(this);
+
     m_stepTimer.SetFixedTimeStep(true);
     m_stepTimer.SetTargetElapsedTicks((uint64_t)(m_updateInterval * DX::StepTimer::TicksPerSecond));
 }
