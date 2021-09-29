@@ -68,6 +68,13 @@ void AppStateTest::draw(DX::StepTimer const& p_timer, DX::DeviceResources* p_dev
 
 //-----------------------------------------------------------------------------
 
+void AppStateTest::clear(DX::DeviceResources * p_deviceResources)
+{
+
+}
+
+//-----------------------------------------------------------------------------
+
 void AppStateTest::handleCleanup()
 {
 	GetLogStream(SeverityInfo)

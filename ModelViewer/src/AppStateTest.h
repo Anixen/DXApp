@@ -36,6 +36,8 @@ public:
 	virtual AppState*   update          (DX::StepTimer const& p_timer);
 
 	virtual void        draw            (DX::StepTimer const& p_timer, DX::DeviceResources* p_deviceResources);
+    virtual void        clear           (DX::DeviceResources* p_deviceResources);
+
 	virtual void        handleCleanup   ();
 
 }; // class AppStateTest
