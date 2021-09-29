@@ -46,9 +46,9 @@ void AppStateTest::reinit()
 
 //-----------------------------------------------------------------------------
 
-AppState* AppStateTest::update(DX::StepTimer const& timer)
+AppState* AppStateTest::update(DX::StepTimer const& p_timer)
 {
-    double elapsedSeconds = timer.GetElapsedSeconds();
+    double elapsedSeconds = p_timer.GetElapsedSeconds();
     (void)elapsedSeconds;
 
     /*
@@ -61,7 +61,7 @@ AppState* AppStateTest::update(DX::StepTimer const& timer)
 
 //-----------------------------------------------------------------------------
 
-void AppStateTest::draw()
+void AppStateTest::draw(DX::StepTimer const& p_timer, DX::DeviceResources* p_deviceResources)
 {
 	Sleep(15);
 }

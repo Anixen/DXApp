@@ -528,7 +528,7 @@ void App::tick()
 		//*/
 	});
 
-	m_currentState->draw();
+	m_currentState->draw(m_stepTimer, m_deviceResources.get());
 }
 
 //-----------------------------------------------------------------------------
