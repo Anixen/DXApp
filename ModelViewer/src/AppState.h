@@ -44,7 +44,7 @@ public:
 	 *
 	 * @return {AppState*} A pointer to a new app state, or nullptr if no change required
 	 */
-	virtual                 AppState*   update          (StepTimer const& timer) = 0;
+	virtual                 AppState*   update          (DX::StepTimer const& timer) = 0;
 
 	virtual                 void        draw            () = 0;
 	                        void        cleanup         ();

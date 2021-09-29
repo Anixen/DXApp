@@ -45,7 +45,7 @@ void AppStateTest::reinit()
 
 //-----------------------------------------------------------------------------
 
-AppState* AppStateTest::update(StepTimer const& timer)
+AppState* AppStateTest::update(DX::StepTimer const& timer)
 {
     double elapsedSeconds = timer.GetElapsedSeconds();
 

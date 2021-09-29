@@ -98,7 +98,7 @@ private:
 	                        bool                    m_running           = false;
 	                        AppState*               m_currentState      = NULL;
 
-	                        StepTimer               m_stepTimer;
+	                        DX::StepTimer           m_stepTimer;
 	                        float                   m_updateInterval    = 0.005f;
 
 	                        int                     m_exitCode          = 0;

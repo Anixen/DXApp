@@ -17,7 +17,7 @@ App::App()
 	g_instance = this;
 
     m_stepTimer.SetFixedTimeStep(true);
-    m_stepTimer.SetTargetElapsedTicks((uint64_t)(m_updateInterval * StepTimer::TicksPerSecond));
+    m_stepTimer.SetTargetElapsedTicks((uint64_t)(m_updateInterval * DX::StepTimer::TicksPerSecond));
 }
 
 //-----------------------------------------------------------------------------
@@ -38,7 +38,7 @@ App::~App()
 void App::setUpdateInterval(float p_updateInterval)
 {
     m_updateInterval = p_updateInterval;
-    m_stepTimer.SetTargetElapsedTicks((uint64_t)(m_updateInterval * StepTimer::TicksPerSecond));
+    m_stepTimer.SetTargetElapsedTicks((uint64_t)(m_updateInterval * DX::StepTimer::TicksPerSecond));
 }
 
 //-----------------------------------------------------------------------------
