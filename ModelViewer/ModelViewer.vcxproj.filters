@@ -1,78 +1,83 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="External">
+      <UniqueIdentifier>{d5d952f0-89f4-4ec1-8c1d-4ebc6220c529}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Apps">
+      <UniqueIdentifier>{ca0f6245-272e-453b-aec3-aa4896e6528b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Apps\Test">
+      <UniqueIdentifier>{5e454dbd-24ce-49bc-968d-7a11565e0177}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib">
+      <UniqueIdentifier>{e4b21553-c0e4-43de-bda1-c18fd8ee75dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib\Loggers">
+      <UniqueIdentifier>{6d18c787-e871-43e3-a9e0-52828fc71854}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\LoggerConsole.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\AppStateTest.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\AppTest.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\DeviceResources.h">
+      <Filter>External</Filter>
     </ClInclude>
     <ClInclude Include="src\onullstream.h">
-      <Filter>Header Files</Filter>
+      <Filter>External</Filter>
     </ClInclude>
     <ClInclude Include="src\StepTimer.h">
-      <Filter>Header Files</Filter>
+      <Filter>External</Filter>
     </ClInclude>
-    <ClInclude Include="src\App.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\AppStateTest.h">
+      <Filter>Apps\Test</Filter>
     </ClInclude>
     <ClInclude Include="src\AppState.h">
-      <Filter>Header Files</Filter>
+      <Filter>Lib</Filter>
     </ClInclude>
-    <ClInclude Include="src\Logger.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\App.h">
+      <Filter>Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="src\AppTest.h">
+      <Filter>Apps\Test</Filter>
     </ClInclude>
     <ClInclude Include="src\pch.h">
-      <Filter>Header Files</Filter>
+      <Filter>Lib</Filter>
     </ClInclude>
-    <ClInclude Include="src\DeviceResources.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Logger.h">
+      <Filter>Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LoggerConsole.h">
+      <Filter>Lib\Loggers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\LoggerConsole.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\main.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\DeviceResources.cpp">
+      <Filter>External</Filter>
     </ClCompile>
     <ClCompile Include="src\AppStateTest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\AppTest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\App.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Apps\Test</Filter>
     </ClCompile>
     <ClCompile Include="src\AppState.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Lib</Filter>
     </ClCompile>
-    <ClCompile Include="src\Logger.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\App.cpp">
+      <Filter>Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AppTest.cpp">
+      <Filter>Apps\Test</Filter>
     </ClCompile>
     <ClCompile Include="src\pch.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Lib</Filter>
     </ClCompile>
-    <ClCompile Include="src\DeviceResources.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\Logger.cpp">
+      <Filter>Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LoggerConsole.cpp">
+      <Filter>Lib\Loggers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
