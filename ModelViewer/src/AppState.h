@@ -14,7 +14,6 @@
 #pragma once
 
 #include <string>
-#include "Timer.h"
 #include "StepTimer.h"
 #include "App.h"
 

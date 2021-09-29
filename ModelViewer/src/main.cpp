@@ -8,7 +8,6 @@
 
 #include "pch.h"
 
-#include "Timer.h"
 #include "LoggerConsole.h"
 #include "AppTest.h"
 
