@@ -39,7 +39,7 @@ void AppTest::init()
 void AppTest::handleCleanUp()
 {
 	GetLogStream(SeverityInfo)
-		<< "TestApp::cleanup()" << std::endl;
+		<< "AppTest::cleanup()" << std::endl;
 }
 
 } // namespace nxn

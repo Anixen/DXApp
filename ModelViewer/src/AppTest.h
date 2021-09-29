@@ -1,5 +1,5 @@
 /**
- * Testing implementation application class.
+ * Testing implementation for application class.
  * An application is responsible for running the main loop, and holding a variety of managers.
  *
  * @class AppTest
