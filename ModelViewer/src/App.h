@@ -15,10 +15,10 @@
 
 #pragma once
 
-#include <string>
-#include <filesystem>
-#include "AppState.h"
+#include "DeviceResources.h"
 #include "StepTimer.h"
+
+#include "AppState.h"
 
 
 namespace nxn {
@@ -32,76 +32,80 @@ class App {
 	friend LRESULT CALLBACK WndProc(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lparam);
 
 public:
-	virtual											~App                ();
+	virtual											                ~App                ();
 
-	static	inline		    App*				    getApp				()			                { return g_instance; }
-			inline	const	std::string				getName				() const	                { return m_name; }
-			inline	const	std::filesystem::path	getPath				() const	                { return m_path; }
+	static	inline		    App*				                    getApp				()			                { return g_instance; }
+			inline	const	std::string				                getName				() const	                { return m_name; }
+			inline	const	std::filesystem::path	                getPath				() const	                { return m_path; }
 
-			inline	const	bool					isRunning           () const                    { return m_running; }
-			inline	const	float					getUpdateInterval   () const                    { return m_updateInterval; }
-			                void					setUpdateInterval   (float p_updateInterval);
+			inline	const	bool					                isRunning           () const                    { return m_running; }
+			inline	const	float					                getUpdateInterval   () const                    { return m_updateInterval; }
+			                void					                setUpdateInterval   (float p_updateInterval);
 
-	virtual                 void					getDefaultWindowSize(int& width, int& height) const;
+	virtual                 void					                getDefaultWindowSize(int& width, int& height) const;
 
-	virtual                 void					processArguments	(int p_argc, char** p_argv);
-	virtual                 void					processArguments	(HINSTANCE p_hInstance, HINSTANCE p_hPrevInstance, PWSTR p_pCmdline, int p_iCmdshow);
+	virtual                 void					                processArguments	(int p_argc, char** p_argv);
+	virtual                 void					                processArguments	(HINSTANCE p_hInstance, HINSTANCE p_hPrevInstance, PWSTR p_pCmdline, int p_iCmdshow);
 
-							int						run					();
-							void					quit				(int p_exitCode);
+							int						                run					();
+							void					                quit				(int p_exitCode);
 
 protected:
-	                                                App                 (); // Ctor is protected because we only allow derived classes to instantiate this interface
+	                                                                App                 (); // Ctor is protected because we only allow derived classes to instantiate this interface
 
 
-	virtual                 LRESULT CALLBACK        handleMessage       (HWND hwnd, UINT umsg, WPARAM wparam, LPARAM lparam);
+	virtual                 LRESULT CALLBACK                        handleMessage       (HWND hwnd, UINT umsg, WPARAM wparam, LPARAM lparam);
 
 
-	                        void                    initWindows         ();
-	                        void                    shutdownWindows     ();
+	                        void                                    initWindows         ();
+	                        void                                    shutdownWindows     ();
 
-	                        void                    setCurrentState     (AppState* p_state);
-	virtual                 void                    tick                ();
-    virtual                 void                    init                () = 0; // Performs custom steps (e.g. allocating memory) before entering the main loop
-	virtual                 void                    handleCleanUp       () = 0; // Performs custom steps (e.g. freeing memory) after exiting the main loop
+	                        void                                    setCurrentState     (AppState* p_state);
+	virtual                 void                                    tick                ();
+    virtual                 void                                    init                () = 0; // Performs custom steps (e.g. allocating memory) before entering the main loop
+	virtual                 void                                    handleCleanUp       () = 0; // Performs custom steps (e.g. freeing memory) after exiting the main loop
 
 
-	virtual                 void                    onActivated         ();
-	virtual                 void                    onDeactivated       ();
-	virtual                 void                    onSuspending        ();
-	virtual                 void                    onResuming          ();
-	virtual                 void                    onWindowSizeChanged ();
+	virtual                 void                                    onActivated         ();
+	virtual                 void                                    onDeactivated       ();
+	virtual                 void                                    onSuspending        ();
+	virtual                 void                                    onResuming          ();
+	virtual                 void                                    onWindowSizeChanged ();
 
 private:
-                                                    App                 (const App&);   // Intentionally undefined. Is private because we do not allow copies of a Singleton.
-                            App&                    operator=           (const App&);   // Intentionally undefined. Is private because we do not allow copies of a Singleton.
+                                                                    App                 (const App&);   // Intentionally undefined. Is private because we do not allow copies of a Singleton.
+                            App&                                    operator=           (const App&);   // Intentionally undefined. Is private because we do not allow copies of a Singleton.
 
-                            void                    shutdown();
+                            void                                    shutdown();
                             
-	static                  App*                    g_instance;
+	static                  App*                                    g_instance;
 
-	                        std::string             m_name;
-	                        std::filesystem::path   m_path;
+	                        std::string                             m_name;
+	                        std::filesystem::path                   m_path;
 
-	                        HINSTANCE               m_hInstance;
+	                        HINSTANCE                               m_hInstance;
 
-	                        HWND                    m_hwnd;
-	                        int                     m_windowWidth,  m_windowHeight;
-	                        int                     m_windowPosX,   m_windowPosY;
+	                        HWND                                    m_hwnd;
+	                        int                                     m_windowWidth,  m_windowHeight;
+	                        int                                     m_windowPosX,   m_windowPosY;
 
-    static          const   LPCWSTR                 g_windowClassName;
-	                        bool                    m_sizemove          = false;
-	                        bool                    m_suspended         = false;
-	                        bool                    m_minimized         = false;
-	                        bool                    m_fullscreen        = false;
+    static          const   LPCWSTR                                 g_windowClassName;
+	                        bool                                    m_sizemove          = false;
+	                        bool                                    m_suspended         = false;
+	                        bool                                    m_minimized         = false;
+	                        bool                                    m_fullscreen        = false;
 
-	                        bool                    m_running           = false;
-	                        AppState*               m_currentState      = NULL;
+	                        bool                                    m_running           = false;
+	                        AppState*                               m_currentState      = NULL;
 
-	                        DX::StepTimer           m_stepTimer;
-	                        float                   m_updateInterval    = 0.005f;
+                            // Device resources.
+                            std::unique_ptr<DX::DeviceResources>    m_deviceResources;
 
-	                        int                     m_exitCode          = 0;
+                            // Rendering loop timer.
+	                        DX::StepTimer                           m_stepTimer;
+	                        float                                   m_updateInterval    = 0.005f;
+
+	                        int                                     m_exitCode          = 0;
 
 }; // class App
 
