@@ -62,7 +62,9 @@ protected:
 
 	                        void                                    setCurrentState     (AppState* p_state);
 	virtual                 void                                    tick                ();
-    virtual                 void                                    init                () = 0; // Performs custom steps (e.g. allocating memory) before entering the main loop
+    virtual                 void                                    init                ();
+    virtual                 void                                    preInit             () = 0; // Performs custom steps (e.g. allocating memory) before entering the main loop.
+    virtual                 void                                    postInit            () = 0; // Performs custom steps (e.g. allocating memory) before entering the main loop
 	virtual                 void                                    handleCleanUp       () = 0; // Performs custom steps (e.g. freeing memory) after exiting the main loop
 
     // IDeviceNotify

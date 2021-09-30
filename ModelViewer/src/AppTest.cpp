@@ -26,12 +26,20 @@ AppTest::~AppTest()
 
 //-----------------------------------------------------------------------------
 
-void AppTest::init()
+void AppTest::preInit()
 {
-	GetLogStream(SeverityInfo)
-		<< "AppTest::init()" << std::endl;
+    GetLogStream(SeverityInfo)
+        << "AppTest::preInit()" << std::endl;
 
-	setCurrentState(new AppStateTest(this));
+    setCurrentState(new AppStateTest(this));
+}
+
+//-----------------------------------------------------------------------------
+
+void AppTest::postInit()
+{
+    GetLogStream(SeverityInfo)
+        << "AppTest::postInit()" << std::endl;
 }
 
 //-----------------------------------------------------------------------------

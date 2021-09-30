@@ -26,7 +26,8 @@ public:
 	                ~AppTest        ();
 
 protected:
-	virtual void    init            (); // Performs custom steps (e.g. allocating memory) before entering the main loop
+    virtual void    preInit         (); // Performs custom steps (e.g. allocating memory) before entering the main loop
+	virtual void    postInit        (); // Performs custom steps (e.g. allocating memory) before entering the main loop
 	virtual void    handleCleanUp   (); // Performs custom steps (e.g. freeing memory) after exiting the main loop
 
 }; // class AppTest

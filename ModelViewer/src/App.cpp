@@ -537,6 +537,37 @@ void App::tick()
 }
 
 //-----------------------------------------------------------------------------
+
+void App::init()
+{
+    GetLogStream(SeverityInfo)
+        << "App::init()" << std::endl;
+
+    preInit();
+
+    //m_gamePad = std::make_unique<GamePad>();
+    //m_keyboard = std::make_unique<Keyboard>();
+
+    GetLogStream(SeverityDebug)
+        << "App::init() : setting up device ressources" << std::endl;
+
+    m_deviceResources->SetWindow(m_hwnd, m_windowWidth, m_windowHeight);
+
+    m_deviceResources->CreateDeviceResources();
+    m_deviceResources->CreateWindowSizeDependentResources();
+
+    if (m_currentState != NULL)
+    {
+        m_currentState->createDeviceDependentResources(m_deviceResources.get());
+        m_currentState->createWindowSizeDependentResources();
+    }
+
+    postInit();
+
+    m_initialized = true;
+}
+
+//-----------------------------------------------------------------------------
 /**
  *
  */
