@@ -8,7 +8,7 @@ namespace nxn {
 
 
 App* App::g_instance = NULL;
-const LPCWSTR App::g_windowClassName = L"AppBaseWindowClass";
+const LPCWSTR App::g_windowClassName = L"AppWindowClass";
 
 //-----------------------------------------------------------------------------
 
