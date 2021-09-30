@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -79,5 +79,12 @@
     <ClCompile Include="src\LoggerConsole.cpp">
       <Filter>Lib\Loggers</Filter>
     </ClCompile>
+  <ItemGroup>
+    <FxCompile Include="src\PixelShader.hlsl">
+      <Filter>Ressources</Filter>
+    </FxCompile>
+    <FxCompile Include="src\VertexShader.hlsl">
+      <Filter>Ressources</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>
