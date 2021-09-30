@@ -173,8 +173,12 @@
     </FxCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\External\ATGTK\ATGColors.h" />
+    <ClInclude Include="..\External\ATGTK\ReadData.h" />
     <ClInclude Include="src\App.h" />
+    <ClInclude Include="src\AppSamples.h" />
     <ClInclude Include="src\AppState.h" />
+    <ClInclude Include="src\AppStateSimpleTriangle.h" />
     <ClInclude Include="src\AppStateTest.h" />
     <ClInclude Include="src\AppTest.h" />
     <ClInclude Include="src\DeviceResources.h" />
@@ -186,7 +190,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\App.cpp" />
+    <ClCompile Include="src\AppSamples.cpp" />
     <ClCompile Include="src\AppState.cpp" />
+    <ClCompile Include="src\AppStateSimpleTriangle.cpp" />
     <ClCompile Include="src\AppStateTest.cpp" />
     <ClCompile Include="src\AppTest.cpp" />
     <ClCompile Include="src\DeviceResources.cpp" />

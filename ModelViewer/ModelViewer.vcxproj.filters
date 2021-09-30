@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -19,6 +19,15 @@
     </Filter>
     <Filter Include="Lib\Loggers">
       <UniqueIdentifier>{6d18c787-e871-43e3-a9e0-52828fc71854}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Apps\Samples">
+      <UniqueIdentifier>{6e6d7747-d169-4088-9337-8ee9bb507e5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ATG Tool Kit">
+      <UniqueIdentifier>{c5fdea81-bd14-4dd9-8d0e-ecf53002c5db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Ressources">
+      <UniqueIdentifier>{5e8c889a-2a53-405c-925e-4182a29a734e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -52,6 +61,18 @@
     <ClInclude Include="src\LoggerConsole.h">
       <Filter>Lib\Loggers</Filter>
     </ClInclude>
+    <ClInclude Include="src\AppSamples.h">
+      <Filter>Apps\Samples</Filter>
+    </ClInclude>
+    <ClInclude Include="src\AppStateSimpleTriangle.h">
+      <Filter>Apps\Samples</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\ATGTK\ATGColors.h">
+      <Filter>ATG Tool Kit</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\ATGTK\ReadData.h">
+      <Filter>ATG Tool Kit</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
@@ -79,6 +100,13 @@
     <ClCompile Include="src\LoggerConsole.cpp">
       <Filter>Lib\Loggers</Filter>
     </ClCompile>
+    <ClCompile Include="src\AppSamples.cpp">
+      <Filter>Apps\Samples</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AppStateSimpleTriangle.cpp">
+      <Filter>Apps\Samples</Filter>
+    </ClCompile>
+  </ItemGroup>
   <ItemGroup>
     <FxCompile Include="src\PixelShader.hlsl">
       <Filter>Ressources</Filter>

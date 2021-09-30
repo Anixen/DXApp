@@ -1,0 +1,235 @@
+#include "pch.h"
+#include "AppStateSimpleTriangle.h"
+
+#include "Logger.h"
+#include "App.h"
+
+#include "ATGColors.h"
+#include "ReadData.h"
+
+using namespace DirectX;
+
+namespace
+{
+    struct Vertex
+    {
+        XMFLOAT4 position;
+        XMFLOAT4 color;
+    };
+}
+
+namespace nxn {
+
+
+//-----------------------------------------------------------------------------
+/**
+ * @param {App*}    p_app  The address of the app to which belongs this state
+ */
+AppStateSimpleTriangle::AppStateSimpleTriangle(App *p_app) :
+	AppState(p_app)
+{
+	GetLogStream(SeverityInfo)
+		<< "AppStateSimpleTriangle::ctor()" << std::endl;
+}
+
+//-----------------------------------------------------------------------------
+
+AppStateSimpleTriangle::~AppStateSimpleTriangle()
+{
+	GetLogStream(SeverityInfo)
+		<< "AppStateSimpleTriangle::dtor()" << std::endl;
+}
+
+//-----------------------------------------------------------------------------
+
+void AppStateSimpleTriangle::init() {
+	GetLogStream(SeverityInfo)
+		<< "AppStateSimpleTriangle::init()" << std::endl;
+
+	AppState::init();
+}
+
+//-----------------------------------------------------------------------------
+
+void AppStateSimpleTriangle::reinit()
+{
+	GetLogStream(SeverityInfo)
+		<< "AppStateSimpleTriangle::reinit()" << std::endl;
+}
+
+//-----------------------------------------------------------------------------
+
+AppState* AppStateSimpleTriangle::update(DX::StepTimer const& p_timer)
+{
+    double elapsedSeconds = p_timer.GetElapsedSeconds();
+    (void)elapsedSeconds;
+
+    /*
+	GetLogStream(SeverityInfo)
+		<< "AppStateTest::update(" << elapsedSeconds << ")" << std::endl;
+	//*/
+
+    /*
+    auto pad = m_gamePad->GetState(0);
+    if (pad.IsConnected())
+    {
+        if (pad.IsViewPressed())
+        {
+            m_app->quit(0);
+        }
+    }
+    //*/
+
+    /*
+    auto kb = m_keyboard->GetState();
+    if (kb.Escape)
+    {
+        m_app->quit(0);
+    }
+    //*/
+
+	return nullptr;
+}
+
+//-----------------------------------------------------------------------------
+
+void AppStateSimpleTriangle::draw(DX::DeviceResources* p_deviceResources)
+{
+    clear(p_deviceResources);
+
+    p_deviceResources->PIXBeginEvent(L"Render");
+    auto context = p_deviceResources->GetD3DDeviceContext();
+
+    // Set input assembler state.
+    context->IASetInputLayout(m_spInputLayout.Get());
+
+    UINT strides = sizeof(Vertex);
+    UINT offsets = 0;
+    context->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+    context->IASetVertexBuffers(0, 1, m_spVertexBuffer.GetAddressOf(), &strides, &offsets);
+
+    // Set shaders.
+    context->VSSetShader(m_spVertexShader.Get(), nullptr, 0);
+    context->GSSetShader(nullptr, nullptr, 0);
+    context->PSSetShader(m_spPixelShader.Get(), nullptr, 0);
+
+    // Draw triangle.
+    context->Draw(3, 0);
+
+    p_deviceResources->PIXEndEvent();
+
+    // Show the new frame.
+    p_deviceResources->Present();
+}
+
+//-----------------------------------------------------------------------------
+
+void AppStateSimpleTriangle::clear(DX::DeviceResources * p_deviceResources)
+{
+    p_deviceResources->PIXBeginEvent(L"Clear");
+
+    // Clear the views.
+    auto context = p_deviceResources->GetD3DDeviceContext();
+    auto renderTarget = p_deviceResources->GetRenderTargetView();
+    auto depthStencil = p_deviceResources->GetDepthStencilView();
+
+    // Use linear clear color for gamma-correct rendering.
+    context->ClearRenderTargetView(renderTarget, ATG::ColorsLinear::Background);
+
+    context->ClearDepthStencilView(depthStencil, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
+
+    context->OMSetRenderTargets(1, &renderTarget, depthStencil);
+
+    // Set the viewport.
+    auto viewport = p_deviceResources->GetScreenViewport();
+    context->RSSetViewports(1, &viewport);
+
+    p_deviceResources->PIXEndEvent();
+}
+
+//-----------------------------------------------------------------------------
+
+void AppStateSimpleTriangle::handleCleanup()
+{
+	GetLogStream(SeverityInfo)
+		<< "AppStateSimpleTriangle::handleCleanup()" << std::endl;
+}
+
+//-----------------------------------------------------------------------------
+
+void AppStateSimpleTriangle::createDeviceDependentResources(DX::DeviceResources * p_deviceResources)
+{
+    GetLogStream(SeverityInfo)
+        << "AppStateSimpleTriangle::createDeviceDependentResources()" << std::endl;
+
+    auto device = p_deviceResources->GetD3DDevice();
+
+    // Load and create shaders.
+    auto vertexShaderBlob = DX::ReadData(L"VertexShader.cso");
+
+    DX::ThrowIfFailed(
+        device->CreateVertexShader(vertexShaderBlob.data(), vertexShaderBlob.size(),
+            nullptr, m_spVertexShader.ReleaseAndGetAddressOf()));
+
+    auto pixelShaderBlob = DX::ReadData(L"PixelShader.cso");
+
+    DX::ThrowIfFailed(
+        device->CreatePixelShader(pixelShaderBlob.data(), pixelShaderBlob.size(),
+            nullptr, m_spPixelShader.ReleaseAndGetAddressOf()));
+
+    // Create input layout.
+    static const D3D11_INPUT_ELEMENT_DESC s_inputElementDesc[2] =
+    {
+        { "SV_Position", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 0,  D3D11_INPUT_PER_VERTEX_DATA,  0 },
+        { "COLOR",       0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 16, D3D11_INPUT_PER_VERTEX_DATA , 0 },
+    };
+
+    DX::ThrowIfFailed(
+        device->CreateInputLayout(s_inputElementDesc, _countof(s_inputElementDesc),
+            vertexShaderBlob.data(), vertexShaderBlob.size(),
+            m_spInputLayout.ReleaseAndGetAddressOf()));
+
+    // Create vertex buffer.
+    static const Vertex s_vertexData[3] =
+    {
+        { { 0.0f,   0.5f,  0.5f, 1.0f },{ 1.0f, 0.0f, 0.0f, 1.0f } },  // Top / Red
+        { { 0.5f,  -0.5f,  0.5f, 1.0f },{ 0.0f, 1.0f, 0.0f, 1.0f } },  // Right / Green
+        { { -0.5f, -0.5f,  0.5f, 1.0f },{ 0.0f, 0.0f, 1.0f, 1.0f } }   // Left / Blue
+    };
+
+    D3D11_SUBRESOURCE_DATA initialData = {};
+    initialData.pSysMem = s_vertexData;
+
+    D3D11_BUFFER_DESC bufferDesc = {};
+    bufferDesc.ByteWidth = sizeof(s_vertexData);
+    bufferDesc.Usage = D3D11_USAGE_IMMUTABLE;
+    bufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+    bufferDesc.StructureByteStride = sizeof(Vertex);
+
+    DX::ThrowIfFailed(
+        device->CreateBuffer(&bufferDesc, &initialData,
+            m_spVertexBuffer.ReleaseAndGetAddressOf()));
+}
+
+//-----------------------------------------------------------------------------
+
+void AppStateSimpleTriangle::createWindowSizeDependentResources()
+{
+    GetLogStream(SeverityInfo)
+        << "AppStateSimpleTriangle::createWindwSizeDependentResources()" << std::endl;
+}
+
+//-----------------------------------------------------------------------------
+
+void AppStateSimpleTriangle::resetResources()
+{
+    GetLogStream(SeverityInfo)
+        << "AppStateSimpleTriangle::resetRessources()" << std::endl;
+
+    m_spInputLayout .Reset();
+    m_spVertexBuffer.Reset();
+    m_spVertexShader.Reset();
+    m_spPixelShader .Reset();
+}
+
+} // namespace nxn

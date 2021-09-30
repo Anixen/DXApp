@@ -9,7 +9,8 @@
 #include "pch.h"
 
 #include "LoggerConsole.h"
-#include "AppTest.h"
+//#include "AppTest.h"
+#include "AppSamples.h"
 
 
 using namespace nxn;
@@ -19,7 +20,8 @@ int main(int argc, char** argv)
 {
 	LoggerConsole logger(true, SeverityDebug);
 
-	App* app = new AppTest();
+	//App* app = new AppTest();
+    App* app = new AppSamples();
 
 	//app->processArguments(hInstance, hPrevInstance, pCmdLine, nCmdShow);
 	app->processArguments(argc, argv);
