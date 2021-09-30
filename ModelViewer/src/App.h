@@ -38,6 +38,7 @@ public:
 			inline	const	std::string				                getName				() const	                { return m_name; }
 			inline	const	std::filesystem::path	                getPath				() const	                { return m_path; }
 
+            inline  const   bool                                    isInitialized       () const                    { return m_initialized; }
 			inline	const	bool					                isRunning           () const                    { return m_running; }
 			inline	const	float					                getUpdateInterval   () const                    { return m_updateInterval; }
 			                void					                setUpdateInterval   (float p_updateInterval);
@@ -100,6 +101,7 @@ private:
 	                        bool                                    m_minimized         = false;
 	                        bool                                    m_fullscreen        = false;
 
+                            bool                                    m_initialized       = false;
 	                        bool                                    m_running           = false;
 	                        AppState*                               m_currentState      = NULL;
 

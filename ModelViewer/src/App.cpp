@@ -129,7 +129,8 @@ int App::run()
 {
 	GetLogStream(SeverityInfo) << "App::run()" << std::endl;
 
-	m_running = true;
+    m_initialized   = false;
+	m_running       = true;
 
 	// TODO ? Will probably need code to initialize things here
 
@@ -169,6 +170,7 @@ int App::run()
 	shutdown();
 	shutdownWindows();
 
+    m_initialized = false;
 	m_running = false;
 
 	if (m_exitCode < 0) {
