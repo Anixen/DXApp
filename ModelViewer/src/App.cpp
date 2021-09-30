@@ -14,7 +14,7 @@ const LPCWSTR App::g_windowClassName = L"AppBaseWindowClass";
 
 App::App()
 {
-	LogMessage(SeverityInfo, "AppBase::ctor()")
+	LogMessage(SeverityInfo, "App::ctor()")
 
 	g_instance = this;
 
@@ -30,7 +30,7 @@ App::App()
 
 App::~App()
 {
-	LogMessage(SeverityInfo, "AppBase::dtor()")
+	LogMessage(SeverityInfo, "App::dtor()")
 
 	m_running = false;
 
@@ -71,16 +71,16 @@ void App::processArguments(int p_argc, char **p_argv)
 	m_hInstance = GetModuleHandle(NULL);
 
 	GetLogStream(SeverityInfo)
-		<< "AppBase::processArguments() m_name = " << m_name  << ", m_hInstance = " << m_hInstance << std::endl
+		<< "App::processArguments() m_name = " << m_name  << ", m_hInstance = " << m_hInstance << std::endl
 		<< "m_path = " << m_path << std::endl;
 
 	if (p_argc == 1) {
 		GetLogStream(SeverityInfo)
-			<< "AppBase::processArguments() command line : (none)" << std::endl;
+			<< "App::processArguments() command line : (none)" << std::endl;
 	}
 	else {
 		GetLogStream(SeverityInfo)
-			<< "AppBase::processArguments() command line :" << std::endl;
+			<< "App::processArguments() command line :" << std::endl;
 		for (int i = 0; i < p_argc; ++i) {
 			GetLogStream(SeverityInfo)
 				<< "Argument " << i << " = " << p_argv[i] << std::endl;
@@ -112,7 +112,7 @@ void App::processArguments(HINSTANCE p_hInstance, HINSTANCE p_hPrevInstance, PWS
 	m_hInstance = p_hInstance;
 
 	GetLogStream(SeverityInfo)
-		<< "AppBase::processArguments()"
+		<< "App::processArguments()"
 		<< "m_name = " << m_name << ", m_hInstance = " << m_hInstance << std::endl
 		<< ", m_path = " << m_path << std::endl;
 }
@@ -127,7 +127,7 @@ void App::processArguments(HINSTANCE p_hInstance, HINSTANCE p_hPrevInstance, PWS
  */
 int App::run()
 {
-	GetLogStream(SeverityInfo) << "AppBase::run()" << std::endl;
+	GetLogStream(SeverityInfo) << "App::run()" << std::endl;
 
 	m_running = true;
 
@@ -142,7 +142,7 @@ int App::run()
 	if (m_currentState == nullptr)
 	{
 		GetLogStream(SeverityFatal)
-			<< "AppBase::run() : The application doesnt have a current state" << std::endl;
+			<< "App::run() : The application doesnt have a current state" << std::endl;
 		throw new std::exception("The application doesnt have a current state");
 	}
 
@@ -173,11 +173,11 @@ int App::run()
 
 	if (m_exitCode < 0) {
 		GetLogStream(SeverityError)
-			<< "AppBase::run() : exitCode = " << m_exitCode << std::endl;
+			<< "App::run() : exitCode = " << m_exitCode << std::endl;
 	}
 	else {
 		GetLogStream(SeverityInfo)
-			<< "AppBase::run() : exitCode = " << m_exitCode << std::endl;
+			<< "App::run() : exitCode = " << m_exitCode << std::endl;
 	}
 
 	return m_exitCode;
@@ -190,7 +190,7 @@ int App::run()
 void App::quit(int p_exitCode)
 {
 	GetLogStream(SeverityInfo)
-		<< "AppBase::quit(" << p_exitCode << ")" << std::endl;
+		<< "App::quit(" << p_exitCode << ")" << std::endl;
 
 	PostQuitMessage(p_exitCode);
 }
@@ -490,7 +490,7 @@ void App::shutdownWindows()
 void App::setCurrentState(AppState* p_state)
 {
 	GetLogStream(SeverityInfo)
-		<< "StateManager::setCurrentState()" << std::endl;
+		<< "App::setCurrentState()" << std::endl;
 
 	if (nullptr != m_currentState) {
 		m_currentState->deinit();
@@ -542,7 +542,7 @@ void App::tick()
  */
 void App::shutdown()
 {
-	GetLogStream(SeverityInfo) << "AppBase::shutdown()" << std::endl;
+	GetLogStream(SeverityInfo) << "App::shutdown()" << std::endl;
 
 	handleCleanUp();
 
@@ -576,28 +576,28 @@ void App::OnDeviceRestored()
 
 void App::onActivated()
 {
-	GetLogStream(SeverityDebug) << "AppBase::onActivated()" << std::endl;
+	GetLogStream(SeverityDebug) << "App::onActivated()" << std::endl;
 }
 
 //-----------------------------------------------------------------------------
 
 void App::onDeactivated()
 {
-	GetLogStream(SeverityDebug) << "AppBase::onDeactivated()" << std::endl;
+	GetLogStream(SeverityDebug) << "App::onDeactivated()" << std::endl;
 }
 
 //-----------------------------------------------------------------------------
 
 void App::onSuspending()
 {
-	GetLogStream(SeverityDebug) << "AppBase::onSuspending()" << std::endl;
+	GetLogStream(SeverityDebug) << "App::onSuspending()" << std::endl;
 }
 
 //-----------------------------------------------------------------------------
 
 void App::onResuming()
 {
-	GetLogStream(SeverityDebug) << "AppBase::onResuming()" << std::endl;
+	GetLogStream(SeverityDebug) << "App::onResuming()" << std::endl;
 	m_stepTimer.ResetElapsedTime();
 }
 
