@@ -329,7 +329,7 @@ LRESULT CALLBACK App::handleMessage(HWND hwnd, UINT umessage, WPARAM wparam, LPA
 				onResuming();
 			m_suspended = false;
 		}
-		else if (!m_sizemove)
+		else if (m_initialized && !m_sizemove)
 		{
 			m_windowWidth   = LOWORD(lparam);
 			m_windowHeight  = HIWORD(lparam);
