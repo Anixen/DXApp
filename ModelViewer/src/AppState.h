@@ -26,40 +26,48 @@ class App;
 
 class AppState {
 
+    friend class App;
+    //friend                  void        App::OnDeviceLost                   ();
+    //friend                  void        App::OnDeviceRestored               ();
+
 public:
-	                                    ~AppState       ();
+	                                    ~AppState                           ();
 
-	virtual                 void        init            ();
-	virtual                 void        reinit          () = 0; // Called to reset the state. Re-Initializes a state without reallocating everything inside.
-	                        void        deinit          ();
-	        inline  const   bool        isInitialized   () const    { return m_initialized; }
+	virtual                 void        init                                ();
+	virtual                 void        reinit                              () = 0; // Called to reset the state. Re-Initializes a state without reallocating everything inside.
+	                        void        deinit                              ();
+	        inline  const   bool        isInitialized                       () const    { return m_initialized; }
 
-	                        void        pause           ();
-	                        void        resume          ();
-	        inline  const   bool        isPaused        () const    { return m_paused; }
+	                        void        pause                               ();
+	                        void        resume                              ();
+	        inline  const   bool        isPaused                            () const    { return m_paused; }
 
 	/**
      * @param {StepTimer const&}   p_timer  The StepTimer that keeping track elapsed duration since last update
 	 *
 	 * @return {AppState*} A pointer to a new app state, or nullptr if no change required
 	 */
-	virtual                 AppState*   update          (DX::StepTimer const& p_timer) = 0;
+	virtual                 AppState*   update                              (DX::StepTimer const& p_timer) = 0;
 
-	virtual                 void        draw            (DX::DeviceResources* p_deviceResources) = 0;
-    virtual                 void        clear           (DX::DeviceResources* p_deviceResources) = 0;
+	virtual                 void        draw                                (DX::DeviceResources* p_deviceResources) = 0;
+    virtual                 void        clear                               (DX::DeviceResources* p_deviceResources) = 0;
 
-	                        void        cleanup         ();
+	                        void        cleanup                             ();
 
 protected:
-	                                    AppState        (App* p_app);
+	                                    AppState                            (App* p_app);
 
-    virtual                 void        handleCleanup   () = 0;
+    virtual                 void        handleCleanup                       () = 0;
 	
 	                        App*        m_app;  // Pointer to the app the state belongs to
 
 private:
-                                        AppState        (const AppState&);  // Intentionally undefined. Is private because we do not allow copies of a Singleton.
-                            AppState&   operator=       (const AppState&);  // Intentionally undefined. Is private because we do not allow copies of a Singleton.
+                                        AppState                            (const AppState&);  // Intentionally undefined. Is private because we do not allow copies of a Singleton.
+                            AppState&   operator=                           (const AppState&);  // Intentionally undefined. Is private because we do not allow copies of a Singleton.
+
+    virtual                 void        createDeviceDependentResources      (DX::DeviceResources * p_deviceResources) = 0;
+    virtual                 void        createWindowSizeDependentResources  () = 0;
+    virtual                 void        resetResources                      () = 0;
 
 	                        bool        m_initialized;
 	                        bool        m_paused;

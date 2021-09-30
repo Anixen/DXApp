@@ -22,23 +22,29 @@ namespace nxn {
 class AppStateTest : public AppState {
 
 public:
-	                    AppStateTest    (App* p_app);
-	                    ~AppStateTest   ();
+	                    AppStateTest                        (App* p_app);
+	                    ~AppStateTest                       ();
 
-	virtual void        init            ();
-	virtual void        reinit          ();  // Called to reset the state. Re-Initializes a state without reallocating everything inside.
+	virtual void        init                                ();
+	virtual void        reinit                              ();  // Called to reset the state. Re-Initializes a state without reallocating everything inside.
 
     /**
      * @param {StepTimer const&}   p_timer  The StepTimer that keeping track elapsed duration since last update
      *
      * @return {AppState*} A pointer to a new app state, or nullptr if no change required
      */
-	virtual AppState*   update          (DX::StepTimer const& p_timer);
+	virtual AppState*   update                              (DX::StepTimer const& p_timer);
 
-	virtual void        draw            (DX::DeviceResources* p_deviceResources);
-    virtual void        clear           (DX::DeviceResources* p_deviceResources);
+	virtual void        draw                                (DX::DeviceResources* p_deviceResources);
+    virtual void        clear                               (DX::DeviceResources* p_deviceResources);
 
-	virtual void        handleCleanup   ();
+protected:
+	virtual void        handleCleanup                       ();
+
+private:
+    virtual void        createDeviceDependentResources      (DX::DeviceResources * p_deviceResources);
+    virtual void        createWindowSizeDependentResources  ();
+    virtual void        resetResources                      ();
 
 }; // class AppStateTest
 

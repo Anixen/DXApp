@@ -82,4 +82,29 @@ void AppStateTest::handleCleanup()
 		<< "AppStateTest::handleCleanup()" << std::endl;
 }
 
+//-----------------------------------------------------------------------------
+
+void AppStateTest::createDeviceDependentResources(DX::DeviceResources * p_deviceResources)
+{
+    (void)p_deviceResources;
+    GetLogStream(SeverityInfo)
+        << "AppStateSimpleTriangle::createDeviceDependentResources()" << std::endl;
+}
+
+//-----------------------------------------------------------------------------
+
+void AppStateTest::createWindowSizeDependentResources()
+{
+    GetLogStream(SeverityInfo)
+        << "AppStateSimpleTriangle::createWindowSizeDependentResources()" << std::endl;
+}
+
+//-----------------------------------------------------------------------------
+
+void AppStateTest::resetResources()
+{
+    GetLogStream(SeverityInfo)
+        << "AppStateSimpleTriangle::resetRessources()" << std::endl;
+}
+
 } // namespace nxn

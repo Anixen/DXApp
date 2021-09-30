@@ -555,12 +555,21 @@ void App::shutdown()
 
 void App::OnDeviceLost()
 {
+    if (m_currentState != NULL)
+    {
+        m_currentState->resetResources();
+    }
 }
 
 //-----------------------------------------------------------------------------
 
 void App::OnDeviceRestored()
 {
+    if (m_currentState != NULL)
+    {
+        m_currentState->createDeviceDependentResources(m_deviceResources.get());
+        m_currentState->createWindowSizeDependentResources();
+    }
 }
 
 //-----------------------------------------------------------------------------
