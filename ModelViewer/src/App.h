@@ -65,6 +65,9 @@ protected:
     virtual                 void                                    init                () = 0; // Performs custom steps (e.g. allocating memory) before entering the main loop
 	virtual                 void                                    handleCleanUp       () = 0; // Performs custom steps (e.g. freeing memory) after exiting the main loop
 
+    // IDeviceNotify
+    virtual                 void                                    OnDeviceLost        () override;
+    virtual                 void                                    OnDeviceRestored    () override;
 
 	virtual                 void                                    onActivated         ();
 	virtual                 void                                    onDeactivated       ();
