@@ -329,9 +329,9 @@ LRESULT CALLBACK App::handleMessage(HWND hwnd, UINT umessage, WPARAM wparam, LPA
 		}
 		else if (!m_sizemove)
 		{
-			m_windowWidth = LOWORD(lparam);
-			m_windowHeight = HIWORD(lparam);
-			onWindowSizeChanged();
+			m_windowWidth   = LOWORD(lparam);
+			m_windowHeight  = HIWORD(lparam);
+			onWindowSizeChanged(m_windowWidth, m_windowHeight);
 		}
 		break;
 
@@ -347,9 +347,9 @@ LRESULT CALLBACK App::handleMessage(HWND hwnd, UINT umessage, WPARAM wparam, LPA
 
 		m_windowPosX = rc.left;
 		m_windowPosY = rc.top;
-		m_windowWidth  = rc.right - rc.left;
+		m_windowWidth  = rc.right  - rc.left;
 		m_windowHeight = rc.bottom - rc.top;
-		onWindowSizeChanged();
+		onWindowSizeChanged(m_windowWidth, m_windowHeight);
 
 		break;
 
@@ -603,14 +603,15 @@ void App::onResuming()
 
 //-----------------------------------------------------------------------------
 
-void App::onWindowSizeChanged()
+void App::onWindowSizeChanged(int width, int height)
 {
-	/*
-	if (!m_deviceResources->WindowSizeChanged(width, height))
-		return;
+    if (!m_deviceResources->WindowSizeChanged(width, height))
+        return;
 
-	CreateWindowSizeDependentResources();
-	//*/
+    if (m_currentState != NULL)
+    {
+        m_currentState->createWindowSizeDependentResources();
+    }
 }
 
 } // namespace nxn

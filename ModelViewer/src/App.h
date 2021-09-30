@@ -73,7 +73,7 @@ protected:
 	virtual                 void                                    onDeactivated       ();
 	virtual                 void                                    onSuspending        ();
 	virtual                 void                                    onResuming          ();
-	virtual                 void                                    onWindowSizeChanged ();
+	virtual                 void                                    onWindowSizeChanged(int width, int height);
 
 private:
                                                                     App                 (const App&);   // Intentionally undefined. Is private because we do not allow copies of a Singleton.
