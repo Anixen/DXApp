@@ -66,7 +66,7 @@ AppState* AppStateSimpleTriangle::update(DX::StepTimer const& p_timer)
 
     /*
 	GetLogStream(SeverityInfo)
-		<< "AppStateTest::update(" << elapsedSeconds << ")" << std::endl;
+		<< "AppStateSimpleTexture::update(" << elapsedSeconds << ")" << std::endl;
 	//*/
 
     /*
