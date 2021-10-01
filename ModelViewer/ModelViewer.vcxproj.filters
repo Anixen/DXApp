@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -73,6 +73,9 @@
     <ClInclude Include="..\External\ATGTK\ReadData.h">
       <Filter>ATG Tool Kit</Filter>
     </ClInclude>
+    <ClInclude Include="src\AppStateSimpleTexture.h">
+      <Filter>Apps\Samples</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
@@ -115,6 +118,12 @@
       <Filter>Ressources</Filter>
     </FxCompile>
     <FxCompile Include="src\SimpleTriangle_VertexShader.hlsl">
+      <Filter>Ressources</Filter>
+    </FxCompile>
+    <FxCompile Include="src\SimpleTexture_PixelShader.hlsl">
+      <Filter>Ressources</Filter>
+    </FxCompile>
+    <FxCompile Include="src\SimpleTexture_VertexShader.hlsl">
       <Filter>Ressources</Filter>
     </FxCompile>
   </ItemGroup>

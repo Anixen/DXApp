@@ -1,7 +1,8 @@
 #include "pch.h"
 #include "AppSamples.h"
 
-#include "AppStateSimpleTriangle.h"
+//#include "AppStateSimpleTriangle.h"
+#include "AppStateSimpleTexture.h"
 #include "Logger.h"
 
 
@@ -31,7 +32,7 @@ void AppSamples::preInit()
     GetLogStream(SeverityInfo)
         << "AppSamples::preInit()" << std::endl;
 
-    setCurrentState(new AppStateSimpleTriangle(this));
+    setCurrentState(new AppStateSimpleTexture(this));
 }
 
 //-----------------------------------------------------------------------------
