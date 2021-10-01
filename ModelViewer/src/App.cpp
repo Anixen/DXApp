@@ -433,23 +433,34 @@ void App::initWindows()
 	// Setup the screen settings depending on whether it is running in full screen or in windowed mode.
 
 	// Place the window in the middle of the screen.
-	getDefaultWindowSize(m_windowWidth, m_windowHeight);
-	m_windowPosX = (GetSystemMetrics(SM_CXSCREEN) - m_windowWidth)  / 2;
-	m_windowPosY = (GetSystemMetrics(SM_CYSCREEN) - m_windowHeight) / 2;
+    int w, h;
+	getDefaultWindowSize(w, h);
+	m_windowPosX = (GetSystemMetrics(SM_CXSCREEN) - w) / 2;
+	m_windowPosY = (GetSystemMetrics(SM_CYSCREEN) - h) / 2;
 
+    RECT rc = { 0, 0, static_cast<LONG>(w), static_cast<LONG>(h) };
+
+    AdjustWindowRect(&rc, WS_OVERLAPPEDWINDOW, FALSE);
 
 	// Create the window with the screen settings and get the handle to it.
 	m_hwnd = CreateWindowExW(0, wcex.lpszClassName, s2ws(m_name).c_str(),
-		//WS_OVERLAPPEDWINDOW,
-		WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_POPUP | WS_SYSMENU | WS_CAPTION | WS_MINIMIZEBOX,
+		WS_OVERLAPPEDWINDOW,
+		//WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_POPUP | WS_SYSMENU | WS_CAPTION | WS_MINIMIZEBOX,
 		//CW_USEDEFAULT, CW_USEDEFAULT,
 		m_windowPosX, m_windowPosY,
-		m_windowWidth, m_windowHeight, nullptr, nullptr, m_hInstance, nullptr);
+        rc.right - rc.left, rc.bottom - rc.top, 
+        nullptr, nullptr, m_hInstance, nullptr);
 
 	// Bring the window up on the screen and set it as main focus.
-	ShowWindow(m_hwnd, SW_SHOW);
-	SetForegroundWindow(m_hwnd);
-	SetFocus(m_hwnd);
+	ShowWindow(m_hwnd, SW_SHOWDEFAULT);
+	//SetForegroundWindow(m_hwnd);
+	//SetFocus(m_hwnd);
+
+    SetWindowLongPtr(m_hwnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(this));
+
+    GetClientRect(m_hwnd, &rc);
+    m_windowWidth   = rc.right - rc.left;
+    m_windowHeight  = rc.bottom - rc.top;
 
 	// Hide the mouse cursor.
 	//ShowCursor(false);
