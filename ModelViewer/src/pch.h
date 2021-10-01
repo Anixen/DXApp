@@ -49,6 +49,7 @@
 
 #include <DirectXMath.h>
 #include <DirectXColors.h>
+#include <wincodec.h>
 
 #include <algorithm>
 #include <exception>
