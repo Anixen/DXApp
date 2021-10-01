@@ -165,13 +165,13 @@ void AppStateSimpleTriangle::createDeviceDependentResources(DX::DeviceResources 
     auto device = p_deviceResources->GetD3DDevice();
 
     // Load and create shaders.
-    auto vertexShaderBlob = DX::ReadData(L"VertexShader.cso");
+    auto vertexShaderBlob = DX::ReadData(L"SimpleTriangle_VertexShader.cso");
 
     DX::ThrowIfFailed(
         device->CreateVertexShader(vertexShaderBlob.data(), vertexShaderBlob.size(),
             nullptr, m_spVertexShader.ReleaseAndGetAddressOf()));
 
-    auto pixelShaderBlob = DX::ReadData(L"PixelShader.cso");
+    auto pixelShaderBlob = DX::ReadData(L"SimpleTriangle_PixelShader.cso");
 
     DX::ThrowIfFailed(
         device->CreatePixelShader(pixelShaderBlob.data(), pixelShaderBlob.size(),

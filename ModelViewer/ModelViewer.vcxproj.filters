@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -106,12 +106,15 @@
     <ClCompile Include="src\AppStateSimpleTriangle.cpp">
       <Filter>Apps\Samples</Filter>
     </ClCompile>
+    <ClCompile Include="src\AppStateSimpleTexture.cpp">
+      <Filter>Apps\Samples</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="src\PixelShader.hlsl">
+    <FxCompile Include="src\SimpleTriangle_PixelShader.hlsl">
       <Filter>Ressources</Filter>
     </FxCompile>
-    <FxCompile Include="src\VertexShader.hlsl">
+    <FxCompile Include="src\SimpleTriangle_VertexShader.hlsl">
       <Filter>Ressources</Filter>
     </FxCompile>
   </ItemGroup>
