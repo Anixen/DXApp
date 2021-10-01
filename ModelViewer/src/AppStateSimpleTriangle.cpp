@@ -59,8 +59,11 @@ void AppStateSimpleTriangle::reinit()
 
 //-----------------------------------------------------------------------------
 
-AppState* AppStateSimpleTriangle::update(DX::StepTimer const& p_timer)
+AppState* AppStateSimpleTriangle::update(DX::StepTimer const& p_timer,
+    DirectX::GamePad* p_gamePad, DirectX::Keyboard* p_keyboard, DirectX::Mouse* p_mouse)
 {
+    (void)p_mouse;
+
     double elapsedSeconds = p_timer.GetElapsedSeconds();
     (void)elapsedSeconds;
 
@@ -69,8 +72,7 @@ AppState* AppStateSimpleTriangle::update(DX::StepTimer const& p_timer)
 		<< "AppStateSimpleTriangle::update(" << elapsedSeconds << ")" << std::endl;
 	//*/
 
-    /*
-    auto pad = m_gamePad->GetState(0);
+    auto pad = p_gamePad->GetState(0);
     if (pad.IsConnected())
     {
         if (pad.IsViewPressed())
@@ -78,15 +80,12 @@ AppState* AppStateSimpleTriangle::update(DX::StepTimer const& p_timer)
             m_app->quit(0);
         }
     }
-    //*/
 
-    /*
-    auto kb = m_keyboard->GetState();
+    auto kb = p_keyboard->GetState();
     if (kb.Escape)
     {
         m_app->quit(0);
     }
-    //*/
 
 	return nullptr;
 }

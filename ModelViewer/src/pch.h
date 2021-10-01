@@ -64,9 +64,9 @@
 #include <dxgidebug.h>
 #endif
 
-//#include "GamePad.h"
-//#include "Keyboard.h"
-//#include "Mouse.h"
+#include "GamePad.h"
+#include "Keyboard.h"
+#include "Mouse.h"
 
 namespace DX
 {

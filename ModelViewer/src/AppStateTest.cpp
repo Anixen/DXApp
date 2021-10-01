@@ -46,8 +46,13 @@ void AppStateTest::reinit()
 
 //-----------------------------------------------------------------------------
 
-AppState* AppStateTest::update(DX::StepTimer const& p_timer)
+AppState* AppStateTest::update(DX::StepTimer const& p_timer,
+    DirectX::GamePad* p_gamePad, DirectX::Keyboard* p_keyboard, DirectX::Mouse* p_mouse)
 {
+    (void)p_gamePad;
+    (void)p_keyboard;
+    (void)p_mouse;
+
     double elapsedSeconds = p_timer.GetElapsedSeconds();
     (void)elapsedSeconds;
 

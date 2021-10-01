@@ -225,14 +225,14 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lparam)
 		case WM_XBUTTONDOWN:
 		case WM_XBUTTONUP:
 		case WM_MOUSEHOVER:
-			//Mouse::ProcessMessage(umessage, wparam, lparam);
+			DirectX::Mouse      ::ProcessMessage(umessage, wparam, lparam);
 			break;
 
 		case WM_KEYDOWN:
 		case WM_KEYUP:
 		case WM_SYSKEYUP:
-		case WM_SYSKEYDOWN:
-			//Keyboard::ProcessMessage(umessage, wparam, lparam);
+        case WM_SYSKEYDOWN:
+			DirectX::Keyboard   ::ProcessMessage(umessage, wparam, lparam);
 			break;
 
 		case WM_GETMINMAXINFO:
@@ -278,8 +278,8 @@ LRESULT CALLBACK App::handleMessage(HWND hwnd, UINT umessage, WPARAM wparam, LPA
 		break;
 
 	case WM_ACTIVATEAPP:
-		//Keyboard::ProcessMessage(umessage, wparam, lparam);
-		//Mouse::ProcessMessage(umessage, wparam, lparam);
+		DirectX::Keyboard   ::ProcessMessage(umessage, wparam, lparam);
+		DirectX::Mouse      ::ProcessMessage(umessage, wparam, lparam);
 
 		if (wparam)
 		{
@@ -518,7 +518,8 @@ void App::tick()
 
 	m_stepTimer.Tick([&]()
 	{
-		AppState* nextState = m_currentState->update(m_stepTimer);
+        AppState* nextState = m_currentState->update(m_stepTimer,
+            m_gamePad.get(), m_keyboard.get(), m_mouse.get());
 		if (nullptr != nextState) {
 			setCurrentState(nextState);
 		}
@@ -547,8 +548,10 @@ void App::init()
 
     preInit();
 
-    //m_gamePad = std::make_unique<GamePad>();
-    //m_keyboard = std::make_unique<Keyboard>();
+    m_gamePad   = std::make_unique<DirectX::GamePad>();
+    m_keyboard  = std::make_unique<DirectX::Keyboard>();
+    m_mouse     = std::make_unique<DirectX::Mouse>();
+    m_mouse->SetWindow(m_hwnd);
 
     GetLogStream(SeverityDebug)
         << "App::init() : setting up device ressources" << std::endl;
