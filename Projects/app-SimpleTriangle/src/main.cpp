@@ -19,7 +19,6 @@ int main(int argc, char** argv)
 {
 	LoggerConsole logger(true, SeverityDebug);
 
-	//App* app = new AppTest();
     App* app = new AppSimpleTriangle();
 
 	//app->processArguments(hInstance, hPrevInstance, pCmdLine, nCmdShow);
