@@ -25,9 +25,9 @@ namespace nxn {
         ~AppSimpleTriangle();
 
     protected:
-        virtual void    preInit         (); // Performs custom steps (e.g. allocating memory) before entering the main loop
-        virtual void    postInit        (); // Performs custom steps (e.g. allocating memory) before entering the main loop
-        virtual void    handleCleanUp   (); // Performs custom steps (e.g. freeing memory) after exiting the main loop
+        virtual void    PreInit         (); // Performs custom steps (e.g. allocating memory) before entering the main loop
+        virtual void    PostInit        (); // Performs custom steps (e.g. allocating memory) before entering the main loop
+        virtual void    HandleCleanUp   (); // Performs custom steps (e.g. freeing memory) after exiting the main loop
 
     }; // class AppSimpleTriangle
 

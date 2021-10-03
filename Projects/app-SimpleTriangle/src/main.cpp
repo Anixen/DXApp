@@ -23,8 +23,8 @@ int main(int argc, char** argv)
     App* app = new AppSimpleTriangle();
 
 	//app->processArguments(hInstance, hPrevInstance, pCmdLine, nCmdShow);
-	app->processArguments(argc, argv);
-	int exitCode = app->run();
+	app->ProcessArguments(argc, argv);
+	int exitCode = app->Run();
 
 	delete app;
 

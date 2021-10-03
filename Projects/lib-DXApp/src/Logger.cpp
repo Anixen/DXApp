@@ -21,16 +21,16 @@ Logger::Logger(bool p_makeDefault, SeverityLevel p_logLevel) :
 		g_defaultInstance = this;
 	}
 
-	setActive(true);
-	setLogLevel(p_logLevel);
+	SetActive(true);
+	SetLogLevel(p_logLevel);
 }
 
 //-----------------------------------------------------------------------------
 
 Logger::~Logger()
 {
-	setLogLevel(SeverityNoLog);
-	setActive(false);
+	SetLogLevel(SeverityNoLog);
+	SetActive(false);
 
 	if (this == g_defaultInstance) {
 		g_defaultInstance = NULL;
@@ -39,11 +39,11 @@ Logger::~Logger()
 
 //-----------------------------------------------------------------------------
 
-const Logger* Logger::getLogger()
+const Logger* Logger::GetLogger()
 {
 	// If there is no logger instantiated, instantiate one at the last moment
 	if (NULL == g_defaultInstance) {
-		LogMessage(SeverityFatal, "LoggerBase::getLogger() : No logger has been instantiated")
+		WriteLogMessage(SeverityFatal, "LoggerBase::getLogger() : No logger has been instantiated")
 		throw new std::exception("No logger has been instantiated");
 	}
 
@@ -58,9 +58,9 @@ const Logger* Logger::getLogger()
  * @param {std::string} p_sourceFile The source file where the logger has been called from
  * @param {int} p_sourceLine The line number where the logger has been called from
  */
-void Logger::writeTag(  std::ostream &p_ostream, 
-                            SeverityLevel p_severityLevel, 
-                            std::string p_sourceFile, int p_sourceLine)
+void Logger::WriteTag(  std::ostream &p_ostream, 
+                        SeverityLevel p_severityLevel, 
+                        std::string p_sourceFile, int p_sourceLine)
 {
 	// Get local time
 	std::tm localTime;

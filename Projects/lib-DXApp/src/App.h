@@ -34,55 +34,55 @@ class App : public DX::IDeviceNotify {
 public:
 	virtual											                ~App                ();
 
-	static	inline		    App*				                    getApp				()			                { return g_instance; }
-			inline	const	std::string				                getName				() const	                { return m_name; }
-//			inline	const	std::filesystem::path	                getPath				() const	                { return m_path; }
+	static	inline		    App*				                    GetApp				()			                { return g_instance; }
+			inline	const	std::string				                GetName				() const	                { return m_name; }
+//			inline	const	std::filesystem::path	                GetPath				() const	                { return m_path; }
 
-            inline  const   bool                                    isInitialized       () const                    { return m_initialized; }
-			inline	const	bool					                isRunning           () const                    { return m_running; }
-			inline	const	float					                getUpdateInterval   () const                    { return m_updateInterval; }
-			                void					                setUpdateInterval   (float p_updateInterval);
+            inline  const   bool                                    IsInitialized       () const                    { return m_initialized; }
+			inline	const	bool					                IsRunning           () const                    { return m_running; }
+			inline	const	float					                GetUpdateInterval   () const                    { return m_updateInterval; }
+			                void					                SetUpdateInterval   (float p_updateInterval);
 
-	virtual                 void					                getDefaultWindowSize(int& width, int& height) const;
+	virtual                 void					                GetDefaultWindowSize(int& width, int& height) const;
 
-	virtual                 void					                processArguments	(int p_argc, char** p_argv);
-	virtual                 void					                processArguments	(HINSTANCE p_hInstance, HINSTANCE p_hPrevInstance, PWSTR p_pCmdline, int p_iCmdshow);
+	virtual                 void					                ProcessArguments	(int p_argc, char** p_argv);
+	virtual                 void					                ProcessArguments	(HINSTANCE p_hInstance, HINSTANCE p_hPrevInstance, PWSTR p_pCmdline, int p_iCmdshow);
 
-							int						                run					();
-							void					                quit				(int p_exitCode);
+							int						                Run					();
+							void					                Quit				(int p_exitCode);
 
 protected:
 	                                                                App                 (); // Ctor is protected because we only allow derived classes to instantiate this interface
 
 
-	virtual                 LRESULT CALLBACK                        handleMessage       (HWND hwnd, UINT umsg, WPARAM wparam, LPARAM lparam);
+	virtual                 LRESULT CALLBACK                        HandleMessage       (HWND hwnd, UINT umsg, WPARAM wparam, LPARAM lparam);
 
 
-	                        void                                    initWindows         ();
-	                        void                                    shutdownWindows     ();
+	                        void                                    InitWindows         ();
+	                        void                                    ShutdownWindows     ();
 
-	                        void                                    setCurrentState     (AppState* p_state);
-	virtual                 void                                    tick                ();
-    virtual                 void                                    init                ();
-    virtual                 void                                    preInit             () = 0; // Performs custom steps (e.g. allocating memory) before entering the main loop.
-    virtual                 void                                    postInit            () = 0; // Performs custom steps (e.g. allocating memory) before entering the main loop
-	virtual                 void                                    handleCleanUp       () = 0; // Performs custom steps (e.g. freeing memory) after exiting the main loop
+	                        void                                    SetCurrentState     (AppState* p_state);
+	virtual                 void                                    Tick                ();
+    virtual                 void                                    Init                ();
+    virtual                 void                                    PreInit             () = 0; // Performs custom steps (e.g. allocating memory) before entering the main loop.
+    virtual                 void                                    PostInit            () = 0; // Performs custom steps (e.g. allocating memory) before entering the main loop
+	virtual                 void                                    HandleCleanUp       () = 0; // Performs custom steps (e.g. freeing memory) after exiting the main loop
 
     // IDeviceNotify
     virtual                 void                                    OnDeviceLost        () override;
     virtual                 void                                    OnDeviceRestored    () override;
 
-	virtual                 void                                    onActivated         ();
-	virtual                 void                                    onDeactivated       ();
-	virtual                 void                                    onSuspending        ();
-	virtual                 void                                    onResuming          ();
-	virtual                 void                                    onWindowSizeChanged(int width, int height);
+	virtual                 void                                    OnActivated         ();
+	virtual                 void                                    OnDeactivated       ();
+	virtual                 void                                    OnSuspending        ();
+	virtual                 void                                    OnResuming          ();
+	virtual                 void                                    OnWindowSizeChanged(int width, int height);
 
 private:
                                                                     App                 (const App&);   // Intentionally undefined. Is private because we do not allow copies of a Singleton.
                             App&                                    operator=           (const App&);   // Intentionally undefined. Is private because we do not allow copies of a Singleton.
 
-                            void                                    shutdown();
+                            void                                    Shutdown();
                             
 	static                  App*                                    g_instance;
 

@@ -27,7 +27,7 @@ enum ConsoleTextColor {
 
 //-----------------------------------------------------------------------------
 
-void setSeverityColor(SeverityLevel p_severityLevel)
+void SetSeverityColor(SeverityLevel p_severityLevel)
 {
 	switch (p_severityLevel) 
 	{
@@ -52,7 +52,7 @@ void setSeverityColor(SeverityLevel p_severityLevel)
 	}
 }
 
-void resetSeverityColor()
+void ResetSeverityColor()
 {
 	std::cout << "\033[" << ConsoleTextColor::Default << "m";
 }
@@ -67,7 +67,7 @@ void resetSeverityColor()
 LoggerConsole::LoggerConsole(bool p_makeDefault, SeverityLevel p_logLevel) :
 	Logger(p_makeDefault, p_logLevel)
 {
-	LogMessage(SeverityInfo, "ConsoleLogger::ctor()")
+	WriteLogMessage(SeverityInfo, "ConsoleLogger::ctor()")
 }
 
 //-----------------------------------------------------------------------------
@@ -76,15 +76,15 @@ LoggerConsole::LoggerConsole(bool p_makeDefault, SeverityLevel p_logLevel) :
  */
 LoggerConsole::~LoggerConsole()
 {
-	LogMessage(SeverityInfo, "ConsoleLogger::dtor()")
-	resetSeverityColor();
+	WriteLogMessage(SeverityInfo, "ConsoleLogger::dtor()")
+	ResetSeverityColor();
 }
 
 //-----------------------------------------------------------------------------
 /**
  * @return {std::ostream&} a reference to the ostream where the logger sends the messages that are given to him
  */
-std::ostream &LoggerConsole::getStream() const
+std::ostream &LoggerConsole::GetStream() const
 {
 	return std::cout;
 }
@@ -95,12 +95,12 @@ std::ostream &LoggerConsole::getStream() const
  *
  * @return {std::ostream&} a reference to the ostream where the logger sends the messages that are given to him
  */
-std::ostream &LoggerConsole::getStream( SeverityLevel p_severityLevel, 
+std::ostream &LoggerConsole::GetStream( SeverityLevel p_severityLevel, 
                                         std::string p_sourceFile, int p_sourceLine) const
 {
-	setSeverityColor(p_severityLevel);
-	writeTag(std::cout, p_severityLevel, p_sourceFile, p_sourceLine);
-	resetSeverityColor();
+	SetSeverityColor(p_severityLevel);
+	WriteTag(std::cout, p_severityLevel, p_sourceFile, p_sourceLine);
+	ResetSeverityColor();
 
 	return std::cout;
 }
@@ -111,9 +111,9 @@ std::ostream &LoggerConsole::getStream( SeverityLevel p_severityLevel,
  *
  * @param {std::string} p_message The message to log
  */
-void LoggerConsole::logMessage( const std::string &p_message) const
+void LoggerConsole::WriteMessage(const std::string &p_message) const
 {
-	if (isActive()) 
+	if (IsActive()) 
 	{
 		std::cout << p_message << std::endl;
 	}
@@ -128,15 +128,15 @@ void LoggerConsole::logMessage( const std::string &p_message) const
  * @param {std::string} p_sourceFile The source file where the logger has been called from
  * @param {int} p_sourceLine The line number where the logger has been called from
  */
-void LoggerConsole::logMessage( const std::string &p_message, 
-                                SeverityLevel p_severityLevel,
-                                std::string p_sourceFile, int p_sourceLine) const
+void LoggerConsole::WriteMessage(const std::string &p_message, 
+                                    SeverityLevel p_severityLevel,
+                                    std::string p_sourceFile, int p_sourceLine) const
 {
-	if (isActive() && shouldLog(p_severityLevel)) 
+	if (IsActive() && ShouldLog(p_severityLevel)) 
 	{
-		setSeverityColor(p_severityLevel);
-		writeTag(std::cout, p_severityLevel, p_sourceFile, p_sourceLine);
-		resetSeverityColor();
+		SetSeverityColor(p_severityLevel);
+		WriteTag(std::cout, p_severityLevel, p_sourceFile, p_sourceLine);
+		ResetSeverityColor();
 
 		std::cout << p_message << std::endl;
 	}

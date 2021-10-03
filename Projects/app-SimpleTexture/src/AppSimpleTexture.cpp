@@ -30,19 +30,19 @@ namespace nxn {
 
 //-----------------------------------------------------------------------------
 
-void AppSimpleTexture::preInit()
+void AppSimpleTexture::PreInit()
 {
     /*
     GetLogStream(SeverityInfo)
         << "AppSamples::preInit()" << std::endl;
     //*/
 
-    setCurrentState(new AppStateSimpleTexture(this));
+    SetCurrentState(new AppStateSimpleTexture(this));
 }
 
 //-----------------------------------------------------------------------------
 
-void AppSimpleTexture::postInit()
+void AppSimpleTexture::PostInit()
 {
     /*
     GetLogStream(SeverityInfo)
@@ -52,7 +52,7 @@ void AppSimpleTexture::postInit()
 
 //-----------------------------------------------------------------------------
 
-void AppSimpleTexture::handleCleanUp()
+void AppSimpleTexture::HandleCleanUp()
 {
     /*
     GetLogStream(SeverityInfo)

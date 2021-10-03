@@ -14,7 +14,7 @@ const LPCWSTR App::g_windowClassName = L"AppWindowClass";
 
 App::App()
 {
-	LogMessage(SeverityInfo, "App::ctor()")
+	WriteLogMessage(SeverityInfo, "App::ctor()")
 
 	g_instance = this;
 
@@ -30,7 +30,7 @@ App::App()
 
 App::~App()
 {
-	LogMessage(SeverityInfo, "App::dtor()")
+	WriteLogMessage(SeverityInfo, "App::dtor()")
 
 	m_running = false;
 
@@ -41,7 +41,7 @@ App::~App()
 
 //-----------------------------------------------------------------------------
 
-void App::setUpdateInterval(float p_updateInterval)
+void App::SetUpdateInterval(float p_updateInterval)
 {
     m_updateInterval = p_updateInterval;
     m_stepTimer.SetTargetElapsedTicks((uint64_t)(m_updateInterval * DX::StepTimer::TicksPerSecond));
@@ -49,7 +49,7 @@ void App::setUpdateInterval(float p_updateInterval)
 
 //-----------------------------------------------------------------------------
 
-void App::getDefaultWindowSize(int& width, int& height) const
+void App::GetDefaultWindowSize(int& width, int& height) const
 {
 	width  = 800;
 	height = 600;
@@ -62,7 +62,7 @@ void App::getDefaultWindowSize(int& width, int& height) const
  * @param {int}			p_argc	The number of arguments
  * @param {char**}		p_argv	The actual arguments
  */
-void App::processArguments(int p_argc, char **p_argv)
+void App::ProcessArguments(int p_argc, char **p_argv)
 {
 //	m_path = std::filesystem::path{ p_argv[0] };
 //	m_name = m_path.stem().string();
@@ -97,7 +97,7 @@ void App::processArguments(int p_argc, char **p_argv)
  * @param {PWSTR}		p_pCmdline		The command line as a unicode string
  * @param {int}			p_iCmdshow		A flag to indicate if the application window should be minimized, maximized or shown normally
  */
-void App::processArguments(HINSTANCE p_hInstance, HINSTANCE p_hPrevInstance, PWSTR p_pCmdline, int p_iCmdshow)
+void App::ProcessArguments(HINSTANCE p_hInstance, HINSTANCE p_hPrevInstance, PWSTR p_pCmdline, int p_iCmdshow)
 {
     (void)p_hPrevInstance;
     (void)p_pCmdline;
@@ -125,7 +125,7 @@ void App::processArguments(HINSTANCE p_hInstance, HINSTANCE p_hPrevInstance, PWS
  * This functions relies on the loop, init and shutdown methods,
  * which are defined by derived classes
  */
-int App::run()
+int App::Run()
 {
 	GetLogStream(SeverityInfo) << "App::run()" << std::endl;
 
@@ -136,8 +136,8 @@ int App::run()
 
 	// Do registrations here for the managers and helper classes
 	// Do initializations here for the managers ans helper classes
-	initWindows();
-	init();
+	InitWindows();
+	Init();
 
 	// Make sure we have a current state
 	if (m_currentState == nullptr)
@@ -160,15 +160,15 @@ int App::run()
 		}
 		else
 		{
-			tick();
+			Tick();
 		}
 	}
 
 	m_exitCode = (int)msg.wParam;
 
 	// Clean up the app
-	shutdown();
-	shutdownWindows();
+	Shutdown();
+	ShutdownWindows();
 
     m_initialized = false;
 	m_running = false;
@@ -189,7 +189,7 @@ int App::run()
 /**
  *
  */
-void App::quit(int p_exitCode)
+void App::Quit(int p_exitCode)
 {
 	GetLogStream(SeverityInfo)
 		<< "App::quit(" << p_exitCode << ")" << std::endl;
@@ -253,12 +253,12 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lparam)
 	}
 
 	// All other messages pass to the message handler in the system class.
-	return App::getApp()->handleMessage(hwnd, umessage, wparam, lparam);
+	return App::GetApp()->HandleMessage(hwnd, umessage, wparam, lparam);
 }
 
 //-----------------------------------------------------------------------------
 
-LRESULT CALLBACK App::handleMessage(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lparam)
+LRESULT CALLBACK App::HandleMessage(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lparam)
 {
 	PAINTSTRUCT ps;
 	HDC hdc;
@@ -268,7 +268,7 @@ LRESULT CALLBACK App::handleMessage(HWND hwnd, UINT umessage, WPARAM wparam, LPA
 	case WM_PAINT:
 		if (m_sizemove)
 		{
-			tick();
+			Tick();
 		}
 		else
 		{
@@ -283,11 +283,11 @@ LRESULT CALLBACK App::handleMessage(HWND hwnd, UINT umessage, WPARAM wparam, LPA
 
 		if (wparam)
 		{
-			onActivated();
+            OnActivated();
 		}
 		else
 		{
-			onDeactivated();
+            OnDeactivated();
 		}
 		break;
 
@@ -296,7 +296,7 @@ LRESULT CALLBACK App::handleMessage(HWND hwnd, UINT umessage, WPARAM wparam, LPA
 		{
 		case PBT_APMQUERYSUSPEND:
 			if (!m_suspended)
-				onSuspending();
+				OnSuspending();
 			m_suspended = true;
 			return TRUE;
 
@@ -304,7 +304,7 @@ LRESULT CALLBACK App::handleMessage(HWND hwnd, UINT umessage, WPARAM wparam, LPA
 			if (!m_minimized)
 			{
 				if (m_suspended)
-					onResuming();
+					OnResuming();
 				m_suspended = false;
 			}
 			return TRUE;
@@ -318,7 +318,7 @@ LRESULT CALLBACK App::handleMessage(HWND hwnd, UINT umessage, WPARAM wparam, LPA
 			{
 				m_minimized = true;
 				if (!m_suspended)
-					onSuspending();
+					OnSuspending();
 				m_suspended = true;
 			}
 		}
@@ -326,14 +326,14 @@ LRESULT CALLBACK App::handleMessage(HWND hwnd, UINT umessage, WPARAM wparam, LPA
 		{
 			m_minimized = false;
 			if (m_suspended)
-				onResuming();
+				OnResuming();
 			m_suspended = false;
 		}
 		else if (m_initialized && !m_sizemove)
 		{
 			m_windowWidth   = LOWORD(lparam);
 			m_windowHeight  = HIWORD(lparam);
-			onWindowSizeChanged(m_windowWidth, m_windowHeight);
+			OnWindowSizeChanged(m_windowWidth, m_windowHeight);
 		}
 		break;
 
@@ -351,7 +351,7 @@ LRESULT CALLBACK App::handleMessage(HWND hwnd, UINT umessage, WPARAM wparam, LPA
 		m_windowPosY = rc.top;
 		m_windowWidth  = rc.right  - rc.left;
 		m_windowHeight = rc.bottom - rc.top;
-		onWindowSizeChanged(m_windowWidth, m_windowHeight);
+		OnWindowSizeChanged(m_windowWidth, m_windowHeight);
 
 		break;
 
@@ -408,7 +408,7 @@ std::wstring s2ws(const std::string& s)
     return r;
 }
 
-void App::initWindows()
+void App::InitWindows()
 {
 	// Setup the windows class with default settings
 	WNDCLASSEXW wcex;
@@ -434,7 +434,7 @@ void App::initWindows()
 
 	// Place the window in the middle of the screen.
     int w, h;
-	getDefaultWindowSize(w, h);
+	GetDefaultWindowSize(w, h);
 	m_windowPosX = (GetSystemMetrics(SM_CXSCREEN) - w) / 2;
 	m_windowPosY = (GetSystemMetrics(SM_CYSCREEN) - h) / 2;
 
@@ -470,7 +470,7 @@ void App::initWindows()
 
 //-----------------------------------------------------------------------------
 
-void App::shutdownWindows()
+void App::ShutdownWindows()
 {
 	// Show the mouse cursor.
 	ShowCursor(true);
@@ -500,19 +500,19 @@ void App::shutdownWindows()
  *
  * @param {AppState} p_state The new state for the application
  */
-void App::setCurrentState(AppState* p_state)
+void App::SetCurrentState(AppState* p_state)
 {
 	GetLogStream(SeverityInfo)
 		<< "App::setCurrentState()" << std::endl;
 
 	if (nullptr != m_currentState) {
-		m_currentState->deinit();
+		m_currentState->Deinit();
 		delete m_currentState;
 		m_currentState = nullptr;
 	}
 
 	m_currentState = p_state;
-	m_currentState->init();
+	m_currentState->Init();
 }
 
 //-----------------------------------------------------------------------------
@@ -520,7 +520,7 @@ void App::setCurrentState(AppState* p_state)
  * Advances the application one tick forward,
  * which involves updating its components, and rendering a frame
  */
-void App::tick()
+void App::Tick()
 {
 	/*
 	GetLogStream(SeverityInfo)
@@ -529,10 +529,10 @@ void App::tick()
 
 	m_stepTimer.Tick([&]()
 	{
-        AppState* nextState = m_currentState->update(m_stepTimer,
+        AppState* nextState = m_currentState->Update(m_stepTimer,
             m_gamePad.get(), m_keyboard.get(), m_mouse.get());
 		if (nullptr != nextState) {
-			setCurrentState(nextState);
+			SetCurrentState(nextState);
 		}
 
 		/*
@@ -547,17 +547,17 @@ void App::tick()
     {
         return;
     }
-	m_currentState->draw(m_deviceResources.get());
+	m_currentState->Draw(m_deviceResources.get());
 }
 
 //-----------------------------------------------------------------------------
 
-void App::init()
+void App::Init()
 {
     GetLogStream(SeverityInfo)
         << "App::init()" << std::endl;
 
-    preInit();
+    PreInit();
 
     m_gamePad   = std::make_unique<DirectX::GamePad>();
     m_keyboard  = std::make_unique<DirectX::Keyboard>();
@@ -574,11 +574,11 @@ void App::init()
 
     if (m_currentState != NULL)
     {
-        m_currentState->createDeviceDependentResources(m_deviceResources.get());
-        m_currentState->createWindowSizeDependentResources();
+        m_currentState->CreateDeviceDependentResources(m_deviceResources.get());
+        m_currentState->CreateWindowSizeDependentResources();
     }
 
-    postInit();
+    PostInit();
 
     m_initialized = true;
 }
@@ -587,11 +587,11 @@ void App::init()
 /**
  *
  */
-void App::shutdown()
+void App::Shutdown()
 {
 	GetLogStream(SeverityInfo) << "App::shutdown()" << std::endl;
 
-	handleCleanUp();
+	HandleCleanUp();
 
 	// TODO ? Will probably need code to shutdown things here
 
@@ -604,7 +604,7 @@ void App::OnDeviceLost()
 {
     if (m_currentState != NULL)
     {
-        m_currentState->resetResources();
+        m_currentState->ResetResources();
     }
 }
 
@@ -614,35 +614,35 @@ void App::OnDeviceRestored()
 {
     if (m_currentState != NULL)
     {
-        m_currentState->createDeviceDependentResources(m_deviceResources.get());
-        m_currentState->createWindowSizeDependentResources();
+        m_currentState->CreateDeviceDependentResources(m_deviceResources.get());
+        m_currentState->CreateWindowSizeDependentResources();
     }
 }
 
 //-----------------------------------------------------------------------------
 
-void App::onActivated()
+void App::OnActivated()
 {
 	GetLogStream(SeverityDebug) << "App::onActivated()" << std::endl;
 }
 
 //-----------------------------------------------------------------------------
 
-void App::onDeactivated()
+void App::OnDeactivated()
 {
 	GetLogStream(SeverityDebug) << "App::onDeactivated()" << std::endl;
 }
 
 //-----------------------------------------------------------------------------
 
-void App::onSuspending()
+void App::OnSuspending()
 {
 	GetLogStream(SeverityDebug) << "App::onSuspending()" << std::endl;
 }
 
 //-----------------------------------------------------------------------------
 
-void App::onResuming()
+void App::OnResuming()
 {
 	GetLogStream(SeverityDebug) << "App::onResuming()" << std::endl;
 	m_stepTimer.ResetElapsedTime();
@@ -650,14 +650,14 @@ void App::onResuming()
 
 //-----------------------------------------------------------------------------
 
-void App::onWindowSizeChanged(int width, int height)
+void App::OnWindowSizeChanged(int width, int height)
 {
     if (!m_deviceResources->WindowSizeChanged(width, height))
         return;
 
     if (m_currentState != NULL)
     {
-        m_currentState->createWindowSizeDependentResources();
+        m_currentState->CreateWindowSizeDependentResources();
     }
 }
 

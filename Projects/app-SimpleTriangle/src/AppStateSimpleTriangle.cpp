@@ -43,19 +43,19 @@ AppStateSimpleTriangle::~AppStateSimpleTriangle()
 
 //-----------------------------------------------------------------------------
 
-void AppStateSimpleTriangle::init() 
+void AppStateSimpleTriangle::Init() 
 {
 	/*
     GetLogStream(SeverityInfo)
 		<< "AppStateSimpleTriangle::init()" << std::endl;
     //*/
 
-	AppState::init();
+	AppState::Init();
 }
 
 //-----------------------------------------------------------------------------
 
-void AppStateSimpleTriangle::reinit()
+void AppStateSimpleTriangle::Reinit()
 {
     /*
 	GetLogStream(SeverityInfo)
@@ -65,7 +65,7 @@ void AppStateSimpleTriangle::reinit()
 
 //-----------------------------------------------------------------------------
 
-AppState* AppStateSimpleTriangle::update(DX::StepTimer const& p_timer,
+AppState* AppStateSimpleTriangle::Update(DX::StepTimer const& p_timer,
     DirectX::GamePad* p_gamePad, DirectX::Keyboard* p_keyboard, DirectX::Mouse* p_mouse)
 {
     (void)p_mouse;
@@ -83,14 +83,14 @@ AppState* AppStateSimpleTriangle::update(DX::StepTimer const& p_timer,
     {
         if (pad.IsViewPressed())
         {
-            m_app->quit(0);
+            m_app->Quit(0);
         }
     }
 
     auto kb = p_keyboard->GetState();
     if (kb.Escape)
     {
-        m_app->quit(0);
+        m_app->Quit(0);
     }
 
 	return nullptr;
@@ -98,9 +98,9 @@ AppState* AppStateSimpleTriangle::update(DX::StepTimer const& p_timer,
 
 //-----------------------------------------------------------------------------
 
-void AppStateSimpleTriangle::draw(DX::DeviceResources* p_deviceResources)
+void AppStateSimpleTriangle::Draw(DX::DeviceResources* p_deviceResources)
 {
-    clear(p_deviceResources);
+    Clear(p_deviceResources);
 
     p_deviceResources->PIXBeginEvent(L"Render");
     auto context = p_deviceResources->GetD3DDeviceContext();
@@ -129,7 +129,7 @@ void AppStateSimpleTriangle::draw(DX::DeviceResources* p_deviceResources)
 
 //-----------------------------------------------------------------------------
 
-void AppStateSimpleTriangle::clear(DX::DeviceResources * p_deviceResources)
+void AppStateSimpleTriangle::Clear(DX::DeviceResources * p_deviceResources)
 {
     p_deviceResources->PIXBeginEvent(L"Clear");
 
@@ -154,7 +154,7 @@ void AppStateSimpleTriangle::clear(DX::DeviceResources * p_deviceResources)
 
 //-----------------------------------------------------------------------------
 
-void AppStateSimpleTriangle::handleCleanup()
+void AppStateSimpleTriangle::HandleCleanup()
 {
     /*
 	GetLogStream(SeverityInfo)
@@ -164,7 +164,7 @@ void AppStateSimpleTriangle::handleCleanup()
 
 //-----------------------------------------------------------------------------
 
-void AppStateSimpleTriangle::createDeviceDependentResources(DX::DeviceResources * p_deviceResources)
+void AppStateSimpleTriangle::CreateDeviceDependentResources(DX::DeviceResources * p_deviceResources)
 {
     /*
     GetLogStream(SeverityInfo)
@@ -222,7 +222,7 @@ void AppStateSimpleTriangle::createDeviceDependentResources(DX::DeviceResources 
 
 //-----------------------------------------------------------------------------
 
-void AppStateSimpleTriangle::createWindowSizeDependentResources()
+void AppStateSimpleTriangle::CreateWindowSizeDependentResources()
 {
     /*
     GetLogStream(SeverityInfo)
@@ -232,7 +232,7 @@ void AppStateSimpleTriangle::createWindowSizeDependentResources()
 
 //-----------------------------------------------------------------------------
 
-void AppStateSimpleTriangle::resetResources()
+void AppStateSimpleTriangle::ResetResources()
 {
     /*
     GetLogStream(SeverityInfo)

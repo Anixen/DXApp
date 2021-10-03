@@ -24,12 +24,12 @@ public:
 	                                        LoggerConsole   (bool p_makeDefault, SeverityLevel p_logLevel = SeverityInfo);
 	                                        ~LoggerConsole  ();
 
-    virtual                 std::ostream&   getStream       () const;
-	virtual                 std::ostream&   getStream       (   SeverityLevel p_severityLevel,
+    virtual                 std::ostream&   GetStream       () const;
+	virtual                 std::ostream&   GetStream       (   SeverityLevel p_severityLevel,
 	                                                            std::string p_sourceFile, int p_sourceLine) const;
 
-	virtual                 void            logMessage      (   const std::string &p_message) const;
-	virtual                 void            logMessage      (   const std::string &p_message,
+	virtual                 void            WriteMessage    (   const std::string &p_message) const;
+	virtual                 void            WriteMessage    (   const std::string &p_message,
                                                                 SeverityLevel p_severityLevel,
 		                                                        std::string p_sourceFile, int p_sourceLine) const;
 
@@ -40,4 +40,3 @@ private:
 }; // class LoggerConsole
 
 } // namespace nxn
-

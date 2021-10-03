@@ -26,38 +26,38 @@ class App;
 class AppState {
 
     friend class App;
-    //friend                  void        App::OnDeviceLost                   ();
-    //friend                  void        App::OnDeviceRestored               ();
+    //friend                void        App::OnDeviceLost                   ();
+    //friend                void        App::OnDeviceRestored               ();
 
 public:
 	                                    ~AppState                           ();
 
-	virtual                 void        init                                ();
-	virtual                 void        reinit                              () = 0; // Called to reset the state. Re-Initializes a state without reallocating everything inside.
-	                        void        deinit                              ();
-	        inline  const   bool        isInitialized                       () const    { return m_initialized; }
+	virtual                 void        Init                                ();
+	virtual                 void        Reinit                              () = 0; // Called to reset the state. Re-Initializes a state without reallocating everything inside.
+	                        void        Deinit                              ();
+	        inline  const   bool        IsInitialized                       () const    { return m_initialized; }
 
-	                        void        pause                               ();
-	                        void        resume                              ();
-	        inline  const   bool        isPaused                            () const    { return m_paused; }
+	                        void        Pause                               ();
+	                        void        Resume                              ();
+	        inline  const   bool        IsPaused                            () const    { return m_paused; }
 
 	/**
      * @param {StepTimer const&}   p_timer  The StepTimer that keeping track elapsed duration since last update
 	 *
 	 * @return {AppState*} A pointer to a new app state, or nullptr if no change required
 	 */
-	virtual                 AppState*   update                              (   DX::StepTimer const& p_timer, 
+	virtual                 AppState*   Update                              (   DX::StepTimer const& p_timer, 
                                                                                 DirectX::GamePad* p_gamePad, DirectX::Keyboard* p_keyboard, DirectX::Mouse* p_mouse) = 0;
 
-	virtual                 void        draw                                (DX::DeviceResources* p_deviceResources) = 0;
-    virtual                 void        clear                               (DX::DeviceResources* p_deviceResources) = 0;
+	virtual                 void        Draw                                (DX::DeviceResources* p_deviceResources) = 0;
+    virtual                 void        Clear                               (DX::DeviceResources* p_deviceResources) = 0;
 
-	                        void        cleanup                             ();
+	                        void        Cleanup                             ();
 
 protected:
 	                                    AppState                            (App* p_app);
 
-    virtual                 void        handleCleanup                       () = 0;
+    virtual                 void        HandleCleanup                       () = 0;
 	
 	                        App*        m_app;  // Pointer to the app the state belongs to
 
@@ -65,9 +65,9 @@ private:
                                         AppState                            (const AppState&);  // Intentionally undefined. Is private because we do not allow copies of a Singleton.
                             AppState&   operator=                           (const AppState&);  // Intentionally undefined. Is private because we do not allow copies of a Singleton.
 
-    virtual                 void        createDeviceDependentResources      (DX::DeviceResources * p_deviceResources) = 0;
-    virtual                 void        createWindowSizeDependentResources  () = 0;
-    virtual                 void        resetResources                      () = 0;
+    virtual                 void        CreateDeviceDependentResources      (DX::DeviceResources * p_deviceResources) = 0;
+    virtual                 void        CreateWindowSizeDependentResources  () = 0;
+    virtual                 void        ResetResources                      () = 0;
 
 	                        bool        m_initialized;
 	                        bool        m_paused;

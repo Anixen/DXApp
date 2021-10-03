@@ -35,14 +35,14 @@ enum SeverityLevel
 class Logger {
 
 public:
-	                                            ~Logger();
+	                                            ~Logger         ();
 
-	static          const   Logger*             getLogger   ();
-	        inline  const   bool                isActive    () const                    { return m_active; }
-            inline          void                setActive   (bool p_active)             { m_active = p_active; }
+	static          const   Logger*             GetLogger       ();
+	        inline  const   bool                IsActive        () const                    { return m_active; }
+            inline          void                SetActive       (bool p_active)             { m_active = p_active; }
 
-	        inline  const   SeverityLevel       getLogLevel () const                    { return m_logLevel; }
-            inline          void                setLogLevel (SeverityLevel p_logLevel)  { m_logLevel = p_logLevel; }
+	        inline  const   SeverityLevel       GetLogLevel     () const                    { return m_logLevel; }
+            inline          void                SetLogLevel     (SeverityLevel p_logLevel)  { m_logLevel = p_logLevel; }
 
 	/**
 	 * Logs the provided message with a timestamp and File:Line tag in front
@@ -52,10 +52,10 @@ public:
 	 * @param {std::string}     p_sourceFile    The source file where the logger has been called from
 	 * @param {int}             p_sourceLine    The line number where the logger has been called from
 	 */
-    virtual                 void                logMessage  (   const std::string &p_message)               const = 0;
-	virtual                 void                logMessage  (   const std::string &p_message,
-                                                                SeverityLevel p_severityLevel,
-		                                                        std::string p_sourceFile, int p_sourceLine) const = 0;
+    virtual                 void                WriteMessage    (   const std::string &p_message)               const = 0;
+	virtual                 void                WriteMessage    (   const std::string &p_message,
+                                                                    SeverityLevel p_severityLevel,
+		                                                            std::string p_sourceFile, int p_sourceLine) const = 0;
 
     /**
      * Returns a reference to the stream and inserts a timestamp and File:Line tag inside
@@ -66,24 +66,24 @@ public:
      *
      * @return {std::ostream&} A reference to the ostream where the logger sends the messages that are given to him
      */
-    virtual                 std::ostream&       getStream   ()                                              const = 0;
-    virtual                 std::ostream&       getStream   (   SeverityLevel p_severityLevel,
-                                                                std::string p_sourceFile, int p_sourceLine) const = 0;
+    virtual                 std::ostream&       GetStream       ()                                              const = 0;
+    virtual                 std::ostream&       GetStream       (   SeverityLevel p_severityLevel,
+                                                                    std::string p_sourceFile, int p_sourceLine) const = 0;
 
     static                  std::onullstream    g_nullStream;
     //static                boost::iostreams::stream< boost::iostreams::null_sink > g_nullStream;
 
 protected:
-	                                            Logger  (   bool p_makeDefault, SeverityLevel p_logLevel = SeverityInfo);  // Ctor is protected because we only allow derived classes to instantiate this interface
+	                                            Logger          (   bool p_makeDefault, SeverityLevel p_logLevel = SeverityInfo);  // Ctor is protected because we only allow derived classes to instantiate this interface
 
-	        inline  const   bool                shouldLog   (   SeverityLevel p_severityLevel) const    { return p_severityLevel != SeverityNoLog && p_severityLevel >= m_logLevel; }
-	static                  void                writeTag    (   std::ostream &p_ostream, 
-                                                                SeverityLevel p_severityLevel,
-		                                                        std::string p_sourceFile, int p_sourceLine);
+	        inline  const   bool                ShouldLog       (   SeverityLevel p_severityLevel) const    { return p_severityLevel != SeverityNoLog && p_severityLevel >= m_logLevel; }
+	static                  void                WriteTag        (   std::ostream &p_ostream, 
+                                                                    SeverityLevel p_severityLevel,
+		                                                            std::string p_sourceFile, int p_sourceLine);
 
 private:
-                                                Logger  (const Logger&);    // Intentionally undefined. Is private because we do not allow copies of a Singleton.
-                            Logger&             operator=   (const Logger&);    // Intentionally undefined. Is private because we do not allow copies of a Singleton.
+                                                Logger          (const Logger&);    // Intentionally undefined. Is private because we do not allow copies of a Singleton.
+                            Logger&             operator=       (const Logger&);    // Intentionally undefined. Is private because we do not allow copies of a Singleton.
 
 	static                  Logger*             g_defaultInstance;  // A pointer to the default logger. This is not a singleton pointer.
 	                        bool                m_active;
@@ -96,8 +96,8 @@ private:
 
 //#include <filesystem>
 
-#define LogMessage(level, msg)      nxn::Logger::getLogger()->logMessage    (msg,   level, std::filesystem::path(__FILE__).filename().string(), __LINE__);
-#define GetLogStream(level)	        nxn::Logger::getLogger()->getStream     (       level, std::filesystem::path(__FILE__).filename().string(), __LINE__)
+#define WriteLogMessage(level, msg) nxn::Logger::GetLogger()->WriteMessage  (msg,   level, std::filesystem::path(__FILE__).filename().string(), __LINE__);
+#define GetLogStream(level)	        nxn::Logger::GetLogger()->GetStream     (       level, std::filesystem::path(__FILE__).filename().string(), __LINE__)
 
 //#define LogMessage(level, msg)
 //#define GetLogStream(level)       nxn::Logger::g_nullStream

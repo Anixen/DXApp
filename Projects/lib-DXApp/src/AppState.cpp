@@ -33,13 +33,13 @@ AppState::~AppState()
 /**
  * Initializes the state and make it do some clean-up if needed
  */
-void AppState::init()
+void AppState::Init()
 {
 	GetLogStream(SeverityInfo)
 		<< "AppStateBase::init()" << std::endl;
 
 	if (m_cleanup) {
-		handleCleanup();
+		HandleCleanup();
 	}
 	//*/
 
@@ -55,7 +55,7 @@ void AppState::init()
  * Un-Initializes a state and marks it for clean-up
  * This function should be called whenever a state becomes inactive.
  */
-void AppState::deinit()
+void AppState::Deinit()
 {
 	GetLogStream(SeverityInfo)
 		<< "AppStateBase::deinit()" << std::endl;
@@ -69,7 +69,7 @@ void AppState::deinit()
 
 //-----------------------------------------------------------------------------
 
-void AppState::pause()
+void AppState::Pause()
 {
 	GetLogStream(SeverityInfo)
 		<< "AppStateBase::pause()" << std::endl;
@@ -82,7 +82,7 @@ void AppState::pause()
 
 //-----------------------------------------------------------------------------
 
-void AppState::resume()
+void AppState::Resume()
 {
 	GetLogStream(SeverityInfo)
 		<< "AppStateBase::resume()" << std::endl;
@@ -95,14 +95,14 @@ void AppState::resume()
 
 //-----------------------------------------------------------------------------
 
-void AppState::cleanup()
+void AppState::Cleanup()
 {
 	GetLogStream(SeverityInfo)
 		<< "AppStateBase::cleanup()" << std::endl;
 
 	if (m_cleanup) {
 
-		handleCleanup();
+		HandleCleanup();
 		m_cleanup = false;
 	}
 }

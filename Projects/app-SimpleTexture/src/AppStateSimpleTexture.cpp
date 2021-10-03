@@ -92,18 +92,18 @@ AppStateSimpleTexture::~AppStateSimpleTexture()
 
 //-----------------------------------------------------------------------------
 
-void AppStateSimpleTexture::init() {
+void AppStateSimpleTexture::Init() {
     /*
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleTexture::init()" << std::endl;
     //*/
 
-	AppState::init();
+	AppState::Init();
 }
 
 //-----------------------------------------------------------------------------
 
-void AppStateSimpleTexture::reinit()
+void AppStateSimpleTexture::Reinit()
 {
     /*
 	GetLogStream(SeverityInfo)
@@ -113,7 +113,7 @@ void AppStateSimpleTexture::reinit()
 
 //-----------------------------------------------------------------------------
 
-AppState* AppStateSimpleTexture::update(DX::StepTimer const& p_timer,
+AppState* AppStateSimpleTexture::Update(DX::StepTimer const& p_timer,
     DirectX::GamePad* p_gamePad, DirectX::Keyboard* p_keyboard, DirectX::Mouse* p_mouse)
 {
     (void)p_mouse;
@@ -131,14 +131,14 @@ AppState* AppStateSimpleTexture::update(DX::StepTimer const& p_timer,
     {
         if (pad.IsViewPressed())
         {
-            m_app->quit(0);
+            m_app->Quit(0);
         }
     }
 
     auto kb = p_keyboard->GetState();
     if (kb.Escape)
     {
-        m_app->quit(0);
+        m_app->Quit(0);
     }
 
 	return nullptr;
@@ -146,9 +146,9 @@ AppState* AppStateSimpleTexture::update(DX::StepTimer const& p_timer,
 
 //-----------------------------------------------------------------------------
 
-void AppStateSimpleTexture::draw(DX::DeviceResources* p_deviceResources)
+void AppStateSimpleTexture::Draw(DX::DeviceResources* p_deviceResources)
 {
-    clear(p_deviceResources);
+    Clear(p_deviceResources);
 
     p_deviceResources->PIXBeginEvent(L"Render");
     auto context = p_deviceResources->GetD3DDeviceContext();
@@ -186,7 +186,7 @@ void AppStateSimpleTexture::draw(DX::DeviceResources* p_deviceResources)
 
 //-----------------------------------------------------------------------------
 
-void AppStateSimpleTexture::clear(DX::DeviceResources * p_deviceResources)
+void AppStateSimpleTexture::Clear(DX::DeviceResources * p_deviceResources)
 {
     p_deviceResources->PIXBeginEvent(L"Clear");
 
@@ -211,7 +211,7 @@ void AppStateSimpleTexture::clear(DX::DeviceResources * p_deviceResources)
 
 //-----------------------------------------------------------------------------
 
-void AppStateSimpleTexture::handleCleanup()
+void AppStateSimpleTexture::HandleCleanup()
 {
     /*
 	GetLogStream(SeverityInfo)
@@ -221,7 +221,7 @@ void AppStateSimpleTexture::handleCleanup()
 
 //-----------------------------------------------------------------------------
 
-void AppStateSimpleTexture::createDeviceDependentResources(DX::DeviceResources * p_deviceResources)
+void AppStateSimpleTexture::CreateDeviceDependentResources(DX::DeviceResources * p_deviceResources)
 {
     /*
     GetLogStream(SeverityInfo)
@@ -335,7 +335,7 @@ void AppStateSimpleTexture::createDeviceDependentResources(DX::DeviceResources *
 
 //-----------------------------------------------------------------------------
 
-void AppStateSimpleTexture::createWindowSizeDependentResources()
+void AppStateSimpleTexture::CreateWindowSizeDependentResources()
 {
     /*
     GetLogStream(SeverityInfo)
@@ -345,7 +345,7 @@ void AppStateSimpleTexture::createWindowSizeDependentResources()
 
 //-----------------------------------------------------------------------------
 
-void AppStateSimpleTexture::resetResources()
+void AppStateSimpleTexture::ResetResources()
 {
     /*
     GetLogStream(SeverityInfo)
