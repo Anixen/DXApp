@@ -44,7 +44,7 @@ protected:
 
 private:
     virtual void                                        CreateDeviceDependentResources      (DX::DeviceResources * p_deviceResources);
-    virtual void                                        CreateWindowSizeDependentResources  ();
+    virtual void                                        CreateWindowSizeDependentResources  (DX::DeviceResources * p_deviceResources);
     virtual void                                        ResetResources                      ();
 
     Microsoft::WRL::ComPtr<ID3D11InputLayout>           m_spInputLayout;

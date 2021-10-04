@@ -335,7 +335,7 @@ void AppStateSimpleTexture::CreateDeviceDependentResources(DX::DeviceResources *
 
 //-----------------------------------------------------------------------------
 
-void AppStateSimpleTexture::CreateWindowSizeDependentResources()
+void AppStateSimpleTexture::CreateWindowSizeDependentResources(DX::DeviceResources * p_deviceResources)
 {
     /*
     GetLogStream(SeverityInfo)

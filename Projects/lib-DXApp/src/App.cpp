@@ -575,7 +575,7 @@ void App::Init()
     if (m_currentState != NULL)
     {
         m_currentState->CreateDeviceDependentResources(m_deviceResources.get());
-        m_currentState->CreateWindowSizeDependentResources();
+        m_currentState->CreateWindowSizeDependentResources(m_deviceResources.get());
     }
 
     PostInit();
@@ -615,7 +615,7 @@ void App::OnDeviceRestored()
     if (m_currentState != NULL)
     {
         m_currentState->CreateDeviceDependentResources(m_deviceResources.get());
-        m_currentState->CreateWindowSizeDependentResources();
+        m_currentState->CreateWindowSizeDependentResources(m_deviceResources.get());
     }
 }
 
@@ -657,7 +657,7 @@ void App::OnWindowSizeChanged(int width, int height)
 
     if (m_currentState != NULL)
     {
-        m_currentState->CreateWindowSizeDependentResources();
+        m_currentState->CreateWindowSizeDependentResources(m_deviceResources.get());
     }
 }
 

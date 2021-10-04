@@ -222,7 +222,7 @@ void AppStateSimpleTriangle::CreateDeviceDependentResources(DX::DeviceResources 
 
 //-----------------------------------------------------------------------------
 
-void AppStateSimpleTriangle::CreateWindowSizeDependentResources()
+void AppStateSimpleTriangle::CreateWindowSizeDependentResources(DX::DeviceResources * p_deviceResources)
 {
     /*
     GetLogStream(SeverityInfo)
