@@ -530,6 +530,7 @@ void App::Tick()
 	m_stepTimer.Tick([&]()
 	{
         AppState* nextState = m_currentState->Update(m_stepTimer,
+            m_ctrlConnected,
             m_gamePad.get(),    m_gamePadButtons, 
             m_keyboard.get(),   m_keyboardButtons,
             m_mouse.get(),      m_mouseButtons);

@@ -79,10 +79,13 @@ void AppStateSimpleLighting::Reinit()
 //-----------------------------------------------------------------------------
 
 AppState* AppStateSimpleLighting::Update(DX::StepTimer const& p_timer,
+    bool & p_ctrlConnected,
     DirectX::GamePad* p_gamePad,    DirectX::GamePad::ButtonStateTracker & p_gamePadButtons,
     DirectX::Keyboard* p_keyboard,  DirectX::Keyboard::KeyboardStateTracker & p_keyboardButtons,
     DirectX::Mouse* p_mouse,        DirectX::Mouse::ButtonStateTracker & p_mouseButtons)
 {
+    (void)p_ctrlConnected;
+
     (void)p_mouse;
     (void)p_mouseButtons;
 
