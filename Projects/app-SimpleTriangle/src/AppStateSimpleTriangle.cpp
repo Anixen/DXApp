@@ -66,9 +66,15 @@ void AppStateSimpleTriangle::Reinit()
 //-----------------------------------------------------------------------------
 
 AppState* AppStateSimpleTriangle::Update(DX::StepTimer const& p_timer,
-    DirectX::GamePad* p_gamePad, DirectX::Keyboard* p_keyboard, DirectX::Mouse* p_mouse)
+    DirectX::GamePad* p_gamePad,    DirectX::GamePad::ButtonStateTracker & p_gamePadButtons,
+    DirectX::Keyboard* p_keyboard,  DirectX::Keyboard::KeyboardStateTracker & p_keyboardButtons,
+    DirectX::Mouse* p_mouse,        DirectX::Mouse::ButtonStateTracker & p_mouseButtons)
 {
     (void)p_mouse;
+
+    (void)p_gamePadButtons;
+    (void)p_keyboardButtons;
+    (void)p_mouseButtons;
 
     double elapsedSeconds = p_timer.GetElapsedSeconds();
     (void)elapsedSeconds;
@@ -224,6 +230,8 @@ void AppStateSimpleTriangle::CreateDeviceDependentResources(DX::DeviceResources 
 
 void AppStateSimpleTriangle::CreateWindowSizeDependentResources(DX::DeviceResources * p_deviceResources)
 {
+    (void)p_deviceResources;
+
     /*
     GetLogStream(SeverityInfo)
         << "AppStateSimpleTriangle::createWindwSizeDependentResources()" << std::endl;

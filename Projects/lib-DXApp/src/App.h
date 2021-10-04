@@ -120,6 +120,10 @@ private:
                             std::unique_ptr<DirectX::Keyboard>      m_keyboard;
                             std::unique_ptr<DirectX::Mouse>         m_mouse;
 
+                            DirectX::GamePad::ButtonStateTracker    m_gamePadButtons;
+                            DirectX::Keyboard::KeyboardStateTracker m_keyboardButtons;
+                            DirectX::Mouse::ButtonStateTracker      m_mouseButtons;
+
 }; // class App
 
 } // namespace nxn

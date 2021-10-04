@@ -34,7 +34,9 @@ public:
      * @return {AppState*} A pointer to a new app state, or nullptr if no change required
      */
     virtual AppState*                                   Update                              (   DX::StepTimer const& p_timer,
-                                                                                                DirectX::GamePad* p_gamePad, DirectX::Keyboard* p_keyboard, DirectX::Mouse* p_mouse);
+                                                                                                DirectX::GamePad* p_gamePad,    DirectX::GamePad::ButtonStateTracker & p_gamePadButtons,
+                                                                                                DirectX::Keyboard* p_keyboard,  DirectX::Keyboard::KeyboardStateTracker & p_keyboardButtons,
+                                                                                                DirectX::Mouse* p_mouse,        DirectX::Mouse::ButtonStateTracker & p_mouseButtons);
 
 	virtual void                                        Draw                                (DX::DeviceResources* p_deviceResources);
     virtual void                                        Clear                               (DX::DeviceResources* p_deviceResources);
