@@ -11,7 +11,9 @@
  * @date 20210921 - Included to ModelViewer project, updated file description
  */
 
-#pragma once
+#ifndef PCH_SIMPLE_TEXTURE
+#define PCH_SIMPLE_TEXTURE
+
 
 #include <WinSDKVer.h>
 #define _WIN32_WINNT 0x0601
@@ -112,6 +114,9 @@ namespace DX
 #include <time.h>
 #include <sstream>
 #include <iostream>
+
+
+#endif // !PCH_SIMPLE_TEXTURE
 
 /*
  * The MIT License(MIT)

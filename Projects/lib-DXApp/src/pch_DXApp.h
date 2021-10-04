@@ -11,7 +11,9 @@
  * @date 20210921 - Included to ModelViewer project, updated file description
  */
 
-#pragma once
+#ifndef PCH_DX_APP
+#define PCH_DX_APP
+
 
 #include <WinSDKVer.h>
 #define _WIN32_WINNT 0x0601
@@ -110,6 +112,8 @@ namespace DX
 #include <sstream>
 #include <iostream>
 
+
+#endif // !PCH_DX_APP
 
 /*
  * The MIT License(MIT)

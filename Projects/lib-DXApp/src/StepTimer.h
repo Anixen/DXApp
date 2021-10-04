@@ -11,7 +11,9 @@
  * @date 20200615 - Added log messages
  */
 
-#pragma once
+#ifndef DX_STEPTIMER
+#define DX_STEPTIMER
+
 
 #include "Logger.h"
 
@@ -212,6 +214,9 @@ namespace DX
         uint64_t m_targetElapsedTicks;
     };
 }
+
+
+#endif // !DX_STEPTIMER
 
 /*
  * The MIT License(MIT)

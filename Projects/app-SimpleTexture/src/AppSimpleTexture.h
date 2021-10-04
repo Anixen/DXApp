@@ -10,10 +10,11 @@
  * @date 20210929 - File creation
  */
 
-#pragma once
+#ifndef NXN_APP_SIMPLE_TEXTURE
+#define NXN_APP_SIMPLE_TEXTURE
+
 
 #include "../../lib-DXApp/src/App.h"
-
 
 namespace nxn {
 
@@ -32,3 +33,7 @@ namespace nxn {
     }; // class AppSimpleTexture
 
 } // namespace nxn
+
+
+#endif // !NXN_APP_SIMPLE_TEXTURE
+

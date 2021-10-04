@@ -10,10 +10,11 @@
  * @date 20210929 - File creation
  */
 
-#pragma once
+#ifndef NXN_APP_STATE_SIMPLE_TRIANGLE
+#define NXN_APP_STATE_SIMPLE_TRIANGLE
+
 
 #include "../../lib-DXApp/src/AppState.h"
-
 
 namespace nxn {
 
@@ -54,3 +55,6 @@ private:
 }; // class AppStateSimpleTriangle
 
 } // namespace nxn
+
+
+#endif // !NXN_APP_STATE_SIMPLE_TRIANGLE

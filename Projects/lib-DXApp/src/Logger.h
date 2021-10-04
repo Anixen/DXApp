@@ -10,12 +10,13 @@
  * @date 20210927 - Updated coding style
  */
 
-#pragma once
+#ifndef NXN_LOGGER
+#define NXN_LOGGER
+
 
 //#include <string>
 #include "onullstream.h"
 //#include <boost/iostreams/stream.hpp>
-
 
 namespace nxn {
 
@@ -101,3 +102,6 @@ private:
 
 //#define LogMessage(level, msg)
 //#define GetLogStream(level)       nxn::Logger::g_nullStream
+
+
+#endif // !NXN_LOGGER

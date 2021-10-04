@@ -10,7 +10,9 @@
  * @date 20210929 - Included to ModelViewer project, updated file description
  */
 
-#pragma once
+#ifndef DX_DEVICE_RESSOURCES
+#define DX_DEVICE_RESSOURCES
+
 
 namespace DX
 {
@@ -121,6 +123,9 @@ namespace DX
         IDeviceNotify*                                  m_deviceNotify;
     };
 }
+
+
+#endif // !DX_DEVICE_RESSOURCES
 
 /*
  * The MIT License(MIT)

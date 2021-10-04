@@ -13,13 +13,14 @@
  * @date 20210927 - Updated coding style
  */
 
-#pragma once
+#ifndef NXN_APP
+#define NXN_APP
+
 
 #include "DeviceResources.h"
 #include "StepTimer.h"
 
 #include "AppState.h"
-
 
 namespace nxn {
 
@@ -122,3 +123,6 @@ private:
 }; // class App
 
 } // namespace nxn
+
+
+#endif // !NXN_APP

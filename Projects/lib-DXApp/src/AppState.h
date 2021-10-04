@@ -11,11 +11,12 @@
  * @date 20210927 - Updated coding style
  */
 
-#pragma once
+#ifndef NXN_APP_STATE
+#define NXN_APP_STATE
+
 
 #include "StepTimer.h"
 #include "App.h"
-
 
 namespace nxn {
 
@@ -76,3 +77,6 @@ private:
 }; // class AppState
 
 } // namespace nxn
+
+
+#endif // !NXN_APP_STATE

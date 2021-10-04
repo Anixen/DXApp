@@ -13,7 +13,9 @@
  * @date 20200531 - Replace headguards with pragma once
  */
 
-#pragma once
+#ifndef STD_ONULLSTREAM
+#define STD_ONULLSTREAM
+
 
 namespace std
 {
@@ -42,6 +44,9 @@ namespace std
 	typedef basic_onullstream<char> onullstream;
 	typedef basic_onullstream<wchar_t> wonullstream;
 } // namespace std
+
+
+#endif // !STD_ONULLSTREAM
 
 /**
  * @class std::onullstream

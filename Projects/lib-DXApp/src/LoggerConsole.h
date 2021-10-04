@@ -10,10 +10,11 @@
  * @date 20210927 - Updated coding style
  */
 
-#pragma once
+#ifndef NXN_LOGGER_CONSOLE
+#define NXN_LOGGER_CONSOLE
+
 
 #include "Logger.h"
-
 
 namespace nxn {
 
@@ -40,3 +41,6 @@ private:
 }; // class LoggerConsole
 
 } // namespace nxn
+
+
+#endif // !NXN_LOGGER_CONSOLE

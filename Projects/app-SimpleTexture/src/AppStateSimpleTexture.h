@@ -10,10 +10,11 @@
  * @date 20210929 - File creation
  */
 
-#pragma once
+#ifndef NXN_APP_STATE_SIMPLE_TEXTURE
+#define NXN_APP_STATE_SIMPLE_TEXTURE
+
 
 #include "../../lib-DXApp/src/AppState.h"
-
 
 namespace nxn {
 
@@ -57,3 +58,6 @@ private:
 }; // class AppStateSimpleTexture
 
 } // namespace nxn
+
+
+#endif // !NXN_APP_STATE_SIMPLE_TEXTURE
