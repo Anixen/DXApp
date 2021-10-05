@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.960
@@ -15,7 +15,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app-SimpleLighting", "Proje
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app-SimpleBezier", "Projects\app-SimpleBezier\app-SimpleBezier.vcxproj", "{4663D5D6-9B7F-4876-908B-0C23509B5F0D}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app-simpleCompute", "Projects\app-simpleCompute\app-simpleCompute.vcxproj", "{768E1F5B-71C5-4741-A4BA-62997D28B2CB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app-SimpleCompute", "Projects\app-SimpleCompute\app-SimpleCompute.vcxproj", "{768E1F5B-71C5-4741-A4BA-62997D28B2CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
