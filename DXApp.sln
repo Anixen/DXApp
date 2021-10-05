@@ -17,6 +17,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app-SimpleBezier", "Project
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app-SimpleCompute", "Projects\app-SimpleCompute\app-SimpleCompute.vcxproj", "{768E1F5B-71C5-4741-A4BA-62997D28B2CB}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app-SimpleInstancing", "Projects\app-SimpleInstancing\app-SimpleInstancing.vcxproj", "{A6EF01DC-0343-4198-8F58-749037E2B79B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -81,6 +83,14 @@ Global
 		{768E1F5B-71C5-4741-A4BA-62997D28B2CB}.Release|x64.Build.0 = Release|x64
 		{768E1F5B-71C5-4741-A4BA-62997D28B2CB}.Release|x86.ActiveCfg = Release|Win32
 		{768E1F5B-71C5-4741-A4BA-62997D28B2CB}.Release|x86.Build.0 = Release|Win32
+		{A6EF01DC-0343-4198-8F58-749037E2B79B}.Debug|x64.ActiveCfg = Debug|x64
+		{A6EF01DC-0343-4198-8F58-749037E2B79B}.Debug|x64.Build.0 = Debug|x64
+		{A6EF01DC-0343-4198-8F58-749037E2B79B}.Debug|x86.ActiveCfg = Debug|Win32
+		{A6EF01DC-0343-4198-8F58-749037E2B79B}.Debug|x86.Build.0 = Debug|Win32
+		{A6EF01DC-0343-4198-8F58-749037E2B79B}.Release|x64.ActiveCfg = Release|x64
+		{A6EF01DC-0343-4198-8F58-749037E2B79B}.Release|x64.Build.0 = Release|x64
+		{A6EF01DC-0343-4198-8F58-749037E2B79B}.Release|x86.ActiveCfg = Release|Win32
+		{A6EF01DC-0343-4198-8F58-749037E2B79B}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
