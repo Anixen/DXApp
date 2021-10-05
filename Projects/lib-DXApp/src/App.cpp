@@ -529,7 +529,9 @@ void App::Tick()
 
 	m_stepTimer.Tick([&]()
 	{
-        AppState* nextState = m_currentState->Update(m_stepTimer,
+        AppState* nextState = m_currentState->Update(
+            m_deviceResources.get(),
+            m_stepTimer,
             m_ctrlConnected,
             m_gamePad.get(),    m_gamePadButtons, 
             m_keyboard.get(),   m_keyboardButtons,

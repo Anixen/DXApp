@@ -79,12 +79,16 @@ void AppStateSimpleCompute::Reinit()
 
 //-----------------------------------------------------------------------------
 
-AppState* AppStateSimpleCompute::Update(DX::StepTimer const& p_timer,
+AppState* AppStateSimpleCompute::Update(
+    DX::DeviceResources* p_deviceResources,
+    DX::StepTimer const& p_timer,
     bool & p_ctrlConnected,
     DirectX::GamePad* p_gamePad,    DirectX::GamePad::ButtonStateTracker & p_gamePadButtons,
     DirectX::Keyboard* p_keyboard,  DirectX::Keyboard::KeyboardStateTracker & p_keyboardButtons,
     DirectX::Mouse* p_mouse,        DirectX::Mouse::ButtonStateTracker & p_mouseButtons)
 {
+    (void)p_deviceResources;
+
     (void)p_mouse;
     (void)p_mouseButtons;
 

@@ -65,12 +65,16 @@ void AppStateSimpleTriangle::Reinit()
 
 //-----------------------------------------------------------------------------
 
-AppState* AppStateSimpleTriangle::Update(DX::StepTimer const& p_timer,
+AppState* AppStateSimpleTriangle::Update(
+    DX::DeviceResources* p_deviceResources,
+    DX::StepTimer const& p_timer,
     bool & p_ctrlConnected,
     DirectX::GamePad* p_gamePad,    DirectX::GamePad::ButtonStateTracker & p_gamePadButtons,
     DirectX::Keyboard* p_keyboard,  DirectX::Keyboard::KeyboardStateTracker & p_keyboardButtons,
     DirectX::Mouse* p_mouse,        DirectX::Mouse::ButtonStateTracker & p_mouseButtons)
 {
+    (void)p_deviceResources;
+
     (void)p_ctrlConnected;
 
     (void)p_mouse;
