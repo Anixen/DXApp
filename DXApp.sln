@@ -15,6 +15,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app-SimpleLighting", "Proje
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app-SimpleBezier", "Projects\app-SimpleBezier\app-SimpleBezier.vcxproj", "{4663D5D6-9B7F-4876-908B-0C23509B5F0D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app-simpleCompute", "Projects\app-simpleCompute\app-simpleCompute.vcxproj", "{768E1F5B-71C5-4741-A4BA-62997D28B2CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -71,6 +73,14 @@ Global
 		{4663D5D6-9B7F-4876-908B-0C23509B5F0D}.Release|x64.Build.0 = Release|x64
 		{4663D5D6-9B7F-4876-908B-0C23509B5F0D}.Release|x86.ActiveCfg = Release|Win32
 		{4663D5D6-9B7F-4876-908B-0C23509B5F0D}.Release|x86.Build.0 = Release|Win32
+		{768E1F5B-71C5-4741-A4BA-62997D28B2CB}.Debug|x64.ActiveCfg = Debug|x64
+		{768E1F5B-71C5-4741-A4BA-62997D28B2CB}.Debug|x64.Build.0 = Debug|x64
+		{768E1F5B-71C5-4741-A4BA-62997D28B2CB}.Debug|x86.ActiveCfg = Debug|Win32
+		{768E1F5B-71C5-4741-A4BA-62997D28B2CB}.Debug|x86.Build.0 = Debug|Win32
+		{768E1F5B-71C5-4741-A4BA-62997D28B2CB}.Release|x64.ActiveCfg = Release|x64
+		{768E1F5B-71C5-4741-A4BA-62997D28B2CB}.Release|x64.Build.0 = Release|x64
+		{768E1F5B-71C5-4741-A4BA-62997D28B2CB}.Release|x86.ActiveCfg = Release|Win32
+		{768E1F5B-71C5-4741-A4BA-62997D28B2CB}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
