@@ -93,8 +93,7 @@ AppState* AppStateSimpleLighting::Update(
     (void)p_mouse;
     (void)p_mouseButtons;
 
-    double elapsedSeconds = p_timer.GetElapsedSeconds();
-    (void)elapsedSeconds;
+    float elapsedSeconds = float(p_timer.GetElapsedSeconds());
 
     /*
 	GetLogStream(SeverityInfo)
