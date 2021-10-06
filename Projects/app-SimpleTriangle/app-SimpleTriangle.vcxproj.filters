@@ -9,6 +9,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\ATG Tool Kit">
+      <UniqueIdentifier>{a552d40c-e82e-48ea-aacf-8ae3561b4b0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shaders">
+      <UniqueIdentifier>{41fff5c7-6a16-46c4-9265-59585788571d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\AppStateSimpleTriangle.cpp">
@@ -34,13 +40,19 @@
     <ClInclude Include="src\pch.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\External\ATGTK\ATGColors.h">
+      <Filter>Source Files\ATG Tool Kit</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\External\ATGTK\ReadData.h">
+      <Filter>Source Files\ATG Tool Kit</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="src\SimpleTriangle_PixelShader.hlsl">
-      <Filter>Source Files</Filter>
+    <FxCompile Include="src\Shaders\SimpleTriangle_PixelShader.hlsl">
+      <Filter>Source Files\Shaders</Filter>
     </FxCompile>
-    <FxCompile Include="src\SimpleTriangle_VertexShader.hlsl">
-      <Filter>Source Files</Filter>
+    <FxCompile Include="src\Shaders\SimpleTriangle_VertexShader.hlsl">
+      <Filter>Source Files\Shaders</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

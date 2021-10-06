@@ -25,37 +25,40 @@
     <ClCompile Include="src\pch.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\External\ATGTK\ATGColors.h" />
+    <ClInclude Include="..\..\External\ATGTK\FindMedia.h" />
+    <ClInclude Include="..\..\External\ATGTK\ReadData.h" />
     <ClInclude Include="src\AppSimpleLighting.h" />
     <ClInclude Include="src\AppStateSimpleLighting.h" />
     <ClInclude Include="src\pch.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\SimpleLighting.hlsli" />
+    <ProjectReference Include="..\lib-DXApp\lib-DXApp.vcxproj">
+      <Project>{71bf9883-ba29-49d7-b10b-aed692f69997}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="src\SimpleLighting_LambertPS.hlsl">
+    <None Include="src\Shaders\SimpleLighting.hlsli" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="src\Shaders\SimpleLighting_LambertPS.hlsl">
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">LambertPS</EntryPointName>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">LambertPS</EntryPointName>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
     </FxCompile>
-    <FxCompile Include="src\SimpleLighting_SolidColorPS.hlsl">
+    <FxCompile Include="src\Shaders\SimpleLighting_SolidColorPS.hlsl">
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">SolidColorPS</EntryPointName>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">SolidColorPS</EntryPointName>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
     </FxCompile>
-    <FxCompile Include="src\SimpleLighting_TriangleVS.hlsl">
+    <FxCompile Include="src\Shaders\SimpleLighting_TriangleVS.hlsl">
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">TriangleVS</EntryPointName>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">TriangleVS</EntryPointName>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
     </FxCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\lib-DXApp\lib-DXApp.vcxproj">
-      <Project>{71bf9883-ba29-49d7-b10b-aed692f69997}</Project>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

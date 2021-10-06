@@ -9,6 +9,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\ATG Tool Kit">
+      <UniqueIdentifier>{63f91113-5e92-45b0-a426-a8bc08b8ed85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shaders">
+      <UniqueIdentifier>{1abfdf0b-c0be-4caa-a501-dbf69172fc06}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\AppStateSimpleTexture.cpp">
@@ -34,13 +40,22 @@
     <ClInclude Include="src\pch.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\External\ATGTK\ATGColors.h">
+      <Filter>Source Files\ATG Tool Kit</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\External\ATGTK\FindMedia.h">
+      <Filter>Source Files\ATG Tool Kit</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\External\ATGTK\ReadData.h">
+      <Filter>Source Files\ATG Tool Kit</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="src\SimpleTexture_PixelShader.hlsl">
-      <Filter>Source Files</Filter>
+    <FxCompile Include="src\Shaders\SimpleTexture_PixelShader.hlsl">
+      <Filter>Source Files\Shaders</Filter>
     </FxCompile>
-    <FxCompile Include="src\SimpleTexture_VertexShader.hlsl">
-      <Filter>Source Files</Filter>
+    <FxCompile Include="src\Shaders\SimpleTexture_VertexShader.hlsl">
+      <Filter>Source Files\Shaders</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>
