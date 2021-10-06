@@ -6,7 +6,7 @@
 
 //#include <iostream>
 
-#include "pch_SimpleTriangle.h"
+#include "pch.h"
 
 #include "../../lib-DXApp/src/LoggerConsole.h"
 #include "AppSimpleTriangle.h"

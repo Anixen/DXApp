@@ -4,7 +4,7 @@
  * @author Olivier Falconnet
  */
 
-#include "pch_SimpleLighting.h"
+#include "pch.h"
 
 #include "../../lib-DXApp/src/LoggerConsole.h"
 #include "AppSimpleLighting.h"

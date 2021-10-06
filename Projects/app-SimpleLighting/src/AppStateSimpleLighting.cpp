@@ -1,4 +1,4 @@
-#include "pch_SimpleLighting.h"
+#include "pch.h"
 #include "AppStateSimpleLighting.h"
 
 #include "ATGColors.h"

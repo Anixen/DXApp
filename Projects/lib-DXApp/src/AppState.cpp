@@ -1,4 +1,4 @@
-#include "pch_DXApp.h"
+#include "pch.h"
 #include "AppState.h"
 
 #include "Logger.h"

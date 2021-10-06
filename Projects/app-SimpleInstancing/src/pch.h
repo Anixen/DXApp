@@ -9,8 +9,11 @@
  * @date 20170809 - Initial Release
  *
  * @author Olivier Falconnet
- * @date 20211005 - Included to app-SimpleInstancing project, updated file description
+ * @date 20211005 - Included to app-SimpleInstancing project
+ * @date 20211005 - Additional dependencies
  */
+
+#pragma message("pch app-SimpleInstancing") // Temporary, for debugging purposes
 
 #ifndef PCH_SIMPLE_INSTANCING
 #define PCH_SIMPLE_INSTANCING

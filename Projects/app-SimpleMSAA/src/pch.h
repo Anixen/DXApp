@@ -9,8 +9,11 @@
  * @date 20170809 - Initial Release
  *
  * @author Olivier Falconnet
- * @date 20211006 - Included to app-SimpleMSAA project, updated file description
+ * @date 20211006 - Included to app-SimpleLighting project
+ * @date 20211006 - Additional dependencies
  */
+
+#pragma message("pch app-SimpleMSAA") // Temporary, for debugging purposes
 
 #ifndef PCH_SIMPLE_MSAA
 #define PCH_SIMPLE_MSAA

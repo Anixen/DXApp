@@ -22,12 +22,12 @@
     <ClCompile Include="src\AppSimpleLighting.cpp" />
     <ClCompile Include="src\AppStateSimpleLighting.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\pch_SimpleLighting.cpp" />
+    <ClCompile Include="src\pch.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\AppSimpleLighting.h" />
     <ClInclude Include="src\AppStateSimpleLighting.h" />
-    <ClInclude Include="src\pch_SimpleLighting.h" />
+    <ClInclude Include="src\pch.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\SimpleLighting.hlsli" />
@@ -131,8 +131,8 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)External\DirectXTK\Inc;$(SolutionDir)External\ATGTK;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch_SimpleLighting</PrecompiledHeaderOutputFile>
-      <PrecompiledHeaderFile>pch_SimpleLighting.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -186,8 +186,8 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)External\DirectXTK\Inc;$(SolutionDir)External\ATGTK;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch_SimpleLighting</PrecompiledHeaderOutputFile>
-      <PrecompiledHeaderFile>pch_SimpleLighting.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

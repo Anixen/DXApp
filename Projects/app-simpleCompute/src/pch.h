@@ -9,8 +9,11 @@
  * @date 20170809 - Initial Release
  *
  * @author Olivier Falconnet
- * @date 20211004 - Included to app-SimpleCompute project, updated file description
+ * @date 20211005 - Included to app-SimpleCompute project
+ * @date 20211005 - Additional dependencies
  */
+
+#pragma message("pch app-SimpleCompute") // Temporary, for debugging purposes
 
 #ifndef PCH_SIMPLE_COMPUTE
 #define PCH_SIMPLE_COMPUTE

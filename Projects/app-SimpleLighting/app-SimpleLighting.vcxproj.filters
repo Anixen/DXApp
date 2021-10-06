@@ -20,7 +20,7 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\pch_SimpleLighting.cpp">
+    <ClCompile Include="src\pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -31,7 +31,7 @@
     <ClInclude Include="src\AppStateSimpleLighting.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\pch_SimpleLighting.h">
+    <ClInclude Include="src\pch.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

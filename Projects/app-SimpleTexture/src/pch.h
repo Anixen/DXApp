@@ -8,11 +8,15 @@
  * @author Chuck Walbourn
  * @date 20170809 - Initial Release
  *
- * @date 20210921 - Included to ModelViewer project, updated file description
+ * @author Olivier Falconnet
+ * @date 20211003 - Included to app-SimpleTexture project
+ * @date 20211003 - Additional dependencies
  */
 
-#ifndef PCH_DX_APP
-#define PCH_DX_APP
+#pragma message("pch app-SimpleTexture") // Temporary, for debugging purposes
+
+#ifndef PCH_SIMPLE_TEXTURE
+#define PCH_SIMPLE_TEXTURE
 
 
 #include <WinSDKVer.h>
@@ -59,6 +63,9 @@
 #include <memory>
 #include <stdexcept>
 #include <vector>
+
+#include <string>
+#include <filesystem>
 
 #include <stdio.h>
 
@@ -113,7 +120,7 @@ namespace DX
 #include <iostream>
 
 
-#endif // !PCH_DX_APP
+#endif // !PCH_SIMPLE_TEXTURE
 
 /*
  * The MIT License(MIT)

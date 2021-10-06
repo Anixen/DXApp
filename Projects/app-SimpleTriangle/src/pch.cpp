@@ -7,7 +7,7 @@
  * @file src/pch.cpp
  */
 
-#include "pch_SimpleTriangle.h"
+#include "pch.h"
 
 /*
  * The MIT License(MIT)

@@ -7,7 +7,7 @@
  * @file src/DeviceRessources.cpp
  */
 
-#include "pch_DXApp.h"
+#include "pch.h"
 #include "DeviceResources.h"
 
 using namespace DirectX;

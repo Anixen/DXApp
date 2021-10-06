@@ -8,11 +8,15 @@
  * @author Chuck Walbourn
  * @date 20170809 - Initial Release
  *
- * @date 20210921 - Included to ModelViewer project, updated file description
+ * @author Olivier Falconnet
+ * @date 20211004 - Included to app-SimpleLighting project
+ * @date 20211004 - Additional dependencies
  */
 
-#ifndef PCH_SIMPLE_TEXTURE
-#define PCH_SIMPLE_TEXTURE
+#pragma message("pch app-SimpleLighting") // Temporary, for debugging purposes
+
+#ifndef PCH_SIMPLE_LIGHTING
+#define PCH_SIMPLE_LIGTHING
 
 
 #include <WinSDKVer.h>
@@ -116,7 +120,7 @@ namespace DX
 #include <iostream>
 
 
-#endif // !PCH_SIMPLE_TEXTURE
+#endif // !PCH_SIMPLE_LIGHTING
 
 /*
  * The MIT License(MIT)

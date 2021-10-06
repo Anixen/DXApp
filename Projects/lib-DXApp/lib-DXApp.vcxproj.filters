@@ -34,7 +34,7 @@
     <ClInclude Include="src\StepTimer.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\pch_DXApp.h">
+    <ClInclude Include="src\pch.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -54,7 +54,7 @@
     <ClCompile Include="src\DeviceResources.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\pch_DXApp.cpp">
+    <ClCompile Include="src\pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

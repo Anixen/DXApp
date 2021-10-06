@@ -17,10 +17,10 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\pch_SimpleTriangle.cpp">
+    <ClCompile Include="src\AppSimpleTriangle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\AppSimpleTriangle.cpp">
+    <ClCompile Include="src\pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -28,10 +28,10 @@
     <ClInclude Include="src\AppStateSimpleTriangle.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\pch_SimpleTriangle.h">
+    <ClInclude Include="src\AppSimpleTriangle.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\AppSimpleTriangle.h">
+    <ClInclude Include="src\pch.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

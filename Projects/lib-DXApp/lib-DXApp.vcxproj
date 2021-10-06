@@ -112,7 +112,7 @@
       <AdditionalIncludeDirectories>$(ProjectDir)src;$(SolutionDir)External\DirectXTK\Inc;$(SolutionDir)External\ATGTK;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeader>Create</PrecompiledHeader>
-      <PrecompiledHeaderFile>pch_DXApp.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <FloatingPointModel>Fast</FloatingPointModel>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
@@ -160,7 +160,7 @@
       <AdditionalIncludeDirectories>$(ProjectDir)src;$(SolutionDir)External\DirectXTK\Inc;$(SolutionDir)External\ATGTK;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeader>Create</PrecompiledHeader>
-      <PrecompiledHeaderFile>pch_DXApp.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <FloatingPointModel>Fast</FloatingPointModel>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
@@ -182,7 +182,7 @@
     <ClInclude Include="src\Logger.h" />
     <ClInclude Include="src\LoggerConsole.h" />
     <ClInclude Include="src\onullstream.h" />
-    <ClInclude Include="src\pch_DXApp.h" />
+    <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\StepTimer.h" />
   </ItemGroup>
   <ItemGroup>
@@ -191,7 +191,7 @@
     <ClCompile Include="src\DeviceResources.cpp" />
     <ClCompile Include="src\Logger.cpp" />
     <ClCompile Include="src\LoggerConsole.cpp" />
-    <ClCompile Include="src\pch_DXApp.cpp" />
+    <ClCompile Include="src\pch.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\External\DirectXTK\DirectXTK_Desktop_2017.vcxproj">

@@ -1,4 +1,4 @@
-#include "pch_SimpleTexture.h"
+#include "pch.h"
 #include "AppSimpleTexture.h"
 
 #include "AppStateSimpleTexture.h"

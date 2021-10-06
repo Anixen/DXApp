@@ -7,7 +7,7 @@
  * @file src/pch.cpp
  */
 
-#include "pch_SimpleTexture.h"
+#include "pch.h"
 
 /*
  * The MIT License(MIT)

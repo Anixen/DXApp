@@ -8,11 +8,15 @@
  * @author Chuck Walbourn
  * @date 20170809 - Initial Release
  *
- * @date 20210921 - Included to ModelViewer project, updated file description
+ * @author Olivier Falconnet
+ * @date 20211003 - Included to lib-DXApp project
+ * @date 20211003 - Additional dependencies
  */
 
-#ifndef PCH_SIMPLE_TRIANGLE
-#define PCH_SIMPLE_TRIANGLE
+#pragma message("pch lib-DXApp") // Temporary, for debugging purposes
+
+#ifndef PCH_DX_APP
+#define PCH_DX_APP
 
 
 #include <WinSDKVer.h>
@@ -59,9 +63,6 @@
 #include <memory>
 #include <stdexcept>
 #include <vector>
-
-#include <string>
-#include <filesystem>
 
 #include <stdio.h>
 
@@ -116,7 +117,7 @@ namespace DX
 #include <iostream>
 
 
-#endif // !PCH_SIMPLE_TRIANGLE
+#endif // !PCH_DX_APP
 
 /*
  * The MIT License(MIT)

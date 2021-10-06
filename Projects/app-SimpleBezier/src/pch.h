@@ -8,10 +8,12 @@
  * @author Chuck Walbourn
  * @date 20170809 - Initial Release
  *
- * @file src/pch_SimpleBezier.h
  * @author Olivier Falconnet
- * @date 20211004 - Included to app-SimpleBezier project, updated file description
+ * @date 20211004 - Included to app-SimpleBezier project
+ * @date 20211004 - Additional dependencies
  */
+
+#pragma message("pch app-SimpleBezier") // Temporary, for debugging purposes
 
 #ifndef PCH_SIMPLE_BEZIER
 #define PCH_SIMPLE_BEZIER

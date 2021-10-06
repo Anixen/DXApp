@@ -8,13 +8,15 @@
  * @author Chuck Walbourn
  * @date 20170809 - Initial Release
  *
- * @file src/pch_SimpleLigting.h
  * @author Olivier Falconnet
- * @date 20211004 - Included to app-SimpleLighting project, updated file description
+ * @date 20211003 - Included to app-SimpleTriangle project
+ * @date 20211003 - Additional dependencies
  */
 
-#ifndef PCH_SIMPLE_LIGHTING
-#define PCH_SIMPLE_LIGTHING
+#pragma message("pch app-SimpleTriangle") // Temporary, for debugging purposes
+
+#ifndef PCH_SIMPLE_TRIANGLE
+#define PCH_SIMPLE_TRIANGLE
 
 
 #include <WinSDKVer.h>
@@ -118,7 +120,7 @@ namespace DX
 #include <iostream>
 
 
-#endif // !PCH_SIMPLE_LIGHTING
+#endif // !PCH_SIMPLE_TRIANGLE
 
 /*
  * The MIT License(MIT)

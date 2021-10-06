@@ -4,7 +4,7 @@
  * @author Olivier Falconnet
  */
 
-#include "pch_SimpleTexture.h"
+#include "pch.h"
 
 #include "../../lib-DXApp/src/LoggerConsole.h"
 #include "AppSimpleTexture.h"

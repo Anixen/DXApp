@@ -1,4 +1,4 @@
-#include "pch_SimpleTriangle.h"
+#include "pch.h"
 #include "AppStateSimpleTriangle.h"
 
 #include "ATGColors.h"

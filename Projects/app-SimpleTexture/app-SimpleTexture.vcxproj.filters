@@ -17,10 +17,10 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\pch_SimpleTexture.cpp">
+    <ClCompile Include="src\AppSimpleTexture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\AppSimpleTexture.cpp">
+    <ClCompile Include="src\pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -28,10 +28,10 @@
     <ClInclude Include="src\AppStateSimpleTexture.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\pch_SimpleTexture.h">
+    <ClInclude Include="src\AppSimpleTexture.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\AppSimpleTexture.h">
+    <ClInclude Include="src\pch.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
