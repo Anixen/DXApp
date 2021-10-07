@@ -22,7 +22,7 @@ namespace nxn {
     class AppSimpleMSAA : public App {
 
     public:
-        AppSimpleMSAA                           ();
+        AppSimpleMSAA                           (std::unique_ptr<DX::DeviceResources> & p_deviceResources);
         ~AppSimpleMSAA                          ();
 
         virtual void	GetDefaultWindowSize    (int& width, int& height) const;

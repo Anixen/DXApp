@@ -22,7 +22,7 @@ namespace nxn {
     class AppSimpleLighting : public App {
 
     public:
-        AppSimpleLighting               ();
+        AppSimpleLighting               (std::unique_ptr<DX::DeviceResources> & p_deviceResources);
         ~AppSimpleLighting              ();
 
     protected:

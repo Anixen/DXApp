@@ -10,7 +10,8 @@ namespace nxn {
 
 //-----------------------------------------------------------------------------
 
-AppSimpleMSAA::AppSimpleMSAA()
+AppSimpleMSAA::AppSimpleMSAA(std::unique_ptr<DX::DeviceResources> & p_deviceResources)
+    : App(p_deviceResources)
 {
     /*
     GetLogStream(SeverityInfo)

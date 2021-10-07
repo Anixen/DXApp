@@ -10,7 +10,8 @@ namespace nxn {
 
 //-----------------------------------------------------------------------------
 
-AppSimpleCompute::AppSimpleCompute()
+AppSimpleCompute::AppSimpleCompute(std::unique_ptr<DX::DeviceResources> & p_deviceResources)
+    : App(p_deviceResources)
 {
     /*
     GetLogStream(SeverityInfo)

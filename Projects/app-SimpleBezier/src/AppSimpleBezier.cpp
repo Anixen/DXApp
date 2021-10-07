@@ -10,7 +10,8 @@ namespace nxn {
 
 //-----------------------------------------------------------------------------
 
-AppSimpleBezier::AppSimpleBezier()
+AppSimpleBezier::AppSimpleBezier(std::unique_ptr<DX::DeviceResources> & p_deviceResources)
+    : App(p_deviceResources)
 {
     /*
     GetLogStream(SeverityInfo)

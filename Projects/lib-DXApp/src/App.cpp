@@ -12,14 +12,14 @@ const LPCWSTR App::g_windowClassName = L"AppWindowClass";
 
 //-----------------------------------------------------------------------------
 
-App::App()
+App::App(std::unique_ptr<DX::DeviceResources> & p_deviceResources)
 {
 	WriteLogMessage(SeverityInfo, "App::ctor()")
 
 	g_instance = this;
 
     // Use gamma-correct rendering.
-    m_deviceResources = std::make_unique<DX::DeviceResources>(DXGI_FORMAT_B8G8R8A8_UNORM_SRGB);
+    m_deviceResources = std::move(p_deviceResources); // Take ownership of device ressources pointer
     m_deviceResources->RegisterDeviceNotify(this);
 
     //m_stepTimer.SetFixedTimeStep(true);

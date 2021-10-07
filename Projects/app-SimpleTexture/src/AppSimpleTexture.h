@@ -22,8 +22,8 @@ namespace nxn {
     class AppSimpleTexture : public App {
 
     public:
-        AppSimpleTexture();
-        ~AppSimpleTexture();
+        AppSimpleTexture                (std::unique_ptr<DX::DeviceResources> & p_deviceResources);
+        ~AppSimpleTexture               ();
 
     protected:
         virtual void    PreInit         (); // Performs custom steps (e.g. allocating memory) before entering the main loop

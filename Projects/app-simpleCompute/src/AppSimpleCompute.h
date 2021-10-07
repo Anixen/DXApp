@@ -22,7 +22,7 @@ namespace nxn {
     class AppSimpleCompute : public App {
 
     public:
-        AppSimpleCompute                        ();
+        AppSimpleCompute                        (std::unique_ptr<DX::DeviceResources> & p_deviceResources);
         ~AppSimpleCompute                       ();
 
         virtual void	GetDefaultWindowSize    (int& width, int& height) const;

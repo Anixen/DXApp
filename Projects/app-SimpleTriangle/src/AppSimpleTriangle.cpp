@@ -9,7 +9,8 @@ namespace nxn {
 
 //-----------------------------------------------------------------------------
 
-AppSimpleTriangle::AppSimpleTriangle()
+AppSimpleTriangle::AppSimpleTriangle(std::unique_ptr<DX::DeviceResources> & p_deviceResources)
+    : App(p_deviceResources)
 {
     /*
     GetLogStream(SeverityInfo)

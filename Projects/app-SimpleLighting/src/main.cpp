@@ -17,7 +17,12 @@ int main(int argc, char** argv)
 {
 	LoggerConsole logger(true, SeverityDebug);
 
-    App* app = new AppSimpleLighting();
+    // Use gamma-correct rendering.
+    std::unique_ptr<DX::DeviceResources> deviceResources = std::make_unique<DX::DeviceResources>(
+        DXGI_FORMAT_B8G8R8A8_UNORM_SRGB // backBufferFormat
+    );
+
+    App* app = new AppSimpleLighting(deviceResources);
 
 	//app->processArguments(hInstance, hPrevInstance, pCmdLine, nCmdShow);
 	app->ProcessArguments(argc, argv);

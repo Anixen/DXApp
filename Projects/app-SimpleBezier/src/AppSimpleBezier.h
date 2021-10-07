@@ -22,7 +22,7 @@ namespace nxn {
     class AppSimpleBezier : public App {
 
     public:
-        AppSimpleBezier                 ();
+        AppSimpleBezier                 (std::unique_ptr<DX::DeviceResources> & p_deviceResources);
         ~AppSimpleBezier                ();
 
     protected:

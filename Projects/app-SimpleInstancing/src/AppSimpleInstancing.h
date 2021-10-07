@@ -22,7 +22,7 @@ namespace nxn {
     class AppSimpleInstancing : public App {
 
     public:
-        AppSimpleInstancing                     ();
+        AppSimpleInstancing                     (std::unique_ptr<DX::DeviceResources> & p_deviceResources);
         ~AppSimpleInstancing                    ();
 
         virtual void	GetDefaultWindowSize    (int& width, int& height) const;

@@ -22,8 +22,8 @@ namespace nxn {
     class AppSimpleTriangle : public App {
 
     public:
-        AppSimpleTriangle();
-        ~AppSimpleTriangle();
+        AppSimpleTriangle               (std::unique_ptr<DX::DeviceResources> & p_deviceResources);
+        ~AppSimpleTriangle              ();
 
     protected:
         virtual void    PreInit         (); // Performs custom steps (e.g. allocating memory) before entering the main loop

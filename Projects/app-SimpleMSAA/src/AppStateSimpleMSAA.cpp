@@ -12,9 +12,6 @@ using Microsoft::WRL::ComPtr;
 
 namespace
 {
-    const DXGI_FORMAT c_backBufferFormat    = DXGI_FORMAT_B8G8R8A8_UNORM_SRGB;
-    const DXGI_FORMAT c_depthBufferFormat   = DXGI_FORMAT_D32_FLOAT;
-
     unsigned int c_targetSampleCount = 4;
 }
 

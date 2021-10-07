@@ -17,7 +17,19 @@ int main(int argc, char** argv)
 {
 	LoggerConsole logger(true, SeverityDebug);
 
-    App* app = new AppSimpleMSAA();
+    std::unique_ptr<DX::DeviceResources> deviceResources = std::make_unique<DX::DeviceResources>(
+        c_backBufferFormat,
+        c_depthBufferFormat,    /* If we were only doing MSAA rendering, we could skip the non-MSAA depth/stencil buffer with DXGI_FORMAT_UNKNOWN */
+        2                       // backBufferCount
+    );
+    //
+    // In Win32 'classic' DirectX 11, you can create the 'swapchain' backbuffer as a multisample buffer.  
+    // Present took care of the resolve as part of the swapchain management.  
+    // This approach is not recommended as doing it explictly gives you more control
+    // as well as the fact that this 'old-school' implicit resolve behavior is not supported for UWP or DirectX 12.
+    //
+
+    App* app = new AppSimpleMSAA(deviceResources);
 
 	//app->processArguments(hInstance, hPrevInstance, pCmdLine, nCmdShow);
 	app->ProcessArguments(argc, argv);

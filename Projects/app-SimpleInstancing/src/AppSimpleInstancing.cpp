@@ -10,7 +10,8 @@ namespace nxn {
 
 //-----------------------------------------------------------------------------
 
-AppSimpleInstancing::AppSimpleInstancing()
+AppSimpleInstancing::AppSimpleInstancing(std::unique_ptr<DX::DeviceResources> & p_deviceResources)
+    : App(p_deviceResources)
 {
     /*
     GetLogStream(SeverityInfo)

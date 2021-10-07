@@ -54,7 +54,7 @@ public:
             inline  const   bool                                    IsGamePadConnected () const                    { return m_gamePadConnected; }
 
 protected:
-	                                                                App                 (); // Ctor is protected because we only allow derived classes to instantiate this interface
+	                                                                App                 (std::unique_ptr<DX::DeviceResources> & p_deviceResources); // Ctor is protected because we only allow derived classes to instantiate this interface
 
 
 	virtual                 LRESULT CALLBACK                        HandleMessage       (HWND hwnd, UINT umsg, WPARAM wparam, LPARAM lparam);
