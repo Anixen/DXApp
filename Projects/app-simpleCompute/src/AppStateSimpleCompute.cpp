@@ -8,14 +8,15 @@
 #include "FindMedia.h"
 
 using namespace DirectX;
+
 using Microsoft::WRL::ComPtr;
 
 namespace
 {
     const uint32_t s_numShaderThreads = 8;  // make sure to update value in shader if this changes
 
-    const wchar_t* g_SampleTitle = L"SimpleCompute";
-    const wchar_t* g_SampleDescription = L"Demonstrates how to use DirectCompute";
+    const wchar_t* g_SampleTitle        = L"SimpleCompute";
+    const wchar_t* g_SampleDescription  = L"Demonstrates how to use DirectCompute";
     const ATG::HelpButtonAssignment g_HelpButtons[] = {
         { ATG::HelpID::MENU_BUTTON,         L"Show/Hide Help" },
         { ATG::HelpID::VIEW_BUTTON,         L"Exit" },
@@ -59,7 +60,7 @@ AppStateSimpleCompute::~AppStateSimpleCompute()
 void AppStateSimpleCompute::Init() {
     /*
 	GetLogStream(SeverityInfo)
-		<< "AppStateSimpleCompute::init()" << std::endl;
+		<< "AppStateSimpleCompute::Init()" << std::endl;
     //*/
 
 	AppState::Init();
@@ -73,7 +74,7 @@ void AppStateSimpleCompute::Reinit()
 {
     /*
 	GetLogStream(SeverityInfo)
-		<< "AppStateSimpleCompute::reinit()" << std::endl;
+		<< "AppStateSimpleCompute::Reinit()" << std::endl;
     //*/
 }
 
@@ -96,7 +97,7 @@ AppState* AppStateSimpleCompute::Update(
 
     /*
 	GetLogStream(SeverityInfo)
-		<< "AppStateSimpleCompute::update(" << elapsedSeconds << ")" << std::endl;
+		<< "AppStateSimpleCompute::Update(" << elapsedSeconds << ")" << std::endl;
 	//*/
    
     m_renderFPS.Tick(elapsedSeconds);
@@ -292,7 +293,7 @@ void AppStateSimpleCompute::HandleCleanup()
 {
     /*
 	GetLogStream(SeverityInfo)
-		<< "AppStateSimpleCompute::handleCleanup()" << std::endl;
+		<< "AppStateSimpleCompute::HandleCleanup()" << std::endl;
     //*/
 }
 
@@ -302,7 +303,7 @@ void AppStateSimpleCompute::CreateDeviceDependentResources(DX::DeviceResources *
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppStateSimpleCompute::createDeviceDependentResources()" << std::endl;
+        << "AppStateSimpleCompute::CreateDeviceDependentResources()" << std::endl;
     //*/
 
     auto device     = p_deviceResources->GetD3DDevice();
@@ -377,7 +378,7 @@ void AppStateSimpleCompute::CreateWindowSizeDependentResources(DX::DeviceResourc
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppStateSimpleCompute::createWindwSizeDependentResources()" << std::endl;
+        << "AppStateSimpleCompute::CreateWindowSizeDependentResources()" << std::endl;
     //*/
 
     auto size = p_deviceResources->GetOutputSize();
@@ -392,7 +393,7 @@ void AppStateSimpleCompute::ResetResources()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppStateSimpleCompute::resetRessources()" << std::endl;
+        << "AppStateSimpleCompute::ResetResources()" << std::endl;
     //*/
 
     m_cbFractal.Reset();

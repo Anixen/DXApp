@@ -42,7 +42,7 @@ void AppSimpleInstancing::PreInit()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppSimpleInstancing::preInit()" << std::endl;
+        << "AppSimpleInstancing::PreInit()" << std::endl;
     //*/
 
     SetCurrentState(new AppStateSimpleInstancing(this));
@@ -54,7 +54,7 @@ void AppSimpleInstancing::PostInit()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppSimpleInstancing::postInit()" << std::endl;
+        << "AppSimpleInstancing::PostInit()" << std::endl;
     //*/
 }
 
@@ -64,7 +64,7 @@ void AppSimpleInstancing::HandleCleanUp()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppSimpleInstancing::handleCleanup()" << std::endl;
+        << "AppSimpleInstancing::HandleCleanup()" << std::endl;
     //*/
 }
 

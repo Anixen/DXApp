@@ -33,7 +33,7 @@ void AppSimpleTriangle::PreInit()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppSimpleTriangle::preInit()" << std::endl;
+        << "AppSimpleTriangle::PreInit()" << std::endl;
     //*/
 
     SetCurrentState(new AppStateSimpleTriangle(this));
@@ -45,7 +45,7 @@ void AppSimpleTriangle::PostInit()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppSimpleTriangle::postInit()" << std::endl;
+        << "AppSimpleTriangle::PostInit()" << std::endl;
     //*/
 }
 
@@ -55,7 +55,7 @@ void AppSimpleTriangle::HandleCleanUp()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppSimpleTriangle::handleCleanup()" << std::endl;
+        << "AppSimpleTriangle::HandleCleanup()" << std::endl;
     //*/
 }
 

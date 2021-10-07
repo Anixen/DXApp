@@ -5,9 +5,9 @@
  * @class AppSimpleTriangle
  *
  *
- * @file src/AppTest.h
+ * @file src/AppSimpleTriangle.h
  * @author Olivier Falconnet
- * @date 20210929 - File creation
+ * @date 20211003 - File creation
  */
 
 #ifndef NXN_APP_SIMPLE_TRIANGLE

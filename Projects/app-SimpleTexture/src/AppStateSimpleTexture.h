@@ -7,7 +7,7 @@
  *
  * @file src/AppStateSimpleTexture.h
  * @author Olivier Falconnet
- * @date 20210929 - File creation
+ * @date 20211003 - File creation
  */
 
 #ifndef NXN_APP_STATE_SIMPLE_TEXTURE
@@ -51,6 +51,7 @@ private:
     virtual void                                        CreateWindowSizeDependentResources  (DX::DeviceResources * p_deviceResources);
     virtual void                                        ResetResources                      ();
 
+    // SimpleTexture objects
     Microsoft::WRL::ComPtr<ID3D11InputLayout>           m_spInputLayout;
     Microsoft::WRL::ComPtr<ID3D11Buffer>                m_spVertexBuffer;
     Microsoft::WRL::ComPtr<ID3D11Buffer>                m_spIndexBuffer;

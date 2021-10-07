@@ -6,6 +6,7 @@
 #include "ReadData.h"
 
 using namespace DirectX;
+
 using Microsoft::WRL::ComPtr;
 
 namespace
@@ -95,7 +96,7 @@ AppStateSimpleTexture::~AppStateSimpleTexture()
 void AppStateSimpleTexture::Init() {
     /*
 	GetLogStream(SeverityInfo)
-		<< "AppStateSimpleTexture::init()" << std::endl;
+		<< "AppStateSimpleTexture::Init()" << std::endl;
     //*/
 
 	AppState::Init();
@@ -107,7 +108,7 @@ void AppStateSimpleTexture::Reinit()
 {
     /*
 	GetLogStream(SeverityInfo)
-		<< "AppStateSimpleTexture::reinit()" << std::endl;
+		<< "AppStateSimpleTexture::Reinit()" << std::endl;
     //*/
 }
 
@@ -136,7 +137,7 @@ AppState* AppStateSimpleTexture::Update(
 
     /*
 	GetLogStream(SeverityInfo)
-		<< "AppStateSimpleTexture::update(" << elapsedSeconds << ")" << std::endl;
+		<< "AppStateSimpleTexture::Update(" << elapsedSeconds << ")" << std::endl;
 	//*/
 
     auto pad = p_gamePad->GetState(0);
@@ -228,7 +229,7 @@ void AppStateSimpleTexture::HandleCleanup()
 {
     /*
 	GetLogStream(SeverityInfo)
-		<< "AppStateSimpleTexture::handleCleanup()" << std::endl;
+		<< "AppStateSimpleTexture::HandleCleanup()" << std::endl;
     //*/
 }
 
@@ -238,7 +239,7 @@ void AppStateSimpleTexture::CreateDeviceDependentResources(DX::DeviceResources *
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppStateSimpleTexture::createDeviceDependentResources()" << std::endl;
+        << "AppStateSimpleTexture::CreateDeviceDependentResources()" << std::endl;
     //*/
 
     auto device = p_deviceResources->GetD3DDevice();
@@ -354,7 +355,7 @@ void AppStateSimpleTexture::CreateWindowSizeDependentResources(DX::DeviceResourc
 
     /*
     GetLogStream(SeverityInfo)
-        << "AppStateSimpleTexture::createWindwSizeDependentResources()" << std::endl;
+        << "AppStateSimpleTexture::CreateWindowSizeDependentResources()" << std::endl;
     //*/
 }
 
@@ -364,7 +365,7 @@ void AppStateSimpleTexture::ResetResources()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppStateSimpleTexture::resetRessources()" << std::endl;
+        << "AppStateSimpleTexture::ResetRessources()" << std::endl;
     //*/
 
     m_spInputLayout .Reset();

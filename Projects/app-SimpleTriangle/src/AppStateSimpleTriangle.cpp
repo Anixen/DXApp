@@ -47,7 +47,7 @@ void AppStateSimpleTriangle::Init()
 {
 	/*
     GetLogStream(SeverityInfo)
-		<< "AppStateSimpleTriangle::init()" << std::endl;
+		<< "AppStateSimpleTriangle::Init()" << std::endl;
     //*/
 
 	AppState::Init();
@@ -59,7 +59,7 @@ void AppStateSimpleTriangle::Reinit()
 {
     /*
 	GetLogStream(SeverityInfo)
-		<< "AppStateSimpleTriangle::reinit()" << std::endl;
+		<< "AppStateSimpleTriangle::Reinit()" << std::endl;
     //*/
 }
 
@@ -88,7 +88,7 @@ AppState* AppStateSimpleTriangle::Update(
 
     /*
 	GetLogStream(SeverityInfo)
-		<< "AppStateSimpleTriangle::update(" << elapsedSeconds << ")" << std::endl;
+		<< "AppStateSimpleTriangle::Update(" << elapsedSeconds << ")" << std::endl;
 	//*/
 
     auto pad = p_gamePad->GetState(0);
@@ -171,7 +171,7 @@ void AppStateSimpleTriangle::HandleCleanup()
 {
     /*
 	GetLogStream(SeverityInfo)
-		<< "AppStateSimpleTriangle::handleCleanup()" << std::endl;
+		<< "AppStateSimpleTriangle::HandleCleanup()" << std::endl;
     //*/
 }
 
@@ -181,7 +181,7 @@ void AppStateSimpleTriangle::CreateDeviceDependentResources(DX::DeviceResources 
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppStateSimpleTriangle::createDeviceDependentResources()" << std::endl;
+        << "AppStateSimpleTriangle::CreateDeviceDependentResources()" << std::endl;
     //*/
 
     auto device = p_deviceResources->GetD3DDevice();
@@ -241,7 +241,7 @@ void AppStateSimpleTriangle::CreateWindowSizeDependentResources(DX::DeviceResour
 
     /*
     GetLogStream(SeverityInfo)
-        << "AppStateSimpleTriangle::createWindwSizeDependentResources()" << std::endl;
+        << "AppStateSimpleTriangle::CreateWindowSizeDependentResources()" << std::endl;
     //*/
 }
 
@@ -251,7 +251,7 @@ void AppStateSimpleTriangle::ResetResources()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppStateSimpleTriangle::resetRessources()" << std::endl;
+        << "AppStateSimpleTriangle::ResetRessources()" << std::endl;
     //*/
 
     m_spInputLayout .Reset();

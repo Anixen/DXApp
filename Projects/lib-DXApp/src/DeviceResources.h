@@ -7,7 +7,7 @@
  * @author Chuck Walbourn
  * @date 20170809 - Initial Release
  *
- * @date 20210929 - Included to ModelViewer project, updated file description
+ * @date 20210929 - Included to lib-DXApp project
  */
 
 #ifndef DX_DEVICE_RESSOURCES

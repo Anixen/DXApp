@@ -10,21 +10,21 @@ namespace nxn {
 
 //-----------------------------------------------------------------------------
 
-    AppSimpleTexture::AppSimpleTexture()
+AppSimpleTexture::AppSimpleTexture()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppSamples::ctor()" << std::endl;
+        << "AppSimpleTexture::ctor()" << std::endl;
     //*/
 }
 
 //-----------------------------------------------------------------------------
 
-    AppSimpleTexture::~AppSimpleTexture()
+AppSimpleTexture::~AppSimpleTexture()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppSamples::dtor()" << std::endl;
+        << "AppSimpleTexture::dtor()" << std::endl;
     //*/
 }
 
@@ -34,7 +34,7 @@ void AppSimpleTexture::PreInit()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppSamples::preInit()" << std::endl;
+        << "AppSimpleTexture::PreInit()" << std::endl;
     //*/
 
     SetCurrentState(new AppStateSimpleTexture(this));
@@ -46,7 +46,7 @@ void AppSimpleTexture::PostInit()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppSamples::postInit()" << std::endl;
+        << "AppSimpleTexture::PostInit()" << std::endl;
     //*/
 }
 
@@ -56,7 +56,7 @@ void AppSimpleTexture::HandleCleanUp()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppSamples::handleCleanup()" << std::endl;
+        << "AppSimpleTexture::HandleCleanup()" << std::endl;
     //*/
 }
 

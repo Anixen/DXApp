@@ -9,7 +9,7 @@
  * @date 20170809 - Initial Release
  *
  * @author Olivier Falconnet
- * @date 20211006 - Included to app-SimpleLighting project
+ * @date 20211006 - Included to app-SimpleMSAA project
  * @date 20211006 - Additional dependencies
  */
 

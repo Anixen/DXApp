@@ -10,21 +10,21 @@ namespace nxn {
 
 //-----------------------------------------------------------------------------
 
-    AppSimpleBezier::AppSimpleBezier()
+AppSimpleBezier::AppSimpleBezier()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppSamples::ctor()" << std::endl;
+        << "AppSimpleBezier::ctor()" << std::endl;
     //*/
 }
 
 //-----------------------------------------------------------------------------
 
-    AppSimpleBezier::~AppSimpleBezier()
+AppSimpleBezier::~AppSimpleBezier()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppSamples::dtor()" << std::endl;
+        << "AppSimpleBezier::dtor()" << std::endl;
     //*/
 }
 
@@ -34,7 +34,7 @@ void AppSimpleBezier::PreInit()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppSamples::preInit()" << std::endl;
+        << "AppSimpleBezier::PreInit()" << std::endl;
     //*/
 
     SetCurrentState(new AppStateSimpleBezier(this));
@@ -46,7 +46,7 @@ void AppSimpleBezier::PostInit()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppSamples::postInit()" << std::endl;
+        << "AppSimpleBezier::PostInit()" << std::endl;
     //*/
 }
 
@@ -56,7 +56,7 @@ void AppSimpleBezier::HandleCleanUp()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppSamples::handleCleanup()" << std::endl;
+        << "AppSimpleBezier::HandleCleanup()" << std::endl;
     //*/
 }
 

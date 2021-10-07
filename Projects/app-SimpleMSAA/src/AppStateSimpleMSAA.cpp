@@ -12,8 +12,8 @@ using Microsoft::WRL::ComPtr;
 
 namespace
 {
-    const DXGI_FORMAT c_backBufferFormat = DXGI_FORMAT_B8G8R8A8_UNORM_SRGB;
-    const DXGI_FORMAT c_depthBufferFormat = DXGI_FORMAT_D32_FLOAT;
+    const DXGI_FORMAT c_backBufferFormat    = DXGI_FORMAT_B8G8R8A8_UNORM_SRGB;
+    const DXGI_FORMAT c_depthBufferFormat   = DXGI_FORMAT_D32_FLOAT;
 
     unsigned int c_targetSampleCount = 4;
 }
@@ -50,7 +50,7 @@ AppStateSimpleMSAA::~AppStateSimpleMSAA()
 void AppStateSimpleMSAA::Init() {
     /*
 	GetLogStream(SeverityInfo)
-		<< "AppStateSimpleMSAA::init()" << std::endl;
+		<< "AppStateSimpleMSAA::Init()" << std::endl;
     //*/
 
 	AppState::Init();
@@ -62,7 +62,7 @@ void AppStateSimpleMSAA::Reinit()
 {
     /*
 	GetLogStream(SeverityInfo)
-		<< "AppStateSimpleInstancing::reinit()" << std::endl;
+		<< "AppStateSimpleMSAA::Reinit()" << std::endl;
     //*/
 }
 
@@ -83,10 +83,11 @@ AppState* AppStateSimpleMSAA::Update(
 
     float elapsedSeconds    = float(p_timer.GetElapsedSeconds());
     float time              = float(p_timer.GetTotalSeconds());
+    (void)elapsedSeconds;
 
     /*
 	GetLogStream(SeverityInfo)
-		<< "AppStateSimpleMSAA::update(" << elapsedSeconds << ")" << std::endl;
+		<< "AppStateSimpleMSAA::Update(" << elapsedSeconds << ")" << std::endl;
 	//*/
    
     m_world = Matrix::CreateRotationZ(cosf(time / 4.f));
@@ -232,7 +233,7 @@ void AppStateSimpleMSAA::HandleCleanup()
 {
     /*
 	GetLogStream(SeverityInfo)
-		<< "AppStateSimpleMSAA::handleCleanup()" << std::endl;
+		<< "AppStateSimpleMSAA::HandleCleanup()" << std::endl;
     //*/
 
 }
@@ -243,7 +244,7 @@ void AppStateSimpleMSAA::CreateDeviceDependentResources(DX::DeviceResources * p_
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppStateSimpleMSAA::createDeviceDependentResources()" << std::endl;
+        << "AppStateSimpleMSAA::CreateDeviceDependentResources()" << std::endl;
     //*/
 
     auto device = p_deviceResources->GetD3DDevice();
@@ -312,7 +313,7 @@ void AppStateSimpleMSAA::CreateWindowSizeDependentResources(DX::DeviceResources 
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppStateSimpleMSAA::createWindwSizeDependentResources()" << std::endl;
+        << "AppStateSimpleMSAA::CreateWindowSizeDependentResources()" << std::endl;
     //*/
 
     auto output = p_deviceResources->GetOutputSize();
@@ -391,7 +392,7 @@ void AppStateSimpleMSAA::ResetResources()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppStateSimpleMSAA::resetRessources()" << std::endl;
+        << "AppStateSimpleMSAA::ResetRessources()" << std::endl;
     //*/
 
     m_msaaRenderTarget.Reset();

@@ -10,21 +10,21 @@ namespace nxn {
 
 //-----------------------------------------------------------------------------
 
-    AppSimpleLighting::AppSimpleLighting()
+AppSimpleLighting::AppSimpleLighting()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppSamples::ctor()" << std::endl;
+        << "AppSimpleLighting::ctor()" << std::endl;
     //*/
 }
 
 //-----------------------------------------------------------------------------
 
-    AppSimpleLighting::~AppSimpleLighting()
+AppSimpleLighting::~AppSimpleLighting()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppSamples::dtor()" << std::endl;
+        << "AppSimpleLighting::dtor()" << std::endl;
     //*/
 }
 
@@ -34,7 +34,7 @@ void AppSimpleLighting::PreInit()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppSamples::preInit()" << std::endl;
+        << "AppSimpleLighting::PreInit()" << std::endl;
     //*/
 
     SetCurrentState(new AppStateSimpleLighting(this));
@@ -46,7 +46,7 @@ void AppSimpleLighting::PostInit()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppSamples::postInit()" << std::endl;
+        << "AppSimpleLighting::PostInit()" << std::endl;
     //*/
 }
 
@@ -56,7 +56,7 @@ void AppSimpleLighting::HandleCleanUp()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppSamples::handleCleanup()" << std::endl;
+        << "AppSimpleLighting::HandleCleanup()" << std::endl;
     //*/
 }
 

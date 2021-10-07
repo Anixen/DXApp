@@ -18,7 +18,7 @@ AppState::AppState(App* p_app) :
 	m_cleanup(false)
 {
 	GetLogStream(SeverityInfo)
-		<< "AppStateBase::ctor()" << std::endl;
+		<< "AppState::ctor()" << std::endl;
 }
 
 //-----------------------------------------------------------------------------
@@ -26,7 +26,7 @@ AppState::AppState(App* p_app) :
 AppState::~AppState()
 {
 	GetLogStream(SeverityInfo)
-		<< "AppStateBase::dtor()" << std::endl;
+		<< "AppState::dtor()" << std::endl;
 }
 
 //-----------------------------------------------------------------------------
@@ -36,7 +36,7 @@ AppState::~AppState()
 void AppState::Init()
 {
 	GetLogStream(SeverityInfo)
-		<< "AppStateBase::init()" << std::endl;
+		<< "AppState::Init()" << std::endl;
 
 	if (m_cleanup) {
 		HandleCleanup();
@@ -58,7 +58,7 @@ void AppState::Init()
 void AppState::Deinit()
 {
 	GetLogStream(SeverityInfo)
-		<< "AppStateBase::deinit()" << std::endl;
+		<< "AppState::Deinit()" << std::endl;
 
 	if (m_initialized) {
 
@@ -72,7 +72,7 @@ void AppState::Deinit()
 void AppState::Pause()
 {
 	GetLogStream(SeverityInfo)
-		<< "AppStateBase::pause()" << std::endl;
+		<< "AppState::Pause()" << std::endl;
 
 	if (!m_paused) {
 
@@ -85,7 +85,7 @@ void AppState::Pause()
 void AppState::Resume()
 {
 	GetLogStream(SeverityInfo)
-		<< "AppStateBase::resume()" << std::endl;
+		<< "AppState::Resume()" << std::endl;
 
 	if (m_paused) {
 
@@ -98,7 +98,7 @@ void AppState::Resume()
 void AppState::Cleanup()
 {
 	GetLogStream(SeverityInfo)
-		<< "AppStateBase::cleanup()" << std::endl;
+		<< "AppState::Cleanup()" << std::endl;
 
 	if (m_cleanup) {
 

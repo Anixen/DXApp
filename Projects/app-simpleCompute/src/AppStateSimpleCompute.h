@@ -7,7 +7,7 @@
  *
  * @file src/AppStateSimpleCompute.h
  * @author Olivier Falconnet
- * @date 20211004 - File creation
+ * @date 20211005 - File creation
  */
 
 #ifndef NXN_APP_STATE_SIMPLE_COMPUTE
@@ -94,6 +94,7 @@ private:
             void                                                ResetWindow                         ();
             void                                                UpdateFractalData                   (DX::DeviceResources * p_deviceResources);
 
+    // SimpleCompute data
     struct CB_FractalCS
     {
         DirectX::XMFLOAT4 MaxThreadIter;

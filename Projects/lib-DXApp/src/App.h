@@ -10,7 +10,6 @@
  * @author Olivier Falconnet
  * @date 20200522 - File creation
  * @date 20200529 - Handled Window messages
- * @date 20210927 - Updated coding style
  */
 
 #ifndef NXN_APP

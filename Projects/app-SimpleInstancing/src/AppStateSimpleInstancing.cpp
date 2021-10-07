@@ -16,13 +16,13 @@ namespace
     //--------------------------------------------------------------------------------------
     // Constants
     //--------------------------------------------------------------------------------------
-    const uint32_t  c_maxInstances = 20000;
-    const uint32_t  c_startInstanceCount = 5000;
-    const uint32_t  c_minInstanceCount = 1000;
-    const float     c_boxBounds = 60.0f;
-    const size_t    c_cubeIndexCount = 36;
-    const float     c_velocityMultiplier = 500.0f;
-    const float     c_rotationGain = 0.004f;
+    const uint32_t  c_maxInstances          = 20000;
+    const uint32_t  c_startInstanceCount    = 5000;
+    const uint32_t  c_minInstanceCount      = 1000;
+    const float     c_boxBounds             = 60.0f;
+    const size_t    c_cubeIndexCount        = 36;
+    const float     c_velocityMultiplier    = 500.0f;
+    const float     c_rotationGain          = 0.004f;
 
     //--------------------------------------------------------------------------------------
     // Cube vertex definition
@@ -68,7 +68,7 @@ AppStateSimpleInstancing::~AppStateSimpleInstancing()
 void AppStateSimpleInstancing::Init() {
     /*
 	GetLogStream(SeverityInfo)
-		<< "AppStateSimpleInstancing::init()" << std::endl;
+		<< "AppStateSimpleInstancing::Init()" << std::endl;
     //*/
 
 	AppState::Init();
@@ -80,7 +80,7 @@ void AppStateSimpleInstancing::Reinit()
 {
     /*
 	GetLogStream(SeverityInfo)
-		<< "AppStateSimpleInstancing::reinit()" << std::endl;
+		<< "AppStateSimpleInstancing::Reinit()" << std::endl;
     //*/
 }
 
@@ -101,7 +101,7 @@ AppState* AppStateSimpleInstancing::Update(
 
     /*
 	GetLogStream(SeverityInfo)
-		<< "AppStateSimpleInstancing::update(" << elapsedSeconds << ")" << std::endl;
+		<< "AppStateSimpleInstancing::Update(" << elapsedSeconds << ")" << std::endl;
 	//*/
    
     auto kb = p_keyboard->GetState();
@@ -385,7 +385,7 @@ void AppStateSimpleInstancing::HandleCleanup()
 {
     /*
 	GetLogStream(SeverityInfo)
-		<< "AppStateSimpleInstancing::handleCleanup()" << std::endl;
+		<< "AppStateSimpleInstancing::HandleCleanup()" << std::endl;
     //*/
 
 }
@@ -396,7 +396,7 @@ void AppStateSimpleInstancing::CreateDeviceDependentResources(DX::DeviceResource
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppStateSimpleInstancing::createDeviceDependentResources()" << std::endl;
+        << "AppStateSimpleInstancing::CreateDeviceDependentResources()" << std::endl;
     //*/
 
     auto device = p_deviceResources->GetD3DDevice();
@@ -596,7 +596,7 @@ void AppStateSimpleInstancing::CreateWindowSizeDependentResources(DX::DeviceReso
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppStateSimpleInstancing::createWindwSizeDependentResources()" << std::endl;
+        << "AppStateSimpleInstancing::CreateWindowSizeDependentResources()" << std::endl;
     //*/
 
     // Initialize the projection matrix.
@@ -613,7 +613,7 @@ void AppStateSimpleInstancing::ResetResources()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppStateSimpleInstancing::resetRessources()" << std::endl;
+        << "AppStateSimpleInstancing::ResetRessources()" << std::endl;
     //*/
 
     m_batch.reset();
@@ -630,6 +630,8 @@ void AppStateSimpleInstancing::ResetResources()
     m_pixelShader.Reset();
 }
 
+//-----------------------------------------------------------------------------
+
 void AppStateSimpleInstancing::ReplaceBufferContents(DX::DeviceResources * p_deviceResources, ID3D11Buffer * buffer, size_t bufferSize, const void * data)
 {
     auto context = p_deviceResources->GetD3DDeviceContext();
@@ -642,6 +644,8 @@ void AppStateSimpleInstancing::ReplaceBufferContents(DX::DeviceResources * p_dev
     memcpy(mapped.pData, data, bufferSize);
     context->Unmap(buffer, 0);
 }
+
+//-----------------------------------------------------------------------------
 
 void AppStateSimpleInstancing::ResetSimulation()
 {
@@ -667,6 +671,8 @@ void AppStateSimpleInstancing::ResetSimulation()
         m_velocities[i] = XMVectorSet(FloatRand(-0.01f, 0.01f), FloatRand(-0.01f, 0.01f), FloatRand(-0.01f, 0.01f), 0);
     }
 }
+
+//-----------------------------------------------------------------------------
 
 float AppStateSimpleInstancing::FloatRand(float lowerBound, float upperBound)
 {

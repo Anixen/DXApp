@@ -7,7 +7,6 @@
  * @file src/LoggerConsole.h
  * @author Olivier Falconnet
  * @date 20200521 - File creation
- * @date 20210927 - Updated coding style
  */
 
 #ifndef NXN_LOGGER_CONSOLE

@@ -8,14 +8,15 @@
 #include "FindMedia.h"
 
 using namespace DirectX;
+
 using Microsoft::WRL::ComPtr;
 
 // Global variables
 namespace
 {
     // Help menu text
-    const wchar_t* c_sampleTitle = L"Simple Bezier Sample";
-    const wchar_t* c_sampleDescription = L"Demonstrates how to create hull and domain shaders to draw a\ntessellated Bezier surface representing a Mobius strip.";
+    const wchar_t* c_sampleTitle        = L"Simple Bezier Sample";
+    const wchar_t* c_sampleDescription  = L"Demonstrates how to create hull and domain shaders to draw a\ntessellated Bezier surface representing a Mobius strip.";
     const ATG::HelpButtonAssignment c_helpButtons[] = {
         { ATG::HelpID::MENU_BUTTON,      L"Show/Hide Help" },
         { ATG::HelpID::VIEW_BUTTON,      L"Exit" },
@@ -37,9 +38,9 @@ namespace
     const float c_rotationAnglePerStep = XM_2PI / 360.0f;
 
     // Initial camera setup
-    const XMVECTOR c_cameraEye = XMVectorSet(0.0f, 0.45f, 2.7f, 0.0f);
-    const XMVECTOR c_cameraAt = XMVectorSet(0.0f, 0.0f, 0.0f, 0.0f);
-    const XMVECTOR c_cameraUp = XMVectorSet(0.0f, 1.0f, 0.0f, 0.0f);
+    const XMVECTOR c_cameraEye  = XMVectorSet(0.0f, 0.45f, 2.7f, 0.0f);
+    const XMVECTOR c_cameraAt   = XMVectorSet(0.0f, 0.0f,  0.0f, 0.0f);
+    const XMVECTOR c_cameraUp   = XMVectorSet(0.0f, 1.0f,  0.0f, 0.0f);
 
     // Draw the mesh with shaded triangles at start.
     const bool c_defaultWireframeRendering = false;
@@ -149,7 +150,7 @@ AppStateSimpleBezier::~AppStateSimpleBezier()
 void AppStateSimpleBezier::Init() {
     /*
 	GetLogStream(SeverityInfo)
-		<< "AppStateSimpleBezier::init()" << std::endl;
+		<< "AppStateSimpleBezier::Init()" << std::endl;
     //*/
 
 	AppState::Init();
@@ -161,7 +162,7 @@ void AppStateSimpleBezier::Reinit()
 {
     /*
 	GetLogStream(SeverityInfo)
-		<< "AppStateSimpleBezier::reinit()" << std::endl;
+		<< "AppStateSimpleBezier::Reinit()" << std::endl;
     //*/
 }
 
@@ -185,7 +186,7 @@ AppState* AppStateSimpleBezier::Update(
 
     /*
 	GetLogStream(SeverityInfo)
-		<< "AppStateSimpleBezier::update(" << elapsedSeconds << ")" << std::endl;
+		<< "AppStateSimpleBezier::Update(" << elapsedSeconds << ")" << std::endl;
 	//*/
 
     auto pad = p_gamePad->GetState(0);
@@ -428,7 +429,7 @@ void AppStateSimpleBezier::HandleCleanup()
 {
     /*
 	GetLogStream(SeverityInfo)
-		<< "AppStateSimpleBezier::handleCleanup()" << std::endl;
+		<< "AppStateSimpleBezier::HandleCleanup()" << std::endl;
     //*/
 }
 
@@ -516,7 +517,7 @@ void AppStateSimpleBezier::CreateDeviceDependentResources(DX::DeviceResources * 
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppStateSimpleBezier::createDeviceDependentResources()" << std::endl;
+        << "AppStateSimpleBezier::CreateDeviceDependentResources()" << std::endl;
     //*/
     
     auto device     = p_deviceResources->GetD3DDevice();
@@ -551,7 +552,7 @@ void AppStateSimpleBezier::CreateWindowSizeDependentResources(DX::DeviceResource
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppStateSimpleBezier::createWindwSizeDependentResources()" << std::endl;
+        << "AppStateSimpleBezier::CreateWindowSizeDependentResources()" << std::endl;
     //*/
 
     auto size = p_deviceResources->GetOutputSize();
@@ -570,7 +571,7 @@ void AppStateSimpleBezier::ResetResources()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppStateSimpleBezier::resetRessources()" << std::endl;
+        << "AppStateSimpleBezier::ResetRessources()" << std::endl;
     //*/
 
     m_states.reset();

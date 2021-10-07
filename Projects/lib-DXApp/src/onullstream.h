@@ -9,8 +9,7 @@
  * @date 20110524 - Initial Release
  * @date 20120829 - Fix obscure gcc compiler bug when calling basic_ios::init
  *
- * @date 20200531 - Included to ModelViewer project, updated file description
- * @date 20200531 - Replace headguards with pragma once
+ * @date 20200531 - Included to ModelViewer project
  */
 
 #ifndef STD_ONULLSTREAM

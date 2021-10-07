@@ -42,7 +42,7 @@ void AppSimpleMSAA::PreInit()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppSimpleMSAA::preInit()" << std::endl;
+        << "AppSimpleMSAA::PreInit()" << std::endl;
     //*/
 
     SetCurrentState(new AppStateSimpleMSAA(this));
@@ -54,7 +54,7 @@ void AppSimpleMSAA::PostInit()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppSimpleMSAA::postInit()" << std::endl;
+        << "AppSimpleMSAA::PostInit()" << std::endl;
     //*/
 }
 
@@ -64,7 +64,7 @@ void AppSimpleMSAA::HandleCleanUp()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppSimpleMSAA::handleCleanup()" << std::endl;
+        << "AppSimpleMSAA::HandleCleanup()" << std::endl;
     //*/
 }
 

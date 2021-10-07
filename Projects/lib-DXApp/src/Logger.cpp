@@ -43,7 +43,7 @@ const Logger* Logger::GetLogger()
 {
 	// If there is no logger instantiated, instantiate one at the last moment
 	if (NULL == g_defaultInstance) {
-		WriteLogMessage(SeverityFatal, "LoggerBase::getLogger() : No logger has been instantiated")
+		WriteLogMessage(SeverityFatal, "LoggerBase::GetLogger() : No logger has been instantiated")
 		throw new std::exception("No logger has been instantiated");
 	}
 

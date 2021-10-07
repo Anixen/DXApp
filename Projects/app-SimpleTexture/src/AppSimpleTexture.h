@@ -7,7 +7,7 @@
  *
  * @file src/AppTest.h
  * @author Olivier Falconnet
- * @date 20210929 - File creation
+ * @date 20211003 - File creation
  */
 
 #ifndef NXN_APP_SIMPLE_TEXTURE
@@ -36,4 +36,3 @@ namespace nxn {
 
 
 #endif // !NXN_APP_SIMPLE_TEXTURE
-

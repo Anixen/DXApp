@@ -6,6 +6,7 @@
 #include "ReadData.h"
 
 using namespace DirectX;
+
 using Microsoft::WRL::ComPtr;
 
 namespace
@@ -36,7 +37,7 @@ namespace nxn {
 /**
  * @param {App*}    p_app  The address of the app to which belongs this state
  */
-    AppStateSimpleLighting::AppStateSimpleLighting(App *p_app) :
+AppStateSimpleLighting::AppStateSimpleLighting(App *p_app) :
 	AppState(p_app)
 {
     /*
@@ -47,7 +48,7 @@ namespace nxn {
 
 //-----------------------------------------------------------------------------
 
-    AppStateSimpleLighting::~AppStateSimpleLighting()
+AppStateSimpleLighting::~AppStateSimpleLighting()
 {
     /*
 	GetLogStream(SeverityInfo)
@@ -60,7 +61,7 @@ namespace nxn {
 void AppStateSimpleLighting::Init() {
     /*
 	GetLogStream(SeverityInfo)
-		<< "AppStateSimpleLighting::init()" << std::endl;
+		<< "AppStateSimpleLighting::Init()" << std::endl;
     //*/
 
 	AppState::Init();
@@ -72,7 +73,7 @@ void AppStateSimpleLighting::Reinit()
 {
     /*
 	GetLogStream(SeverityInfo)
-		<< "AppStateSimpleLighting::reinit()" << std::endl;
+		<< "AppStateSimpleLighting::Reinit()" << std::endl;
     //*/
 }
 
@@ -97,7 +98,7 @@ AppState* AppStateSimpleLighting::Update(
 
     /*
 	GetLogStream(SeverityInfo)
-		<< "AppStateSimpleLighting::update(" << elapsedSeconds << ")" << std::endl;
+		<< "AppStateSimpleLighting::Update(" << elapsedSeconds << ")" << std::endl;
 	//*/
 
     // Update the rotation constant
@@ -268,7 +269,7 @@ void AppStateSimpleLighting::HandleCleanup()
 {
     /*
 	GetLogStream(SeverityInfo)
-		<< "AppStateSimpleLighting::handleCleanup()" << std::endl;
+		<< "AppStateSimpleLighting::HandleCleanup()" << std::endl;
     //*/
 }
 
@@ -278,7 +279,7 @@ void AppStateSimpleLighting::CreateDeviceDependentResources(DX::DeviceResources 
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppStateSimpleLighting::createDeviceDependentResources()" << std::endl;
+        << "AppStateSimpleLighting::CreateDeviceDependentResources()" << std::endl;
     //*/
 
     auto device = p_deviceResources->GetD3DDevice();
@@ -423,7 +424,7 @@ void AppStateSimpleLighting::CreateWindowSizeDependentResources(DX::DeviceResour
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppStateSimpleLighting::createWindwSizeDependentResources()" << std::endl;
+        << "AppStateSimpleLighting::CreateWindowSizeDependentResources()" << std::endl;
     //*/
 
     // Initialize the projection matrix
@@ -439,7 +440,7 @@ void AppStateSimpleLighting::ResetResources()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppStateSimpleLighting::resetRessources()" << std::endl;
+        << "AppStateSimpleLighting::ResetRessources()" << std::endl;
     //*/
 
     m_inputLayout.Reset();

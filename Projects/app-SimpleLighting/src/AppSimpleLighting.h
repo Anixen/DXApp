@@ -10,8 +10,8 @@
  * @date 20211004 - File creation
  */
 
-#ifndef NXN_APP_SIMPLE_TEXTURE
-#define NXN_APP_SIMPLE_TEXTURE
+#ifndef NXN_APP_SIMPLE_LIGHTING
+#define NXN_APP_SIMPLE_LIGHTING
 
 
 #include "../../lib-DXApp/src/App.h"
@@ -35,5 +35,4 @@ namespace nxn {
 } // namespace nxn
 
 
-#endif // !NXN_APP_SIMPLE_TEXTURE
-
+#endif // !NXN_APP_SIMPLE_LIGHTING

@@ -42,7 +42,7 @@ void AppSimpleCompute::PreInit()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppSimpleCompute::preInit()" << std::endl;
+        << "AppSimpleCompute::PreInit()" << std::endl;
     //*/
 
     SetCurrentState(new AppStateSimpleCompute(this));
@@ -54,7 +54,7 @@ void AppSimpleCompute::PostInit()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppSimpleCompute::postInit()" << std::endl;
+        << "AppSimpleCompute::PostInit()" << std::endl;
     //*/
 }
 
@@ -64,7 +64,7 @@ void AppSimpleCompute::HandleCleanUp()
 {
     /*
     GetLogStream(SeverityInfo)
-        << "AppSimpleCompute::handleCleanup()" << std::endl;
+        << "AppSimpleCompute::HandleCleanup()" << std::endl;
     //*/
 }
 
