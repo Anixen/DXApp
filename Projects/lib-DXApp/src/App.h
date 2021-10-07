@@ -51,7 +51,7 @@ public:
 							int						                Run					();
 							void					                Quit				(int p_exitCode);
 
-            inline  const   bool                                    IsCtrlConnected     () const                    { return m_ctrlConnected; }
+            inline  const   bool                                    IsGamePadConnected () const                    { return m_gamePadConnected; }
 
 protected:
 	                                                                App                 (); // Ctor is protected because we only allow derived classes to instantiate this interface
@@ -121,7 +121,7 @@ private:
                             std::unique_ptr<DirectX::Keyboard>      m_keyboard;
                             std::unique_ptr<DirectX::Mouse>         m_mouse;
 
-                            bool                                    m_ctrlConnected     = false;
+                            bool                                    m_gamePadConnected  = false;
                             DirectX::GamePad::ButtonStateTracker    m_gamePadButtons;
                             DirectX::Keyboard::KeyboardStateTracker m_keyboardButtons;
                             DirectX::Mouse::ButtonStateTracker      m_mouseButtons;

@@ -83,7 +83,7 @@ void AppStateSimpleCompute::Reinit()
 AppState* AppStateSimpleCompute::Update(
     DX::DeviceResources* p_deviceResources,
     DX::StepTimer const& p_timer,
-    bool & p_ctrlConnected,
+    bool & p_gamePadConnected,
     DirectX::GamePad* p_gamePad,    DirectX::GamePad::ButtonStateTracker & p_gamePadButtons,
     DirectX::Keyboard* p_keyboard,  DirectX::Keyboard::KeyboardStateTracker & p_keyboardButtons,
     DirectX::Mouse* p_mouse,        DirectX::Mouse::ButtonStateTracker & p_mouseButtons)
@@ -103,8 +103,8 @@ AppState* AppStateSimpleCompute::Update(
     m_renderFPS.Tick(elapsedSeconds);
 
     auto pad = p_gamePad->GetState(0);
-    p_ctrlConnected = pad.IsConnected();
-    if (p_ctrlConnected)
+    p_gamePadConnected = pad.IsConnected();
+    if (p_gamePadConnected)
     {
         p_gamePadButtons.Update(pad);
 
@@ -248,7 +248,7 @@ void AppStateSimpleCompute::Draw(DX::DeviceResources* p_deviceResources)
         swprintf_s(outputString, 256, L"Synchronous compute %0.2f fps", m_renderFPS.GetFPS());
         m_font->DrawString(m_spriteBatch.get(), outputString, pos);
 
-        const wchar_t* legend = m_app->IsCtrlConnected()
+        const wchar_t* legend = m_app->IsGamePadConnected()
             ? L"[View] Exit   [Menu] Help"
             : L"WASD: Pan viewport   PageUp/Down: Zoom viewport   Esc: Exit";
 

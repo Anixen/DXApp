@@ -171,7 +171,7 @@ void AppStateSimpleBezier::Reinit()
 AppState* AppStateSimpleBezier::Update(
     DX::DeviceResources* p_deviceResources,
     DX::StepTimer const& p_timer,
-    bool & p_ctrlConnected,
+    bool & p_gamePadConnected,
     DirectX::GamePad* p_gamePad,    DirectX::GamePad::ButtonStateTracker & p_gamePadButtons,
     DirectX::Keyboard* p_keyboard,  DirectX::Keyboard::KeyboardStateTracker & p_keyboardButtons,
     DirectX::Mouse* p_mouse,        DirectX::Mouse::ButtonStateTracker & p_mouseButtons)
@@ -192,12 +192,12 @@ AppState* AppStateSimpleBezier::Update(
     auto pad = p_gamePad->GetState(0);
     if (pad.IsConnected())
     {
-        p_ctrlConnected = true;
+        p_gamePadConnected = true;
         p_gamePadButtons.Update(pad);
     }
     else
     {
-        p_ctrlConnected = false;
+        p_gamePadConnected = false;
         p_gamePadButtons.Reset();
     }
 
@@ -382,7 +382,7 @@ void AppStateSimpleBezier::Draw(DX::DeviceResources* p_deviceResources)
             (m_partitionMode == PartitionMode::PartitionFractionalEven ? L"Fractional Even" : L"Fractional Odd"));
         m_smallFont->DrawString(m_batch.get(), str, XMFLOAT2(float(safe.left), float(safe.top)), ATG::Colors::LightGrey);
 
-        const wchar_t* legend = m_app->IsCtrlConnected() ?
+        const wchar_t* legend = m_app->IsGamePadConnected() ?
             L"[LThumb] Rotate   [RT][LT] Increase/decrease subdivisions\n[A][B][X] Change partition mode   [Y] Toggle wireframe   [View] Exit   [Menu] Help"
             : L"Left/Right - Rotate   Up/Down - Increase/decrease subdivisions\n1/2/3 - Change partition mode   W - Toggle wireframe   Esc - Exit   F1 - Help";
         DX::DrawControllerString(m_batch.get(), m_smallFont.get(), m_ctrlFont.get(),

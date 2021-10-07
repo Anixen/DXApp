@@ -71,7 +71,7 @@ void AppStateSimpleMSAA::Reinit()
 AppState* AppStateSimpleMSAA::Update(
     DX::DeviceResources* p_deviceResources,
     DX::StepTimer const& p_timer,
-    bool & p_ctrlConnected,
+    bool & p_gamePadConnected,
     DirectX::GamePad* p_gamePad,    DirectX::GamePad::ButtonStateTracker & p_gamePadButtons,
     DirectX::Keyboard* p_keyboard,  DirectX::Keyboard::KeyboardStateTracker & p_keyboardButtons,
     DirectX::Mouse* p_mouse,        DirectX::Mouse::ButtonStateTracker & p_mouseButtons)
@@ -93,8 +93,8 @@ AppState* AppStateSimpleMSAA::Update(
     m_world = Matrix::CreateRotationZ(cosf(time / 4.f));
 
     auto pad = p_gamePad->GetState(0);
-    p_ctrlConnected = pad.IsConnected();
-    if (p_ctrlConnected)
+    p_gamePadConnected = pad.IsConnected();
+    if (p_gamePadConnected)
     {
         p_gamePadButtons.Update(pad);
 
@@ -170,7 +170,7 @@ void AppStateSimpleMSAA::Draw(DX::DeviceResources* p_deviceResources)
     swprintf_s(str, L"Sample count: %u", m_msaa ? m_sampleCount : 1);
     m_smallFont->DrawString(m_batch.get(), str, XMFLOAT2(float(safe.left), float(safe.top)), ATG::Colors::White);
 
-    const wchar_t* legend = m_app->IsCtrlConnected()
+    const wchar_t* legend = m_app->IsGamePadConnected()
         ? L"[A] Toggle MSAA   [View] Exit"
         : L"Space: Toggle MSAA   Esc: Exit";
 

@@ -89,7 +89,7 @@ void AppStateSimpleInstancing::Reinit()
 AppState* AppStateSimpleInstancing::Update(
     DX::DeviceResources* p_deviceResources,
     DX::StepTimer const& p_timer,
-    bool & p_ctrlConnected,
+    bool & p_gamePadConnected,
     DirectX::GamePad* p_gamePad,    DirectX::GamePad::ButtonStateTracker & p_gamePadButtons,
     DirectX::Keyboard* p_keyboard,  DirectX::Keyboard::KeyboardStateTracker & p_keyboardButtons,
     DirectX::Mouse* p_mouse,        DirectX::Mouse::ButtonStateTracker & p_mouseButtons)
@@ -108,8 +108,8 @@ AppState* AppStateSimpleInstancing::Update(
     p_keyboardButtons.Update(kb);
 
     auto pad = p_gamePad->GetState(0);
-    p_ctrlConnected = pad.IsConnected();
-    if (p_ctrlConnected)
+    p_gamePadConnected = pad.IsConnected();
+    if (p_gamePadConnected)
     {
         p_gamePadButtons.Update(pad);
 
@@ -336,7 +336,7 @@ void AppStateSimpleInstancing::Draw(DX::DeviceResources* p_deviceResources)
     swprintf_s(str, L"Instancing count: %u", m_usedInstanceCount);
     m_smallFont->DrawString(m_batch.get(), str, XMFLOAT2(float(safe.left), float(safe.top)), ATG::Colors::White);
 
-    const wchar_t* legend = m_app->IsCtrlConnected()
+    const wchar_t* legend = m_app->IsGamePadConnected()
         ? L"[LThumb] Rotate   [A] Reset   [LB]/[RB] Change instance count   [View] Exit"
         : L"WASD/Left Mouse Button: Rotate   Q/E: Change instance count   Home: Center   Space: Reset   Esc: Exit";
 

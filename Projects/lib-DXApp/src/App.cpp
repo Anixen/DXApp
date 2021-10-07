@@ -532,7 +532,7 @@ void App::Tick()
         AppState* nextState = m_currentState->Update(
             m_deviceResources.get(),
             m_stepTimer,
-            m_ctrlConnected,
+            m_gamePadConnected,
             m_gamePad.get(),    m_gamePadButtons, 
             m_keyboard.get(),   m_keyboardButtons,
             m_mouse.get(),      m_mouseButtons);
