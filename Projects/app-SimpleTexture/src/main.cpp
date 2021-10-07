@@ -26,6 +26,10 @@ int main(int argc, char** argv)
 
 	//app->processArguments(hInstance, hPrevInstance, pCmdLine, nCmdShow);
 	app->ProcessArguments(argc, argv);
+
+    //app->SetFixedUpdate(true);
+    //app->SetUpdateFrequency(200);
+
 	int exitCode = app->Run();
 
 	delete app;

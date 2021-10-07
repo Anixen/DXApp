@@ -40,8 +40,9 @@ public:
 
             inline  const   bool                                    IsInitialized       () const                    { return m_initialized; }
 			inline	const	bool					                IsRunning           () const                    { return m_running; }
-			inline	const	float					                GetUpdateInterval   () const                    { return m_updateInterval; }
-			                void					                SetUpdateInterval   (float p_updateInterval);
+
+            inline          void                                    SetFixedUpdate      (double p_fixedUpdate)      { m_stepTimer.SetFixedTimeStep(p_fixedUpdate); }
+			inline          void					                SetUpdateFrequency  (double p_updateFrequency)  { m_stepTimer.SetTargetElapsedSeconds(1.0 / p_updateFrequency); }
 
 	virtual                 void					                GetDefaultWindowSize(int& width, int& height) const;
 
@@ -51,7 +52,7 @@ public:
 							int						                Run					();
 							void					                Quit				(int p_exitCode);
 
-            inline  const   bool                                    IsGamePadConnected () const                    { return m_gamePadConnected; }
+            inline  const   bool                                    IsGamePadConnected () const                     { return m_gamePadConnected; }
 
 protected:
 	                                                                App                 (std::unique_ptr<DX::DeviceResources> & p_deviceResources); // Ctor is protected because we only allow derived classes to instantiate this interface
@@ -105,14 +106,13 @@ private:
 
                             bool                                    m_initialized       = false;
 	                        bool                                    m_running           = false;
-	                        AppState*                               m_currentState      = NULL;
+	                        AppState*                               m_currentState      = nullptr;
 
                             // Device resources.
                             std::unique_ptr<DX::DeviceResources>    m_deviceResources;
 
                             // Rendering loop timer.
 	                        DX::StepTimer                           m_stepTimer;
-	                        float                                   m_updateInterval    = 0.005f;
 
 	                        int                                     m_exitCode          = 0;
 

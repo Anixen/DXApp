@@ -21,9 +21,6 @@ App::App(std::unique_ptr<DX::DeviceResources> & p_deviceResources)
     // Use gamma-correct rendering.
     m_deviceResources = std::move(p_deviceResources); // Take ownership of device ressources pointer
     m_deviceResources->RegisterDeviceNotify(this);
-
-    //m_stepTimer.SetFixedTimeStep(true);
-    m_stepTimer.SetTargetElapsedTicks((uint64_t)(m_updateInterval * DX::StepTimer::TicksPerSecond));
 }
 
 //-----------------------------------------------------------------------------
@@ -37,14 +34,6 @@ App::~App()
 	if (this == g_instance) {
 		g_instance = NULL;
 	}
-}
-
-//-----------------------------------------------------------------------------
-
-void App::SetUpdateInterval(float p_updateInterval)
-{
-    m_updateInterval = p_updateInterval;
-    m_stepTimer.SetTargetElapsedTicks((uint64_t)(m_updateInterval * DX::StepTimer::TicksPerSecond));
 }
 
 //-----------------------------------------------------------------------------
