@@ -10,18 +10,12 @@
  *
  * @author Olivier Falconnet
  * @date 20211006 - Included to app-SimpleMSAA project
- * @date 20211006 - Additional dependencies
+ * @date 20211008 - Reworked dependencies
  */
-
-#pragma message("pch app-SimpleMSAA") // Temporary, for debugging purposes
 
 #ifndef PCH_SIMPLE_MSAA
 #define PCH_SIMPLE_MSAA
 
-
-#include <WinSDKVer.h>
-#define _WIN32_WINNT 0x0601
-#include <SDKDDKVer.h>
 
 // Use the C++ standard templated min/max
 #define NOMINMAX
@@ -31,48 +25,11 @@
 #define NOGDI
 #define NOBITMAP
 
-// Include <mcx.h> if you need this
-#define NOMCX
-
-// Include <winsvc.h> if you need this
-#define NOSERVICE
-
-// WinHelp is deprecated
-#define NOHELP
-
-#define WIN32_LEAN_AND_MEAN
-#include <windows.h>
-
 #include <wrl/client.h>
 
 #include <d3d11_1.h>
 
-#if defined(NTDDI_WIN10_RS2)
-#include <dxgi1_6.h>
-#else
-#include <dxgi1_5.h>
-#endif
-
-#include <DirectXMath.h>
-#include <DirectXColors.h>
-#include <wincodec.h>
-
-#include <algorithm>
-#include <exception>
-#include <fstream>
-#include <memory>
-#include <random>
-#include <stdexcept>
-#include <vector>
-
-#include <string>
 #include <filesystem>
-
-#include <stdio.h>
-
-#ifdef _DEBUG
-#include <dxgidebug.h>
-#endif
 
 #include "CommonStates.h"
 #include "Effects.h"
@@ -114,23 +71,10 @@ namespace DX
     }
 }
 
-#include <cmath>
-#include <cstdint>
-#include <exception>
-
-#include <streambuf>
-#include <ostream>
-
-#include <string>
-#include <filesystem>
-#include <time.h>
-#include <sstream>
-#include <iostream>
-
 namespace
 {
-    const DXGI_FORMAT c_backBufferFormat = DXGI_FORMAT_B8G8R8A8_UNORM_SRGB;
-    const DXGI_FORMAT c_depthBufferFormat = DXGI_FORMAT_D32_FLOAT;
+    const DXGI_FORMAT c_backBufferFormat    = DXGI_FORMAT_B8G8R8A8_UNORM_SRGB;
+    const DXGI_FORMAT c_depthBufferFormat   = DXGI_FORMAT_D32_FLOAT;
 }
 
 

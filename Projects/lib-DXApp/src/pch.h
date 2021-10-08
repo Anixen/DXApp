@@ -10,10 +10,8 @@
  *
  * @author Olivier Falconnet
  * @date 20211003 - Included to lib-DXApp project
- * @date 20211003 - Additional dependencies
+ * @date 20211008 - Reworked dependencies
  */
-
-#pragma message("pch lib-DXApp") // Temporary, for debugging purposes
 
 #ifndef PCH_DX_APP
 #define PCH_DX_APP
@@ -53,18 +51,9 @@
 #include <dxgi1_5.h>
 #endif
 
-#include <DirectXMath.h>
-#include <DirectXColors.h>
-#include <wincodec.h>
-
-#include <algorithm>
-#include <exception>
-#include <fstream>
-#include <memory>
-#include <stdexcept>
-#include <vector>
-
-#include <stdio.h>
+#include <filesystem>
+#include <sstream>
+#include <iostream>
 
 #ifdef _DEBUG
 #include <dxgidebug.h>
@@ -102,19 +91,6 @@ namespace DX
         }
     }
 }
-
-#include <cmath>
-#include <cstdint>
-#include <exception>
-
-#include <streambuf>
-#include <ostream>
-
-#include <string>
-#include <filesystem>
-#include <time.h>
-#include <sstream>
-#include <iostream>
 
 
 #endif // !PCH_DX_APP

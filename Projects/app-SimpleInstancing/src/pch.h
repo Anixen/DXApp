@@ -10,18 +10,12 @@
  *
  * @author Olivier Falconnet
  * @date 20211005 - Included to app-SimpleInstancing project
- * @date 20211005 - Additional dependencies
+ * @date 20211008 - Reworked dependencies
  */
-
-#pragma message("pch app-SimpleInstancing") // Temporary, for debugging purposes
 
 #ifndef PCH_SIMPLE_INSTANCING
 #define PCH_SIMPLE_INSTANCING
 
-
-#include <WinSDKVer.h>
-#define _WIN32_WINNT 0x0601
-#include <SDKDDKVer.h>
 
 // Use the C++ standard templated min/max
 #define NOMINMAX
@@ -31,48 +25,12 @@
 #define NOGDI
 #define NOBITMAP
 
-// Include <mcx.h> if you need this
-#define NOMCX
-
-// Include <winsvc.h> if you need this
-#define NOSERVICE
-
-// WinHelp is deprecated
-#define NOHELP
-
-#define WIN32_LEAN_AND_MEAN
-#include <windows.h>
-
 #include <wrl/client.h>
 
 #include <d3d11_1.h>
 
-#if defined(NTDDI_WIN10_RS2)
-#include <dxgi1_6.h>
-#else
-#include <dxgi1_5.h>
-#endif
-
-#include <DirectXMath.h>
-#include <DirectXColors.h>
-#include <wincodec.h>
-
-#include <algorithm>
-#include <exception>
-#include <fstream>
-#include <memory>
-#include <random>
-#include <stdexcept>
-#include <vector>
-
-#include <string>
 #include <filesystem>
-
-#include <stdio.h>
-
-#ifdef _DEBUG
-#include <dxgidebug.h>
-#endif
+#include <random>
 
 #include "GamePad.h"
 #include "Keyboard.h"
@@ -109,19 +67,6 @@ namespace DX
         }
     }
 }
-
-#include <cmath>
-#include <cstdint>
-#include <exception>
-
-#include <streambuf>
-#include <ostream>
-
-#include <string>
-#include <filesystem>
-#include <time.h>
-#include <sstream>
-#include <iostream>
 
 
 #endif // !PCH_SIMPLE_INSTANCING
