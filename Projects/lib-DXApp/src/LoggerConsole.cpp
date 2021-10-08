@@ -67,7 +67,7 @@ void ResetSeverityColor()
 LoggerConsole::LoggerConsole(bool p_makeDefault, SeverityLevel p_logLevel) :
 	Logger(p_makeDefault, p_logLevel)
 {
-	WriteLogMessage(SeverityInfo, "ConsoleLogger::ctor()")
+	WriteLogMessage(SeverityInfo, "LoggerConsole::ctor()")
 }
 
 //-----------------------------------------------------------------------------
@@ -76,7 +76,7 @@ LoggerConsole::LoggerConsole(bool p_makeDefault, SeverityLevel p_logLevel) :
  */
 LoggerConsole::~LoggerConsole()
 {
-	WriteLogMessage(SeverityInfo, "ConsoleLogger::dtor()")
+	WriteLogMessage(SeverityInfo, "LoggerConsole::dtor()")
 	ResetSeverityColor();
 }
 
