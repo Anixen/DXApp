@@ -65,7 +65,7 @@
     <ProjectGuid>{9A46E9AA-3E5D-45C8-A880-2760425164F6}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>appSimpleLighting</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

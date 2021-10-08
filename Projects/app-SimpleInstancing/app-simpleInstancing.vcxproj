@@ -65,7 +65,7 @@
     <ProjectGuid>{A6EF01DC-0343-4198-8F58-749037E2B79B}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>appsimpleInstancing</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
     <ProjectName>app-SimpleInstancing</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

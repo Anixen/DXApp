@@ -23,7 +23,7 @@
     <ProjectGuid>{4663D5D6-9B7F-4876-908B-0C23509B5F0D}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>appSimpleBezier</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
