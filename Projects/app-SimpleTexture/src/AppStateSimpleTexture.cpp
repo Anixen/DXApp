@@ -75,29 +75,24 @@ namespace nxn {
 AppStateSimpleTexture::AppStateSimpleTexture(App *p_app) :
 	AppState(p_app)
 {
-    /*
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleTexture::ctor()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
 
 AppStateSimpleTexture::~AppStateSimpleTexture()
 {
-    /*
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleTexture::dtor()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
 
-void AppStateSimpleTexture::Init() {
-    /*
+void AppStateSimpleTexture::Init() 
+{
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleTexture::Init()" << std::endl;
-    //*/
 
 	AppState::Init();
 }
@@ -106,10 +101,8 @@ void AppStateSimpleTexture::Init() {
 
 void AppStateSimpleTexture::Reinit()
 {
-    /*
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleTexture::Reinit()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
@@ -227,20 +220,16 @@ void AppStateSimpleTexture::Clear(DX::DeviceResources * p_deviceResources)
 
 void AppStateSimpleTexture::HandleCleanup()
 {
-    /*
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleTexture::HandleCleanup()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
 
 void AppStateSimpleTexture::CreateDeviceDependentResources(DX::DeviceResources * p_deviceResources)
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppStateSimpleTexture::CreateDeviceDependentResources()" << std::endl;
-    //*/
 
     auto device = p_deviceResources->GetD3DDevice();
 
@@ -353,20 +342,16 @@ void AppStateSimpleTexture::CreateWindowSizeDependentResources(DX::DeviceResourc
 {
     (void)p_deviceResources;
 
-    /*
     GetLogStream(SeverityInfo)
         << "AppStateSimpleTexture::CreateWindowSizeDependentResources()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
 
 void AppStateSimpleTexture::ResetResources()
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppStateSimpleTexture::ResetRessources()" << std::endl;
-    //*/
 
     m_spInputLayout .Reset();
     m_spVertexBuffer.Reset();

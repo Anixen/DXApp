@@ -13,20 +13,16 @@ namespace nxn {
 AppSimpleCompute::AppSimpleCompute(std::unique_ptr<DX::DeviceResources> & p_deviceResources)
     : App(p_deviceResources)
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppSimpleCompute::ctor()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
 
 AppSimpleCompute::~AppSimpleCompute()
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppSimpleCompute::dtor()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
@@ -41,10 +37,8 @@ void AppSimpleCompute::GetDefaultWindowSize(int & width, int & height) const
 
 void AppSimpleCompute::PreInit()
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppSimpleCompute::PreInit()" << std::endl;
-    //*/
 
     SetCurrentState(new AppStateSimpleCompute(this));
 }
@@ -53,20 +47,16 @@ void AppSimpleCompute::PreInit()
 
 void AppSimpleCompute::PostInit()
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppSimpleCompute::PostInit()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
 
 void AppSimpleCompute::HandleCleanUp()
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppSimpleCompute::HandleCleanup()" << std::endl;
-    //*/
 }
 
 } // namespace nxn

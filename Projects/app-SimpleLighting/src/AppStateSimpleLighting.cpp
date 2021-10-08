@@ -40,29 +40,24 @@ namespace nxn {
 AppStateSimpleLighting::AppStateSimpleLighting(App *p_app) :
 	AppState(p_app)
 {
-    /*
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleLighting::ctor()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
 
 AppStateSimpleLighting::~AppStateSimpleLighting()
 {
-    /*
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleLighting::dtor()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
 
-void AppStateSimpleLighting::Init() {
-    /*
+void AppStateSimpleLighting::Init() 
+{
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleLighting::Init()" << std::endl;
-    //*/
 
 	AppState::Init();
 }
@@ -71,10 +66,8 @@ void AppStateSimpleLighting::Init() {
 
 void AppStateSimpleLighting::Reinit()
 {
-    /*
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleLighting::Reinit()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
@@ -267,20 +260,16 @@ void AppStateSimpleLighting::Clear(DX::DeviceResources * p_deviceResources)
 
 void AppStateSimpleLighting::HandleCleanup()
 {
-    /*
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleLighting::HandleCleanup()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
 
 void AppStateSimpleLighting::CreateDeviceDependentResources(DX::DeviceResources * p_deviceResources)
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppStateSimpleLighting::CreateDeviceDependentResources()" << std::endl;
-    //*/
 
     auto device = p_deviceResources->GetD3DDevice();
 
@@ -422,10 +411,8 @@ void AppStateSimpleLighting::CreateDeviceDependentResources(DX::DeviceResources 
 
 void AppStateSimpleLighting::CreateWindowSizeDependentResources(DX::DeviceResources * p_deviceResources)
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppStateSimpleLighting::CreateWindowSizeDependentResources()" << std::endl;
-    //*/
 
     // Initialize the projection matrix
     auto size = p_deviceResources->GetOutputSize();
@@ -438,10 +425,8 @@ void AppStateSimpleLighting::CreateWindowSizeDependentResources(DX::DeviceResour
 
 void AppStateSimpleLighting::ResetResources()
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppStateSimpleLighting::ResetRessources()" << std::endl;
-    //*/
 
     m_inputLayout.Reset();
     m_vertexBuffer.Reset();

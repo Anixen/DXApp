@@ -13,20 +13,16 @@ namespace nxn {
 AppSimpleInstancing::AppSimpleInstancing(std::unique_ptr<DX::DeviceResources> & p_deviceResources)
     : App(p_deviceResources)
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppSimpleInstancing::ctor()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
 
 AppSimpleInstancing::~AppSimpleInstancing()
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppSimpleInstancing::dtor()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
@@ -41,10 +37,8 @@ void AppSimpleInstancing::GetDefaultWindowSize(int & width, int & height) const
 
 void AppSimpleInstancing::PreInit()
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppSimpleInstancing::PreInit()" << std::endl;
-    //*/
 
     SetCurrentState(new AppStateSimpleInstancing(this));
 }
@@ -53,20 +47,16 @@ void AppSimpleInstancing::PreInit()
 
 void AppSimpleInstancing::PostInit()
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppSimpleInstancing::PostInit()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
 
 void AppSimpleInstancing::HandleCleanUp()
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppSimpleInstancing::HandleCleanup()" << std::endl;
-    //*/
 }
 
 } // namespace nxn

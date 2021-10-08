@@ -25,30 +25,24 @@ namespace nxn {
 AppStateSimpleTriangle::AppStateSimpleTriangle(App *p_app) :
 	AppState(p_app)
 {
-    /*
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleTriangle::ctor()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
 
 AppStateSimpleTriangle::~AppStateSimpleTriangle()
 {
-    /*
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleTriangle::dtor()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
 
 void AppStateSimpleTriangle::Init() 
 {
-	/*
     GetLogStream(SeverityInfo)
 		<< "AppStateSimpleTriangle::Init()" << std::endl;
-    //*/
 
 	AppState::Init();
 }
@@ -57,10 +51,8 @@ void AppStateSimpleTriangle::Init()
 
 void AppStateSimpleTriangle::Reinit()
 {
-    /*
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleTriangle::Reinit()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
@@ -169,20 +161,16 @@ void AppStateSimpleTriangle::Clear(DX::DeviceResources * p_deviceResources)
 
 void AppStateSimpleTriangle::HandleCleanup()
 {
-    /*
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleTriangle::HandleCleanup()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
 
 void AppStateSimpleTriangle::CreateDeviceDependentResources(DX::DeviceResources * p_deviceResources)
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppStateSimpleTriangle::CreateDeviceDependentResources()" << std::endl;
-    //*/
 
     auto device = p_deviceResources->GetD3DDevice();
 
@@ -239,20 +227,16 @@ void AppStateSimpleTriangle::CreateWindowSizeDependentResources(DX::DeviceResour
 {
     (void)p_deviceResources;
 
-    /*
     GetLogStream(SeverityInfo)
         << "AppStateSimpleTriangle::CreateWindowSizeDependentResources()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
 
 void AppStateSimpleTriangle::ResetResources()
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppStateSimpleTriangle::ResetRessources()" << std::endl;
-    //*/
 
     m_spInputLayout .Reset();
     m_spVertexBuffer.Reset();

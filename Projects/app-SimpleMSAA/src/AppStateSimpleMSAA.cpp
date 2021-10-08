@@ -25,30 +25,24 @@ namespace nxn {
 AppStateSimpleMSAA::AppStateSimpleMSAA(App *p_app)
     : AppState(p_app)
 {
-    /*
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleMSAA::ctor()" << std::endl;
-    //*/
-
 }
 
 //-----------------------------------------------------------------------------
 
 AppStateSimpleMSAA::~AppStateSimpleMSAA()
 {
-    /*
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleMSAA::dtor()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
 
-void AppStateSimpleMSAA::Init() {
-    /*
+void AppStateSimpleMSAA::Init() 
+{
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleMSAA::Init()" << std::endl;
-    //*/
 
 	AppState::Init();
 }
@@ -57,10 +51,8 @@ void AppStateSimpleMSAA::Init() {
 
 void AppStateSimpleMSAA::Reinit()
 {
-    /*
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleMSAA::Reinit()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
@@ -228,21 +220,16 @@ void AppStateSimpleMSAA::Clear(DX::DeviceResources * p_deviceResources)
 
 void AppStateSimpleMSAA::HandleCleanup()
 {
-    /*
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleMSAA::HandleCleanup()" << std::endl;
-    //*/
-
 }
 
 //-----------------------------------------------------------------------------
 
 void AppStateSimpleMSAA::CreateDeviceDependentResources(DX::DeviceResources * p_deviceResources)
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppStateSimpleMSAA::CreateDeviceDependentResources()" << std::endl;
-    //*/
 
     auto device = p_deviceResources->GetD3DDevice();
 
@@ -308,10 +295,8 @@ void AppStateSimpleMSAA::CreateDeviceDependentResources(DX::DeviceResources * p_
 
 void AppStateSimpleMSAA::CreateWindowSizeDependentResources(DX::DeviceResources * p_deviceResources)
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppStateSimpleMSAA::CreateWindowSizeDependentResources()" << std::endl;
-    //*/
 
     auto output = p_deviceResources->GetOutputSize();
 
@@ -387,10 +372,8 @@ void AppStateSimpleMSAA::CreateWindowSizeDependentResources(DX::DeviceResources 
 
 void AppStateSimpleMSAA::ResetResources()
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppStateSimpleMSAA::ResetRessources()" << std::endl;
-    //*/
 
     m_msaaRenderTarget.Reset();
     m_msaaRenderTargetView.Reset();

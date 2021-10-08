@@ -45,10 +45,8 @@ AppStateSimpleInstancing::AppStateSimpleInstancing(App *p_app)
     : AppState(p_app)
     , m_usedInstanceCount(c_startInstanceCount)
 {
-    /*
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleInstancing::ctor()" << std::endl;
-    //*/
 
     XMStoreFloat4x4(&m_proj, XMMatrixIdentity());
 }
@@ -57,19 +55,16 @@ AppStateSimpleInstancing::AppStateSimpleInstancing(App *p_app)
 
 AppStateSimpleInstancing::~AppStateSimpleInstancing()
 {
-    /*
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleInstancing::dtor()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
 
-void AppStateSimpleInstancing::Init() {
-    /*
+void AppStateSimpleInstancing::Init() 
+{
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleInstancing::Init()" << std::endl;
-    //*/
 
 	AppState::Init();
 }
@@ -78,10 +73,8 @@ void AppStateSimpleInstancing::Init() {
 
 void AppStateSimpleInstancing::Reinit()
 {
-    /*
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleInstancing::Reinit()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
@@ -383,21 +376,16 @@ void AppStateSimpleInstancing::Clear(DX::DeviceResources * p_deviceResources)
 
 void AppStateSimpleInstancing::HandleCleanup()
 {
-    /*
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleInstancing::HandleCleanup()" << std::endl;
-    //*/
-
 }
 
 //-----------------------------------------------------------------------------
 
 void AppStateSimpleInstancing::CreateDeviceDependentResources(DX::DeviceResources * p_deviceResources)
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppStateSimpleInstancing::CreateDeviceDependentResources()" << std::endl;
-    //*/
 
     auto device = p_deviceResources->GetD3DDevice();
 
@@ -594,10 +582,8 @@ void AppStateSimpleInstancing::CreateDeviceDependentResources(DX::DeviceResource
 
 void AppStateSimpleInstancing::CreateWindowSizeDependentResources(DX::DeviceResources * p_deviceResources)
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppStateSimpleInstancing::CreateWindowSizeDependentResources()" << std::endl;
-    //*/
 
     // Initialize the projection matrix.
     auto size = p_deviceResources->GetOutputSize();
@@ -611,10 +597,8 @@ void AppStateSimpleInstancing::CreateWindowSizeDependentResources(DX::DeviceReso
 
 void AppStateSimpleInstancing::ResetResources()
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppStateSimpleInstancing::ResetRessources()" << std::endl;
-    //*/
 
     m_batch.reset();
     m_smallFont.reset();

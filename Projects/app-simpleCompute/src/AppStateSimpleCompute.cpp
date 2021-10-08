@@ -37,10 +37,8 @@ namespace nxn {
 AppStateSimpleCompute::AppStateSimpleCompute(App *p_app)
     : AppState(p_app)
 {
-    /*
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleCompute::ctor()" << std::endl;
-    //*/
 
     m_help = std::make_unique<ATG::Help>(g_SampleTitle, g_SampleDescription, g_HelpButtons, _countof(g_HelpButtons));
 }
@@ -49,19 +47,16 @@ AppStateSimpleCompute::AppStateSimpleCompute(App *p_app)
 
 AppStateSimpleCompute::~AppStateSimpleCompute()
 {
-    /*
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleCompute::dtor()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
 
-void AppStateSimpleCompute::Init() {
-    /*
+void AppStateSimpleCompute::Init() 
+{
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleCompute::Init()" << std::endl;
-    //*/
 
 	AppState::Init();
 
@@ -72,10 +67,8 @@ void AppStateSimpleCompute::Init() {
 
 void AppStateSimpleCompute::Reinit()
 {
-    /*
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleCompute::Reinit()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
@@ -291,20 +284,16 @@ void AppStateSimpleCompute::Clear(DX::DeviceResources * p_deviceResources)
 
 void AppStateSimpleCompute::HandleCleanup()
 {
-    /*
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleCompute::HandleCleanup()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
 
 void AppStateSimpleCompute::CreateDeviceDependentResources(DX::DeviceResources * p_deviceResources)
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppStateSimpleCompute::CreateDeviceDependentResources()" << std::endl;
-    //*/
 
     auto device     = p_deviceResources->GetD3DDevice();
     auto context    = p_deviceResources->GetD3DDeviceContext();
@@ -376,10 +365,8 @@ void AppStateSimpleCompute::CreateDeviceDependentResources(DX::DeviceResources *
 
 void AppStateSimpleCompute::CreateWindowSizeDependentResources(DX::DeviceResources * p_deviceResources)
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppStateSimpleCompute::CreateWindowSizeDependentResources()" << std::endl;
-    //*/
 
     auto size = p_deviceResources->GetOutputSize();
     m_help->SetWindow(size);
@@ -391,10 +378,8 @@ void AppStateSimpleCompute::CreateWindowSizeDependentResources(DX::DeviceResourc
 
 void AppStateSimpleCompute::ResetResources()
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppStateSimpleCompute::ResetResources()" << std::endl;
-    //*/
 
     m_cbFractal.Reset();
     m_csFractal.Reset();

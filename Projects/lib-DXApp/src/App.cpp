@@ -53,15 +53,15 @@ void App::GetDefaultWindowSize(int& width, int& height) const
  */
 void App::ProcessArguments(int p_argc, char **p_argv)
 {
-//	m_path = std::filesystem::path{ p_argv[0] };
-//	m_name = m_path.stem().string();
+	m_path = std::filesystem::path{ p_argv[0] };
+	m_name = m_path.stem().string();
 
 	// Get the instance of this application.
 	m_hInstance = GetModuleHandle(NULL);
 
     GetLogStream(SeverityInfo)
-        << "App::ProcessArguments() m_name = " << m_name << ", m_hInstance = " << m_hInstance << std::endl;
-//		<< "m_path = " << m_path << std::endl;
+        << "App::ProcessArguments() m_name = " << m_name << ", m_hInstance = " << m_hInstance << std::endl
+		<< "m_path = " << m_path << std::endl;
 
 	if (p_argc == 1) {
 		GetLogStream(SeverityInfo)
@@ -94,16 +94,16 @@ void App::ProcessArguments(HINSTANCE p_hInstance, HINSTANCE p_hPrevInstance, PWS
 
 	TCHAR exepath[MAX_PATH];
 	GetModuleFileNameW(0, exepath, MAX_PATH);
-//	m_path = std::filesystem::path{ exepath };
-//	m_name = m_path.stem().string();
+	m_path = std::filesystem::path{ exepath };
+	m_name = m_path.stem().string();
 
 	// Get the instance of this application.
 	m_hInstance = p_hInstance;
 
     GetLogStream(SeverityInfo)
         << "App::ProcessArguments()"
-        << "m_name = " << m_name << ", m_hInstance = " << m_hInstance << std::endl;
-//		<< ", m_path = " << m_path << std::endl;
+        << "m_name = " << m_name << ", m_hInstance = " << m_hInstance << std::endl
+		<< ", m_path = " << m_path << std::endl;
 }
 
 //-----------------------------------------------------------------------------

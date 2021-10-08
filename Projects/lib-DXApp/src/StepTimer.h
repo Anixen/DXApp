@@ -36,13 +36,13 @@ namespace DX
         {
             if (!QueryPerformanceFrequency(&m_qpcFrequency))
             {
-//              WriteLogMessage(nxn::SeverityFatal, "StepTimer::ctor() : QueryPerformanceFrequency");
+                WriteLogMessage(nxn::SeverityFatal, "StepTimer::ctor() : QueryPerformanceFrequency");
                 throw std::exception("QueryPerformanceFrequency");
             }
 
             if (!QueryPerformanceCounter(&m_qpcLastTime))
             {
-//              WriteLogMessage(nxn::SeverityFatal, "StepTimer::ctor() : QueryPerformanceCounter");
+                WriteLogMessage(nxn::SeverityFatal, "StepTimer::ctor() : QueryPerformanceCounter");
                 throw std::exception("QueryPerformanceCounter");
             }
 
@@ -104,7 +104,7 @@ namespace DX
 
             if (!QueryPerformanceCounter(&currentTime))
             {
-//              WriteLogMessage(nxn::SeverityFatal, "StepTimer::Tick() : QueryPerformanceCounter");
+                WriteLogMessage(nxn::SeverityFatal, "StepTimer::Tick() : QueryPerformanceCounter");
                 throw std::exception("QueryPerformanceCounter");
             }
 

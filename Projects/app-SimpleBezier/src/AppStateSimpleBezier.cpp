@@ -127,10 +127,8 @@ AppStateSimpleBezier::AppStateSimpleBezier(App *p_app)
     , m_subdivs(c_defaultSubdivs)
     , m_drawWires(c_defaultWireframeRendering)
 {
-    /*
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleBezier::ctor()" << std::endl;
-    //*/
 
     m_help = std::make_unique<ATG::Help>(c_sampleTitle, c_sampleDescription, c_helpButtons, _countof(c_helpButtons), true);
 }
@@ -139,19 +137,16 @@ AppStateSimpleBezier::AppStateSimpleBezier(App *p_app)
 
 AppStateSimpleBezier::~AppStateSimpleBezier()
 {
-    /*
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleBezier::dtor()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
 
-void AppStateSimpleBezier::Init() {
-    /*
+void AppStateSimpleBezier::Init() 
+{
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleBezier::Init()" << std::endl;
-    //*/
 
 	AppState::Init();
 }
@@ -160,10 +155,8 @@ void AppStateSimpleBezier::Init() {
 
 void AppStateSimpleBezier::Reinit()
 {
-    /*
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleBezier::Reinit()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
@@ -427,10 +420,8 @@ void AppStateSimpleBezier::Clear(DX::DeviceResources * p_deviceResources)
 
 void AppStateSimpleBezier::HandleCleanup()
 {
-    /*
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleBezier::HandleCleanup()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
@@ -515,10 +506,8 @@ void AppStateSimpleBezier::CreateShaders(DX::DeviceResources * p_deviceResources
 
 void AppStateSimpleBezier::CreateDeviceDependentResources(DX::DeviceResources * p_deviceResources)
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppStateSimpleBezier::CreateDeviceDependentResources()" << std::endl;
-    //*/
     
     auto device     = p_deviceResources->GetD3DDevice();
     auto context    = p_deviceResources->GetD3DDeviceContext();
@@ -550,10 +539,8 @@ void AppStateSimpleBezier::CreateDeviceDependentResources(DX::DeviceResources * 
 
 void AppStateSimpleBezier::CreateWindowSizeDependentResources(DX::DeviceResources * p_deviceResources)
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppStateSimpleBezier::CreateWindowSizeDependentResources()" << std::endl;
-    //*/
 
     auto size = p_deviceResources->GetOutputSize();
 
@@ -569,10 +556,8 @@ void AppStateSimpleBezier::CreateWindowSizeDependentResources(DX::DeviceResource
 
 void AppStateSimpleBezier::ResetResources()
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppStateSimpleBezier::ResetRessources()" << std::endl;
-    //*/
 
     m_states.reset();
     m_inputLayout.Reset();

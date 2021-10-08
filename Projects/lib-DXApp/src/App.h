@@ -36,7 +36,7 @@ public:
 
 	static	inline		    App*				                    GetApp				()			                { return g_instance; }
 			inline	const	std::string				                GetName				() const	                { return m_name; }
-//			inline	const	std::filesystem::path	                GetPath				() const	                { return m_path; }
+			inline	const	std::filesystem::path	                GetPath				() const	                { return m_path; }
 
             inline  const   bool                                    IsInitialized       () const                    { return m_initialized; }
 			inline	const	bool					                IsRunning           () const                    { return m_running; }
@@ -90,7 +90,7 @@ private:
 	static                  App*                                    g_instance;
 
 	                        std::string                             m_name;
-//	                        std::filesystem::path                   m_path;
+	                        std::filesystem::path                   m_path;
 
 	                        HINSTANCE                               m_hInstance;
 

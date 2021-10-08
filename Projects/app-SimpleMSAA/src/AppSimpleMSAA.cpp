@@ -13,20 +13,16 @@ namespace nxn {
 AppSimpleMSAA::AppSimpleMSAA(std::unique_ptr<DX::DeviceResources> & p_deviceResources)
     : App(p_deviceResources)
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppSimpleMSAA::ctor()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
 
 AppSimpleMSAA::~AppSimpleMSAA()
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppSimpleMSAA::dtor()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
@@ -41,10 +37,8 @@ void AppSimpleMSAA::GetDefaultWindowSize(int & width, int & height) const
 
 void AppSimpleMSAA::PreInit()
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppSimpleMSAA::PreInit()" << std::endl;
-    //*/
 
     SetCurrentState(new AppStateSimpleMSAA(this));
 }
@@ -53,20 +47,16 @@ void AppSimpleMSAA::PreInit()
 
 void AppSimpleMSAA::PostInit()
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppSimpleMSAA::PostInit()" << std::endl;
-    //*/
 }
 
 //-----------------------------------------------------------------------------
 
 void AppSimpleMSAA::HandleCleanUp()
 {
-    /*
     GetLogStream(SeverityInfo)
         << "AppSimpleMSAA::HandleCleanup()" << std::endl;
-    //*/
 }
 
 } // namespace nxn
