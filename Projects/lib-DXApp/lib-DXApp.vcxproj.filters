@@ -43,6 +43,15 @@
     <ClInclude Include="src\11\DeviceResources_11.h">
       <Filter>Source Files\11</Filter>
     </ClInclude>
+    <ClInclude Include="src\12\DeviceResources_12.h">
+      <Filter>Source Files\12</Filter>
+    </ClInclude>
+    <ClInclude Include="src\12\App_12.h">
+      <Filter>Source Files\12</Filter>
+    </ClInclude>
+    <ClInclude Include="src\12\AppState_12.h">
+      <Filter>Source Files\12</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Logger.cpp">
@@ -62,6 +71,15 @@
     </ClCompile>
     <ClCompile Include="src\11\DeviceResources_11.cpp">
       <Filter>Source Files\11</Filter>
+    </ClCompile>
+    <ClCompile Include="src\12\DeviceResources_12.cpp">
+      <Filter>Source Files\12</Filter>
+    </ClCompile>
+    <ClCompile Include="src\12\App_12.cpp">
+      <Filter>Source Files\12</Filter>
+    </ClCompile>
+    <ClCompile Include="src\12\AppState_12.cpp">
+      <Filter>Source Files\12</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

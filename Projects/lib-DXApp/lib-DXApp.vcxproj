@@ -179,6 +179,9 @@
     <ClInclude Include="src\11\AppState_11.h" />
     <ClInclude Include="src\11\App_11.h" />
     <ClInclude Include="src\11\DeviceResources_11.h" />
+    <ClInclude Include="src\12\AppState_12.h" />
+    <ClInclude Include="src\12\App_12.h" />
+    <ClInclude Include="src\12\DeviceResources_12.h" />
     <ClInclude Include="src\Logger.h" />
     <ClInclude Include="src\LoggerConsole.h" />
     <ClInclude Include="src\onullstream.h" />
@@ -189,6 +192,9 @@
     <ClCompile Include="src\11\AppState_11.cpp" />
     <ClCompile Include="src\11\App_11.cpp" />
     <ClCompile Include="src\11\DeviceResources_11.cpp" />
+    <ClCompile Include="src\12\AppState_12.cpp" />
+    <ClCompile Include="src\12\App_12.cpp" />
+    <ClCompile Include="src\12\DeviceResources_12.cpp" />
     <ClCompile Include="src\Logger.cpp" />
     <ClCompile Include="src\LoggerConsole.cpp" />
     <ClCompile Include="src\pch.cpp" />

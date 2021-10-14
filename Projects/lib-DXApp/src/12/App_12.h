@@ -2,38 +2,38 @@
  * Provides the interface for an application class.
  * An application is responsible for running the main loop, and holding a variety of managers.
  *
- * @class App_11
- * App_11 implements the Singleton pattern.
- * App_11 makes use of the state pattern with AppState_11.
+ * @class App_12
+ * App_12 implements the Singleton pattern.
+ * App_12 makes use of the state pattern with AppState_12.
  *
- * @file src/App_11.h
+ * @file src/App_12.h
  * @author Olivier Falconnet
  * @date 20200522 - File creation
  * @date 20200529 - Handled Window messages
  */
 
-#ifndef NXN_APP_11
-#define NXN_APP_11
+#ifndef NXN_APP_12
+#define NXN_APP_12
 
 
-#include "DeviceResources_11.h"
+#include "DeviceResources_12.h"
 
-#include "AppState_11.h"
+#include "AppState_12.h"
 
 namespace nxn {
 
 
 // Forward declarations
-class AppState_11;
+class AppState_12;
 
-class App_11 : public DX::IDeviceNotify {
+class App_12 : public DX::IDeviceNotify {
 
-	friend LRESULT CALLBACK WndProc_11(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lparam);
+	friend LRESULT CALLBACK WndProc_12(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lparam);
 
 public:
-	virtual											                ~App_11             ();
+	virtual											                ~App_12             ();
 
-	static	inline		    App_11*				                    GetApp				()			                { return g_instance; }
+	static	inline		    App_12*				                    GetApp				()			                { return g_instance; }
 			inline	const	std::string				                GetName				() const	                { return m_name; }
 			inline	const	std::filesystem::path	                GetPath				() const	                { return m_path; }
 
@@ -54,7 +54,7 @@ public:
             inline  const   bool                                    IsGamePadConnected  () const                    { return m_gamePadConnected; }
 
 protected:
-	                                                                App_11              (std::unique_ptr<DX::DeviceResources_11> & p_deviceResources); // Ctor is protected because we only allow derived classes to instantiate this interface
+	                                                                App_12              (std::unique_ptr<DX::DeviceResources_12> & p_deviceResources); // Ctor is protected because we only allow derived classes to instantiate this interface
 
 
 	virtual                 LRESULT CALLBACK                        HandleMessage       (HWND hwnd, UINT umsg, WPARAM wparam, LPARAM lparam);
@@ -63,7 +63,7 @@ protected:
 	                        void                                    InitWindows         ();
 	                        void                                    ShutdownWindows     ();
 
-	                        void                                    SetCurrentState     (AppState_11* p_state);
+	                        void                                    SetCurrentState     (AppState_12* p_state);
 	virtual                 void                                    Tick                ();
     virtual                 void                                    Init                ();
     virtual                 void                                    PreInit             () = 0; // Performs custom steps (e.g. allocating memory) before entering the main loop.
@@ -81,12 +81,12 @@ protected:
 	virtual                 void                                    OnWindowSizeChanged (int width, int height);
 
 private:
-                                                                    App_11              (const App_11&);   // Intentionally undefined. Is private because we do not allow copies of a Singleton.
-                            App_11&                                 operator=           (const App_11&);   // Intentionally undefined. Is private because we do not allow copies of a Singleton.
+                                                                    App_12              (const App_12&);   // Intentionally undefined. Is private because we do not allow copies of a Singleton.
+                            App_12&                                 operator=           (const App_12&);   // Intentionally undefined. Is private because we do not allow copies of a Singleton.
 
                             void                                    Shutdown();
                             
-	static                  App_11*                                 g_instance;
+	static                  App_12*                                 g_instance;
 
 	                        std::string                             m_name;
 	                        std::filesystem::path                   m_path;
@@ -105,10 +105,10 @@ private:
 
                             bool                                    m_initialized       = false;
 	                        bool                                    m_running           = false;
-	                        AppState_11*                            m_currentState      = nullptr;
+	                        AppState_12*                            m_currentState      = nullptr;
 
                             // Device resources.
-                            std::unique_ptr<DX::DeviceResources_11> m_deviceResources;
+                            std::unique_ptr<DX::DeviceResources_12> m_deviceResources;
 
                             // Rendering loop timer.
 	                        DX::StepTimer                           m_stepTimer;
@@ -125,9 +125,9 @@ private:
                             DirectX::Keyboard::KeyboardStateTracker m_keyboardButtons;
                             DirectX::Mouse::ButtonStateTracker      m_mouseButtons;
 
-}; // class App_11
+}; // class App_12
 
 } // namespace nxn
 
 
-#endif // !NXN_APP_11
+#endif // !NXN_APP_12

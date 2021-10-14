@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "App_11.h"
+#include "App_12.h"
 
 #include "Logger.h"
 
@@ -7,12 +7,12 @@
 namespace nxn {
 
 
-App_11* App_11::g_instance = NULL;
-const LPCWSTR App_11::g_windowClassName = L"AppWindowClass";
+App_12* App_12::g_instance = NULL;
+const LPCWSTR App_12::g_windowClassName = L"AppWindowClass";
 
 //-----------------------------------------------------------------------------
 
-App_11::App_11(std::unique_ptr<DX::DeviceResources_11> & p_deviceResources)
+App_12::App_12(std::unique_ptr<DX::DeviceResources_12> & p_deviceResources)
 {
 	WriteLogMessage(SeverityInfo, "App::ctor()")
 
@@ -25,7 +25,7 @@ App_11::App_11(std::unique_ptr<DX::DeviceResources_11> & p_deviceResources)
 
 //-----------------------------------------------------------------------------
 
-App_11::~App_11()
+App_12::~App_12()
 {
 	WriteLogMessage(SeverityInfo, "App::dtor()")
 
@@ -38,7 +38,7 @@ App_11::~App_11()
 
 //-----------------------------------------------------------------------------
 
-void App_11::GetDefaultWindowSize(int& width, int& height) const
+void App_12::GetDefaultWindowSize(int& width, int& height) const
 {
 	width  = 800;
 	height = 600;
@@ -51,7 +51,7 @@ void App_11::GetDefaultWindowSize(int& width, int& height) const
  * @param {int}			p_argc	The number of arguments
  * @param {char**}		p_argv	The actual arguments
  */
-void App_11::ProcessArguments(int p_argc, char **p_argv)
+void App_12::ProcessArguments(int p_argc, char **p_argv)
 {
 	m_path = std::filesystem::path{ p_argv[0] };
 	m_name = m_path.stem().string();
@@ -86,7 +86,7 @@ void App_11::ProcessArguments(int p_argc, char **p_argv)
  * @param {PWSTR}		p_pCmdline		The command line as a unicode string
  * @param {int}			p_iCmdshow		A flag to indicate if the application window should be minimized, maximized or shown normally
  */
-void App_11::ProcessArguments(HINSTANCE p_hInstance, HINSTANCE p_hPrevInstance, PWSTR p_pCmdline, int p_iCmdshow)
+void App_12::ProcessArguments(HINSTANCE p_hInstance, HINSTANCE p_hPrevInstance, PWSTR p_pCmdline, int p_iCmdshow)
 {
     (void)p_hPrevInstance;
     (void)p_pCmdline;
@@ -114,7 +114,7 @@ void App_11::ProcessArguments(HINSTANCE p_hInstance, HINSTANCE p_hPrevInstance, 
  * This functions relies on the loop, init and shutdown methods,
  * which are defined by derived classes
  */
-int App_11::Run()
+int App_12::Run()
 {
 	GetLogStream(SeverityInfo) << "App::Run()" << std::endl;
 
@@ -178,7 +178,7 @@ int App_11::Run()
 /**
  *
  */
-void App_11::Quit(int p_exitCode)
+void App_12::Quit(int p_exitCode)
 {
 	GetLogStream(SeverityInfo)
 		<< "App::Quit(" << p_exitCode << ")" << std::endl;
@@ -188,7 +188,7 @@ void App_11::Quit(int p_exitCode)
 
 //-----------------------------------------------------------------------------
 
-LRESULT CALLBACK WndProc_11(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lparam)
+LRESULT CALLBACK WndProc_12(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lparam)
 {
 	switch (umessage)
 	{
@@ -242,12 +242,12 @@ LRESULT CALLBACK WndProc_11(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lpar
 	}
 
 	// All other messages pass to the message handler in the system class.
-	return App_11::GetApp()->HandleMessage(hwnd, umessage, wparam, lparam);
+	return App_12::GetApp()->HandleMessage(hwnd, umessage, wparam, lparam);
 }
 
 //-----------------------------------------------------------------------------
 
-LRESULT CALLBACK App_11::HandleMessage(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lparam)
+LRESULT CALLBACK App_12::HandleMessage(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lparam)
 {
 	PAINTSTRUCT ps;
 	HDC hdc;
@@ -397,13 +397,13 @@ std::wstring s2ws(const std::string& s)
     return r;
 }
 
-void App_11::InitWindows()
+void App_12::InitWindows()
 {
 	// Setup the windows class with default settings
 	WNDCLASSEXW wcex;
 	wcex.cbSize = sizeof(WNDCLASSEXW);
 	wcex.style = CS_HREDRAW | CS_VREDRAW;
-	wcex.lpfnWndProc = WndProc_11;
+	wcex.lpfnWndProc = WndProc_12;
 	wcex.cbClsExtra = 0;
 	wcex.cbWndExtra = 0;
 	wcex.hInstance = m_hInstance;
@@ -459,7 +459,7 @@ void App_11::InitWindows()
 
 //-----------------------------------------------------------------------------
 
-void App_11::ShutdownWindows()
+void App_12::ShutdownWindows()
 {
 	// Show the mouse cursor.
 	ShowCursor(true);
@@ -487,9 +487,9 @@ void App_11::ShutdownWindows()
 /**
  * Sets the current app state
  *
- * @param {AppState_11} p_state The new state for the application
+ * @param {AppState_12} p_state The new state for the application
  */
-void App_11::SetCurrentState(AppState_11* p_state)
+void App_12::SetCurrentState(AppState_12* p_state)
 {
 	GetLogStream(SeverityInfo)
 		<< "App::SetCurrentState()" << std::endl;
@@ -509,7 +509,7 @@ void App_11::SetCurrentState(AppState_11* p_state)
  * Advances the application one tick forward,
  * which involves updating its components, and rendering a frame
  */
-void App_11::Tick()
+void App_12::Tick()
 {
 	/*
 	GetLogStream(SeverityInfo)
@@ -518,7 +518,7 @@ void App_11::Tick()
 
 	m_stepTimer.Tick([&]()
 	{
-        AppState_11* nextState = m_currentState->Update(
+        AppState_12* nextState = m_currentState->Update(
             m_deviceResources.get(),
             m_stepTimer,
             m_gamePadConnected,
@@ -546,7 +546,7 @@ void App_11::Tick()
 
 //-----------------------------------------------------------------------------
 
-void App_11::Init()
+void App_12::Init()
 {
     GetLogStream(SeverityInfo)
         << "App::Init()" << std::endl;
@@ -581,7 +581,7 @@ void App_11::Init()
 /**
  *
  */
-void App_11::Shutdown()
+void App_12::Shutdown()
 {
 	GetLogStream(SeverityInfo) << "App::Shutdown()" << std::endl;
 
@@ -594,7 +594,7 @@ void App_11::Shutdown()
 
 //-----------------------------------------------------------------------------
 
-void App_11::OnDeviceLost()
+void App_12::OnDeviceLost()
 {
     if (m_currentState != NULL)
     {
@@ -604,7 +604,7 @@ void App_11::OnDeviceLost()
 
 //-----------------------------------------------------------------------------
 
-void App_11::OnDeviceRestored()
+void App_12::OnDeviceRestored()
 {
     if (m_currentState != NULL)
     {
@@ -615,28 +615,28 @@ void App_11::OnDeviceRestored()
 
 //-----------------------------------------------------------------------------
 
-void App_11::OnActivated()
+void App_12::OnActivated()
 {
 	GetLogStream(SeverityDebug) << "App::OnActivated()" << std::endl;
 }
 
 //-----------------------------------------------------------------------------
 
-void App_11::OnDeactivated()
+void App_12::OnDeactivated()
 {
 	GetLogStream(SeverityDebug) << "App::OnDeactivated()" << std::endl;
 }
 
 //-----------------------------------------------------------------------------
 
-void App_11::OnSuspending()
+void App_12::OnSuspending()
 {
 	GetLogStream(SeverityDebug) << "App::OnSuspending()" << std::endl;
 }
 
 //-----------------------------------------------------------------------------
 
-void App_11::OnResuming()
+void App_12::OnResuming()
 {
 	GetLogStream(SeverityDebug) << "App::OnResuming()" << std::endl;
 	m_stepTimer.ResetElapsedTime();
@@ -644,7 +644,7 @@ void App_11::OnResuming()
 
 //-----------------------------------------------------------------------------
 
-void App_11::OnWindowSizeChanged(int width, int height)
+void App_12::OnWindowSizeChanged(int width, int height)
 {
     if (!m_deviceResources->WindowSizeChanged(width, height))
         return;
