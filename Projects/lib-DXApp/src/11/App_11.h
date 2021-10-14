@@ -31,7 +31,7 @@ class App_11 : public DX::IDeviceNotify {
 	friend LRESULT CALLBACK WndProc(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lparam);
 
 public:
-	virtual											                ~App_11                ();
+	virtual											                ~App_11             ();
 
 	static	inline		    App_11*				                    GetApp				()			                { return g_instance; }
 			inline	const	std::string				                GetName				() const	                { return m_name; }
@@ -51,10 +51,10 @@ public:
 							int						                Run					();
 							void					                Quit				(int p_exitCode);
 
-            inline  const   bool                                    IsGamePadConnected () const                     { return m_gamePadConnected; }
+            inline  const   bool                                    IsGamePadConnected  () const                    { return m_gamePadConnected; }
 
 protected:
-	                                                                App_11                 (std::unique_ptr<DX::DeviceResources_11> & p_deviceResources); // Ctor is protected because we only allow derived classes to instantiate this interface
+	                                                                App_11              (std::unique_ptr<DX::DeviceResources_11> & p_deviceResources); // Ctor is protected because we only allow derived classes to instantiate this interface
 
 
 	virtual                 LRESULT CALLBACK                        HandleMessage       (HWND hwnd, UINT umsg, WPARAM wparam, LPARAM lparam);
@@ -78,15 +78,15 @@ protected:
 	virtual                 void                                    OnDeactivated       ();
 	virtual                 void                                    OnSuspending        ();
 	virtual                 void                                    OnResuming          ();
-	virtual                 void                                    OnWindowSizeChanged(int width, int height);
+	virtual                 void                                    OnWindowSizeChanged (int width, int height);
 
 private:
-                                                                    App_11                 (const App_11&);   // Intentionally undefined. Is private because we do not allow copies of a Singleton.
-                            App_11&                                    operator=           (const App_11&);   // Intentionally undefined. Is private because we do not allow copies of a Singleton.
+                                                                    App_11              (const App_11&);   // Intentionally undefined. Is private because we do not allow copies of a Singleton.
+                            App_11&                                 operator=           (const App_11&);   // Intentionally undefined. Is private because we do not allow copies of a Singleton.
 
                             void                                    Shutdown();
                             
-	static                  App_11*                                    g_instance;
+	static                  App_11*                                 g_instance;
 
 	                        std::string                             m_name;
 	                        std::filesystem::path                   m_path;
@@ -105,7 +105,7 @@ private:
 
                             bool                                    m_initialized       = false;
 	                        bool                                    m_running           = false;
-	                        AppState_11*                               m_currentState      = nullptr;
+	                        AppState_11*                            m_currentState      = nullptr;
 
                             // Device resources.
                             std::unique_ptr<DX::DeviceResources_11> m_deviceResources;

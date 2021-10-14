@@ -68,8 +68,8 @@ private:
                                             AppState_11                         (const AppState_11&);  // Intentionally undefined. Is private because we do not allow copies of a Singleton.
                             AppState_11&    operator=                           (const AppState_11&);  // Intentionally undefined. Is private because we do not allow copies of a Singleton.
 
-    virtual                 void            CreateDeviceDependentResources      (DX::DeviceResources_11 * p_deviceResources) = 0;
-    virtual                 void            CreateWindowSizeDependentResources  (DX::DeviceResources_11 * p_deviceResources) = 0;
+    virtual                 void            CreateDeviceDependentResources      (DX::DeviceResources_11* p_deviceResources) = 0;
+    virtual                 void            CreateWindowSizeDependentResources  (DX::DeviceResources_11* p_deviceResources) = 0;
     virtual                 void            ResetResources                      () = 0;
 
 	                        bool            m_initialized;
