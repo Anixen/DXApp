@@ -34,6 +34,11 @@ App_12::~App_12()
 	if (this == g_instance) {
 		g_instance = NULL;
 	}
+
+    if (m_deviceResources)
+    {
+        m_deviceResources->WaitForGpu();
+    }
 }
 
 //-----------------------------------------------------------------------------
