@@ -21,7 +21,7 @@ int main(int argc, char** argv)
 
     // Use gamma-correct rendering.
     std::unique_ptr<DX::DeviceResources_11> deviceResources = std::make_unique<DX::DeviceResources_11>(
-        DXGI_FORMAT_B8G8R8A8_UNORM_SRGB // backBufferCount
+        DXGI_FORMAT_B8G8R8A8_UNORM_SRGB // backBufferFormat
     );
 
     App_11* app = new AppSimpleTriangle_11(deviceResources);
