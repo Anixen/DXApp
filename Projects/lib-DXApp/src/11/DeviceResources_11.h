@@ -1,9 +1,9 @@
 /**
  * A wrapper for the Direct3D 11 device and swapchain.
  *
- * @class DeviceRessources
+ * @class DeviceRessources_11
  *
- * @file src/DeviceRessources.h
+ * @file src/DeviceRessources_11.h
  * @author Chuck Walbourn
  * @date 20170809 - Initial Release
  *
@@ -130,7 +130,7 @@ namespace DX
 /*
  * The MIT License(MIT)
  *
- * Copyright(c) 2017 - 2020 Microsoft Corp
+ * Copyright(c) 2017 - 2021 Microsoft Corp
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this
  * software and associated documentation files(the "Software"), to deal in the Software

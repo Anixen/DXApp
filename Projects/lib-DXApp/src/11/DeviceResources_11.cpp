@@ -2,9 +2,9 @@
  * A wrapper for the Direct3D 11 device and swapchain.
  * (requires DirectX 11.1 Runtime)
  *
- * @class DeviceRessources
+ * @class DeviceRessources_11
  *
- * @file src/DeviceRessources.cpp
+ * @file src/DeviceRessources_11.cpp
  */
 
 #include "pch.h"
