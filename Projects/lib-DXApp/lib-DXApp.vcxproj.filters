@@ -11,21 +11,18 @@
     <Filter Include="Source Files\Loggers">
       <UniqueIdentifier>{6d18c787-e871-43e3-a9e0-52828fc71854}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\11">
+      <UniqueIdentifier>{a19fdb9c-6087-4722-b926-01f0e85977f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\12">
+      <UniqueIdentifier>{6c142544-1b99-4476-8c25-4c0876ab9d70}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\LoggerConsole.h">
       <Filter>Source Files\Loggers</Filter>
     </ClInclude>
     <ClInclude Include="src\onullstream.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\App.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\AppState.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\DeviceResources.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Logger.h">
@@ -37,25 +34,34 @@
     <ClInclude Include="src\pch.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\11\App_11.h">
+      <Filter>Source Files\11</Filter>
+    </ClInclude>
+    <ClInclude Include="src\11\AppState_11.h">
+      <Filter>Source Files\11</Filter>
+    </ClInclude>
+    <ClInclude Include="src\11\DeviceResources_11.h">
+      <Filter>Source Files\11</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\AppState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\App.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Logger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\LoggerConsole.cpp">
       <Filter>Source Files\Loggers</Filter>
     </ClCompile>
-    <ClCompile Include="src\DeviceResources.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\pch.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\11\App_11.cpp">
+      <Filter>Source Files\11</Filter>
+    </ClCompile>
+    <ClCompile Include="src\11\AppState_11.cpp">
+      <Filter>Source Files\11</Filter>
+    </ClCompile>
+    <ClCompile Include="src\11\DeviceResources_11.cpp">
+      <Filter>Source Files\11</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

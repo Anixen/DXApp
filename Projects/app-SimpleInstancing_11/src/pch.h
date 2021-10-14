@@ -9,17 +9,13 @@
  * @date 20170809 - Initial Release
  *
  * @author Olivier Falconnet
- * @date 20211003 - Included to lib-DXApp project
+ * @date 20211005 - Included to app-SimpleInstancing project
  * @date 20211008 - Reworked dependencies
  */
 
-#ifndef PCH_DX_APP
-#define PCH_DX_APP
+#ifndef PCH_SIMPLE_INSTANCING
+#define PCH_SIMPLE_INSTANCING
 
-
-#include <WinSDKVer.h>
-#define _WIN32_WINNT 0x0601
-#include <SDKDDKVer.h>
 
 // Use the C++ standard templated min/max
 #define NOMINMAX
@@ -29,41 +25,21 @@
 #define NOGDI
 #define NOBITMAP
 
-// Include <mcx.h> if you need this
-#define NOMCX
-
-// Include <winsvc.h> if you need this
-#define NOSERVICE
-
-// WinHelp is deprecated
-#define NOHELP
-
-#define WIN32_LEAN_AND_MEAN
-#include <windows.h>
-
 #include <wrl/client.h>
 
 #include <d3d11_1.h>
 
-#if defined(NTDDI_WIN10_RS2)
-#include <dxgi1_6.h>
-#else
-#include <dxgi1_5.h>
-#endif
-
 #include <filesystem>
-#include <sstream>
-#include <iostream>
-
-#ifdef _DEBUG
-#include <dxgidebug.h>
-#endif
+#include <random>
 
 #include "GamePad.h"
 #include "Keyboard.h"
 #include "Mouse.h"
+#include "SimpleMath.h"
+#include "SpriteBatch.h"
+#include "SpriteFont.h"
 
-#include "StepTimer.h"
+#include "../../lib-DXApp/src/StepTimer.h"
 
 namespace DX
 {
@@ -95,7 +71,7 @@ namespace DX
 }
 
 
-#endif // !PCH_DX_APP
+#endif // !PCH_SIMPLE_INSTANCING
 
 /*
  * The MIT License(MIT)
