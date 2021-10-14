@@ -298,7 +298,7 @@ void AppStateSimpleCompute_11::CreateDeviceDependentResources(DX::DeviceResource
     auto device     = p_deviceResources->GetD3DDevice();
     auto context    = p_deviceResources->GetD3DDeviceContext();
 
-    auto blob = DX::ReadData(L"SimpleCompute_FractalCS.cso");
+    auto blob = DX::ReadData(L"SimpleCompute_11_FractalCS.cso");
     DX::ThrowIfFailed(
         device->CreateComputeShader(blob.data(), blob.size(), nullptr, m_csFractal.ReleaseAndGetAddressOf()));
 

@@ -431,37 +431,37 @@ void AppStateSimpleBezier_11::CreateShaders(DX::DeviceResources_11* p_deviceReso
     auto device = p_deviceResources->GetD3DDevice();
 
     // Load and create shaders.
-    auto vertexShaderBlob = DX::ReadData(L"SimpleBezier_BezierVS.cso");
+    auto vertexShaderBlob = DX::ReadData(L"SimpleBezier_11_BezierVS.cso");
     DX::ThrowIfFailed(
         device->CreateVertexShader(vertexShaderBlob.data(), vertexShaderBlob.size(),
             nullptr, m_vertexShader.ReleaseAndGetAddressOf()));
 
-    auto hullShaderIntegerBlob = DX::ReadData(L"SimpleBezier_BezierHS_int.cso");
+    auto hullShaderIntegerBlob = DX::ReadData(L"SimpleBezier_11_BezierHS_int.cso");
     DX::ThrowIfFailed(
         device->CreateHullShader(hullShaderIntegerBlob.data(), hullShaderIntegerBlob.size(),
             nullptr, m_hullShaderInteger.ReleaseAndGetAddressOf()));
 
-    auto hullShaderFracEvenBlob = DX::ReadData(L"SimpleBezier_BezierHS_fracEven.cso");
+    auto hullShaderFracEvenBlob = DX::ReadData(L"SimpleBezier_11_BezierHS_fracEven.cso");
     DX::ThrowIfFailed(
         device->CreateHullShader(hullShaderFracEvenBlob.data(), hullShaderFracEvenBlob.size(),
             nullptr, m_hullShaderFracEven.ReleaseAndGetAddressOf()));
 
-    auto hullShaderFracOddBlob = DX::ReadData(L"SimpleBezier_BezierHS_fracOdd.cso");
+    auto hullShaderFracOddBlob = DX::ReadData(L"SimpleBezier_11_BezierHS_fracOdd.cso");
     DX::ThrowIfFailed(
         device->CreateHullShader(hullShaderFracOddBlob.data(), hullShaderFracOddBlob.size(),
             nullptr, m_hullShaderFracOdd.ReleaseAndGetAddressOf()));
 
-    auto domainShaderBlob = DX::ReadData(L"SimpleBezier_BezierDS.cso");
+    auto domainShaderBlob = DX::ReadData(L"SimpleBezier_11_BezierDS.cso");
     DX::ThrowIfFailed(
         device->CreateDomainShader(domainShaderBlob.data(), domainShaderBlob.size(),
             nullptr, m_domainShader.ReleaseAndGetAddressOf()));
 
-    auto pixelShaderBlob = DX::ReadData(L"SimpleBezier_BezierPS.cso");
+    auto pixelShaderBlob = DX::ReadData(L"SimpleBezier_11_BezierPS.cso");
     DX::ThrowIfFailed(
         device->CreatePixelShader(pixelShaderBlob.data(), pixelShaderBlob.size(),
             nullptr, m_pixelShader.ReleaseAndGetAddressOf()));
 
-    auto solidColorPSBlob = DX::ReadData(L"SimpleBezier_SolidColorPS.cso");
+    auto solidColorPSBlob = DX::ReadData(L"SimpleBezier_11_SolidColorPS.cso");
     DX::ThrowIfFailed(
         device->CreatePixelShader(solidColorPSBlob.data(), solidColorPSBlob.size(),
             nullptr, m_solidColorPS.ReleaseAndGetAddressOf()));

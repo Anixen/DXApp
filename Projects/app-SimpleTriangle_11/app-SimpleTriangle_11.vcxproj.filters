@@ -48,10 +48,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="src\Shaders\SimpleTriangle_PixelShader.hlsl">
+    <FxCompile Include="src\Shaders\SimpleTriangle_11_PixelShader.hlsl">
       <Filter>Source Files\Shaders</Filter>
     </FxCompile>
-    <FxCompile Include="src\Shaders\SimpleTriangle_VertexShader.hlsl">
+    <FxCompile Include="src\Shaders\SimpleTriangle_11_VertexShader.hlsl">
       <Filter>Source Files\Shaders</Filter>
     </FxCompile>
   </ItemGroup>

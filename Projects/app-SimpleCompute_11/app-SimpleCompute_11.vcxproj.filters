@@ -60,7 +60,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="src\Shaders\SimpleCompute_FractalCS.hlsl">
+    <FxCompile Include="src\Shaders\SimpleCompute_11_FractalCS.hlsl">
       <Filter>Source Files\Shaders</Filter>
     </FxCompile>
   </ItemGroup>

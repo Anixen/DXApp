@@ -38,22 +38,22 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\Shaders\SimpleLighting.hlsli" />
+    <None Include="src\Shaders\SimpleLighting_11.hlsli" />
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="src\Shaders\SimpleLighting_LambertPS.hlsl">
+    <FxCompile Include="src\Shaders\SimpleLighting_11_LambertPS.hlsl">
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">LambertPS</EntryPointName>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">LambertPS</EntryPointName>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
     </FxCompile>
-    <FxCompile Include="src\Shaders\SimpleLighting_SolidColorPS.hlsl">
+    <FxCompile Include="src\Shaders\SimpleLighting_11_SolidColorPS.hlsl">
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">SolidColorPS</EntryPointName>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">SolidColorPS</EntryPointName>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
     </FxCompile>
-    <FxCompile Include="src\Shaders\SimpleLighting_TriangleVS.hlsl">
+    <FxCompile Include="src\Shaders\SimpleLighting_11_TriangleVS.hlsl">
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">TriangleVS</EntryPointName>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">TriangleVS</EntryPointName>

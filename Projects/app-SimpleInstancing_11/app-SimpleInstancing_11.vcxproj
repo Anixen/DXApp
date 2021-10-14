@@ -32,7 +32,7 @@
     <ClInclude Include="src\AppSimpleInstancing_11.h" />
     <ClInclude Include="src\AppStateSimpleInstancing_11.h" />
     <ClInclude Include="src\pch.h" />
-    <ClInclude Include="src\Shaders\SimpleInstancing_Shared.h" />
+    <ClInclude Include="src\Shaders\SimpleInstancing_11_Shared.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\lib-DXApp\lib-DXApp.vcxproj">
@@ -40,10 +40,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\Shaders\SimpleInstancing.hlsli" />
+    <None Include="src\Shaders\SimpleInstancing_11.hlsli" />
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="src\Shaders\SimpleInstancing_PixelShader.hlsl">
+    <FxCompile Include="src\Shaders\SimpleInstancing_11_PixelShader.hlsl">
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">PSMain</EntryPointName>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">PSMain</EntryPointName>
@@ -51,7 +51,7 @@
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">4.0</ShaderModel>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">4.0</ShaderModel>
     </FxCompile>
-    <FxCompile Include="src\Shaders\SimpleInstancing_VertexShader.hlsl">
+    <FxCompile Include="src\Shaders\SimpleInstancing_11_VertexShader.hlsl">
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">VSMain</EntryPointName>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">VSMain</EntryPointName>

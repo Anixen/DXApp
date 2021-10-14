@@ -413,7 +413,7 @@ void AppStateSimpleInstancing_11::CreateDeviceDependentResources(DX::DeviceResou
 
     // Load and create shaders.
     {
-        auto shaderBytecode = DX::ReadData(L"SimpleInstancing_VertexShader.cso");
+        auto shaderBytecode = DX::ReadData(L"SimpleInstancing_11_VertexShader.cso");
 
         DX::ThrowIfFailed(
             device->CreateVertexShader(shaderBytecode.data(), shaderBytecode.size(), nullptr, m_vertexShader.ReleaseAndGetAddressOf())
@@ -425,7 +425,7 @@ void AppStateSimpleInstancing_11::CreateDeviceDependentResources(DX::DeviceResou
     }
 
     {
-        auto shaderBytecode = DX::ReadData(L"SimpleInstancing_PixelShader.cso");
+        auto shaderBytecode = DX::ReadData(L"SimpleInstancing_11_PixelShader.cso");
 
         DX::ThrowIfFailed(
             device->CreatePixelShader(shaderBytecode.data(), shaderBytecode.size(), nullptr, m_pixelShader.ReleaseAndGetAddressOf())

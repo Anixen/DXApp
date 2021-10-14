@@ -51,10 +51,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="src\Shaders\SimpleTexture_PixelShader.hlsl">
+    <FxCompile Include="src\Shaders\SimpleTexture_11_PixelShader.hlsl">
       <Filter>Source Files\Shaders</Filter>
     </FxCompile>
-    <FxCompile Include="src\Shaders\SimpleTexture_VertexShader.hlsl">
+    <FxCompile Include="src\Shaders\SimpleTexture_11_VertexShader.hlsl">
       <Filter>Source Files\Shaders</Filter>
     </FxCompile>
   </ItemGroup>

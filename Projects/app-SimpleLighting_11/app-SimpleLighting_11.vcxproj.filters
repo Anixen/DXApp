@@ -51,19 +51,19 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\Shaders\SimpleLighting.hlsli">
+    <FxCompile Include="src\Shaders\SimpleLighting_11_LambertPS.hlsl">
       <Filter>Source Files\Shaders</Filter>
-    </None>
+    </FxCompile>
+    <FxCompile Include="src\Shaders\SimpleLighting_11_SolidColorPS.hlsl">
+      <Filter>Source Files\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="src\Shaders\SimpleLighting_11_TriangleVS.hlsl">
+      <Filter>Source Files\Shaders</Filter>
+    </FxCompile>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="src\Shaders\SimpleLighting_LambertPS.hlsl">
+    <None Include="src\Shaders\SimpleLighting_11.hlsli">
       <Filter>Source Files\Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="src\Shaders\SimpleLighting_SolidColorPS.hlsl">
-      <Filter>Source Files\Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="src\Shaders\SimpleLighting_TriangleVS.hlsl">
-      <Filter>Source Files\Shaders</Filter>
-    </FxCompile>
+    </None>
   </ItemGroup>
 </Project>

@@ -46,27 +46,27 @@
     <ClInclude Include="..\..\External\ATGTK\ReadData.h">
       <Filter>Source Files\ATG Tool Kit</Filter>
     </ClInclude>
-    <ClInclude Include="src\Shaders\SimpleInstancing_Shared.h">
-      <Filter>Source Files\Shaders</Filter>
-    </ClInclude>
     <ClInclude Include="src\AppStateSimpleInstancing_11.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="src\AppSimpleInstancing_11.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Shaders\SimpleInstancing_11_Shared.h">
+      <Filter>Source Files\Shaders</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\Shaders\SimpleInstancing.hlsli">
+    <FxCompile Include="src\Shaders\SimpleInstancing_11_PixelShader.hlsl">
+      <Filter>Source Files\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="src\Shaders\SimpleInstancing_11_VertexShader.hlsl">
+      <Filter>Source Files\Shaders</Filter>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Shaders\SimpleInstancing_11.hlsli">
       <Filter>Source Files\Shaders</Filter>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <FxCompile Include="src\Shaders\SimpleInstancing_PixelShader.hlsl">
-      <Filter>Source Files\Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="src\Shaders\SimpleInstancing_VertexShader.hlsl">
-      <Filter>Source Files\Shaders</Filter>
-    </FxCompile>
   </ItemGroup>
 </Project>

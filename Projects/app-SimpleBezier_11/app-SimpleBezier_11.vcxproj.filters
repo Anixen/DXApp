@@ -60,31 +60,31 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\Shaders\SimpleBezier.hlsli">
+    <FxCompile Include="src\Shaders\SimpleBezier_11_BezierDS.hlsl">
       <Filter>Source Files\Shaders</Filter>
-    </None>
+    </FxCompile>
+    <FxCompile Include="src\Shaders\SimpleBezier_11_BezierHS_fracEven.hlsl">
+      <Filter>Source Files\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="src\Shaders\SimpleBezier_11_BezierHS_fracOdd.hlsl">
+      <Filter>Source Files\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="src\Shaders\SimpleBezier_11_BezierHS_int.hlsl">
+      <Filter>Source Files\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="src\Shaders\SimpleBezier_11_BezierPS.hlsl">
+      <Filter>Source Files\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="src\Shaders\SimpleBezier_11_BezierVS.hlsl">
+      <Filter>Source Files\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="src\Shaders\SimpleBezier_11_SolidColorPS.hlsl">
+      <Filter>Source Files\Shaders</Filter>
+    </FxCompile>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="src\Shaders\SimpleBezier_BezierDS.hlsl">
+    <None Include="src\Shaders\SimpleBezier_11.hlsli">
       <Filter>Source Files\Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="src\Shaders\SimpleBezier_BezierHS_fracEven.hlsl">
-      <Filter>Source Files\Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="src\Shaders\SimpleBezier_BezierHS_fracOdd.hlsl">
-      <Filter>Source Files\Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="src\Shaders\SimpleBezier_BezierHS_int.hlsl">
-      <Filter>Source Files\Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="src\Shaders\SimpleBezier_BezierPS.hlsl">
-      <Filter>Source Files\Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="src\Shaders\SimpleBezier_BezierVS.hlsl">
-      <Filter>Source Files\Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="src\Shaders\SimpleBezier_SolidColorPS.hlsl">
-      <Filter>Source Files\Shaders</Filter>
-    </FxCompile>
+    </None>
   </ItemGroup>
 </Project>

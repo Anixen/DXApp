@@ -184,10 +184,10 @@
     <ClInclude Include="src\pch.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\Shaders\SimpleBezier.hlsli" />
+    <None Include="src\Shaders\SimpleBezier_11.hlsli" />
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="src\Shaders\SimpleBezier_BezierDS.hlsl">
+    <FxCompile Include="src\Shaders\SimpleBezier_11_BezierDS.hlsl">
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">BezierDS</EntryPointName>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Domain</ShaderType>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
@@ -197,7 +197,7 @@
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">BEZIER_HS_PARTITION=\"integer\"</PreprocessorDefinitions>
     </FxCompile>
-    <FxCompile Include="src\Shaders\SimpleBezier_BezierHS_fracEven.hlsl">
+    <FxCompile Include="src\Shaders\SimpleBezier_11_BezierHS_fracEven.hlsl">
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">BezierHS</EntryPointName>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">BEZIER_HS_PARTITION=\"fractional_even\"</PreprocessorDefinitions>
@@ -207,7 +207,7 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Hull</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Hull</ShaderType>
     </FxCompile>
-    <FxCompile Include="src\Shaders\SimpleBezier_BezierHS_fracOdd.hlsl">
+    <FxCompile Include="src\Shaders\SimpleBezier_11_BezierHS_fracOdd.hlsl">
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">BezierHS</EntryPointName>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">BEZIER_HS_PARTITION=\"fractional_odd\"</PreprocessorDefinitions>
@@ -217,7 +217,7 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Hull</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Hull</ShaderType>
     </FxCompile>
-    <FxCompile Include="src\Shaders\SimpleBezier_BezierHS_int.hlsl">
+    <FxCompile Include="src\Shaders\SimpleBezier_11_BezierHS_int.hlsl">
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">BezierHS</EntryPointName>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">BEZIER_HS_PARTITION=\"integer\"</PreprocessorDefinitions>
@@ -227,7 +227,7 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Hull</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Hull</ShaderType>
     </FxCompile>
-    <FxCompile Include="src\Shaders\SimpleBezier_BezierPS.hlsl">
+    <FxCompile Include="src\Shaders\SimpleBezier_11_BezierPS.hlsl">
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">BezierPS</EntryPointName>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
@@ -237,7 +237,7 @@
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">BEZIER_HS_PARTITION=\"integer\"</PreprocessorDefinitions>
     </FxCompile>
-    <FxCompile Include="src\Shaders\SimpleBezier_BezierVS.hlsl">
+    <FxCompile Include="src\Shaders\SimpleBezier_11_BezierVS.hlsl">
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">BezierVS</EntryPointName>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">BEZIER_HS_PARTITION=\"integer\"</PreprocessorDefinitions>
@@ -247,7 +247,7 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
     </FxCompile>
-    <FxCompile Include="src\Shaders\SimpleBezier_SolidColorPS.hlsl">
+    <FxCompile Include="src\Shaders\SimpleBezier_11_SolidColorPS.hlsl">
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">SolidColorPS</EntryPointName>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">BEZIER_HS_PARTITION=\"integer\"</PreprocessorDefinitions>
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">SolidColorPS</EntryPointName>

@@ -7,7 +7,7 @@
 // Copyright (C) Microsoft Corporation. All rights reserved.
 //--------------------------------------------------------------------------------------
 
-#include "SimpleInstancing_Shared.h"
+#include "SimpleInstancing_11_Shared.h"
 
 //--------------------------------------------------------------------------------------
 // Name: InstancingConstants

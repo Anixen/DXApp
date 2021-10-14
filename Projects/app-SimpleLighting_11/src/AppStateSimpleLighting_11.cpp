@@ -275,7 +275,7 @@ void AppStateSimpleLighting_11::CreateDeviceDependentResources(DX::DeviceResourc
 
     // Load and create shaders
     {
-        auto blob = DX::ReadData(L"SimpleLighting_TriangleVS.cso");
+        auto blob = DX::ReadData(L"SimpleLighting_11_TriangleVS.cso");
 
         DX::ThrowIfFailed(
             device->CreateVertexShader(blob.data(), blob.size(),
@@ -295,7 +295,7 @@ void AppStateSimpleLighting_11::CreateDeviceDependentResources(DX::DeviceResourc
     }
 
     {
-        auto blob = DX::ReadData(L"SimpleLighting_LambertPS.cso");
+        auto blob = DX::ReadData(L"SimpleLighting_11_LambertPS.cso");
 
         DX::ThrowIfFailed(
             device->CreatePixelShader(blob.data(), blob.size(),
@@ -303,7 +303,7 @@ void AppStateSimpleLighting_11::CreateDeviceDependentResources(DX::DeviceResourc
     }
 
     {
-        auto blob = DX::ReadData(L"SimpleLighting_SolidColorPS.cso");
+        auto blob = DX::ReadData(L"SimpleLighting_11_SolidColorPS.cso");
 
         DX::ThrowIfFailed(
             device->CreatePixelShader(blob.data(), blob.size(),
