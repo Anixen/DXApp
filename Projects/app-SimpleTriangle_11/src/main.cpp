@@ -8,7 +8,7 @@
 
 #include "pch.h"
 
-#include "../../lib-DXApp/src/LoggerConsole.h"
+#include "LoggerConsole.h"
 #include "AppSimpleTriangle_11.h"
 
 

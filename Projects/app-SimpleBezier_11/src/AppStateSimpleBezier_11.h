@@ -14,7 +14,7 @@
 #define NXN_APP_STATE_SIMPLE_BEZIER
 
 
-#include "../../lib-DXApp/src/11/AppState_11.h"
+#include "AppState_11.h"
 #include "ControllerHelp.h"
 
 namespace nxn {

@@ -2,7 +2,7 @@
 #include "AppSimpleTexture_11.h"
 
 #include "AppStateSimpleTexture_11.h"
-#include "../../lib-DXApp/src/Logger.h"
+#include "Logger.h"
 
 
 namespace nxn {

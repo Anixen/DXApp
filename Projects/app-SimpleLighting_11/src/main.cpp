@@ -6,7 +6,7 @@
 
 #include "pch.h"
 
-#include "../../lib-DXApp/src/LoggerConsole.h"
+#include "LoggerConsole.h"
 #include "AppSimpleLighting_11.h"
 
 

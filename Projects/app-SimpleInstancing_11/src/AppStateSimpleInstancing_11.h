@@ -14,7 +14,7 @@
 #define NXN_APP_STATE_SIMPLE_INSTANCING
 
 
-#include "../../lib-DXApp/src/11/AppState_11.h"
+#include "AppState_11.h"
 #include "Shaders/SimpleInstancing_11_Shared.h"
 
 namespace nxn {

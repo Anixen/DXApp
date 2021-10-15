@@ -14,7 +14,7 @@
 #define NXN_APP_STATE_SIMPLE_TEXTURE
 
 
-#include "../../lib-DXApp/src/11/AppState_11.h"
+#include "AppState_11.h"
 
 namespace nxn {
 

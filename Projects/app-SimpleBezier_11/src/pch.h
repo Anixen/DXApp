@@ -38,7 +38,7 @@
 #include "SpriteBatch.h"
 #include "SpriteFont.h"
 
-#include "../../lib-DXApp/src/StepTimer.h"
+#include "StepTimer.h"
 
 namespace DX
 {

@@ -2,7 +2,7 @@
 #include "AppSimpleBezier_11.h"
 
 #include "AppStateSimpleBezier_11.h"
-#include "../../lib-DXApp/src/Logger.h"
+#include "Logger.h"
 
 
 namespace nxn {

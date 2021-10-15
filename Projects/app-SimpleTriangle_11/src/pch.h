@@ -35,7 +35,7 @@
 #include "Keyboard.h"
 #include "Mouse.h"
 
-#include "../../lib-DXApp/src/StepTimer.h"
+#include "StepTimer.h"
 
 namespace DX
 {

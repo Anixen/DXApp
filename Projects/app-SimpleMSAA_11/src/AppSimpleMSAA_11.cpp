@@ -2,7 +2,7 @@
 #include "AppSimpleMSAA_11.h"
 
 #include "AppStateSimpleMSAA_11.h"
-#include "../../lib-DXApp/src/Logger.h"
+#include "Logger.h"
 
 
 namespace nxn {

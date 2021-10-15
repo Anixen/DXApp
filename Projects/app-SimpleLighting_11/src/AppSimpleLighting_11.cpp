@@ -2,7 +2,7 @@
 #include "AppSimpleLighting_11.h"
 
 #include "AppStateSimpleLighting_11.h"
-#include "../../lib-DXApp/src/Logger.h"
+#include "Logger.h"
 
 
 namespace nxn {

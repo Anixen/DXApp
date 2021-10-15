@@ -14,7 +14,7 @@
 #define NXN_APP_SIMPLE_LIGHTING
 
 
-#include "../../lib-DXApp/src/11/App_11.h"
+#include "App_11.h"
 
 namespace nxn {
 
