@@ -180,7 +180,7 @@ void AppStateSimpleTriangle_12::HandleCleanup()
 void AppStateSimpleTriangle_12::CreateDeviceDependentResources(DX::DeviceResources_12* p_deviceResources)
 {
     GetLogStream(SeverityInfo)
-        << "AppStateSimpleTriangle_11::CreateDeviceDependentResources()" << std::endl;
+        << "AppStateSimpleTriangle_12::CreateDeviceDependentResources()" << std::endl;
 
     auto device = p_deviceResources->GetD3DDevice();
 
