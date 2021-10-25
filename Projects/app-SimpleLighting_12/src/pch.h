@@ -53,7 +53,6 @@
 #include "GamePad.h"
 #include "Keyboard.h"
 #include "Mouse.h"
-#include "GraphicsMemory.h"
 
 #include "StepTimer.h"
 
