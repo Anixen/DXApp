@@ -236,7 +236,6 @@ void AppStateSimpleLighting_12::Draw(DX::DeviceResources_12* p_deviceResources)
     p_deviceResources->GetCommandQueue()->Signal(m_fence.Get(), frameIdx);
 
     PIXEndEvent(p_deviceResources->GetCommandQueue());
-
 }
 
 //-----------------------------------------------------------------------------

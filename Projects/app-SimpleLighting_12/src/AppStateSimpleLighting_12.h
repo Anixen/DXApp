@@ -7,7 +7,7 @@
  *
  * @file src/AppStateSimpleLighting_12.h
  * @author Olivier Falconnet
- * @date 20211023 - File creation
+ * @date 20211025 - File creation
  */
 
 #ifndef NXN_APP_STATE_SIMPLE_LIGHTING_12
