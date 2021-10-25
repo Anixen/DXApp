@@ -33,7 +33,6 @@ int main(int argc, char** argv)
     );
 
     std::unique_ptr<App_12> app = std::make_unique<AppSimpleTriangle_12>(deviceResources);
-    //App_12* app = new AppSimpleTriangle_12(deviceResources);
 
 	//app->processArguments(hInstance, hPrevInstance, pCmdLine, nCmdShow);
 	app->ProcessArguments(argc, argv);
@@ -44,7 +43,6 @@ int main(int argc, char** argv)
 	int exitCode = app->Run();
 
     app.reset();
-	//delete app;
 
     CoUninitialize();
 
