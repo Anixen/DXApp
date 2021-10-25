@@ -22,13 +22,13 @@ namespace nxn {
     class AppSimpleTriangle_11 : public App_11 {
 
     public:
-        AppSimpleTriangle_11            (std::unique_ptr<DX::DeviceResources_11> & p_deviceResources);
-        ~AppSimpleTriangle_11           ();
+                        AppSimpleTriangle_11    (std::unique_ptr<DX::DeviceResources_11> & p_deviceResources);
+                        ~AppSimpleTriangle_11   ();
 
     protected:
-        virtual void    PreInit         (); // Performs custom steps (e.g. allocating memory) before entering the main loop
-        virtual void    PostInit        (); // Performs custom steps (e.g. allocating memory) before entering the main loop
-        virtual void    HandleCleanUp   (); // Performs custom steps (e.g. freeing memory) after exiting the main loop
+        virtual void    PreInit                 (); // Performs custom steps (e.g. allocating memory) before entering the main loop
+        virtual void    PostInit                (); // Performs custom steps (e.g. allocating memory) before entering the main loop
+        virtual void    HandleCleanUp           (); // Performs custom steps (e.g. freeing memory) after exiting the main loop
 
     }; // class AppSimpleTriangle_11
 

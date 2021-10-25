@@ -22,13 +22,13 @@ namespace nxn {
     class AppSimpleTexture_12 : public App_12 {
 
     public:
-        AppSimpleTexture_12             (std::unique_ptr<DX::DeviceResources_12> & p_deviceResources);
-        ~AppSimpleTexture_12            ();
+                        AppSimpleTexture_12     (std::unique_ptr<DX::DeviceResources_12> & p_deviceResources);
+                        ~AppSimpleTexture_12    ();
 
     protected:
-        virtual void    PreInit         (); // Performs custom steps (e.g. allocating memory) before entering the main loop
-        virtual void    PostInit        (); // Performs custom steps (e.g. allocating memory) before entering the main loop
-        virtual void    HandleCleanUp   (); // Performs custom steps (e.g. freeing memory) after exiting the main loop
+        virtual void    PreInit                 (); // Performs custom steps (e.g. allocating memory) before entering the main loop
+        virtual void    PostInit                (); // Performs custom steps (e.g. allocating memory) before entering the main loop
+        virtual void    HandleCleanUp           (); // Performs custom steps (e.g. freeing memory) after exiting the main loop
 
     }; // class AppSimpleTexture_12
 

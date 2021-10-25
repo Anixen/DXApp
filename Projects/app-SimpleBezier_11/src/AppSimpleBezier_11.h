@@ -22,13 +22,13 @@ namespace nxn {
     class AppSimpleBezier_11 : public App_11 {
 
     public:
-        AppSimpleBezier_11              (std::unique_ptr<DX::DeviceResources_11> & p_deviceResources);
-        ~AppSimpleBezier_11             ();
+                        AppSimpleBezier_11  (std::unique_ptr<DX::DeviceResources_11> & p_deviceResources);
+                        ~AppSimpleBezier_11 ();
 
     protected:
-        virtual void    PreInit         (); // Performs custom steps (e.g. allocating memory) before entering the main loop
-        virtual void    PostInit        (); // Performs custom steps (e.g. allocating memory) before entering the main loop
-        virtual void    HandleCleanUp   (); // Performs custom steps (e.g. freeing memory) after exiting the main loop
+        virtual void    PreInit             (); // Performs custom steps (e.g. allocating memory) before entering the main loop
+        virtual void    PostInit            (); // Performs custom steps (e.g. allocating memory) before entering the main loop
+        virtual void    HandleCleanUp       (); // Performs custom steps (e.g. freeing memory) after exiting the main loop
 
     }; // class AppSimpleBezier_11
 

@@ -22,13 +22,13 @@ namespace nxn {
     class AppSimpleLighting_11 : public App_11 {
 
     public:
-        AppSimpleLighting_11            (std::unique_ptr<DX::DeviceResources_11> & p_deviceResources);
-        ~AppSimpleLighting_11           ();
+                        AppSimpleLighting_11    (std::unique_ptr<DX::DeviceResources_11> & p_deviceResources);
+                        ~AppSimpleLighting_11   ();
 
     protected:
-        virtual void    PreInit         (); // Performs custom steps (e.g. allocating memory) before entering the main loop
-        virtual void    PostInit        (); // Performs custom steps (e.g. allocating memory) before entering the main loop
-        virtual void    HandleCleanUp   (); // Performs custom steps (e.g. freeing memory) after exiting the main loop
+        virtual void    PreInit                 (); // Performs custom steps (e.g. allocating memory) before entering the main loop
+        virtual void    PostInit                (); // Performs custom steps (e.g. allocating memory) before entering the main loop
+        virtual void    HandleCleanUp           (); // Performs custom steps (e.g. freeing memory) after exiting the main loop
 
     }; // class AppSimpleLighting_11
 
