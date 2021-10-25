@@ -51,7 +51,7 @@ private:
     virtual void                                            CreateWindowSizeDependentResources  (DX::DeviceResources_12* p_deviceResources);
     virtual void                                            ResetResources                      ();
 
-    // SimpleTriangle_12 objects
+    // SimpleTexture_12 objects
     // DirectXTK objects.
             std::unique_ptr<DirectX::GraphicsMemory>        m_graphicsMemory;
 
