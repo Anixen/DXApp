@@ -32,6 +32,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app-SimpleTexture_12", "Pro
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app-SimpleLighting_12", "Projects\app-SimpleLighting_12\app-SimpleLighting_12.vcxproj", "{E56358E1-4019-48D1-B0F8-674589BEA090}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app-SimpleBezier_12", "Projects\app-SimpleBezier_12\app-SimpleBezier_12.vcxproj", "{796A7316-8C68-4CDD-95FE-BEECC74A2175}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM64 = Debug|ARM64
@@ -194,6 +196,16 @@ Global
 		{E56358E1-4019-48D1-B0F8-674589BEA090}.Release|x64.Build.0 = Release|x64
 		{E56358E1-4019-48D1-B0F8-674589BEA090}.Release|x86.ActiveCfg = Release|Win32
 		{E56358E1-4019-48D1-B0F8-674589BEA090}.Release|x86.Build.0 = Release|Win32
+		{796A7316-8C68-4CDD-95FE-BEECC74A2175}.Debug|ARM64.ActiveCfg = Debug|Win32
+		{796A7316-8C68-4CDD-95FE-BEECC74A2175}.Debug|x64.ActiveCfg = Debug|x64
+		{796A7316-8C68-4CDD-95FE-BEECC74A2175}.Debug|x64.Build.0 = Debug|x64
+		{796A7316-8C68-4CDD-95FE-BEECC74A2175}.Debug|x86.ActiveCfg = Debug|Win32
+		{796A7316-8C68-4CDD-95FE-BEECC74A2175}.Debug|x86.Build.0 = Debug|Win32
+		{796A7316-8C68-4CDD-95FE-BEECC74A2175}.Release|ARM64.ActiveCfg = Release|Win32
+		{796A7316-8C68-4CDD-95FE-BEECC74A2175}.Release|x64.ActiveCfg = Release|x64
+		{796A7316-8C68-4CDD-95FE-BEECC74A2175}.Release|x64.Build.0 = Release|x64
+		{796A7316-8C68-4CDD-95FE-BEECC74A2175}.Release|x86.ActiveCfg = Release|Win32
+		{796A7316-8C68-4CDD-95FE-BEECC74A2175}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
