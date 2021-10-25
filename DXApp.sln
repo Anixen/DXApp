@@ -30,6 +30,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app-SimpleTriangle_12", "Pr
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app-SimpleTexture_12", "Projects\app-SimpleTexture_12\app-SimpleTexture_12.vcxproj", "{C7F17BB2-07F3-48DB-89C2-0C720A583991}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app-SimpleLighting_12", "Projects\app-SimpleLighting_12\app-SimpleLighting_12.vcxproj", "{E56358E1-4019-48D1-B0F8-674589BEA090}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM64 = Debug|ARM64
@@ -182,6 +184,16 @@ Global
 		{C7F17BB2-07F3-48DB-89C2-0C720A583991}.Release|x64.Build.0 = Release|x64
 		{C7F17BB2-07F3-48DB-89C2-0C720A583991}.Release|x86.ActiveCfg = Release|Win32
 		{C7F17BB2-07F3-48DB-89C2-0C720A583991}.Release|x86.Build.0 = Release|Win32
+		{E56358E1-4019-48D1-B0F8-674589BEA090}.Debug|ARM64.ActiveCfg = Debug|Win32
+		{E56358E1-4019-48D1-B0F8-674589BEA090}.Debug|x64.ActiveCfg = Debug|x64
+		{E56358E1-4019-48D1-B0F8-674589BEA090}.Debug|x64.Build.0 = Debug|x64
+		{E56358E1-4019-48D1-B0F8-674589BEA090}.Debug|x86.ActiveCfg = Debug|Win32
+		{E56358E1-4019-48D1-B0F8-674589BEA090}.Debug|x86.Build.0 = Debug|Win32
+		{E56358E1-4019-48D1-B0F8-674589BEA090}.Release|ARM64.ActiveCfg = Release|Win32
+		{E56358E1-4019-48D1-B0F8-674589BEA090}.Release|x64.ActiveCfg = Release|x64
+		{E56358E1-4019-48D1-B0F8-674589BEA090}.Release|x64.Build.0 = Release|x64
+		{E56358E1-4019-48D1-B0F8-674589BEA090}.Release|x86.ActiveCfg = Release|Win32
+		{E56358E1-4019-48D1-B0F8-674589BEA090}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
