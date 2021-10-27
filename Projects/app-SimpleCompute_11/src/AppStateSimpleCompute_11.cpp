@@ -36,6 +36,7 @@ namespace nxn {
  */
 AppStateSimpleCompute_11::AppStateSimpleCompute_11(App_11 *p_app)
     : AppState_11(p_app)
+    , m_showHelp(false)
 {
 	GetLogStream(SeverityInfo)
 		<< "AppStateSimpleCompute_11::ctor()" << std::endl;
@@ -406,7 +407,10 @@ void AppStateSimpleCompute_11::ResetWindow()
 }
 
 //-----------------------------------------------------------------------------
-
+//-----------------------------------------------------------------------------
+// Name: UpdateFractalData
+// Desc: Updates the dynamic constant buffer with fractal data
+//-----------------------------------------------------------------------------
 void AppStateSimpleCompute_11::UpdateFractalData(DX::DeviceResources_11* p_deviceResources)
 {
     D3D11_TEXTURE2D_DESC texDesc = {};

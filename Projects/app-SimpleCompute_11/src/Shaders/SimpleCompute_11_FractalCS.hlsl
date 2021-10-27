@@ -1,5 +1,5 @@
 //--------------------------------------------------------------------------------------
-// File: SimpleCompute_FractalCS.hlsl
+// File: SimpleCompute_11_FractalCS.hlsl
 //
 // This is a compute shader that draws a Mandelbrot fractal.
 //

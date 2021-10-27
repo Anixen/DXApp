@@ -17,15 +17,17 @@
 #include "AppState_11.h"
 #include "ControllerHelp.h"
 
+namespace nxn {
+
 class SmoothedFPS {
 
 public:
-    SmoothedFPS(uint32_t frameInterval = 100)
+                SmoothedFPS(uint32_t frameInterval = 100)
     {
         Initialize(frameInterval);
     }
 
-    void Initialize(uint32_t frameInterval = 100)
+    void        Initialize(uint32_t frameInterval = 100)
     {
         m_frameInterval = frameInterval;
         m_timeAccumulator = 0.0f;
@@ -33,7 +35,7 @@ public:
         m_smoothedFPS = 0.0f;
     }
 
-    void Tick(float DeltaTime)
+    void        Tick(float DeltaTime)
     {
         m_timeAccumulator += DeltaTime;
         ++m_frameAccumulator;
@@ -46,7 +48,7 @@ public:
         }
     }
 
-    float GetFPS() const { return m_smoothedFPS; }
+    float       GetFPS() const { return m_smoothedFPS; }
 
 private:
     float       m_smoothedFPS;
@@ -56,8 +58,6 @@ private:
 
 };
 
-
-namespace nxn {
 
 class AppStateSimpleCompute_11 : public AppState_11 {
 
@@ -94,13 +94,12 @@ private:
             void                                                ResetWindow                         ();
             void                                                UpdateFractalData                   (DX::DeviceResources_11* p_deviceResources);
 
-    // SimpleCompute data
-    struct CB_FractalCS
-    {
-        DirectX::XMFLOAT4 MaxThreadIter;
-        DirectX::XMFLOAT4 Window;
-    };
+    // SimpleCompute_11 objects
+    // on-screen help
+            std::unique_ptr<ATG::Help>                          m_help;
+            bool                                                m_showHelp;
 
+    // Compute data
             SmoothedFPS                                         m_renderFPS;
 
             uint64_t*                                           m_fractalTimestamps;
@@ -122,8 +121,11 @@ private:
             std::unique_ptr<DirectX::SpriteFont>                m_font;
             std::unique_ptr<DirectX::SpriteFont>                m_ctrlFont;
 
-            std::unique_ptr<ATG::Help>                          m_help;
-            bool                                                m_showHelp      = false;
+    struct CB_FractalCS
+    {
+        DirectX::XMFLOAT4 MaxThreadIter;
+        DirectX::XMFLOAT4 Window;
+    };
 
 }; // class AppStateSimpleCompute_11
 
