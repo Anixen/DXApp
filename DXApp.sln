@@ -36,6 +36,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app-SimpleBezier_12", "Proj
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app-SimpleCompute_12", "Projects\app-SimpleCompute_12\app-SimpleCompute_12.vcxproj", "{DDEA29A1-72BA-4E43-BB7F-B1AE97D6A178}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app-SimpleInstancing_12", "Projects\app-SimpleInstancing_12\app-SimpleInstancing_12.vcxproj", "{C9F1A974-F91A-4A38-8CD4-F5541BCF0081}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM64 = Debug|ARM64
@@ -218,6 +220,16 @@ Global
 		{DDEA29A1-72BA-4E43-BB7F-B1AE97D6A178}.Release|x64.Build.0 = Release|x64
 		{DDEA29A1-72BA-4E43-BB7F-B1AE97D6A178}.Release|x86.ActiveCfg = Release|Win32
 		{DDEA29A1-72BA-4E43-BB7F-B1AE97D6A178}.Release|x86.Build.0 = Release|Win32
+		{C9F1A974-F91A-4A38-8CD4-F5541BCF0081}.Debug|ARM64.ActiveCfg = Debug|Win32
+		{C9F1A974-F91A-4A38-8CD4-F5541BCF0081}.Debug|x64.ActiveCfg = Debug|x64
+		{C9F1A974-F91A-4A38-8CD4-F5541BCF0081}.Debug|x64.Build.0 = Debug|x64
+		{C9F1A974-F91A-4A38-8CD4-F5541BCF0081}.Debug|x86.ActiveCfg = Debug|Win32
+		{C9F1A974-F91A-4A38-8CD4-F5541BCF0081}.Debug|x86.Build.0 = Debug|Win32
+		{C9F1A974-F91A-4A38-8CD4-F5541BCF0081}.Release|ARM64.ActiveCfg = Release|Win32
+		{C9F1A974-F91A-4A38-8CD4-F5541BCF0081}.Release|x64.ActiveCfg = Release|x64
+		{C9F1A974-F91A-4A38-8CD4-F5541BCF0081}.Release|x64.Build.0 = Release|x64
+		{C9F1A974-F91A-4A38-8CD4-F5541BCF0081}.Release|x86.ActiveCfg = Release|Win32
+		{C9F1A974-F91A-4A38-8CD4-F5541BCF0081}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
