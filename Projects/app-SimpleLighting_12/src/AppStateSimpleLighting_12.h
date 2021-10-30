@@ -120,4 +120,4 @@ private:
 } // namespace nxn
 
 
-#endif // !NXN_APP_STATE_SIMPLE_LIGHTING
+#endif // !NXN_APP_STATE_SIMPLE_LIGHTING_12

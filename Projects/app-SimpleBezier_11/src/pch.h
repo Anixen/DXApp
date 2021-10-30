@@ -9,12 +9,12 @@
  * @date 20170809 - Initial Release
  *
  * @author Olivier Falconnet
- * @date 20211004 - Included to app-SimpleBezier project
+ * @date 20211004 - Included to app-SimpleBezier_11 project
  * @date 20211008 - Reworked dependencies
  */
 
-#ifndef PCH_SIMPLE_BEZIER
-#define PCH_SIMPLE_BEZIER
+#ifndef PCH_SIMPLE_BEZIER_11
+#define PCH_SIMPLE_BEZIER_11
 
 
 // Use the C++ standard templated min/max
@@ -70,7 +70,7 @@ namespace DX
 }
 
 
-#endif // !PCH_SIMPLE_BEZIER
+#endif // !PCH_SIMPLE_BEZIER_11
 
 /*
  * The MIT License(MIT)

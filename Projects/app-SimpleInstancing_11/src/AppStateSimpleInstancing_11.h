@@ -10,8 +10,8 @@
  * @date 20211005 - File creation
  */
 
-#ifndef NXN_APP_STATE_SIMPLE_INSTANCING
-#define NXN_APP_STATE_SIMPLE_INSTANCING
+#ifndef NXN_APP_STATE_SIMPLE_INSTANCING_11
+#define NXN_APP_STATE_SIMPLE_INSTANCING_11
 
 
 #include "AppState_11.h"
@@ -55,6 +55,8 @@ private:
             void                                                    ResetSimulation();
 
             float                                                   FloatRand                           (float lowerBound = -1.0f, float upperBound = 1.0f);
+
+    // SimpleInstancing_11 objects
 
     // Instance vertex definition
     struct Instance
@@ -104,4 +106,4 @@ private:
 } // namespace nxn
 
 
-#endif // !NXN_APP_STATE_SIMPLE_INSTANCING
+#endif // !NXN_APP_STATE_SIMPLE_INSTANCING_11

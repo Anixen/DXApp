@@ -9,7 +9,7 @@
  * @date 20170809 - Initial Release
  *
  * @author Olivier Falconnet
- * @date 20211003 - Included to app-SimpleTriangle project
+ * @date 20211003 - Included to app-SimpleTriangle_12 project
  * @date 20211008 - Reworked dependencies
  */
 

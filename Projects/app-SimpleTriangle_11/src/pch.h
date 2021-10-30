@@ -9,12 +9,12 @@
  * @date 20170809 - Initial Release
  *
  * @author Olivier Falconnet
- * @date 20211003 - Included to app-SimpleTriangle project
+ * @date 20211003 - Included to app-SimpleTriangle_11 project
  * @date 20211008 - Reworked dependencies
  */
 
-#ifndef PCH_SIMPLE_TRIANGLE
-#define PCH_SIMPLE_TRIANGLE
+#ifndef PCH_SIMPLE_TRIANGLE_11
+#define PCH_SIMPLE_TRIANGLE_11
 
 
 // Use the C++ standard templated min/max
@@ -67,7 +67,7 @@ namespace DX
 }
 
 
-#endif // !PCH_SIMPLE_TRIANGLE
+#endif // !PCH_SIMPLE_TRIANGLE_11
 
 /*
  * The MIT License(MIT)

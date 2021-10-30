@@ -1,5 +1,5 @@
 //--------------------------------------------------------------------------------------
-// SimpleInstancing_Shared.h
+// SimpleInstancing_11_Shared.h
 //
 // Shared declarations between shaders (HLSL) and C++ source.
 //

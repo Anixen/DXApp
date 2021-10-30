@@ -10,8 +10,8 @@
  * @date 20211004 - File creation
  */
 
-#ifndef NXN_APP_STATE_SIMPLE_MSAA
-#define NXN_APP_STATE_SIMPLE_MSAA
+#ifndef NXN_APP_STATE_SIMPLE_MSAA_11
+#define NXN_APP_STATE_SIMPLE_MSAA_11
 
 
 #include "AppState_11.h"
@@ -78,4 +78,4 @@ private:
 } // namespace nxn
 
 
-#endif // !NXN_APP_STATE_SIMPLE_MSAA
+#endif // !NXN_APP_STATE_SIMPLE_MSAA_11

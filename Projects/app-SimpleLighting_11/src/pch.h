@@ -9,12 +9,12 @@
  * @date 20170809 - Initial Release
  *
  * @author Olivier Falconnet
- * @date 20211004 - Included to app-SimpleLighting project
+ * @date 20211004 - Included to app-SimpleLighting_11 project
  * @date 20211008 - Reworked dependencies
  */
 
-#ifndef PCH_SIMPLE_LIGHTING
-#define PCH_SIMPLE_LIGTHING
+#ifndef PCH_SIMPLE_LIGHTING_11
+#define PCH_SIMPLE_LIGTHING_11
 
 
 // Use the C++ standard templated min/max
@@ -68,7 +68,7 @@ namespace DX
 }
 
 
-#endif // !PCH_SIMPLE_LIGHTING
+#endif // !PCH_SIMPLE_LIGHTING_11
 
 /*
  * The MIT License(MIT)

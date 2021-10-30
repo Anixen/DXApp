@@ -70,4 +70,4 @@ private:
 } // namespace nxn
 
 
-#endif // !NXN_APP_STATE_SIMPLE_TEXTURE
+#endif // !NXN_APP_STATE_SIMPLE_TEXTURE_12

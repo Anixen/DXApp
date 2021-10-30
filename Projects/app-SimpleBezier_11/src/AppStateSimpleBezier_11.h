@@ -10,8 +10,8 @@
  * @date 20211004 - File creation
  */
 
-#ifndef NXN_APP_STATE_SIMPLE_BEZIER
-#define NXN_APP_STATE_SIMPLE_BEZIER
+#ifndef NXN_APP_STATE_SIMPLE_BEZIER_11
+#define NXN_APP_STATE_SIMPLE_BEZIER_11
 
 
 #include "AppState_11.h"
@@ -108,4 +108,4 @@ private:
 } // namespace nxn
 
 
-#endif // !NXN_APP_STATE_SIMPLE_BEZIER
+#endif // !NXN_APP_STATE_SIMPLE_BEZIER_11

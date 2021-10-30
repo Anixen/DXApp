@@ -9,12 +9,12 @@
  * @date 20170809 - Initial Release
  *
  * @author Olivier Falconnet
- * @date 20211003 - Included to app-SimpleTexture project
+ * @date 20211003 - Included to app-SimpleTexture_11 project
  * @date 20211008 - Reworked dependencies
  */
 
-#ifndef PCH_SIMPLE_TEXTURE
-#define PCH_SIMPLE_TEXTURE
+#ifndef PCH_SIMPLE_TEXTURE_11
+#define PCH_SIMPLE_TEXTURE_11
 
 
 // Use the C++ standard templated min/max
@@ -68,7 +68,7 @@ namespace DX
 }
 
 
-#endif // !PCH_SIMPLE_TEXTURE
+#endif // !PCH_SIMPLE_TEXTURE_11
 
 /*
  * The MIT License(MIT)

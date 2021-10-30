@@ -9,12 +9,12 @@
  * @date 20170809 - Initial Release
  *
  * @author Olivier Falconnet
- * @date 20211005 - Included to app-SimpleCompute project
+ * @date 20211005 - Included to app-SimpleCompute_11 project
  * @date 20211008 - Reworked dependencies
  */
 
-#ifndef PCH_SIMPLE_COMPUTE
-#define PCH_SIMPLE_COMPUTE
+#ifndef PCH_SIMPLE_COMPUTE_11
+#define PCH_SIMPLE_COMPUTE_11
 
 
 // Use the C++ standard templated min/max
@@ -70,7 +70,7 @@ namespace DX
 }
 
 
-#endif // !PCH_SIMPLE_COMPUTE
+#endif // !PCH_SIMPLE_COMPUTE_11
 
 /*
  * The MIT License(MIT)

@@ -9,7 +9,7 @@
  * @date 20170809 - Initial Release
  *
  * @author Olivier Falconnet
- * @date 20211023 - Included to app-SimpleTexture project
+ * @date 20211023 - Included to app-SimpleTexture_12 project
  * @date 20211023 - Reworked dependencies
  */
 

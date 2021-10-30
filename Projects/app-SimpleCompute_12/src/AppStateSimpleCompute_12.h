@@ -205,4 +205,4 @@ private:
 } // namespace nxn
 
 
-#endif // !NXN_APP_STATE_SIMPLE_COMPUTE
+#endif // !NXN_APP_STATE_SIMPLE_COMPUTE_12

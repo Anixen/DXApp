@@ -66,4 +66,4 @@ private:
 } // namespace nxn
 
 
-#endif // !NXN_APP_STATE_SIMPLE_TRIANGLE
+#endif // !NXN_APP_STATE_SIMPLE_TRIANGLE_12

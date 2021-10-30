@@ -9,7 +9,7 @@
  * @date 20170809 - Initial Release
  *
  * @author Olivier Falconnet
- * @date 20211027 - Included to app-SimpleCompute project
+ * @date 20211027 - Included to app-SimpleCompute_12 project
  * @date 20211027 - Reworked dependencies
  */
 

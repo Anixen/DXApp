@@ -10,8 +10,8 @@
  * @date 20211003 - File creation
  */
 
-#ifndef NXN_APP_STATE_SIMPLE_TRIANGLE
-#define NXN_APP_STATE_SIMPLE_TRIANGLE
+#ifndef NXN_APP_STATE_SIMPLE_TRIANGLE_11
+#define NXN_APP_STATE_SIMPLE_TRIANGLE_11
 
 
 #include "AppState_11.h"
@@ -62,4 +62,4 @@ private:
 } // namespace nxn
 
 
-#endif // !NXN_APP_STATE_SIMPLE_TRIANGLE
+#endif // !NXN_APP_STATE_SIMPLE_TRIANGLE_11

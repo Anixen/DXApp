@@ -10,8 +10,8 @@
  * @date 20211004 - File creation
  */
 
-#ifndef NXN_APP_SIMPLE_LIGHTING
-#define NXN_APP_SIMPLE_LIGHTING
+#ifndef NXN_APP_SIMPLE_LIGHTING_11
+#define NXN_APP_SIMPLE_LIGHTING_11
 
 
 #include "App_11.h"
@@ -35,4 +35,4 @@ namespace nxn {
 } // namespace nxn
 
 
-#endif // !NXN_APP_SIMPLE_LIGHTING
+#endif // !NXN_APP_SIMPLE_LIGHTING_11

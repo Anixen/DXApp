@@ -9,12 +9,12 @@
  * @date 20170809 - Initial Release
  *
  * @author Olivier Falconnet
- * @date 20211006 - Included to app-SimpleMSAA project
+ * @date 20211006 - Included to app-SimpleMSAA_11 project
  * @date 20211008 - Reworked dependencies
  */
 
-#ifndef PCH_SIMPLE_MSAA
-#define PCH_SIMPLE_MSAA
+#ifndef PCH_SIMPLE_MSAA_11
+#define PCH_SIMPLE_MSAA_11
 
 
 // Use the C++ standard templated min/max
@@ -80,7 +80,7 @@ namespace
 }
 
 
-#endif // !PCH_SIMPLE_MSAA
+#endif // !PCH_SIMPLE_MSAA_11
 
 /*
  * The MIT License(MIT)

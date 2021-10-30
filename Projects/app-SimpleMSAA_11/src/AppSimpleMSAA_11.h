@@ -10,8 +10,8 @@
  * @date 20211005 - File creation
  */
 
-#ifndef NXN_APP_SIMPLE_MSAA
-#define NXN_APP_SIMPLE_MSAA
+#ifndef NXN_APP_SIMPLE_MSAA_11
+#define NXN_APP_SIMPLE_MSAA_11
 
 
 #include "App_11.h"
@@ -37,4 +37,4 @@ namespace nxn {
 } // namespace nxn
 
 
-#endif // !NXN_APP_SIMPLE_MSAA
+#endif // !NXN_APP_SIMPLE_MSAA_11

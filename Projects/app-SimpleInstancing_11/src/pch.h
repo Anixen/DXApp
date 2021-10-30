@@ -9,12 +9,12 @@
  * @date 20170809 - Initial Release
  *
  * @author Olivier Falconnet
- * @date 20211005 - Included to app-SimpleInstancing project
+ * @date 20211005 - Included to app-SimpleInstancing_11 project
  * @date 20211008 - Reworked dependencies
  */
 
-#ifndef PCH_SIMPLE_INSTANCING
-#define PCH_SIMPLE_INSTANCING
+#ifndef PCH_SIMPLE_INSTANCING_11
+#define PCH_SIMPLE_INSTANCING_11
 
 
 // Use the C++ standard templated min/max
@@ -71,7 +71,7 @@ namespace DX
 }
 
 
-#endif // !PCH_SIMPLE_INSTANCING
+#endif // !PCH_SIMPLE_INSTANCING_11
 
 /*
  * The MIT License(MIT)

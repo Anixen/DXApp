@@ -9,7 +9,7 @@
  * @date 20170809 - Initial Release
  *
  * @author Olivier Falconnet
- * @date 20211025 - Included to app-SimpleBezier project
+ * @date 20211025 - Included to app-SimpleBezier_12 project
  * @date 20211025 - Reworked dependencies
  */
 
