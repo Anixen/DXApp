@@ -15,6 +15,10 @@ using namespace nxn;
 //int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine, int nCmdShow)
 int main(int argc, char** argv)
 {
+    HRESULT hr = CoInitializeEx(nullptr, COINITBASE_MULTITHREADED);
+    if (FAILED(hr))
+        return 1;
+
 	LoggerConsole logger(true, SeverityDebug);
 
     std::unique_ptr<DX::DeviceResources_11> deviceResources = std::make_unique<DX::DeviceResources_11>(
@@ -29,7 +33,7 @@ int main(int argc, char** argv)
     // as well as the fact that this 'old-school' implicit resolve behavior is not supported for UWP or DirectX 12.
     //
 
-    App_11* app = new AppSimpleMSAA_11(deviceResources);
+    std::unique_ptr<App_11> app = std::make_unique<AppSimpleMSAA_11>(deviceResources);
 
 	//app->processArguments(hInstance, hPrevInstance, pCmdLine, nCmdShow);
 	app->ProcessArguments(argc, argv);
@@ -39,7 +43,9 @@ int main(int argc, char** argv)
 
 	int exitCode = app->Run();
 
-	delete app;
+    app.reset();
+
+    CoUninitialize();
 
 	return exitCode;
 }

@@ -17,6 +17,10 @@ using namespace nxn;
 //int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine, int nCmdShow)
 int main(int argc, char** argv)
 {
+    HRESULT hr = CoInitializeEx(nullptr, COINITBASE_MULTITHREADED);
+    if (FAILED(hr))
+        return 1;
+
 	LoggerConsole logger(true, SeverityDebug);
 
     // Use gamma-correct rendering.
@@ -24,7 +28,7 @@ int main(int argc, char** argv)
         DXGI_FORMAT_B8G8R8A8_UNORM_SRGB // backBufferFormat
     );
 
-    App_11* app = new AppSimpleTriangle_11(deviceResources);
+    std::unique_ptr<App_11> app = std::make_unique<AppSimpleTriangle_11>(deviceResources);
 
 	//app->processArguments(hInstance, hPrevInstance, pCmdLine, nCmdShow);
 	app->ProcessArguments(argc, argv);
@@ -34,7 +38,9 @@ int main(int argc, char** argv)
 
 	int exitCode = app->Run();
 
-	delete app;
+	app.reset();
+
+    CoUninitialize();
 
 	return exitCode;
 }

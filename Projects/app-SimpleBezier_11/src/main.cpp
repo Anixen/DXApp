@@ -15,6 +15,10 @@ using namespace nxn;
 //int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine, int nCmdShow)
 int main(int argc, char** argv)
 {
+    HRESULT hr = CoInitializeEx(nullptr, COINITBASE_MULTITHREADED);
+    if (FAILED(hr))
+        return 1;
+
 	LoggerConsole logger(true, SeverityDebug);
 
     // Use gamma-correct rendering.  Hardware tessellation requires Feature Level 11.0 or later.
@@ -25,7 +29,7 @@ int main(int argc, char** argv)
         D3D_FEATURE_LEVEL_11_0              // minFeatureLevel
     );
 
-    App_11* app = new AppSimpleBezier_11(deviceResources);
+    std::unique_ptr<App_11> app = std::make_unique<AppSimpleBezier_11>(deviceResources);
 
 	//app->processArguments(hInstance, hPrevInstance, pCmdLine, nCmdShow);
 	app->ProcessArguments(argc, argv);
@@ -35,7 +39,9 @@ int main(int argc, char** argv)
 
 	int exitCode = app->Run();
 
-	delete app;
+	app.reset();
+
+    CoUninitialize();
 
 	return exitCode;
 }
